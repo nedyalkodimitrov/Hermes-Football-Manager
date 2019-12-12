@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoachRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Coach
 {
@@ -16,16 +17,16 @@ class Coach
      */
     private $id;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\YouthTeam", inversedBy="coach")
-//     * @ORM\JoinColumn(name="youth_team", referencedColumnName="id")
-//     */
+    /**
+     * @ORM\ManyToOne(targetEntity="YouthTeam", inversedBy="coaches")
+     * @ORM\JoinColumn(name="youth_team", referencedColumnName="id")
+     */
     private $youthTeam;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="coach")
-//     * @ORM\JoinColumn(name="team", referencedColumnName="id")
-//     */
+    /**
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="coaches")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
     private $team;
 
 
@@ -57,10 +58,10 @@ class Coach
 //     */
     private $position;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="CoachPositions", inversedBy="coaches")
-//     * @ORM\JoinColumn(name="teamPosition", referencedColumnName="id")
-//     */
+    /**
+     * @ORM\ManyToOne(targetEntity="CoachPosition", inversedBy="coaches")
+     * @ORM\JoinColumn(name="teamPosition", referencedColumnName="id")
+     */
     private $teamPosition;
 
     /**

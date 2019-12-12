@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Country
 {
@@ -42,14 +43,14 @@ class Country
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", unique=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, unique=true)
+     * @ORM\Column(name="image", type="string", unique=true)
      */
     private $image;
 

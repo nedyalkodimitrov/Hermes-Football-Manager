@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Role
 {

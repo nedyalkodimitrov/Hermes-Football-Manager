@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -56,20 +58,20 @@ class User
     private  $phone;
 
 
-//    /**
-//     * @ORM\ManyToMany(targetEntity="Role")
-//     * @ORM\JoinTable(name="user_roles",
-//     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-//     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
-//     *      )
-//     * @var Collection\Role[]
-//     */
+    /**
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="user_roles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     *      )
+     * @var Collection\Role[]
+     */
     private  $roles;
 
     /**
      * @ORM\OneToOne(targetEntity="Coach", mappedBy="user")
      */
-    private $coaches;
+    private $coach;
 
     /**
      * @ORM\OneToOne(targetEntity="Admin", mappedBy="user")
@@ -107,7 +109,7 @@ class User
     /**
      * @return string
      */
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }
@@ -246,9 +248,6 @@ class User
         return $roles;
     }
 
-    public function eraseCredentials()
-    {
-    }
 
     /** @see \Serializable::serialize() */
     public function serialize()
@@ -267,4 +266,11 @@ class User
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
 }

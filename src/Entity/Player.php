@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlayerRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Player
 {
@@ -18,7 +19,7 @@ class Player
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="player")
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="players")
      * @ORM\JoinColumn(name="country", referencedColumnName="id")
      */
     private $country;
@@ -30,15 +31,15 @@ class Player
      */
     private $birthDay;
 
-    /**
-     *  @ORM\OneToOne(targetEntity="PlayerProperties\PlayerStats")
-     * @ORM\JoinColumn(name="stats", referencedColumnName="id")
-     */
+//    /**
+//     *  @ORM\OneToOne(targetEntity="App\Entity\PlayerProperties\PlayerStats")
+//     * @ORM\JoinColumn(name="stats", referencedColumnName="id")
+//     */
     private $stats;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Team", inversedBy="player")
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="players")
      * @ORM\JoinColumn(name="team", referencedColumnName="id")*/
 
     private $team;
@@ -52,13 +53,13 @@ class Player
     private  $user;
     
     /**
-     * @ORM\ManyToOne(targetEntity="PlayerProperties\Positions", inversedBy="player")
+     * @ORM\ManyToOne(targetEntity="App\Entity\PlayerProperties\Position", inversedBy="players")
      * @ORM\JoinColumn(name="position", referencedColumnName="id")
      */
     private $position;
     
     /**
-     * @ORM\ManyToOne(targetEntity="YouthTeam", inversedBy="player")
+     * @ORM\ManyToOne(targetEntity="YouthTeam", inversedBy="players")
      * @ORM\JoinColumn(name="youthTeam", referencedColumnName="id")
      */
     private $youthTeams;

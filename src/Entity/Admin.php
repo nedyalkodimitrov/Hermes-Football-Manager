@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Admin
 {
@@ -16,10 +17,10 @@ class Admin
      */
     private $id;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="Team", inversedBy="admin")
-//     * @ORM\JoinColumn(name="team", referencedColumnName="id")
-//     */
+    /**
+     * @ORM\ManyToOne(targetEntity="Team", inversedBy="admin")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
     private $team;
 
     /**

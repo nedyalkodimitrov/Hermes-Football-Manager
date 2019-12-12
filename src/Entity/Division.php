@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DivisionRepository")
+ * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
 class Division
 {
@@ -37,7 +39,7 @@ class Division
     private $teams;
 
     /**
-     * @ORM\OneToMany(targetEntity="PlayerProperties\Cup", mappedBy="divisions")
+     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
      */
     private $cups;
 
