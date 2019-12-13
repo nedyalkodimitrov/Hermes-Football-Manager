@@ -1,0 +1,26 @@
+@import url("typography.css");
+@import url("particles/main-information-charts.css");
+@import url("particles/navbar.css");
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #fff;
+    --table-width: 100%; /* Or any value, this will change dinamically */
+}
+
+.information-container{
+    bottom:0;
+
+}
+.information-container > p {
+    font-size: 2em;
+    margin:0;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+}
+
+
