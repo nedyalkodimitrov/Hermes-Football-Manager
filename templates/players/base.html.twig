@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+    <link rel="stylesheet" href="  {{ asset("css/players/playerStyle.css") }}    ">
+    <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}    ">
+{% endblock %}
+
+{% block navContent %}
+    <div class=" mt-md-2 mt-sm-2 row text-sm-left text-md-left col-sm-6 col-md-6 justify-content-sm-left justify-content-md-left">
+        <p class="nav-username ">{{ playerName }} </p>
+        <div class="">
+            {% if profile_img == ''  or profile_img == null %}
+                <a href=" {{ path("player_settings") }}" class="profile_pic_a "><img src="{{asset("images/user1.png")}}" alt="" class="user-nav-profile-img"></a>
+            {% else %}
+                <a href=" {{ path("player_settings") }}" class="profile_pic_a "><img src="{{asset("images/" ~ profile_img)}}" alt="" class="user-nav-profile-img"></a>
+            {% endif %}
+        </div>
+        <p class="user_name2 pl-lg-2 pl-sm-2 ">{{ playerName }} </p>
+    </div>
+{% endblock %}
+

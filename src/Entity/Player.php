@@ -31,10 +31,10 @@ class Player
      */
     private $birthDay;
 
-//    /**
-//     *  @ORM\OneToOne(targetEntity="App\Entity\PlayerProperties\PlayerStats")
-//     * @ORM\JoinColumn(name="stats", referencedColumnName="id")
-//     */
+    /**
+     *  @ORM\OneToOne(targetEntity="App\Entity\PlayerProperties\PlayerStats")
+     * @ORM\JoinColumn(name="stats", referencedColumnName="id")
+     */
     private $stats;
 
 
@@ -80,6 +80,13 @@ class Player
      * @ORM\Column(name="status", type="integer", nullable=true   )
      */
     public $status;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\WaterGlasses", mappedBy="playerId")
+     */
+    public $waterGlasses;
+
 
 
 
@@ -231,6 +238,23 @@ class Player
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getWaterGlasses()
+    {
+        return $this->waterGlasses;
+    }
+
+    /**
+     * @param mixed $waterGlasses
+     */
+    public function setWaterGlasses($waterGlasses): void
+    {
+        $this->waterGlasses = $waterGlasses;
+    }
+
 
 
 

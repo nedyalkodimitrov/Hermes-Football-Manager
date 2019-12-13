@@ -21,7 +21,7 @@ class Position
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", unique=true)
+     * @ORM\Column(name="name", type="string")
      */
     private $name;
 
@@ -36,4 +36,38 @@ class Position
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
+
+    /**
+     * @param mixed $players
+     */
+    public function setPlayers($players): void
+    {
+        $this->players = $players;
+    }
+
+
 }

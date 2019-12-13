@@ -17,8 +17,81 @@ class WaterGlasses
      */
     private $id;
 
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\ManyToOne(targetEntity="App\Entity\Player")
+     * @ORM\JoinColumn(name="player", referencedColumnName="id")
+     */
+    private $playerId;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="waterGlasses", type="integer")
+     */
+    private $waterGlasses;
+
+    /**
+     *
+     *
+     * @ORM\Column(name="date", type="string")
+     */
+    private $date;
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPlayerId()
+    {
+        return $this->playerId;
+    }
+
+    /**
+     * @param mixed $playerId
+     */
+    public function setPlayerId($playerId): void
+    {
+        $this->playerId = $playerId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWaterGlasses(): int
+    {
+        return $this->waterGlasses;
+    }
+
+    /**
+     * @param int $waterGlasses
+     */
+    public function setWaterGlasses(int $waterGlasses): void
+    {
+        $this->waterGlasses = $waterGlasses;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDate(): string
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param string $date
+     */
+    public function setDate(string $date): void
+    {
+        $this->date = $date;
+    }
+
+
 }
