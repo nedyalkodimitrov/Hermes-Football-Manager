@@ -91,6 +91,7 @@
 }
 
 thead{
+    position: absolute;
     background-color: #242424;
     color: white;
 }

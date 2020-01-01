@@ -100,10 +100,10 @@ class YouthTeam
     private $coaches;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="youthTeams")
-     * @ORM\JoinColumn(name="country", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="youthTeams")
+     * @ORM\JoinColumn(name="city", referencedColumnName="id")
      */
-    private $country;
+    private $city;
 
 
 
@@ -307,18 +307,20 @@ class YouthTeam
     /**
      * @return mixed
      */
-    public function getCountry()
+    public function getCity()
     {
-        return $this->country;
+        return $this->city;
     }
 
     /**
-     * @param mixed $country
+     * @param mixed $city
      */
-    public function setCountry($country): void
+    public function setCity($city): void
     {
-        $this->country = $country;
+        $this->city = $city;
     }
+
+
 
 
 }

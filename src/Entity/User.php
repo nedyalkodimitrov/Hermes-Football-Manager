@@ -57,6 +57,11 @@ class User implements UserInterface
      */
     public  $phone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="City", inversedBy="users")
+     * @ORM\JoinColumn(name="city", referencedColumnName="id")
+     */
+    public $city;
 
     /**
      * @ORM\ManyToMany(targetEntity="Role")
@@ -177,6 +182,22 @@ class User implements UserInterface
     public function setPhone(string $phone): void
     {
         $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city): void
+    {
+        $this->city = $city;
     }
 
     /**

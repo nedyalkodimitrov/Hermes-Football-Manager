@@ -18,17 +18,10 @@ class Country
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="country")
+     * @ORM\OneToMany(targetEntity="City", mappedBy="country")
      */
-    private $players;
-    /**
-     * @ORM\OneToMany(targetEntity="Team", mappedBy="country")
-     */
-    private $teams;
-    /**
-     * @ORM\OneToMany(targetEntity="YouthTeam", mappedBy="country")
-     */
-    private $youthTeams;
+    private $cities;
+
     /**
      * @ORM\OneToMany(targetEntity="YouthDivision", mappedBy="country")
      */
@@ -60,53 +53,7 @@ class Country
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPlayers()
-    {
-        return $this->players;
-    }
 
-    /**
-     * @param mixed $players
-     */
-    public function setPlayers($players): void
-    {
-        $this->players = $players;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTeams()
-    {
-        return $this->teams;
-    }
-
-    /**
-     * @param mixed $teams
-     */
-    public function setTeams($teams): void
-    {
-        $this->teams = $teams;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getYouthTeams()
-    {
-        return $this->youthTeams;
-    }
-
-    /**
-     * @param mixed $youthTeams
-     */
-    public function setYouthTeams($youthTeams): void
-    {
-        $this->youthTeams = $youthTeams;
-    }
 
     /**
      * @return mixed
@@ -171,6 +118,24 @@ class Country
     {
         $this->image = $image;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * @param mixed $cities
+     */
+    public function setCities($cities): void
+    {
+        $this->cities = $cities;
+    }
+
+
 
     public function __toString()
     {

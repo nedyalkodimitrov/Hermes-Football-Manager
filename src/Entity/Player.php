@@ -89,21 +89,6 @@ class Player
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param mixed $country
-     */
-    public function setCountry($country): void
-    {
-        $this->country = $country;
-    }
 
 
     public function getBirthDay()
