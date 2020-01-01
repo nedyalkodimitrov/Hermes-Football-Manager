@@ -19,6 +19,16 @@ class CoachRepository extends ServiceEntityRepository
         parent::__construct($registry, Coach::class);
     }
 
+
+    public function getCoachTeam(Coach $coach){
+        if($coach->getTeam() != null){
+            $teamOfCoach = $coach->getTeam();
+        }else    {
+            $teamOfCoach = $coach->getYouthTeam();
+        }
+        return $teamOfCoach;
+    }
+
     // /**
     //  * @return Coach[] Returns an array of Coach objects
     //  */

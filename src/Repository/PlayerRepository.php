@@ -19,14 +19,20 @@ class PlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, Player::class);
     }
 
-    // /**
-    //  * @return Player[] Returns an array of Player objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getPlayerTeam(Player $player){
+        if ($player->getYouthTeams() != null){
+            $team = $player->getYouthTeams();
+        }else{
+            $team = $player->getTeam();
+        }
+        return $team;
+    }
+
+
+    public function findByText($value)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
+            ->andWhere('p.name = :val')
             ->setParameter('val', $value)
             ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
@@ -34,7 +40,7 @@ class PlayerRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Player

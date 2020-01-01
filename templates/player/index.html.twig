@@ -1,4 +1,8 @@
-{% extends 'players/base.html.twig' %}
+{% extends 'player/playerBaseTemplate.html.twig' %}
+{% block style %}
+    <link rel="stylesheet" href="  {{ asset("css/player/playerStyle.css") }}    ">
+    <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}    ">
+{% endblock %}
 {% block body %}
     <div id="container">
         <div class="row mt-5  justify-content-center">

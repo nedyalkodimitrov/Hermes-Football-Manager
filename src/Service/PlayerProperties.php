@@ -42,7 +42,7 @@ class PlayerProperties implements PlayerPropertiesInterface
         return  $this->waterGlassesRepo->getLastWaterGlass($userId);
     }
 
-    //Get the team of the players
+    //Get the team of the player
     public function getTeam($player){
         if($player->getTeam() != null){
             $team = $player->getTeam();

@@ -3,7 +3,17 @@
 namespace App\Controller;
 
 
+use App\Entity\InjuredUsers;
+use App\Entity\PlayerProperties\PlayerStats;
+use App\Entity\PlayerProperties\Position;
+use App\Entity\User;
+use App\Entity\Player;
+use App\Form\InjuredUsersType;
+use App\Form\PlayerStatsType;
+use App\Form\PlayerType;
+use App\Repository\InjuredUsersRepository;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
+use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use App\Service\PlayerProperties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use  App\Repository\PlayersInjuredRepository;
 
 class PlayerController extends AbstractController
 {
@@ -46,7 +57,7 @@ class PlayerController extends AbstractController
 
         $playerNames = $this->playerPropService->generateName($player->getUser()->getFName());
 
-        return $this->render('players/index.html.twig', array('coachStatus' => $playerStats->getStatusFromCoaches(),
+        return $this->render('player/index.html.twig', array('coachStatus' => $playerStats->getStatusFromCoaches(),
             'playerFat' => $playerStats->getFat(),
             'pace' => $playerStats->getPace(),
             'teams' => $teams,
@@ -60,7 +71,7 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/players/removeWaterGlasses", name = "removeWaterGlassAction")
+     * @Route("/player/removeWaterGlasses", name = "removeWaterGlassAction")
      */
     public function RemoveWaterGlassesAction()
     {
@@ -77,7 +88,7 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/players/addWaterGlasses", name = "addWaterGlassAction")
+     * @Route("/player/addWaterGlasses", name = "addWaterGlassAction")
      */
     public function AddWaterGlassesAction()
     {
@@ -93,19 +104,19 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/players/settings", name = "player_settings")
+     * @Route("/player/settings", name = "player_settings")
      *
      */
     public function SettingsView(\Symfony\Component\HttpFoundation\Request $request){
         $currentPlayer = $this->getUser()->getPlayer();
-        $newPlayer = new Players();
+        $newPlayer = new Player();
         $newPlayerStats = new PlayerStats();
 
         $playerStats = $currentPlayer->getStats();
 
-        $positions = $this->getDoctrine()->getRepository(Positions::class)->findAll();
+        $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
         $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
-        $formPlayer = $this->createForm(PlayersType::class, $newPlayer);
+        $formPlayer = $this->createForm(PlayerType::class, $newPlayer);
         $formStats->handleRequest($request);
         $formPlayer->handleRequest($request);
 
@@ -127,27 +138,27 @@ class PlayerController extends AbstractController
             $em->persist($currentPlayer);
             $em->flush();
 
-            return $this->render('players/settings/newSettingPage.html.twig',
+            return $this->render('player/settings/newSettingPage.html.twig',
                 array("image" => $currentPlayer->getImage(),
                     'formPlayer' => $formPlayer->createView(),
                     'formStats' => $formStats->createView(),
-                    'players' => $currentPlayer,
+                    'player' => $currentPlayer,
                     'team' => $this->playerPropService->getTeam($currentPlayer),
                     'playerStats' => $playerStats,
                     'playerName' => $currentPlayer->getUserId()->getName(). ' '.$currentPlayer->getUserId()->getFName()
                 ));
         }
 
-        return $this->render('players/settings/newSettingPage.html.twig',
+        return $this->render('player/settings/newSettingPage.html.twig',
             array(
                 'formPlayer' => $formPlayer->createView(),
                 'formStats' => $formStats->createView(),
                 "image" => $currentPlayer->getImage(),
                 'profile_img' =>$currentPlayer->getImage(),
-                'players' => $currentPlayer,
+                'player' => $currentPlayer,
                 'team' => $this->playerPropService->getTeam($currentPlayer),
                 'playerStats' => $playerStats,
-                'playerName' => $currentPlayer->getUserId()->getName(). ' '.$currentPlayer->getUserId()->getFName()
+                'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
             ));
     }
 
@@ -155,48 +166,60 @@ class PlayerController extends AbstractController
     {
         return md5(uniqid());
     }
-//
-//    /**
-//     * @Route("/players/training", name="playerTraining")
-//     */
-//    public function TrainingView(\Symfony\Component\HttpFoundation\Request $request, PlayersInjuredRepository $playersInjuredRepo, PlayersRepository $playersRepository)
-//    {
-//        $players = $this->getUser()->getPlayer();
-//        $status = new PlayersInjured();
-//        $form = $this->createForm(PlayersInjuredType::class, $status);
-//        $form->handleRequest($request);
-//        $statuses = $this->getDoctrine()->getRepository(PlayersInjured::class)
-//            ->findBy(['users' =>$players->getId()], ['id' => 'DESC']);
-//
-//        $Current = Date('N');
-//        $DaysToSunday = 7 - $Current;
-//        $DaysFromMonday = $Current - 1;
-//        $Monday = Date('d-m-Y', StrToTime("- {$DaysFromMonday} Days"));
-//        $Sunday = Date('d-m-Y', StrToTime("+ {$DaysToSunday} Days"));
-//
-//        if ($form->isSubmitted()) {
-//            $querySuccseesd = $this->playerPropService->setInjured($players, $statuses, $status, $playersInjuredRepo);
-//            return new Response($querySuccseesd);
-//        }
-//
-//        $team = $playersRepository->getPlayerTeam($players);
-//        $coaches = $team->getCoaches();
-//        $schedule = $this->playerPropService->getSchedule($coaches);
-//        $headCoache = $this->playerPropService->getHeadCoache($coaches);
-//
-//        return $this->render('players/training.html.twig' , array('schedule' => $schedule,
-//            'monday' => strval($Monday),
-//            'sunday' => strval($Sunday),
-//            'profile_img' => $players->getImage(),
-//            'coaches' => $coaches,
-//            'bigCoache' =>$headCoache,
-//            'status' => $statuses,
-//            'playerName' => $players->getUserId()->getFName(),
-//        ));
-//    }
 
     /**
-     * @Route("/players/deleteStat/{id}", name="playerStatDeleting")
+     * @Route("/player/training", name="playerTraining")
+     */
+    public function TrainingView(\Symfony\Component\HttpFoundation\Request $request,InjuredUsersRepository $injuredUserRepository, PlayerRepository $playersRepository)
+    {
+        $Current = Date('N');
+        $DaysToSunday = 7 - $Current;
+        $DaysFromMonday = $Current - 1;
+        $Monday = Date('d-m-Y', StrToTime("- {$DaysFromMonday} Days"));
+        $Sunday = Date('d-m-Y', StrToTime("+ {$DaysToSunday} Days"));
+
+        $user = $this->getUser();
+        $player = $user->getPlayer();
+        $status = new InjuredUsers();
+
+        $form = $this->createForm(InjuredUsersType::class, $status);
+        $form->handleRequest($request);
+
+        $statuses = $user->getTreatmentInformation();
+
+        if ($form->isSubmitted()) {
+            $querySucceed = $this->playerPropService->setInjured($player, $statuses, $status, $injuredUserRepository);
+            return new Response($querySucceed);
+        }
+
+        $team = $playersRepository->getPlayerTeam($player);
+
+        if ($team == null) {
+            $coaches = null;
+            $schedule = null;
+            $headCoach = null;
+        }
+        else  {
+            $coaches = $team->getCoaches();
+            $schedule = $this->playerPropService->getSchedule($coaches);
+            $headCoach = $this->playerPropService->getHeadCoache($coaches);
+        }
+
+
+
+        return $this->render('player/training.html.twig' , array('schedule' => $schedule,
+            'monday' => strval($Monday),
+            'sunday' => strval($Sunday),
+            'profile_img' => $player->getImage(),
+            'coaches' => $coaches,
+            'bigCoache' =>$headCoach,
+            'status' => $statuses,
+            'playerName' => $user->getFName(),
+        ));
+    }
+
+    /**
+     * @Route("/player/deleteStat/{id}", name="playerStatDeleting")
      */
     public function StatRemove($id, \Symfony\Component\HttpFoundation\Request $request)
     {
@@ -212,7 +235,7 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/players/getOutOfTeam", name="getOutOfteam")
+     * @Route("/player/getOutOfTeam", name="getOutOfteam")
      */
     public function getOutOfTeam(Request $request){
         $player = $this->getUser()->getPlayer();
@@ -229,7 +252,7 @@ class PlayerController extends AbstractController
     }
 
     /**
-     * @Route("/players/searchTeam/{name}", )
+     * @Route("/player/searchTeam/{name}", )
      */
     public function searchTeam($name, TeamRepository $teamRepository){
         $teamsInformation = [];

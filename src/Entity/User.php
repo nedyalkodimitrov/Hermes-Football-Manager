@@ -24,7 +24,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true, nullable=true)
      */
-    private $email;
+    public $email;
 
 
     /**
@@ -48,14 +48,14 @@ class User implements UserInterface
      *
      * @ORM\Column(name="fName", type="string", length=255)
      */
-    private  $fName;
+    public  $fName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255)
      */
-    private  $phone;
+    public  $phone;
 
 
     /**
@@ -82,8 +82,17 @@ class User implements UserInterface
     /**
      * @ORM\OneToOne(targetEntity="Player", mappedBy="user")
      */
-    private $player;
+    public $player;
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\WaterGlasses", mappedBy="playerId")
+     */
+    public $waterGlasses;
 
+    /**
+     * @ORM\OneToMany(targetEntity="InjuredUsers", mappedBy="user")
+     */
+    private $treatmentInformation;
 
     public function getId(): ?int
     {
@@ -93,7 +102,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -125,7 +134,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -141,7 +150,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getFName(): string
+    public function getFName(): ?string
     {
         return $this->fName;
     }
@@ -157,7 +166,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): ?string
     {
         return $this->phone;
     }
@@ -183,15 +192,15 @@ class User implements UserInterface
      */
     public function getCoaches()
     {
-        return $this->coaches;
+        return $this->coach;
     }
 
     /**
-     * @param mixed $coaches
+     * @param mixed $coach
      */
-    public function setCoaches($coaches): void
+    public function setCoaches($coach): void
     {
-        $this->coaches = $coaches;
+        $this->coach = $coach;
     }
 
     /**
@@ -213,6 +222,24 @@ class User implements UserInterface
     /**
      * @return mixed
      */
+    public function getTreatmentInformation()
+    {
+        return $this->treatmentInformation;
+    }
+
+    /**
+     * @param mixed $treatmentInformation
+     */
+    public function setTreatmentInformation($treatmentInformation): void
+    {
+        $this->treatmentInformation = $treatmentInformation;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
     public function getPlayer()
     {
         return $this->player;
@@ -225,6 +252,39 @@ class User implements UserInterface
     {
         $this->player = $player;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCoach()
+    {
+        return $this->coach;
+    }
+
+    /**
+     * @param mixed $coach
+     */
+    public function setCoach($coach): void
+    {
+        $this->coach = $coach;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWaterGlasses()
+    {
+        return $this->waterGlasses;
+    }
+
+    /**
+     * @param mixed $waterGlasses
+     */
+    public function setWaterGlasses($waterGlasses): void
+    {
+        $this->waterGlasses = $waterGlasses;
+    }
+
 
     public function getUsername()
     {

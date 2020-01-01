@@ -45,14 +45,14 @@ class Country
      *
      * @ORM\Column(name="name", type="string", unique=true)
      */
-    private $name;
+    public $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", unique=true)
      */
-    private $image;
+    public $image;
 
 
     public function getId(): ?int
@@ -143,7 +143,7 @@ class Country
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -172,5 +172,9 @@ class Country
         $this->image = $image;
     }
 
+    public function __toString()
+    {
+        return (string)$this->getName();
+    }
 
 }

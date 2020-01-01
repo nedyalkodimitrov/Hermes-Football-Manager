@@ -30,10 +30,10 @@ class Coach
     private $team;
 
 
-//    /**
-//     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Schedule", mappedBy="coach")
-//     *
-//     */
+    /**
+     * @ORM\OneToMany(targetEntity="Schedule", mappedBy="coach")
+     *
+     */
     private $schedule;
 
 
@@ -84,4 +84,150 @@ class Coach
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getYouthTeam()
+    {
+        return $this->youthTeam;
+    }
+
+    /**
+     * @param mixed $youthTeam
+     */
+    public function setYouthTeam($youthTeam): void
+    {
+        $this->youthTeam = $youthTeam;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param mixed $team
+     */
+    public function setTeam($team): void
+    {
+        $this->team = $team;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSchedule()
+    {
+        return $this->schedule;
+    }
+
+    /**
+     * @param mixed $schedule
+     */
+    public function setSchedule($schedule): void
+    {
+        $this->schedule = $schedule;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @return date
+     */
+    public function getBirthDay(): ?date
+    {
+        return $this->birthDay;
+    }
+
+    /**
+     * @param date $birthDay
+     */
+    public function setBirthDay(date $birthDay): void
+    {
+        $this->birthDay = $birthDay;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position): void
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeamPosition()
+    {
+        return $this->teamPosition;
+    }
+
+    /**
+     * @param mixed $teamPosition
+     */
+    public function setTeamPosition($teamPosition): void
+    {
+        $this->teamPosition = $teamPosition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
+    }
+
+
 }

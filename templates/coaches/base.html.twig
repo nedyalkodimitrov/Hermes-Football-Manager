@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block style %}
+
+    <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}">
+
+
+{% endblock %}
+{% block navLinks %}
+    <a class="ml-2 na navbar-link" href="{{ path("trainingView") }}">Тренировки</a>
+    <a class="ml-2 na navbar-link" href="{{ path("trainingCalendarActionView") }}">Тренировки</a>
+{% endblock %}
+{% block navContent %}
+    <div class="mt-md-2 mt-sm-2 row  col-sm-6 col-md-6  justify-content-end">
+        <p class="nav-username ">Иван Драганов</p>
+        <div class=" ">
+            {% if profile_img == ''  or profile_img == null %}
+                <a href=" {{ path("coache_settings") }}" class="profile_pic_a "><img src="{{asset("images/user1.png")}}" alt="" class="user-nav-profile-img"></a>
+            {% else %}
+                <a href=" {{ path("coache_settings") }}" class="profile_pic_a "><img src="{{asset("images/" ~ profile_img)}}" alt="" class="user-nav-profile-img"></a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

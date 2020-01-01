@@ -159,7 +159,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getStatusFromCoaches(): float
+    public function getStatusFromCoaches(): ?float
     {
         return $this->statusFromCoaches;
     }
@@ -175,7 +175,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getWeight(): float
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
@@ -191,7 +191,7 @@ class PlayerStats
     /**
      * @return int
      */
-    public function getHeight(): int
+    public function getHeight(): ?int
     {
         return $this->height;
     }
@@ -207,7 +207,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getFat(): float
+    public function getFat(): ?float
     {
         return $this->fat;
     }
@@ -239,7 +239,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getTacticks(): float
+    public function getTacticks(): ?float
     {
         return $this->tacticks;
     }
@@ -255,7 +255,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getTechnique(): float
+    public function getTechnique(): ?float
     {
         return $this->technique;
     }
@@ -271,7 +271,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getPass(): float
+    public function getPass(): ?float
     {
         return $this->pass;
     }
@@ -287,7 +287,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getShot(): float
+    public function getShot(): ?float
     {
         return $this->shot;
     }
@@ -303,7 +303,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getDribble(): float
+    public function getDribble(): ?float
     {
         return $this->dribble;
     }
@@ -319,7 +319,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getLongPass(): float
+    public function getLongPass(): ?float
     {
         return $this->longPass;
     }
@@ -335,7 +335,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getRelax(): float
+    public function getRelax(): ?float
     {
         return $this->relax;
     }
@@ -351,7 +351,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getWillpower(): float
+    public function getWillpower(): ?float
     {
         return $this->willpower;
     }
@@ -367,7 +367,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getWork(): float
+    public function getWork(): ?float
     {
         return $this->work;
     }
@@ -383,7 +383,7 @@ class PlayerStats
     /**
      * @return float
      */
-    public function getPerspective(): float
+    public function getPerspective(): ?float
     {
         return $this->perspective;
     }
@@ -395,6 +395,7 @@ class PlayerStats
     {
         $this->perspective = $perspective;
     }
+
 
 
 }

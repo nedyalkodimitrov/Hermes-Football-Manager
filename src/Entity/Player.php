@@ -22,14 +22,14 @@ class Player
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="players")
      * @ORM\JoinColumn(name="country", referencedColumnName="id")
      */
-    private $country;
+    public $country;
 
     /**
      * @var date
      *
      * @ORM\Column(name="birthDay", type="date", nullable=true)
      */
-    private $birthDay;
+    public $birthDay;
 
     /**
      *  @ORM\OneToOne(targetEntity="App\Entity\PlayerProperties\PlayerStats")
@@ -42,7 +42,7 @@ class Player
      * @ORM\ManyToOne(targetEntity="Team", inversedBy="players")
      * @ORM\JoinColumn(name="team", referencedColumnName="id")*/
 
-    private $team;
+    public $team;
 
 
     /**
@@ -56,13 +56,13 @@ class Player
      * @ORM\ManyToOne(targetEntity="App\Entity\PlayerProperties\Position", inversedBy="players")
      * @ORM\JoinColumn(name="position", referencedColumnName="id")
      */
-    private $position;
+    public $position;
     
     /**
      * @ORM\ManyToOne(targetEntity="YouthTeam", inversedBy="players")
      * @ORM\JoinColumn(name="youthTeam", referencedColumnName="id")
      */
-    private $youthTeams;
+    public $youthTeams;
 
     /**
      * @Assert\Image(
@@ -80,12 +80,6 @@ class Player
      * @ORM\Column(name="status", type="integer", nullable=true   )
      */
     public $status;
-
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\WaterGlasses", mappedBy="playerId")
-     */
-    public $waterGlasses;
 
 
 
@@ -111,10 +105,8 @@ class Player
         $this->country = $country;
     }
 
-    /**
-     * @return date
-     */
-    public function getBirthDay(): date
+
+    public function getBirthDay()
     {
         return $this->birthDay;
     }
@@ -226,7 +218,7 @@ class Player
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): ?string
     {
         return $this->status;
     }
@@ -239,24 +231,10 @@ class Player
         $this->status = $status;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getWaterGlasses()
+    public function __toString()
     {
-        return $this->waterGlasses;
+        return (string)$this->getUser()->getName();
     }
-
-    /**
-     * @param mixed $waterGlasses
-     */
-    public function setWaterGlasses($waterGlasses): void
-    {
-        $this->waterGlasses = $waterGlasses;
-    }
-
-
-
 
     
 }

@@ -21,6 +21,10 @@
     cursor: pointer;
     background-color: rgba(255, 105, 84, 0.76);
 }
+.add-player-container:hover{
+    background-color: rgba(255, 105, 84, 0.89);;
+}
+
 
 .player-img, .image{
     position: relative;

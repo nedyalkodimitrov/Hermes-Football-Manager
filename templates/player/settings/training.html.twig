@@ -1,4 +1,4 @@
-{% extends 'coaches/base.html.twig' %}
+{% extends 'coaches/playerBaseTemplate.html.twig' %}
 {% block body%}
    <div class="container row mt-3 col-12 justify-content-between max-resolution">
        <table class="table col-8 trainig-program-list">
@@ -71,11 +71,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
     <script>
         $('.treatment').on('click', function () {
-            $('.players-status-container').css('visibility', 'visible');
+            $('.player-status-container').css('visibility', 'visible');
             $('#treatment_info').css('visibility', 'visible');
 
             $('.fa-times-circle').on('click', function () {
-                $('.players-status-container').css('visibility', 'hidden');
+                $('.player-status-container').css('visibility', 'hidden');
                 $('#treatment_info').css('visibility', 'hidden');
             });
         });

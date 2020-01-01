@@ -20,7 +20,7 @@ class WaterGlasses
 
     /**
      * One Product has One Shipment.
-     * @ORM\ManyToOne(targetEntity="App\Entity\Player")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="waterGlasses" )
      * @ORM\JoinColumn(name="player", referencedColumnName="id")
      */
     private $playerId;

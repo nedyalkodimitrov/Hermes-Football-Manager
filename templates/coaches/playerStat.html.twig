@@ -1,0 +1,401 @@
+{% extends 'coaches/base.html.twig' %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("css/playerVisitCard.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/coach/playerStatPageStyle.css") }}">
+
+{% endblock %}
+{% block nav %}
+    <a class="nav-item nav-link  ml-2" href="{{ path('coacheViewAction') }}">Начална страница</a>
+    <a class="nav-item nav-link current-item ml-2" href="{{ path("trainingView") }}">Тренировки</a>
+{% endblock %}
+{% block body %}
+
+    <div class=" justify-content-center row mt-4 mb-5">
+        <div class="col-12 justify-content-center text-center row ">
+            <div class="text-center information-div row">
+                <div class="col-12 row player-visit-container">
+                    <div class="col-lg-4 col-sm-12 col-12 p-1 ">
+                        {% if image == '0' or image == null  %}
+                            <img src="{{asset("images/user1.png")}}" alt="" class="profile-pic-changer  m-2">
+                        {% else %}
+                            <img src="{{asset("images/" ~ image)}}" alt="" class="profile-pic-changer m-2">
+                        {% endif %}
+                        <h4> {{ player.UserId.Name }} {{ player.UserId.FName }}</h4>
+                        <h6>{{ player.Position.Positions }}</h6>
+                    </div>
+                    <div class=" col-lg-8 col-sm-12 col-12 mx-auto text-center  justify-content-center">
+                        <div class="visiting-player-card-text-holder col-12">
+                            <h3 class=" justify-content-center row">Визитна карта </h3>
+                        </div>
+                        <div class="col-12 justify-content-center text-center row 0">
+                            <div class="col-lg-12 col-sm-4 col-md-6  mt-4 row">
+                                <div class="col-lg-6 col-sm-4 col-md-6   text-left align-top">
+                                    {% if player.Team == null%}
+                                        <h5>Отбор: Няма</h5>
+                                    {% else %}
+                                        <h5>Отбор: {{ player.Team.Name }}</h5>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">
+                                    <h5>Отбелязани голове: 0</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-4 col-md-6  mt-4 row">
+                                <div class="col-lg-6 col-sm-4 col-md-6   text-left align-top">
+                                    {% if player.team.Division == null%}
+                                        <h5>Първенство: Няма</h5>
+                                    {% else %}
+                                        <h5>Първенство: {{ player.team.Division.Name }}</h5>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">
+                                    <h5>Асистенции: 0</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-4 col-md-6  mt-4 row">
+                                <div class="col-lg-6 col-sm-4 col-md-6   text-left align-top">
+                                    {% if player.Country == null%}
+                                        <h5>Националност: Не е зададен</h5>
+                                    {% else %}
+                                        <h5>Националност: {{ player.Country.Name }}</h5>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">
+                                    <h5>Изиграни мачове: 0</h5>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-sm-4 col-md-6  mt-4 row">
+                                <div class="col-lg-6 col-sm-4 col-md-6   text-left align-top">
+                                    {% if player.BirthDay == null%}
+                                        <h5>Ден на раждане: Не е зададен</h5>
+                                    {% else %}
+                                        <h5>Ден на раждане: {{ player.BirthDay |date("d.m.Y")|join }}</h5>
+                                    {% endif %}
+
+                                </div>
+                                <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">
+                                    <h5>Отбелязани голове: 0</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 player-visit-container mt-3">
+                    <div class="col-12 justify-content-center text-center row   ">
+                        <h4 class="col-12 text-center">Статистически данни</h4>
+                        <div class="col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0 mt-4   myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Weight == null%}
+                                <img src="{{ asset("images/weight-machine.png") }}" alt="" class="player-stats-image">
+                                <h5>Килограми: 0кг</h5>
+                            {% else %}
+                                <h5>Килограми: {{ playerStats.Weight }}кг</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-3  ml-lg-4 ml-md-4 ml-sm-0 mt-4   myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Height == null%}
+                                <h5>Височина: 0см</h5>
+                            {% else %}
+                                <h5>Височина: {{ playerStats.Height }}см</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0  mt-4  myBorderPlayerStat-left text-center">
+                            {% if playerStats.Pace == null%}
+                                <h5>Скорост: 0 km/h</h5>
+                            {% else %}
+                                <h5>Скорост: {{ playerStats.Pace }} km/h</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-3 ml-lg-4 ml-md-4 ml-sm-0 mt-4  myBorderPlayerStat-left  text-center">
+                            {% if playerStats.LongPass == null%}
+                                <h5>Дълъг пас: 0</h5>
+                            {% else %}
+                                <h5>Дълъг пас: {{ playerStats.LongPass}}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0 mt-4  myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Relax == null%}
+                                <h5>Спокойствие на терена: 0</h5>
+                            {% else %}
+                                <h5>Спокойствие на терена: {{ playerStats.Relax}}</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-3 ml-lg-4 ml-md-4 ml-sm-0 mt-4    myBorderPlayerStat-left text-center">
+                            {% if playerStats.Fat == null%}
+                                <h5>Подкожни мазнини: 0%</h5>
+                            {% else %}
+                                <h5>Подкожни мазнини: {{ playerStats.Fat }}%</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Work == null%}
+                                <h5>Усърдна работа: 0</h5>
+                            {% else %}
+                                <h5>Усърдна работа: {{ playerStats.Work}}</h5>
+
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Tacticks == null%}
+                                <h5>Тактика: 0</h5>
+                            {% else %}
+                                <h5>Тактика: {{ playerStats.Tacticks }}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.WillPower == null%}
+                                <h5>Воля: 0</h5>
+                            {% else %}
+                                <h5>Воля:{{ playerStats.WillPower}}</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Dribble == null%}
+                                <h5>Дрибъл: 0</h5>
+                            {% else %}
+                                <h5>Дрибъл:{{ playerStats.Dribble }}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Shot == null%}
+                                <h5>Удар: 0</h5>
+                            {% else %}
+                                <h5>Удар:{{ playerStats.Shot }}</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Technique == null%}
+                                <h5>Техника: 0</h5>
+                            {% else %}
+                                <h5>Техника:{{ playerStats.Technique }}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center text-center row">
+                        <div class="col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Pass == null%}
+                                <h5>Пас: 0</h5>
+                            {% else %}
+                                <h5>Пас: {{ playerStats.Pass }}</h5>
+                            {% endif %}
+                        </div>
+                        <div class="col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center">
+                            {% if playerStats.Perspective == null%}
+                                <h5>Перспектива: 0</h5>
+                            {% else %}
+                                <h5>Перспектива:{{ playerStats.Perspective}}</h5>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container col-12 ">
+        <div class="row   justify-content-center  ">
+            <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                <h2 class="d-inline-block">Дълъг пас: <span id="stat-1"></span> </h2>
+                <div class="slidecontainer ">
+                  <input type="range" min="0" max="10" value="{{ playerStats.longPass }}" class="slider" id="myRange-1">
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                <h2 class="d-inline-block">Спокойствие на терена <span id="stat-2"></span> </h2>
+                <div class="slidecontainer ">
+                  <input type="range" min="0" max="10" value="{{ playerStats.Relax }}" class="slider" id="myRange-2">
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="container col-12">
+            <div class="row   justify-content-center">
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5  text-center">
+                    <h2 class="d-inline-block">Усърдна работа: <span id="stat-3"></span> </h2>
+                    <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.Work }}" class="slider" id="myRange-3">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                    <h2 class="d-inline-block">Тактика: <span id="stat-4"></span> </h2>
+                    <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.Tacticks }}" class="slider" id="myRange-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="container col-12">
+            <div class="row  justify-content-center">
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                    <h2 class="d-inline-block">Воля: <span id="stat-5"></span> </h2>
+                    <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.willPower }}" class="slider" id="myRange-5">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                    <h2 class="d-inline-block">Дрибъл: <span id="stat-6"></span> </h2>
+                    <div class="slidecontainer ">
+                        <input type="range" min="0" max="10" value="{{ playerStats.dribble }}" class="slider" id="myRange-6">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <div id="container col-12">
+            <div class="row   justify-content-center">
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                    <h2 class="d-inline-block">Удар: <span id="stat-7"></span> </h2>
+                    <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.shot }}" class="slider" id="myRange-7">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                    <h2 class="d-inline-block">Техника: <span id="stat-8"></span> </h2>
+                    <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.Technique }}" class="slider" id="myRange-8">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="container col-12">
+            <div class="row   justify-content-center">
+                    <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                        <h2 class="d-inline-block">Перспектива: <span id="stat-9"></span> </h2>
+                        <div class="slidecontainer ">
+                          <input type="range" min="0" max="10" value="{{ playerStats.perspective }}" class="slider" id="myRange-9">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
+                        <h2 class="d-inline-block">Пас: <span id="stat-10"></span> </h2>
+                        <div class="slidecontainer ">
+                      <input type="range" min="0" max="10" value="{{ playerStats.pass }}" class="slider" id="myRange-10">
+                    </div>
+                </div>
+            </div>
+
+    <div class="col-12 mt-5 text-center justify-content-center row">
+        <button class="btn btn-green col-2"><i class="fas fa-check"></i></button>
+    </div>
+
+    <script>
+        var slider = document.getElementById("myRange-1");
+        var output = document.getElementById("stat-1");
+        var slider2 = document.getElementById("myRange-2");
+        var output2 = document.getElementById("stat-2");
+        var slider3 = document.getElementById("myRange-3");
+        var output3 = document.getElementById("stat-3");
+        var slider4 = document.getElementById("myRange-4");
+        var output4 = document.getElementById("stat-4");
+        var slider5 = document.getElementById("myRange-5");
+        var output5 = document.getElementById("stat-5");
+        var slider6 = document.getElementById("myRange-6");
+        var output6 = document.getElementById("stat-6");
+        var slider7 = document.getElementById("myRange-7");
+        var output7 = document.getElementById("stat-7");
+        var slider8 = document.getElementById("myRange-8");
+        var output8 = document.getElementById("stat-8");
+        var slider9 = document.getElementById("myRange-9");
+        var output9 = document.getElementById("stat-9");
+        var slider10 = document.getElementById("myRange-10");
+        var output10 = document.getElementById("stat-10");
+
+        output.innerHTML = slider.value;
+        output2.innerHTML = slider2.value;
+        output3.innerHTML = slider3.value;
+        output4.innerHTML = slider4.value;
+        output5.innerHTML = slider5.value;
+        output6.innerHTML = slider6.value;
+        output7.innerHTML = slider7.value;
+        output8.innerHTML = slider8.value;
+        output9.innerHTML = slider9.value;
+        output10.innerHTML = slider10.value;
+
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+        slider2.oninput = function() {
+            output2.innerHTML = this.value;
+        }
+        slider3.oninput = function() {
+            output3.innerHTML = this.value;
+        }
+        slider4.oninput = function() {
+            output4.innerHTML = this.value;
+        }
+        slider5.oninput = function() {
+            output5.innerHTML = this.value;
+        }
+
+        slider6.oninput = function() {
+            output6.innerHTML = this.value;
+        }
+        slider7.oninput = function() {
+            output7.innerHTML = this.value;
+        }
+        slider8.oninput = function() {
+            output8.innerHTML = this.value;
+        }
+        slider9.oninput = function() {
+            output9.innerHTML = this.value;
+        }
+        slider10.oninput = function() {
+            output10.innerHTML = this.value;
+        }
+
+        var all = parseInt(slider.value) + parseInt(slider2.value) +parseInt(slider3.value) + parseInt(slider4.value)
+            + parseInt(slider5.value) + parseInt(slider6.value) + parseInt(slider7.value) + parseInt(slider8.value)
+            +parseInt(slider9.value) + parseInt(slider10.value);
+
+        $('.btn-green').on("click", function () {
+            if ($("#fat").val() > 40 || $("#pace").val() > 47 || $("#weight").val() > 120 || 0 || $("#height").val()){
+
+                iziToast.warning({
+                    title: 'Грешни данни',
+                    message: "Подкожните мазнини трябва да са под 40%, скороста под 47 km/h, килограмите под 120кг, а височината под 210см",
+                    overlay: true,
+                    zindex: 999,
+                    position: 'center',
+                    timeout: 8000,
+                });
+
+            }else
+            {
+                $.ajax({
+
+                    method: "POST",
+                    data: {
+                        "longPass": slider.value, "relax": slider2.value,
+                        "workHard": slider3.value, "tacktick": slider4.value,
+                        "willPower": slider5.value, "dribble": slider6.value,
+                        "shot": slider7.value, "technique": slider8.value, "pass": slider9.value,
+                        "perspective": slider10.value, "all": all * 10,
+                        "fat": $("#fat").val(), "pace": $("#pace").val(),
+                        "weight": $("#weight").val(), "height": $("#height").val(),
+
+                    },
+                    url: "{{ path('playerStats', {id: player.Id}) }}",
+                })
+                    .done(function (msg) {
+                        window.location.href = "/coache/training/";
+                        console.log(msg);
+                        console.log(slider.value);
+
+                    });
+            }
+        });
+
+
+
+    </script>
+
+{% endblock %}

@@ -23,13 +23,13 @@ class Position
      *
      * @ORM\Column(name="name", type="string")
      */
-    private $name;
+    public $name;
 
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Player", mappedBy="position")
      */
-    private $players;
+    public $players;
 
 
     public function getId(): ?int
@@ -40,7 +40,7 @@ class Position
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -69,5 +69,9 @@ class Position
         $this->players = $players;
     }
 
+    public function __toString()
+    {
+        return (string)$this->getName();
+    }
 
 }
