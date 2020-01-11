@@ -21,8 +21,8 @@
                         {% else %}
                             <img src="{{asset("images/" ~ image)}}" alt="" class="profile-pic-changer m-2">
                         {% endif %}
-                        <h4> {{ player.UserId.Name }} {{ player.UserId.FName }}</h4>
-                        <h6>{{ player.Position.Positions }}</h6>
+                        <h4> {{ player.User.Name }} {{ player.User.FName }}</h4>
+                        <h6>{{ player.Position.Name }}</h6>
                     </div>
                     <div class=" col-lg-8 col-sm-12 col-12 mx-auto text-center  justify-content-center">
                         <div class="visiting-player-card-text-holder col-12">
@@ -55,10 +55,10 @@
                             </div>
                             <div class="col-lg-12 col-sm-4 col-md-6  mt-4 row">
                                 <div class="col-lg-6 col-sm-4 col-md-6   text-left align-top">
-                                    {% if player.Country == null%}
+                                    {% if player.User.City == null%}
                                         <h5>Националност: Не е зададен</h5>
                                     {% else %}
-                                        <h5>Националност: {{ player.Country.Name }}</h5>
+                                        <h5>Националност: {{ player.User.City.Country.Name }}</h5>
                                     {% endif %}
                                 </div>
                                 <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">

@@ -19,6 +19,23 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
+
+    public function getTeamByDivisionDesc($divisionId){
+        return $this->getEntityManager()->getRepository(Team::class)->findBy(['division' => $divisionId], ['points' => 'DESC']);
+    }
+
+    public function getTeamsByName($name){
+        $teams = $this->getEntityManager()
+            ->createQuery(
+                'SELECT p
+                FROM Team t
+                WHERE t.name LIKE :name
+                ORDER BY t.name ASC'
+            )->setParameter('name', "%".$name."%")->getResult();
+        return $teams;
+    }
+
+
     // /**
     //  * @return Team[] Returns an array of Team objects
     //  */

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Coach;
 use App\Entity\Player;
 use App\Entity\User;
 use App\Form\PlayerType;
@@ -124,7 +125,8 @@ class CoachController extends AbstractController
               $player = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
               $playerInformation[0] = $player;
               $playerInformation[1] = $player->getPlayer()->getPosition()->getName();
-              $playerInformation[2] = $player->getPlayer()->getCountry()->getName();
+              $playerInformation[2] = $player->getCity()->getName(). ", " . $player->getCity()->getCountry()->getName()  ;
+
               $players[$i] = $playerInformation;
           }
 
@@ -182,7 +184,7 @@ class CoachController extends AbstractController
      */
     public function SettingsView(\Symfony\Component\HttpFoundation\Request $request){
         $user = $this->getUser()->getCoaches();
-        $coaches = new Coaches();
+        $coaches = new Coach();
         $form = $this->createFormBuilder($coaches)
             ->add('image', FileType::class, array('data_class' => null, ))
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
@@ -230,12 +232,12 @@ class CoachController extends AbstractController
      */
     public function PlayerAction($id, \Symfony\Component\HttpFoundation\Request $request)
     {
-        $coache = $this->getUser()->getCoaches();
-        $player = $this->getDoctrine()->getRepository(Players::class)->find($id);
+        $coach = $this->getUser()->getCoaches();
+        $player = $this->getDoctrine()->getRepository(Player::class)->find($id);
         $playerStats = $player->getStats();
-        $coacheYouthTeam = false;
+        $coachYouthTeam = false;
         $playerYouthTeam = false;
-        $players = new Players();
+        $players = new Player();
 
         $form = $this->createFormBuilder($players)->add('pace');
 
@@ -248,21 +250,21 @@ class CoachController extends AbstractController
         }
 
 
-        if($coache->getTeam() != null){
-            $coacheTeam = $coache->getTeam();
+        if($coach->getTeam() != null){
+            $coachTeam = $coach->getTeam();
 
         }else {
-            $coacheTeam = $coache->getYouthTeams();
-            $coacheYouthTeam = true;
+            $coachTeam = $coach->getYouthTeams();
+            $coachYouthTeam = true;
         }
 
-        if ($team->getId() != $coacheTeam->getId() || $coacheYouthTeam != $playerYouthTeam){
+        if ($team->getId() != $coachTeam->getId() || $coachYouthTeam != $playerYouthTeam){
             return $this->redirectToRoute("trainingView");
         }
 
         return $this->render('coaches/playerStat.html.twig',
             array(
-                'profile_img' => $coache->getImage(),
+                'profile_img' => $coach->getImage(),
                 'player' => $player,
                 'playerStats' => $playerStats,
                 'image' => $this->getUser()->getCoaches()->getImage(),

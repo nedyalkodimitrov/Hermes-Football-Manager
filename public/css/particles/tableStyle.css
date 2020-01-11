@@ -1,14 +1,17 @@
 table{
     display: flex;
-    justify-content: center;
-    height: 65%;
     max-height: 500px;
+    justify-content: center;
     border: none;
-    border-radius: 50% ;
+    border-radius: 50%;
     height: auto;
+    width: 100%;
     font-size: 1rem;
-
+    flex-direction: column;
+    min-width: 100%;
 }
+
+
 thead, tbody tr {
     border: none;
     border-bottom: 1px solid #DFE1E5;

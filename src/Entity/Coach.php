@@ -65,6 +65,11 @@ class Coach
     private $teamPosition;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="coache")
+     */
+    private $requestsToPlayers;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", nullable=true)
@@ -228,6 +233,25 @@ class Coach
     {
         $this->status = $status;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestsToPlayers()
+    {
+        return $this->requestsToPlayers;
+    }
+
+    /**
+     * @param mixed $requestsToPlayers
+     */
+    public function setRequestsToPlayers($requestsToPlayers): void
+    {
+        $this->requestsToPlayers = $requestsToPlayers;
+    }
+
+
+
 
 
 }

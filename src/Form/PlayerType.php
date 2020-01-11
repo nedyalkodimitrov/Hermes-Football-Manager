@@ -15,7 +15,6 @@ class PlayerType extends AbstractType
             ->add('birthDay')
             ->add('image')
             ->add('status')
-            ->add('country')
             ->add('team')
             ->add('position')
             ->add('youthTeams')

@@ -48,15 +48,81 @@ class City
 
     public function getName()
     {
-        return $this->Name;
+        return $this->name;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $name)
     {
-        $this->Name = $Name;
+        $this->name = $name;
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country): void
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * @param mixed $teams
+     */
+    public function setTeams($teams): void
+    {
+        $this->teams = $teams;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getYouthTeams()
+    {
+        return $this->youthTeams;
+    }
+
+    /**
+     * @param mixed $youthTeams
+     */
+    public function setYouthTeams($youthTeams): void
+    {
+        $this->youthTeams = $youthTeams;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param mixed $users
+     */
+    public function setUsers($users): void
+    {
+        $this->users = $users;
+    }
+
+
 
 
 }

@@ -19,12 +19,6 @@ class Player
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="players")
-     * @ORM\JoinColumn(name="country", referencedColumnName="id")
-     */
-    public $country;
-
-    /**
      * @var date
      *
      * @ORM\Column(name="birthDay", type="date", nullable=true)
@@ -63,6 +57,10 @@ class Player
      * @ORM\JoinColumn(name="youthTeam", referencedColumnName="id")
      */
     public $youthTeams;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="player")
+     */
+    private $requestsFromCoaches;
 
     /**
      * @Assert\Image(
@@ -220,6 +218,23 @@ class Player
     {
         return (string)$this->getUser()->getName();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestsFromCoaches()
+    {
+        return $this->requestsFromCoaches;
+    }
+
+    /**
+     * @param mixed $requestsFromCoaches
+     */
+    public function setRequestsFromCoaches($requestsFromCoaches): void
+    {
+        $this->requestsFromCoaches = $requestsFromCoaches;
+    }
+
 
     
 }

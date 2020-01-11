@@ -201,7 +201,7 @@ class PlayerController extends AbstractController
         }
         else  {
             $coaches = $team->getCoaches();
-            $schedule = $this->playerPropService->getSchedule($coaches);
+            $schedule = null;
             $headCoach = $this->playerPropService->getHeadCoache($coaches);
         }
 
@@ -212,9 +212,9 @@ class PlayerController extends AbstractController
             'sunday' => strval($Sunday),
             'profile_img' => $player->getImage(),
             'coaches' => $coaches,
-            'bigCoache' =>$headCoach,
+            'bigCoach' =>$headCoach,
             'status' => $statuses,
-            'playerName' => $user->getFName(),
+            'playerName' =>"Ivan",
         ));
     }
 
