@@ -62,6 +62,8 @@ class Player
      */
     private $requestsFromCoaches;
 
+
+
     /**
      * @Assert\Image(
      *     allowLandscape = false,
@@ -79,7 +81,10 @@ class Player
      */
     public $status;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\PlayerToTeamRequest", mappedBy="player")
+     */
+    private $requestToTeam;
 
 
     public function getId(): ?int
@@ -233,6 +238,38 @@ class Player
     public function setRequestsFromCoaches($requestsFromCoaches): void
     {
         $this->requestsFromCoaches = $requestsFromCoaches;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * @param mixed $player
+     */
+    public function setPlayer($player): void
+    {
+        $this->player = $player;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestToTeam()
+    {
+        return $this->requestToTeam;
+    }
+
+    /**
+     * @param mixed $requestToTeam
+     */
+    public function setRequestToTeam($requestToTeam): void
+    {
+        $this->requestToTeam = $requestToTeam;
     }
 
 

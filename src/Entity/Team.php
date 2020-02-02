@@ -122,6 +122,14 @@ class Team
      */
     private $city;
 
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\PlayerToTeamRequest", mappedBy="team")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestFromPlayer;
+
+
 
     public function getId(): ?int
     {
@@ -366,6 +374,22 @@ class Team
     public function setCity($city): void
     {
         $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestFromPlayer()
+    {
+        return $this->requestFromPlayer;
+    }
+
+    /**
+     * @param mixed $requestFromPlayer
+     */
+    public function setRequestFromPlayer($requestFromPlayer): void
+    {
+        $this->requestFromPlayer = $requestFromPlayer;
     }
 
 

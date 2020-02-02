@@ -2,21 +2,21 @@
 
 namespace App\Repository\Requests;
 
-use App\Entity\Requests\CoacheToPlayerRequest;
+use App\Entity\Requests\CoachToPlayerRequest;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method CoacheToPlayerRequest|null find($id, $lockMode = null, $lockVersion = null)
- * @method CoacheToPlayerRequest|null findOneBy(array $criteria, array $orderBy = null)
- * @method CoacheToPlayerRequest[]    findAll()
- * @method CoacheToPlayerRequest[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CoachToPlayerRequest|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CoachToPlayerRequest|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CoachToPlayerRequest[]    findAll()
+ * @method CoachToPlayerRequest[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CoachToPlayerRequestRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CoacheToPlayerRequest::class);
+        parent::__construct($registry, CoachToPlayerRequest::class);
     }
 
     // /**

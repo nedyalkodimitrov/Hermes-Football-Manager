@@ -6,6 +6,8 @@ namespace App\Controller;
 use App\Entity\InjuredUsers;
 use App\Entity\PlayerProperties\PlayerStats;
 use App\Entity\PlayerProperties\Position;
+use App\Entity\Requests\PlayerToTeamRequest;
+use App\Entity\Team;
 use App\Entity\User;
 use App\Entity\Player;
 use App\Form\InjuredUsersType;
@@ -14,6 +16,7 @@ use App\Form\PlayerType;
 use App\Repository\InjuredUsersRepository;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\PlayerRepository;
+use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\TeamRepository;
 use App\Service\PlayerProperties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -267,5 +270,76 @@ class PlayerController extends AbstractController
     private  function getPropFromRequest($prop, Request $request){
         return json_decode($request->request->get($prop));
     }
+
+    /**
+     * @Route("/player/acceptCoachRequest/{id}")
+     */
+    public function acceptCoachRequest($id, CoachToPlayerRequestRepository $coachToPlayerRequestRepository){
+        $em = $this->getDoctrine()->getManager();
+        $player = $this->getUser()->getPlayer();
+        $request = $coachToPlayerRequestRepository->find($id);
+
+        if ($player->getTeam() == null && $player->getYouthTeams() == null){
+//            var_dump($request);
+            if ($request->getCoach()->getTeam() == null){
+                $player->setYouthTeam($request->getCoach()->getYouthTeam());
+            }else{
+                $player->setTeam($request->getCoach()->getTeam());
+            }
+            $em->persist($player);
+            $em->remove($request);
+            $em->flush();
+            echo "You have been accept the coach request and now you are a part of this club ";
+            exit;
+        }
+        echo "First you have to leave your club to have a chance to accept this request";
+        exit;
+    }
+
+    /**
+     * @Route("/player/removeCurrentClub")
+     */
+    public function removeCurrentClubAction()
+    {
+        $player = $this->getUser()->getPlayer();
+        $em = $this->getDoctrine()->getManager();
+        $player->setTeam(null);
+        $player->setYouthTeams(null);
+        $em->persist($player);
+        $em->flush();
+        echo "You leave successfully your team!";
+        exit;
+    }
+
+    /**
+     * @Route("/player/sendRequestToClub/{id}/{message}")
+     */
+    public function sendRequestToTeam($id, $message)
+    {
+
+        $player = $this->getUser()->getPlayer();
+        if (count($player->getRequestToTeam()) > 0 ){
+            echo "You have one request to a team";
+            exit;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $request = new PlayerToTeamRequest();
+        if ($player->getTeam() == null){
+            $team = $em->getRepository(Team::class)->find(intval($id));
+            $request->setPlayer($player);
+            $request->setTeam($team);
+            $request->setDate(date('m-d-Y'));
+            $request->setMessage($message);
+            $em->persist($request);
+            $em->flush();
+        }
+        echo "You leave successfully your team!";
+        exit;
+    }
+
+
+
+
 
 }

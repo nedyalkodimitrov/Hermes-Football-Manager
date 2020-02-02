@@ -53,7 +53,7 @@ class Coach
     private $birthDay;
 
 //    /**
-//     * @ORM\ManyToOne(targetEntity="PlayerProperties\Positions")
+//     * @ORM\ManyToOne(targetEntity="App PlayerProperties\Positions")
 //     * @ORM\JoinColumn(name="position", referencedColumnName="id")
 //     */
     private $position;
@@ -157,7 +157,7 @@ class Coach
     /**
      * @return date
      */
-    public function getBirthDay(): ?date
+    public function getBirthDay()
     {
         return $this->birthDay;
     }
@@ -165,7 +165,7 @@ class Coach
     /**
      * @param date $birthDay
      */
-    public function setBirthDay(date $birthDay): void
+    public function setBirthDay( $birthDay): void
     {
         $this->birthDay = $birthDay;
     }

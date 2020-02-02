@@ -24,6 +24,7 @@ class CoachToPlayerRequest
      */
 
     public $coach;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Player", inversedBy="requestsFromCoaches")
      * @ORM\JoinColumn(name="players", referencedColumnName="id")
@@ -34,7 +35,7 @@ class CoachToPlayerRequest
     /**
      * @var date
      *
-     * @ORM\Column(name="dates", type="date", nullable=false)
+     * @ORM\Column(name="dates", type="string", nullable=false)
      */
     public $date;
 
@@ -91,10 +92,7 @@ class CoachToPlayerRequest
         return $this->date;
     }
 
-    /**
-     * @param date $date
-     */
-    public function setDate(date $date): void
+    public function setDate(string $date): void
     {
         $this->date = $date;
     }
@@ -110,7 +108,7 @@ class CoachToPlayerRequest
     /**
      * @param text $message
      */
-    public function setMessage(text $message): void
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }

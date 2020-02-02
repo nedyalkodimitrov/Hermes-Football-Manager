@@ -10,7 +10,6 @@
 
     <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("mdb/js/bootstrap.min.js") }}"></script>
-
 </head>
 <body>
 <div class="row">
@@ -25,7 +24,6 @@
             {{ form_start(form) }}
 
                <label for="form_image profile_pic" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
-
 
             {{ form_widget(form.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
             {{ form_row(form.save, {'attr' : {'class':'btn'}} ) }}

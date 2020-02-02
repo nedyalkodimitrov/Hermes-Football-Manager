@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Coach;
 use App\Entity\Player;
+use App\Entity\Requests\CoachToPlayerRequest;
 use App\Entity\User;
 use App\Form\PlayerType;
 use App\Form\UserType;
 use App\Repository\CoachRepository;
 use App\Repository\PlayerRepository;
+use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\UserRepository;
+use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,20 +22,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CoachController extends AbstractController
 {
+     const HeadCoach = 'HEAD_COACH';
     private $coachRepository;
     public function __construct(CoachRepository $coachRepository)
     {
         $this->coachRepository = $coachRepository;
-
     }
-
 
     /**
      * @Route("/coache", name = "coacheViewAction" )
      */
     public function CoacheViewAction(){
-
-
         $coach = $this->getUser()->getCoaches();
 
         if($coach->getTeam() != null){
@@ -55,9 +55,7 @@ class CoachController extends AbstractController
             'profile_img' => $this->getUser()->getCoaches()->getImage()));
     }
 
-
     /**
-     *
      * @Route("/coache/trainings", name = "trainingView", methods = {"GET"})
      */
     public function TrainingView(Request $request)
@@ -65,13 +63,14 @@ class CoachController extends AbstractController
         $user = new User();
         $player = new Player();
         $coach = $this->getUser()->getCoaches();
-
         $teamCoach = $this->coachRepository->getCoachTeam($coach);
+
         if ($teamCoach == null){
             $players = null;
         }else{
             $players = $teamCoach->getPlayers();
         }
+
         $form_user = $this->createForm(UserType::class, $user);
         $form_player = $this->createForm(PlayerType::class, $player)->add('position');
 
@@ -107,16 +106,13 @@ class CoachController extends AbstractController
         ));
     }
 
-
-
     /**
      *
      * @Route("/coache/trainingsw", name = "trainingAction")
      */
     public function TrainingAction(Request $request, UserRepository $userRepository)
     {
-        $playerInfo = $request->get("playerInfo");
-
+         $playerInfo = $request->get("playerInfo");
           $results = $userRepository->findPlayer($playerInfo);
           $players = [];
 
@@ -131,9 +127,8 @@ class CoachController extends AbstractController
           }
 
         return new JsonResponse($players);
-
-
     }
+
     /**
      * @Route("/coache/trainingCalendar", name = "trainingCalendarActionView")
      */
@@ -162,7 +157,6 @@ class CoachController extends AbstractController
             }
         }
 
-
         if ($form->isSubmitted()) {
             $schedule->setCoaches($coach);
             $em = $this->getDoctrine()->getManager();
@@ -176,7 +170,6 @@ class CoachController extends AbstractController
                 'profile_img' => $coach->getImage(),
                 'schedules' => $schedules));
     }
-
 
     /**
      * @Route("/coache/settings", name = "coache_settings")
@@ -194,7 +187,6 @@ class CoachController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $coaches->getImage();
-
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
 
             try {
@@ -217,7 +209,7 @@ class CoachController extends AbstractController
         }
 
         return $this->render('coaches/settings/settings.html.twig',
-            array('form' => $form->createView(), "image" => $this->getUser()->getCoaches()->getImage(), ));
+            array('form' => $form->createView(), "image" => 0 ));
     }
 
     private function generateUniqueFileName()
@@ -249,7 +241,6 @@ class CoachController extends AbstractController
             $playerYouthTeam = true;
         }
 
-
         if($coach->getTeam() != null){
             $coachTeam = $coach->getTeam();
 
@@ -268,26 +259,17 @@ class CoachController extends AbstractController
                 'player' => $player,
                 'playerStats' => $playerStats,
                 'image' => $this->getUser()->getCoaches()->getImage(),
-
-
             )
         );
-
     }
-
-
-
 
     /**
      * @Route("/coache/searchEngine", name = "searchEngine")
-     *
      */
     public function SearchEngine(\Symfony\Component\HttpFoundation\Request $request)
     {
         return $this->render("coaches\searchEngine.html.twig", array('profile_img' => null));
     }
-
-
 
     /**
      * @Route("/coache/playerStats/{id}", name = "playerStats")
@@ -319,5 +301,94 @@ class CoachController extends AbstractController
         return 1;
 
     }
+
+    /**
+     * @Route("/coache/sendPlayerRequest/{id}/{message}", name = "playerStats")
+     */
+    public function sendPlayerRequestAction($id,$message, \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
+    {
+        $coach = $this->getUser()->getCoach();
+        $this->isHeadCoach($coach);
+        $player = $playerRepository->find(intval($id));
+        $em = $this->getDoctrine()->getManager();
+
+        if($player != null)
+        {
+            $toPlayerRequest = new CoachToPlayerRequest();
+            $toPlayerRequest->setCoach($coach);
+            $toPlayerRequest->setPlayer($player);
+            $toPlayerRequest->setDate(date("d/m/Y"));
+            $toPlayerRequest->setMessage($message);
+            $em->persist($toPlayerRequest);
+            $em->flush();
+            var_dump($toPlayerRequest);
+            exit;
+        }
+
+        echo "Please give us a valid player";
+        exit;
+    }
+
+    /**
+     * @Route("/coache/removePlayerRequest/{id}")
+     */
+    public function removePlayerRequestAction($id, \Symfony\Component\HttpFoundation\Request $request, CoachToPlayerRequestRepository $coachToPlayerRequestRepository)
+    {
+        $coach = $this->getUser()->getCoach();
+        $this->isHeadCoach($coach);
+
+
+        $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($id));
+        $em = $this->getDoctrine()->getManager();
+        $playerRequest = $coachToPlayerRequestRepository->findBy(["player" => $player]);
+        if($playerRequest != null)
+        {
+            $em->remove($playerRequest[0]);
+            $em->flush();
+
+            echo "The request is removed successful";
+            exit;
+        }
+
+        echo "Sorry, but you haven't send a request to that player";
+        exit;
+    }
+
+    /**
+     * @Route("/coache/removePlayerFromTeam/{id}")
+     *
+     */
+    public function removePlayerFromTeam($id, Request $request){
+        $coach = $this->getUser->getCoach();
+        $this->isHeadCoach($coach);
+
+        $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($id));
+        $player->setTeam(null);
+
+        echo "The player is removed successful";
+        exit();
+    }
+
+    /**
+     * @Route("/coache/acceptPlayerRequest/{playerId}")
+     */
+    public function acceptPlayerRequest($playerId){
+        $coach = $this->getUser->getCoach();
+        $team = $this->coachRepository->getCoachTeam($coach);
+        $this->isHeadCoach($coach);
+
+        $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($playerId));
+        $player->setTeam($coach->getTeam());
+        echo "The player is accepted successful";
+        exit();
+    }
+    
+    private function isHeadCoach(Coach $coach ){
+        if ($coach->getTeamPosition()->getName() != self::HeadCoach){
+            echo "You are not a head coach and you can not use that functionality";
+        }
+    }
+
+
 
 }
