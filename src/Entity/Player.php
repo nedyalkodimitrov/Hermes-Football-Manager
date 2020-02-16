@@ -63,7 +63,6 @@ class Player
     private $requestsFromCoaches;
 
 
-
     /**
      * @Assert\Image(
      *     allowLandscape = false,
@@ -240,21 +239,7 @@ class Player
         $this->requestsFromCoaches = $requestsFromCoaches;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPlayer()
-    {
-        return $this->player;
-    }
 
-    /**
-     * @param mixed $player
-     */
-    public function setPlayer($player): void
-    {
-        $this->player = $player;
-    }
 
     /**
      * @return mixed

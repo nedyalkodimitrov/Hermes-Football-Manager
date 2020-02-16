@@ -23,13 +23,13 @@ class Division
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="Country", inversedBy="divisions")
      * @ORM\JoinColumn(name="country", referencedColumnName="id")
      */
-    private $country;
+    public $country;
 
 
 
@@ -38,10 +38,10 @@ class Division
      */
     private $teams;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
-     */
-    private $cups;
+//    /**
+//     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
+//     */
+//    private $cups;
 
     /**
      * @Assert\Image(
@@ -61,7 +61,7 @@ class Division
     /**
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->name;
     }
@@ -106,21 +106,21 @@ class Division
         $this->teams = $teams;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCups()
-    {
-        return $this->cups;
-    }
-
-    /**
-     * @param mixed $cups
-     */
-    public function setCups($cups): void
-    {
-        $this->cups = $cups;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getCups()
+//    {
+//        return $this->cups;
+//    }
+//
+//    /**
+//     * @param mixed $cups
+//     */
+//    public function setCups($cups): void
+//    {
+//        $this->cups = $cups;
+//    }
 
     /**
      * @return mixed
@@ -137,6 +137,12 @@ class Division
     {
         $this->image = $image;
     }
+
+    public function __toString()
+    {
+     return $this->name;
+    }
+
 
 
 }

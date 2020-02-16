@@ -58,23 +58,22 @@
 }
 
 
+
 .player-status-div{
-    display: flex;
-    position: absolute;
     width: 95%;
     max-width: 95%;
     margin: auto;
-    height: 90%;
+    height: 95%;
     visibility: hidden;
+    flex-direction: row;
 }
 
 
 .search-container-holder{
-    position: absolute;
     margin: auto;
     width: 100%;
     height: auto;
-    padding: 0 ;
+    padding: 0;
 
 
 
@@ -122,10 +121,9 @@ tbody th {
 /**/
 
 .search-player-results-container{
-    height:100%;
-    width: 100%;
+
 }
 
 .player-search-results{
-    height: 100%;
+
 }

@@ -19,6 +19,34 @@ class ScheduleRepository extends ServiceEntityRepository
         parent::__construct($registry, Schedule::class);
     }
 
+    public function deleteTraining($coach, $date, $startTime ){
+        return $this->getEntityManager()->createQueryBuilder(
+            "Delete  
+            from App\Entity\Schedule
+             Where coaches = :coachId
+             And date = :date
+             And startTime = :startTime")
+            ->setParameter("coachId",  $coach->getId())
+            ->setParameter("date",  $date)
+            ->setParameter("startTime",  $startTime)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getTrainingByDateAndStartHour($coach, $date, $startTime){
+        return $this->getEntityManager()->createQueryBuilder("
+            Select   
+            from App\Entity\Schedule
+            Where coaches = :coachId
+            And date = :date
+            And startTime = :startTime")
+        ->setParameter("coachId",1)
+        ->setParameter("date", $date)
+        ->setParameter("startTime", $startTime)
+        ->getQuery()->getResult();
+    }
+
+
     // /**
     //  * @return Schedule[] Returns an array of Schedule objects
     //  */

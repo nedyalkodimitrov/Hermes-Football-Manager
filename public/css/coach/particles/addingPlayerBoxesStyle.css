@@ -1,4 +1,8 @@
-.player-container{
+.coach-player-adding-container{
+    height: auto;
+
+}
+.player-container {
     max-width: 15em;
     margin: auto;
     max-height: 18em;
@@ -16,18 +20,28 @@
     opacity: 0.5;
 }
 
-
-
-
 .player_portfolio {
-    height: 100%;
+    position: relative;
+    padding-top: 47.37%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .add-player-container{
-    position: relative;
-    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    object-fit: cover;
     cursor: pointer;
+
+    overflow: hidden;
+
     background-color: rgba(255, 105, 84, 0.76);
+
 }
 
 .add-player-container:hover{

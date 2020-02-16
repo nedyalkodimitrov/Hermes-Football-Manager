@@ -27,8 +27,8 @@ class TeamRepository extends ServiceEntityRepository
     public function getTeamsByName($name){
         $teams = $this->getEntityManager()
             ->createQuery(
-                'SELECT p
-                FROM Team t
+                'SELECT t
+                FROM  App\Entity\Team t
                 WHERE t.name LIKE :name
                 ORDER BY t.name ASC'
             )->setParameter('name', "%".$name."%")->getResult();

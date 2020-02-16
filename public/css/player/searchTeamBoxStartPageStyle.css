@@ -1,0 +1,40 @@
+.searchTeamBox{
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 100000;
+    background: white;
+    padding: 2rem;
+}
+
+#teamSearchTable{
+    border-radius: 7px;
+    text-align: left;
+}
+
+#teamSearchTable tr{
+    color: white;
+}
+#teamSearchTable tbody, #teamSearchTable thead {
+    text-align: left;
+}
+
+
+#teamSearchTable .sendRequest{
+    font-size: 1.1em;
+    padding:0.3rem 1rem 0.3rem 1rem;
+    background-color: rgba(0,0,0,0.0);
+    border-radius: 15%;
+    color: white;
+    outline-style: none;
+    border: 2px solid white ;
+    cursor: pointer;
+    transition: 0.2s all ease;
+
+}
+
+#teamSearchTable .sendRequest:hover{
+    background: rgb(0, 200, 64);
+    color: white;
+    border: 2px solid rgb(0, 200, 64);
+}

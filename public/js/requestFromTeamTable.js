@@ -1,53 +1,38 @@
 $(document).ready(function () {
-    var typingTimer;                //timer identifier
-    var doneTypingInterval = 500;  //time in ms, 5 second for example
-    var input = $('.search-text');
 
-    //on keyup, start the countdown
-    input.on('keyup', function () {
-        clearTimeout(typingTimer);
-        typingTimer = setTimeout(doneTyping, doneTypingInterval);
-    });
 
-    //on keydown, clear the countdown
-    input.on('keydown', function () {
-        clearTimeout(typingTimer);
-    });
-
-    function doneTyping() {
-
-        var teamName = $(".search-text").val();
-        if (teamName == "") {
-            return;
-        }
-        console.log(teamName);
+        console.log("the searching begin...");
         $.ajax({
             type: "POST",
-            url: "/player/searchTeam/" + teamName,
-            data: {'teamName': teamName}
+            url: "/player/getPlayerRequests",
+            data: {}
         })
             .done(function (data) {
+                console.log(data);
+                console.log(data[0]["id"]);
+                console.log(data[0]["coach"]);
                 var table = '';
-                var container = $('.teamSearchResult');
+                var container = $('.requestsFromTeam');
                 var containerElement = $('#teamSearchTable');
                 //remove old data
                 containerElement.remove();
                 //create a table with a new data
                 table += drawHeadOfTable();
                 for (let i = 0; i < data.length; i++) {
-                  table +=" <tr>\n" +
+                    table +=" <tr>\n" +
                         "      <td scope=row> " + (i + 1).toString() + "</td>\n" +
-                        "      <td><img src="+data[i][2]+">"+data[i][0] +"</td>\n" +
-                        "      <td>"+data[i][1] +"</td>\n" +
-                        "      <td>"+ data[i][3] +"</td>\n" +
-                        "      <td><button class='sendRequest' value onclick='SendRequest(this.value)'>Send</button></td>\n" +
+                        "      <td><img src="+data[i]["coach"]["team"]["image"]+">"+data[i]["coach"]["team"]["name"] +"</td>\n" +
+                        "      <td>"+data[i]["coach"]["team"]["division"]["name"] +"</td>\n" +
+                        "      <td>"+ data[i]["coach"]["team"]["city"]["name"] +"</td>\n" +
+                        "      <td><button class='sendRequest' value="+data[i]["id"]+" onclick='acceptRequestFromTeam(this.value)'>Приемане</button></td>\n" +
+                        "      <td><button class='sendRequest' value="+data[i]["id"]+" onclick='RemoveRequestFromTeam(this.value)'>Премахване</button></td>\n" +
                         "    </tr>";
                 }
                 table += drawEndOfTable();
 
                 container.append(table);
             });
-    }
+
 
     function drawHeadOfTable(){
         return ('<table class="table table-dark" id="teamSearchTable">\n' +

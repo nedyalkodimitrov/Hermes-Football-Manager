@@ -1,9 +1,32 @@
+
 {% extends 'player/playerBaseTemplate.html.twig' %}
 {% block style %}
     <link rel="stylesheet" href="  {{ asset("css/player/playerStyle.css") }}    ">
     <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}    ">
+    <link rel="stylesheet" href="{{ asset("css/particles/searchEngine.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/player/searchTeamBoxStartPageStyle.css") }}">
 {% endblock %}
 {% block body %}
+
+
+    {% if hasTeam == false %}
+
+        <div class="col-12 text-center container searchTeamBox">
+            <h4>До сега сте нямали отбор и за да продължите напреде вие треябва да си намерите отбор</h4>
+            <div class="search-container full-sized-search-box mt-4">
+                <div class="search-box full-sized-search-box">
+                    <input type="text" placeholder="Type to search" class="search-text" id="search" >
+                    <button  class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="requestsFromTeam"></div>
+            <div class="teamSearchResult">
+            </div>
+        </div>
+    {% endif %}
+
     <div id="container">
         <div class="row mt-5  justify-content-center">
             <div class="col-lg-11 col-md-7 col-sm-11 col-9  main-charts-container row pb-3">
@@ -126,11 +149,15 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
+    <script  src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
     <script type="text/javascript" src="{{  asset("easy-pie-chart-master/dist/jquery.easypiechart.js")}}"></script>
     <script type="text/javascript" src="{{ asset("js/playerScore.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/waterGlassesActions.js") }}"></script>
     <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
+    <script src="{{ asset("js/searchTeamEngine.js") }}"></script>
+    <script src="{{ asset("js/requestFromTeamTable.js") }}"></script>
+    <script src="{{ asset("js/player/acceptTeamRequest.js") }}"></script>
+    <script src="{{ asset("js/player/rejectTeamRequest.js") }}"></script>
 
     <script>
         var ctxL = document.getElementById("lineChart").getContext('2d');

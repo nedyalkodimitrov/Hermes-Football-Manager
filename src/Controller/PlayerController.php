@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\InjuredUsers;
 use App\Entity\PlayerProperties\PlayerStats;
 use App\Entity\PlayerProperties\Position;
+use App\Entity\Requests\CoachToPlayerRequest;
 use App\Entity\Requests\PlayerToTeamRequest;
 use App\Entity\Team;
 use App\Entity\User;
@@ -25,6 +26,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use  App\Repository\PlayersInjuredRepository;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class PlayerController extends AbstractController
 {
@@ -262,7 +269,11 @@ class PlayerController extends AbstractController
         $teams = $teamRepository->getTeamsByName($name);
         for ($i = 0; $i < count($teams); $i++){
             $currentTeam = $teams[$i];
-            array_push($teamsInformation, array($currentTeam->getId(), $currentTeam->getName()));
+            array_push($teamsInformation, array($currentTeam->getName(),
+                $currentTeam->getCity()->getName(). ', ' . $currentTeam->getCity()->getCountry()->getName(),
+                $currentTeam->getImage(),
+                $currentTeam->getDivision()->getName()
+                ));
         }
         return $this->json($teamsInformation);
     }
@@ -277,12 +288,12 @@ class PlayerController extends AbstractController
     public function acceptCoachRequest($id, CoachToPlayerRequestRepository $coachToPlayerRequestRepository){
         $em = $this->getDoctrine()->getManager();
         $player = $this->getUser()->getPlayer();
-        $request = $coachToPlayerRequestRepository->find($id);
+        $request = $this->getDoctrine()->getManager()->getRepository(CoachToPlayerRequest::class)->find($id);
 
         if ($player->getTeam() == null && $player->getYouthTeams() == null){
 //            var_dump($request);
             if ($request->getCoach()->getTeam() == null){
-                $player->setYouthTeam($request->getCoach()->getYouthTeam());
+                $player->setYouthTeam($request[0]->getCoach()->getYouthTeam());
             }else{
                 $player->setTeam($request->getCoach()->getTeam());
             }
@@ -337,8 +348,34 @@ class PlayerController extends AbstractController
         echo "You leave successfully your team!";
         exit;
     }
+    /**
+     * @Route("/player/getPlayerRequests")
+     */
+    public function getTeamRequest(CoachToPlayerRequestRepository $coachToPlayerRequestRepository){
+        $player = $this->getUser()->getPlayer();
+        $returnedInformation =[];
+
+        $encoders = [new JsonEncoder()]; // If no need for XmlEncoder
+        $normalizers = [new ObjectNormalizer()];
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $requestFromTeams = $coachToPlayerRequestRepository->findBy(["player" => $player->getId()]);
+            for ($i = 0; $i < count($requestFromTeams); $i++) {
+                $returnedInformation[$i][0] = $requestFromTeams[$i]->getCoach()->getTeam();
+                $returnedInformation[$i][1] = $requestFromTeams[$i]->getId();
+            }
+
+        $jsonObject = $serializer->serialize($requestFromTeams, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            },
+            [AbstractNormalizer::IGNORED_ATTRIBUTES  => [['users']]]
+        ]);
 
 
+        return new Response($jsonObject, 200, ['Content-Type' => 'application/json']);
+
+    }
 
 
 

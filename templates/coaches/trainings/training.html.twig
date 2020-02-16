@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}">
     <link rel="stylesheet" href="{{ asset("css/particles/searchEngine.css") }}">
     <link rel="stylesheet" href="  {{ asset("css/coach/trainingPageStyle.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/particles/searchResultsTable.css") }}">
 {% endblock %}
 
 {% block body %}
@@ -30,7 +31,7 @@
 
     <div id="container">
         <div class="row mt-5 justify-content-center">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 div-charts row pb-3">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 coach-player-adding-container row pb-3">
                 {% if players == null %}
                     <h1 class="col-12 text-center mt-4 mb-2">0 Играчи</h1>
                 {% else %}
@@ -70,8 +71,8 @@
         </div>
     </div>
     <div class="player-status-container row justify-content-center ">
-        <div class="col-9  player-status-div row  justify-content-center" id="add-player" >
-            <div class="col-12 row justify-content-center search-container-holder">
+        <div class="col-9  player-status-div   justify-content-center" id="add-player" >
+            <div class="container col-12 row justify-content-center search-container-holder">
                 <div class="search-container mt-3  justify-content-center">
                     <div class="search-box full-sized-search-box">
                         <input type="text" placeholder="Ивайло Колев" class="search-text" id="search">
@@ -81,67 +82,84 @@
                     </div>
                 </div>
             </div>
-            <div class="search-player-results-container">
-                <div class="col-12  align-content-center justify-content-center" >
-                    <div class="col-lg-3  col-sm-12 ml-2 col-md-12 justify-content-center row mb-sm-2 player-search-results">
-                    </div>
+            <div class="container col-12 p-0 mx-auto row">
+                <div class="playerSearchResult col-12 p-0  ">
                 </div>
             </div>
             <span><i class="fas fa-times-circle"></i></span>
         </div>
     </div>
     <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
+    <script type="text/javascript" src="{{  asset("js/coach/searchPlayers.js")}}"></script>
+    <script type="text/javascript" src="{{  asset("js/coach/sendRequestToPlayer.js")}}"></script>
 
     <script>
-        // $('.phone').inputmask('Regex', {
-        //     regex: "08([7-9])([0-9]{7})+",
-        //     alias: "string",
-        //     clearIncomplete: true
-        // });
-        // $(".name").inputmask("Regex", {
-        //     regex:'[А-Я][а-я]+' ,
-        //     alias: "string",
-        //     clearIncomplete: true
-        // });
-        // $(".fName").inputmask("Regex", {
-        //     regex:'[А-Я][а-я]+' ,
-        //     alias: "string",
-        //     clearIncomplete: true
-        // });
+       function Click (value) {
 
 
-        $('#search').on('keyup', function () {
-            var playerInfo = document.getElementById('search').value;
-            console.log(playerInfo);
-            $.ajax({
-                method: "POST",
-                data: {"playerInfo": playerInfo},
-                url: "{{ path('trainingAction') }}",
-            })
-                .done(function( players ) {
-                    for (var i = 0; i < players.length; i++){
 
-                        var imagePath = players[i][0]['player']['img'];
+           $.ajax({
+               method: "POST",
+               data: {"playerInfo": value},
+               url: "sendPlayerRequest/"+value,
+           })
+               .done(function (data) {
 
-                        if(imagePath == null){
-                            imagePath = "user-image.png";
-                        }
+                   console.log(value)
+               });
+               };
 
-
-                        $('.player').remove();
-                        $('.player-search-results').append
-                        ("" +
-                            "<div class='col-12 player-container player'  id=player-1 >"+
-                                "<a>"+
-                                    "<img src='../images/"+ imagePath + "' alt='' class=player-img>"+
-                                    "<p class=player-name>"+ players[i][0]['name']+"</p>"+
-                                "</a>"+
-                            "</div>"+
-                            "")
-                    }
-                });
-        });
     </script>
+
+{#    <script>#}
+{#        // $('.phone').inputmask('Regex', {#}
+{#        //     regex: "08([7-9])([0-9]{7})+",#}
+{#        //     alias: "string",#}
+{#        //     clearIncomplete: true#}
+{#        // });#}
+{#        // $(".name").inputmask("Regex", {#}
+{#        //     regex:'[А-Я][а-я]+' ,#}
+{#        //     alias: "string",#}
+{#        //     clearIncomplete: true#}
+{#        // });#}
+{#        // $(".fName").inputmask("Regex", {#}
+{#        //     regex:'[А-Я][а-я]+' ,#}
+{#        //     alias: "string",#}
+{#        //     clearIncomplete: true#}
+{#        // });#}
+
+
+{#        $('#search').on('keyup', function () {#}
+{#            var playerInfo = document.getElementById('search').value;#}
+{#            console.log(playerInfo);#}
+{#            $.ajax({#}
+{#                method: "POST",#}
+{#                data: {"playerInfo": playerInfo},#}
+{#                url: "{{ path('trainingAction') }}",#}
+{#            })#}
+{#                .done(function( players ) {#}
+{#                    for (var i = 0; i < players.length; i++){#}
+
+{#                        var imagePath = players[i][0]['player']['img'];#}
+
+{#                        if(imagePath == null){#}
+{#                            imagePath = "user-image.png";#}
+{#                        }#}
+
+
+{#                        $('.player').remove();#}
+{#                        $('.player-search-results').append#}
+{#                        ("<div class=\"col-lg-4 col-sm-12 ml-2 col-md-12 justify-content-center row mb-sm-2 player \">" +#}
+{#                            "<div class='col-12 player-container player' id=player-1 >"+#}
+{#                                "<a>"+#}
+{#                                    "<img src='../images/"+ imagePath + "' alt='' class=player-img>"+#}
+{#                                    "<p class=player-name>"+ players[i][0]['name']+"</p>"+#}
+{#                                "</a>"+#}
+{#                            "</div>"+#}
+{#                            "</div>")#}
+{#                    }#}
+{#                });#}
+{#        });#}
 
     <script type="text/javascript" src="{{ asset("js/hidingDiv.js") }}"></script>
 {% endblock %}

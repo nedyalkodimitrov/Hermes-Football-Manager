@@ -183,8 +183,8 @@ function make_appointment() {
 
             $.ajax({
                 method: "POST",
-                data: {"appbundle_schedule[description]": description, "appbundle_schedule[date]": date, "appbundle_schedule[startTime]": start_time, "appbundle_schedule[endTime]": end_time},
-                url: "app.php/coache/trainingCalendar",
+                data: {"description": description, "date": date, "startTime": start_time, "endTime": end_time},
+                url: "/coache/setTraining",
             })
                 .done(function( msg ) {
                     console.log(msg);

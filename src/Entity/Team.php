@@ -23,7 +23,7 @@ class Team
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true, nullable=true)
      */
-    private $name;
+    public $name;
 
     /**
      * @var int
@@ -114,13 +114,13 @@ class Team
      * @ORM\Column(name="image", type="string", nullable=true)
      */
 
-    protected $image;
+    public $image;
 
     /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="teams")
      * @ORM\JoinColumn(name="city", referencedColumnName="id")
      */
-    private $city;
+    public $city;
 
     /**
      * One Product has One Shipment.
@@ -392,6 +392,10 @@ class Team
         $this->requestFromPlayer = $requestFromPlayer;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
 }

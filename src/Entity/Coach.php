@@ -31,7 +31,7 @@ class Coach
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Schedule", mappedBy="coach")
+     * @ORM\OneToMany(targetEntity="App\Entity\Schedule", mappedBy="coaches")
      *
      */
     private $schedule;
@@ -65,7 +65,7 @@ class Coach
     private $teamPosition;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="coache")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="coach")
      */
     private $requestsToPlayers;
 
@@ -250,8 +250,10 @@ class Coach
         $this->requestsToPlayers = $requestsToPlayers;
     }
 
-
-
+    public function __toString()
+    {
+        return $this->user->name;
+    }
 
 
 }

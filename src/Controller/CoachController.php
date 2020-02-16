@@ -5,13 +5,16 @@ namespace App\Controller;
 use App\Entity\Coach;
 use App\Entity\Player;
 use App\Entity\Requests\CoachToPlayerRequest;
+use App\Entity\Schedule;
 use App\Entity\User;
 use App\Form\PlayerType;
+use App\Form\ScheduleType;
 use App\Form\UserType;
 use App\Repository\CoachRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Schema\SchemaDiff;
 use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -24,9 +27,13 @@ class CoachController extends AbstractController
 {
      const HeadCoach = 'HEAD_COACH';
     private $coachRepository;
+    private $bCryptAlgorithmOption;
     public function __construct(CoachRepository $coachRepository)
     {
         $this->coachRepository = $coachRepository;
+        $this->bCryptAlgorithmOption = [
+            'cost' => 12,
+        ];
     }
 
     /**
@@ -35,14 +42,10 @@ class CoachController extends AbstractController
     public function CoacheViewAction(){
         $coach = $this->getUser()->getCoaches();
 
-        if($coach->getTeam() != null){
-            $teamCoach = $coach->getTeam();
-        }else    {
-            $teamCoach = $coach->getYouthTeam();
-        }
+       $teamCoach = $this->coachRepository->getCoachTeam($coach);
 
         if ($teamCoach == null){
-            $players = null;
+            $players = 0;
         }else {
             $players = $teamCoach->getPlayers();
         }
@@ -52,7 +55,9 @@ class CoachController extends AbstractController
             'players' => $players,
             'name' => $this->getUser()->getName() ,
             'fName' => $this->getUser()->getFName(),
-            'profile_img' => $this->getUser()->getCoaches()->getImage()));
+            'profile_img' => $this->getUser()->getCoaches()->getImage(),
+            'division' => $teamCoach->getDivision()->getName()));
+
     }
 
     /**
@@ -110,22 +115,25 @@ class CoachController extends AbstractController
      *
      * @Route("/coache/trainingsw", name = "trainingAction")
      */
-    public function TrainingAction(Request $request, UserRepository $userRepository)
+    public function TrainingAction(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository)
     {
          $playerInfo = $request->get("playerInfo");
           $results = $userRepository->findPlayer($playerInfo);
           $players = [];
 
-          for ($i = 0; $i < count($results); $i++){
-              $playerInformation = [];
-              $player = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
-              $playerInformation[0] = $player;
-              $playerInformation[1] = $player->getPlayer()->getPosition()->getName();
-              $playerInformation[2] = $player->getCity()->getName(). ", " . $player->getCity()->getCountry()->getName()  ;
 
+        for ($i = 0; $i < count($results); $i++){
+              $playerInformation = [];
+              $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
+              $player = $user->getPlayer();
+              $playerTeam = $playerRepository->getPlayerTeam($player);
+              $playerInformation[0] = $user;
+              $playerInformation[1] = $player->getPosition()->getName();
+              $playerInformation[2] = $user->getCity()->getName(). ", " . $user->getCity()->getCountry()->getName()  ;
+              $playerInformation[3] = $playerTeam;
+              $playerInformation[4] =   $player->getId();
               $players[$i] = $playerInformation;
           }
-
         return new JsonResponse($players);
     }
 
@@ -271,6 +279,7 @@ class CoachController extends AbstractController
         return $this->render("coaches\searchEngine.html.twig", array('profile_img' => null));
     }
 
+
     /**
      * @Route("/coache/playerStats/{id}", name = "playerStats")
      *
@@ -303,15 +312,22 @@ class CoachController extends AbstractController
     }
 
     /**
-     * @Route("/coache/sendPlayerRequest/{id}/{message}", name = "playerStats")
+     * @Route("/coache/sendPlayerRequest/{id}", name = "playerStats")
      */
-    public function sendPlayerRequestAction($id,$message, \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
+    public function sendPlayerRequestAction($id,$message = "all is alrright", \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
     {
+        
         $coach = $this->getUser()->getCoach();
         $this->isHeadCoach($coach);
         $player = $playerRepository->find(intval($id));
         $em = $this->getDoctrine()->getManager();
-
+        $allPlayerRequest = $coach->getRequestsToPlayers();
+        foreach($allPlayerRequest as $playerRequest){
+            if ($playerRequest->getPlayer()->getId() ==  intval($id)){
+                echo "this player has a request ";
+                exit;
+            }
+        }
         if($player != null)
         {
             $toPlayerRequest = new CoachToPlayerRequest();
@@ -321,7 +337,8 @@ class CoachController extends AbstractController
             $toPlayerRequest->setMessage($message);
             $em->persist($toPlayerRequest);
             $em->flush();
-            var_dump($toPlayerRequest);
+//            var_dump($toPlayerRequest);
+            echo $message;
             exit;
         }
 
@@ -389,6 +406,33 @@ class CoachController extends AbstractController
         }
     }
 
+
+    private function binarySearch($l, $r, $x)
+    {
+        $arr[] = range(0, 1000000);
+        while ($l <= $r)
+        {
+            $m = $l + ($r - $l) / 2;
+
+            // Check if x is present at mid
+            if (password_verify($x, $arr[$m] ))
+                return floor($m);
+
+            // If x greater, ignore
+            // left half
+            if ($arr[$m] < $x)
+                $l = $m + 1;
+
+            // If x is smaller,
+            // ignore right half
+            else
+                $r = $m - 1;
+        }
+
+        // if we reach here, then
+        // element was not present
+        return -1;
+    }
 
 
 }

@@ -19,7 +19,7 @@ class CoachToPlayerRequest
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Coach", inversedBy="requetsToPlayers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Coach", inversedBy="requestsToPlayers")
      * @ORM\JoinColumn(name="coaches", referencedColumnName="id")
      */
 
@@ -87,7 +87,7 @@ class CoachToPlayerRequest
     /**
      * @return date
      */
-    public function getDate(): date
+    public function getDate()
     {
         return $this->date;
     }
@@ -100,7 +100,7 @@ class CoachToPlayerRequest
     /**
      * @return text
      */
-    public function getMessage(): text
+    public function getMessage()
     {
         return $this->message;
     }
