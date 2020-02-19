@@ -19,6 +19,18 @@ class YouthTeamRepository extends ServiceEntityRepository
         parent::__construct($registry, YouthTeam::class);
     }
 
+
+    public function getTeamsByName($name){
+        $teams = $this->getEntityManager()
+            ->createQuery(
+                'SELECT t
+                FROM  App\Entity\YouthTeam t
+                WHERE t.name LIKE :name
+                ORDER BY t.name ASC'
+            )->setParameter('name', "%".$name."%")->getResult();
+        return $teams;
+    }
+
     // /**
     //  * @return YouthTeam[] Returns an array of YouthTeam objects
     //  */

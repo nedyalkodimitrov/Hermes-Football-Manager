@@ -2,6 +2,22 @@
 
 namespace App\Controller;
 
+use App\Entity\Admin;
+use App\Entity\Coach;
+use App\Entity\CoachPosition;
+use App\Entity\Division;
+use App\Entity\Player;
+use App\Entity\Requests\CoachToPlayerRequest;
+use App\Entity\Team;
+use App\Entity\User;
+use App\Entity\YouthDivision;
+use App\Entity\YouthTeam;
+use App\Form\CoachType;
+use App\Form\PlayerType;
+use App\Form\UserType;
+use App\Repository\PlayerRepository;
+use App\Repository\TeamRepository;
+use App\Repository\YouthTeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,9 +28,9 @@ class AdminController extends AbstractController
      * @Route("/admin", name = "adminHomeAction" )
      */
     public function CoacheViewAction(Request $request){
-        $user = new Users();
-        $coach = new Coaches();
-        $player = new Players();
+        $user = new User();
+        $coach = new Coach();
+        $player = new Player();
 
         $admin = $this->getUser()->getAdmin();
         $team = $admin->getTeam();
@@ -23,9 +39,9 @@ class AdminController extends AbstractController
         $coaches = $team->getCoaches();
         $youthTeams = $team->getYouthTeams();
 
-        $form_user = $this->createForm(UsersType::class, $user);
-        $form_coaches = $this->createForm(CoachesType::class, $coach);
-        $form_player = $this->createForm(PlayersType::class, $player);
+        $form_user = $this->createForm(UserType::class, $user);
+        $form_coaches = $this->createForm(CoachType::class, $coach);
+        $form_player = $this->createForm(PlayerType::class, $player);
 
         $form_player->handleRequest($request);
         $form_user->handleRequest($request);
@@ -48,7 +64,7 @@ class AdminController extends AbstractController
         $user = $this->getUser()->getAdmin();
         $team = $user->getTeam();
         $youthTeams = $team->getYouthTeams();
-        $country = $team->getCountry();
+        $country = $team->getCity()->getCountry();
         $divisions = $country->getYouthDivisions();
 
         return $this->render('admin/teams.html.twig', array(
@@ -66,15 +82,15 @@ class AdminController extends AbstractController
     {
         $user = $this->getUser()->getAdmin();
         $team = $user->getTeam();
-        $country = $team->getCountry();
+        $country = $team->getCity();
 
-        $youthTeam = new YouthTeams();
-        $youthTeam->setName($request->get('name'));
-        $division = $this->getDoctrine()->getRepository(Division::class)->find($request->get('division'));
+        $youthTeam = new YouthTeam();
+        $youthTeam->setName($request->request->get('name'));
+        $division = $this->getDoctrine()->getRepository(YouthDivision::class)->find(intval($request->request->get('division')));
         $youthTeam->setDivision($division);
 
         if ($youthTeam->getName() != null && $youthTeam->getDivision() != null) {
-            $youthTeam->setCountry($country);
+            $youthTeam->setCity($country);
             $youthTeam->setMotherTeam($team);
             $youthTeam->setPoints(0);
             $youthTeam->setPlayedGames(0);
@@ -98,12 +114,12 @@ class AdminController extends AbstractController
     public function DeleteYouthTeam($id, Request $request){
         $em = $this->getDoctrine()->getManager();
 
-        $youthTeam = $this->getDoctrine()->getRepository(YouthTeams::class)->find(intval($id));
-        $players = $this->getDoctrine()->getRepository(Players::class)->findBy(["youthTeams" =>intval($id)]);
-        $coaches= $this->getDoctrine()->getRepository(Coaches::class)->findBy(["youthTeam" =>intval($id)]);
+        $youthTeam = $this->getDoctrine()->getRepository(YouthTeam::class)->find(intval($id));
+        $players = $this->getDoctrine()->getRepository(Player::class)->findBy(["youthTeams" =>intval($id)]);
+        $coaches= $this->getDoctrine()->getRepository(Coach::class)->findBy(["youthTeam" =>intval($id)]);
 
-        foreach ($coaches as $coache){
-            $em->remove($coache);
+        foreach ($coaches as $coach){
+            $em->remove($coach);
             $em->flush();
         }
 
@@ -124,12 +140,12 @@ class AdminController extends AbstractController
      */
     public function YouthTeam($id, Request $request){
 
-        $user = new Users();
-        $coache = new Coaches();
-        $player = new Players();
+        $user = new User();
+        $coach = new Coach();
+        $player = new Player();
         $admin = $this->getUser()->getAdmin();
 
-        $youthTeam = $this->getDoctrine()->getRepository(YouthTeams::class)->find($id);
+        $youthTeam = $this->getDoctrine()->getRepository(YouthTeam::class)->find($id);
         if ($youthTeam->getMotherTeam()->getAdmin()[0]->getId() != $admin->getId()){
             return $this->redirectToRoute(adminHomeAction);
         }
@@ -137,9 +153,9 @@ class AdminController extends AbstractController
         $players = $youthTeam->getPlayers();
         $coaches = $youthTeam->getCoaches();
 
-        $form_user = $this->createForm(UsersType::class, $user);
-        $form_player = $this->createForm(PlayersType::class, $player);
-        $form_coaches = $this->createForm(CoachesType::class, $coache);
+        $form_user = $this->createForm(UserType::class, $user);
+        $form_player = $this->createForm(PlayerType::class, $player);
+        $form_coaches = $this->createForm(CoachType::class, $coach);
 
         $form_coaches->handleRequest($request);
         $form_player->handleRequest($request);
@@ -164,7 +180,7 @@ class AdminController extends AbstractController
                 $em->flush();
 
 
-                $player->setUserId($user);
+                $player->setUser($user);
                 $em->persist($player);
                 $em->flush();
 
@@ -179,7 +195,7 @@ class AdminController extends AbstractController
                 return 1;
             } else {
                 $positionId = $this->GetPropFromRequest('position');
-                $position = $this->getDoctrine()->getRepository(CoachesPositions::class)->find((int)$positionId);
+                $position = $this->getDoctrine()->getRepository(CoachPosition::class)->find((int)$positionId);
 
                 $coache->setTeamPosition($position);
                 $coache->setYouthTeam($youthTeam);
@@ -292,14 +308,62 @@ class AdminController extends AbstractController
         return 1;
     }
 
+    /**
+     * @Route("/admin/sendRequestToPlayer" , name = "deleteCoache")
+     */
+    public function SendRequestToPlayer(PlayerRepository $playerRepository,TeamRepository $teamRepository, YouthTeamRepository $youthTeamRepository)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $playerId = $this->GetPropFromRequest('player');
+        $teamName = $this->GetPropFromRequest('team');
+        $team = $teamRepository->getTeamsByName($teamName);
+        $youthTeam = $youthTeamRepository->getTeamsByName($teamName);
+        if ($team != null){
+            $coach = $this->getHeadCoachOfTeam($team[0]);
+        }else {
+            $coach = $this->getHeadCoachOfYouthTeam($youthTeam[0]);
+            $team = $youthTeam[0];
+        }
+        if ($coach == null){
+            return "Please first add head coach";
+        }
+
+
+        $player = $playerRepository->find(intval($playerId));
+        $allPlayerRequest = $coach->getRequestsToPlayers();
+        foreach($allPlayerRequest as $playerRequest){
+            if ($playerRequest->getPlayer()->getId() ==  intval($playerId)){
+                echo "this player has a request ";
+                exit;
+            }
+        }
+
+        if($player != null)
+        {
+            $toPlayerRequest = new CoachToPlayerRequest();
+            $toPlayerRequest->setCoach($coach);
+            $toPlayerRequest->setPlayer($player);
+            $toPlayerRequest->setDate(date("d/m/Y"));
+            $toPlayerRequest->setMessage($message);
+            $em->persist($toPlayerRequest);
+            $em->flush();
+//            var_dump($toPlayerRequest);
+            echo $message;
+            exit;
+        }
+
+        echo "Please give us a valid player";
+        exit;
+    }
+
 
 
     private function CheckPhoneNumber($phone){
-        $playerPhoneNumber = $this->getDoctrine()->getRepository(Players::class)->findBy(array('phone' => $phone));
-        $coachePhoneNumber = $this->getDoctrine()->getRepository(Coaches::class)->findBy(array('phone' => $phone));
-        $adminPhoneNumber = $this->getDoctrine()->getRepository(Admins::class)->findBy(array('phone' => $phone));
+        $playerPhoneNumber = $this->getDoctrine()->getRepository(Player::class)->findBy(array('phone' => $phone));
+        $coachPhoneNumber = $this->getDoctrine()->getRepository(Coach::class)->findBy(array('phone' => $phone));
+        $adminPhoneNumber = $this->getDoctrine()->getRepository(Admin::class)->findBy(array('phone' => $phone));
 
-        if (count($playerPhoneNumber) > 0 || count($coachePhoneNumber) > 0 || count($adminPhoneNumber) > 0  ){
+        if (count($playerPhoneNumber) > 0 || count($coachPhoneNumber) > 0 || count($adminPhoneNumber) > 0  ){
             return true;
         }
         return false;
@@ -308,6 +372,32 @@ class AdminController extends AbstractController
 
     private  function GetPropFromRequest($prop, Request $request){
         return json_decode($request->request->get($prop));
+    }
+
+    private function getHeadCoachOfTeam(Team $team){
+        $coaches = $team->getCoaches();
+
+        foreach ($coaches as $coach){
+            if ($coach->getTeamPosition() == "HEAD_COACH"){
+                return $coach;
+            }
+
+        }
+        return null;
+
+    }
+
+   private function getHeadCoachOfYouthTeam(YouthTeam $youthTeam){
+        $coaches = $youthTeam->getCoaches();
+
+        foreach ($coaches as $coach){
+            if ($coach->getTeamPosition() == "HEAD_COACH"){
+                return $coach;
+            }
+
+        }
+        return null;
+
     }
 
 

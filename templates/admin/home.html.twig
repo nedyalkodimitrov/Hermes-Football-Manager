@@ -63,7 +63,7 @@
                             {% else %}
                                 <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
                             {% endif %}
-                            <p class="player-name">{{ player.UserId.Name }} {{ player.UserId.FName }}</p>
+                            <p class="player-name">{{ player.User.Name }} {{ player.User.FName }}</p>
                             <span><i class="fas fa-times country-fa-times players" id="{{ player.Id }}"></i></span>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                     <img src="{{asset('images/'~ coache.Image )}}" alt="" class="image">
                                 {% endif %}
 
-                                <p class="player-name">{{ coache.UserId.Name }} {{ coache.UserId.FName }} </p>
+                                <p class="player-name">{{ coache.User.Name }} {{ coache.User.FName }} </p>
 
                             <span><i class="fas fa-times country-fa-times coaches" id="{{ coache.Id }}"></i></span>
                         </div>

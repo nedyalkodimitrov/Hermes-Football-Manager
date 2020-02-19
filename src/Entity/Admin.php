@@ -34,4 +34,38 @@ class Admin
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeam()
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param mixed $team
+     */
+    public function setTeam($team): void
+    {
+        $this->team = $team;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+
 }

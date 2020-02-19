@@ -33,3 +33,53 @@
     transform: translate(0%, 0%);
 }
 
+
+.player-container{
+    position: absolute;
+    box-sizing: border-box;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+}
+
+.youthTeamCard-wrap{
+    position: relative;
+    padding-top: 56.25%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 3%;
+}
+
+.youthTeamCard-container{
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    border: 2px solid #242424;
+    width: 100%;
+
+}
+
+.youthTeamCard-textInformation {
+    position: absolute;
+    left: 4%;bottom: 5%;
+    text-align: left;
+    color: white;
+    font-size: 0.7em;
+
+}
+
+.youthTeamCard-image{
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    width: 100%;
+    object-fit: cover;
+
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .youthTeamCard-wrap {
+      padding-top: 31.25%;
+    }
+}
