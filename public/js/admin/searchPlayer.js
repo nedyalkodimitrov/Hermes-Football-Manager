@@ -24,7 +24,7 @@ $(document).ready(function () {
         $.ajax({
             method: "POST",
             data: {"playerInfo": playerName},
-            url: "trainingsw",
+            url: "/admin/getPlayersByName",
         })
             .done(function (data) {
                 console.log(data);
@@ -46,7 +46,7 @@ $(document).ready(function () {
                         "      <td>"+playerTeam +"</td>\n" +
                         "      <td>"+ data[i][0]["player"]["position"]["name"] +"</td>\n" +
                         "      <td>"+ data[i][0]["phone"] +"</td>\n" +
-                        "      <td><button class='sendRequest' onclick='Click(this.value, this)' value="+data[i][4] +">Send</button></td>\n" +
+                        "      <td><button class='sendRequest' onclick='SendRequestToPlayer(this.value)' value="+data[i][4] +">Send</button></td>\n" +
                         "    </tr>";
                 }
                 table += drawEndOfTable();

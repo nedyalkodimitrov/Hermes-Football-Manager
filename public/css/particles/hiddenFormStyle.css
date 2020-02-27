@@ -12,7 +12,7 @@
     visibility: hidden;
 }
 
-.player-status-container, .team-status-container, .coache-status-container {
+.player-status-container, .team-status-container, .coach-status-container {
     margin: auto;
     position: fixed;
     top: -50%;
@@ -36,7 +36,7 @@
 
 }
 
-.player-status-div {
+.player-status-div, .coach-status-div {
     position: absolute;
     top: -50%;
     left: 50%;
@@ -58,7 +58,7 @@
     border-radius: 10px;
 }
 
-.team-status-div, .coache-status-div {
+.team-status-div {
     z-index: 2500;
     height: 450px;
     max-height: 450px;

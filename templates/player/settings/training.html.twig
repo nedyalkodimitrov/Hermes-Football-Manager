@@ -30,7 +30,7 @@
        <div class="container row col-4 trainig-program  ">
            <div class="col-12 justify-content-center text-center">
                <img src="{{asset("images/" ~ bigCoache.Image)}}" alt="" class="coache_image "></label><br>
-               <h1 >{{ bigCoache.UserId.Name }} {{ bigCoache.UserId.FName}} </h1><br>
+               <h1 >{{ bigCoache.User.Name }} {{ bigCoache.User.FName}} </h1><br>
                {% for schedules in schedule %}
                    {% if schedules.date == "now"|date()|trans %}
                        <p>schedules.date</p>

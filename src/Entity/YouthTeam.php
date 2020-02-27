@@ -320,7 +320,10 @@ class YouthTeam
         $this->city = $city;
     }
 
-
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
 }

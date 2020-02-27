@@ -3,11 +3,12 @@
     {{ parent() }}
     <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}">
 {% endblock %}
- {% block nav %}
-     <a class="nav-item nav-link   ml-2" href="#">Начална страница </a>
-     <a class="nav-item nav-link current-item ml-2" href="{{ path("playerTraining") }}">Тренировки</a>
- {% endblock %}
+{# {% block nav %}#}
+{#     <a class="nav-item nav-link   ml-2" href="#">Начална страница </a>#}
+{#     <a class="nav-item nav-link current-item ml-2" href="{{ path("playerTraining") }}">Тренировки</a>#}
+{# {% endblock %}#}
 {% block body%}
+
     <div class="container row mt-3 col-12 justify-content-between max-resolution mb-5">
         <table class="table col-lg-12  col-sm-12 ">
             <thead class="main-color">
@@ -23,24 +24,24 @@
             </thead>
             <tbody>
                 <tr class="">
-                    {% set j = 0 %}
+                {%set flag = true %}
                     {% for x in range(monday|date('U'), sunday|date('U'), 86400 ) %}
-                        {% if  j < schedule|length  and schedule[j].date ==  x|date('d/m/Y')|trans   %}
-                            {% if  j + 1 < schedule|length  and schedule[j+1].date ==  x|date('d/m/Y')|trans  %}
-                                <td class=" ">
-                                    {{ schedule[j].Description }} <br>{{ schedule[j].StartTime }}<br>
-                                    {{ schedule[j + 1].Description }} <br>{{ schedule[j + 1].StartTime }}
-                                </td>
-                                {% set j = j + 1 %}
-                            {% else %}
-                                    <td class=" text-center">{{ schedule[j].Description }} <br>{{ schedule[j].StartTime }}</td>
+                        <td class=" text-center">
+                            {% for j in range(0, schedule|length - 1, 1) %}
+                                {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}
+                                    {% set flag = false %}
+                                  {{ schedule[j].StartTime }}     {{ schedule[j].Description }}
+                                    <br>
+                                {% endif %}
+                            {% endfor %}
+                            {% if flag%}
+                                <h6>Почивка</h6>
                             {% endif %}
+                            {% set flag = true %}
 
-                            {% set j = j + 1 %}
-                        {% else %}
-                            <td class="text-center "><h6>Почивка</h6></td>
-                            {% set j = j + 1 %}
-                        {% endif %}
+                        </td>
+
+
                     {% endfor %}
                 </tr>
             </tbody>

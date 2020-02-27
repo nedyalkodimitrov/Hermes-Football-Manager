@@ -82,21 +82,13 @@
 
 
 /*table style*/
-thead{
+thead {
     background-color: #242424;
     color: white;
-    text-align: center;
-    font-size: 0.8em;
 }
 
 
 thead  th {
-    text-align: center;
-    width: 15%;
-
-}
-tbody th {
-    text-align: center;
     width: 15%;
 }
 

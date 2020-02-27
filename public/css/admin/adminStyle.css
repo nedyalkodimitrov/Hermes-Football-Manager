@@ -46,18 +46,32 @@
 
 .youthTeamCard-wrap{
     position: relative;
-    padding-top: 56.25%;
+    padding-top: 22.25%;
     width: 100%;
     overflow: hidden;
-    border-radius: 3%;
+
 }
+
 
 .youthTeamCard-container{
     position: absolute;
     top: 0;left: 0;right: 0;bottom: 0;
-    border: 2px solid #242424;
+    border-radius: 5px;
+    overflow: hidden;
     width: 100%;
 
+}
+
+.youthTeamCard-container:after{
+    content: "";
+    position: absolute;
+    top: 0;left: 0;right: 0;bottom: 0;
+    background: rgba(0,0,0,0.3);
+
+
+}
+.youthTeamCard-container::after:hover {
+    background: rgba(0,0,0,0.1);
 }
 
 .youthTeamCard-textInformation {
@@ -66,20 +80,59 @@
     text-align: left;
     color: white;
     font-size: 0.7em;
+    z-index: 2;
 
 }
-
 .youthTeamCard-image{
     position: absolute;
     top: 0;left: 0;right: 0;bottom: 0;
     width: 100%;
     object-fit: cover;
+    height: 100%;
 
 }
 
+.youthTeam-delete{
+    z-index:2;
+}
+.add-team-circle-container{
+    position: fixed;
+    top: 90%;
+    right: 5%;
+    background-color: #ff7b7b;
+    padding: 2.3rem;
+    border: 1px solid red;
+    border-radius: 100%;
+    transition: 0.3s ease all;
 
-@media only screen and (min-width: 1024px) {
+}
+
+.add-team-circle-container:hover{
+    background-color: #ff3a35;
+}
+
+.add-team-circle{
+    position: absolute;
+    top: 0;left: 0;bottom: 0;right: 0;
+    pointer-events: fill;
+    cursor: pointer;
+}
+
+
+.add-team {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    border-radius: 100%;
+    width: 2.7rem;
+}
+
+
+
+@media only screen and (max-width: 990px) {
     .youthTeamCard-wrap {
-      padding-top: 31.25%;
+      padding-top: 56.25%;
     }
 }

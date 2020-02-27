@@ -8,6 +8,7 @@ use App\Entity\PlayerProperties\PlayerStats;
 use App\Entity\PlayerProperties\Position;
 use App\Entity\Requests\CoachToPlayerRequest;
 use App\Entity\Requests\PlayerToTeamRequest;
+use App\Entity\Schedule;
 use App\Entity\Team;
 use App\Entity\User;
 use App\Entity\Player;
@@ -215,7 +216,8 @@ class PlayerController extends AbstractController
             $headCoach = $this->playerPropService->getHeadCoache($coaches);
         }
 
-
+        $schedule = $this->getDoctrine()->getRepository(Schedule::class)
+            ->findBy(["coaches" => $headCoach->getId() ],   ['date' => 'DESC', 'startTime' =>'ASC']);
 
         return $this->render('player/training.html.twig' , array('schedule' => $schedule,
             'monday' => strval($Monday),
@@ -224,7 +226,7 @@ class PlayerController extends AbstractController
             'coaches' => $coaches,
             'bigCoach' =>$headCoach,
             'status' => $statuses,
-            'playerName' =>"Ivan",
+            'playerName' => $player->getUser()->getName(). ' '.$player->getUser()->getFName(),
         ));
     }
 

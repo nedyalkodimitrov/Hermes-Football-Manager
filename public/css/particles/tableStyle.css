@@ -1,5 +1,5 @@
 table{
-    display: flex;
+    display: table;
     max-height: 500px;
     justify-content: center;
     border: none;
@@ -7,7 +7,6 @@ table{
     height: auto;
     width: 100%;
     font-size: 1rem;
-    flex-direction: column;
     min-width: 100%;
 }
 
