@@ -1,0 +1,158 @@
+<?php //%255BApp%255CEntity%255CSchedule%2524CLASSMETADATA%255D%255B1%255D
+
+namespace Symfony\Component\VarExporter\Internal;
+
+return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
+    $o = [
+        clone (($p = &Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Schedule',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Schedule',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\ScheduleRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'date' => [
+                        'fieldName' => 'date',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'date',
+                    ],
+                    'startTime' => [
+                        'fieldName' => 'startTime',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'startTime',
+                    ],
+                    'endTime' => [
+                        'fieldName' => 'endTime',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'endTime',
+                    ],
+                    'description' => [
+                        'fieldName' => 'description',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'description',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'date' => 'date',
+                    'startTime' => 'startTime',
+                    'endTime' => 'endTime',
+                    'description' => 'description',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'date' => 'date',
+                    'startTime' => 'startTime',
+                    'endTime' => 'endTime',
+                    'description' => 'description',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'schedule',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'coaches' => [
+                        'fieldName' => 'coaches',
+                        'joinColumns' => [
+                            [
+                                'name' => 'coaches',
+                                'unique' => false,
+                                'nullable' => true,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'schedule',
+                        'targetEntity' => 'App\\Entity\\Coach',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Schedule',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'coaches' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'coaches' => 'coaches',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'coaches',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+);
