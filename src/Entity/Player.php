@@ -58,7 +58,7 @@ class Player
      */
     public $youthTeams;
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Coach\CoachToPlayerRequest", mappedBy="player")
      */
     private $requestsFromCoaches;
 
@@ -81,7 +81,7 @@ class Player
     public $status;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\PlayerToTeamRequest", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Player\PlayerToTeamRequest", mappedBy="player")
      */
     private $requestToTeam;
 
@@ -101,7 +101,7 @@ class Player
     /**
      * @param date $birthDay
      */
-    public function setBirthDay(date $birthDay): void
+    public function setBirthDay($birthDay): void
     {
         $this->birthDay = $birthDay;
     }
@@ -256,6 +256,7 @@ class Player
     {
         $this->requestToTeam = $requestToTeam;
     }
+
 
 
     

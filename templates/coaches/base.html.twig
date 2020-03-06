@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block style %}
 
+    <link rel="stylesheet" href="  {{ asset("css/admin/topPlayerCard.css") }}">
     <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}">
-
 
 {% endblock %}
 {% block navLinks %}
-    <a class="ml-2 na navbar-link" href="{{ path("trainingView") }}">Тренировки</a>
-    <a class="ml-2 na navbar-link" href="{{ path("trainingCalendarActionView") }}">Тренировки</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link" href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link" href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
 {% endblock %}
 {% block navContent %}
         <div class="row justify-content-end">

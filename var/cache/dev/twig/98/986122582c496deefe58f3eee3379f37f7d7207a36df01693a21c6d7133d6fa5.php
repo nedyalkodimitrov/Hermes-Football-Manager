@@ -183,10 +183,10 @@ class __TwigTemplate_387a8dd68535b9ef9d0853f376aeee3fdc14bac6acf32b93580ece9bcbd
                     </div>
                     <div class=\"form-row\">
                         <div class=\"col form-group\">
-                            <button type=\"button\" class=\"btn btn-danger btn-block\" id=\"clear\" onclick=\"clear_input()\">Clear Form</button>
+                            <button type=\"button\" class=\"btn btn-danger btn-block\" id=\"clear\" onclick=\"clear_input()\">Изчисване на формата</button>
                         </div>
                         <div class=\"col form-group\">
-                            <button type=\"button\" class=\"btn btn-danger  btn-block\" id=\"submit\" onclick=\"make_appointment()\" disabled=\"disabled\">Make Appointment</button>
+                            <button type=\"button\" class=\"btn btn-danger  btn-block\" id=\"submit\" onclick=\"make_appointment()\" disabled=\"disabled\">Създаване на тренировка</button>
                         </div>
                     </div>
                 </form>
@@ -360,10 +360,10 @@ class __TwigTemplate_387a8dd68535b9ef9d0853f376aeee3fdc14bac6acf32b93580ece9bcbd
                     </div>
                     <div class=\"form-row\">
                         <div class=\"col form-group\">
-                            <button type=\"button\" class=\"btn btn-danger btn-block\" id=\"clear\" onclick=\"clear_input()\">Clear Form</button>
+                            <button type=\"button\" class=\"btn btn-danger btn-block\" id=\"clear\" onclick=\"clear_input()\">Изчисване на формата</button>
                         </div>
                         <div class=\"col form-group\">
-                            <button type=\"button\" class=\"btn btn-danger  btn-block\" id=\"submit\" onclick=\"make_appointment()\" disabled=\"disabled\">Make Appointment</button>
+                            <button type=\"button\" class=\"btn btn-danger  btn-block\" id=\"submit\" onclick=\"make_appointment()\" disabled=\"disabled\">Създаване на тренировка</button>
                         </div>
                     </div>
                 </form>

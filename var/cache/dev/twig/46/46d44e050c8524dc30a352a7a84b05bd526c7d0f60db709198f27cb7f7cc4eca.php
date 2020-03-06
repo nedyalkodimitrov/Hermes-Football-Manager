@@ -97,7 +97,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         <nav class=\"navbar navbar-expand-lg navbar-light nav-container \">
             <a class=\"navbar-brand\" href=\"#\"><img src=\"";
         // line 25
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/fm.png"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/HERMES-ICON.jpg"), "html", null, true);
         echo "\" alt=\"\" class=\"logo\"></a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
@@ -158,8 +158,8 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navLinks"));
 
         // line 32
-        echo "                        <a class=\"current-item ml-2 navbar-link\" href=\"#\">Начална страница </a>
-                        <a class=\"ml-2 na navbar-link\" href=\"";
+        echo "                        <a class=\"current-item ml-2  navbar-link\" href=\"#\">Начална страница </a>
+                        <a class=\"ml-2  navbar-link\" href=\"";
         // line 33
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerTraining");
         echo "\">Тренировки</a>
@@ -253,15 +253,15 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
     </head>
     <body>
         <nav class=\"navbar navbar-expand-lg navbar-light nav-container \">
-            <a class=\"navbar-brand\" href=\"#\"><img src=\"{{ asset(\"images/fm.png\") }}\" alt=\"\" class=\"logo\"></a>
+            <a class=\"navbar-brand\" href=\"#\"><img src=\"{{ asset(\"images/HERMES-ICON.jpg\") }}\" alt=\"\" class=\"logo\"></a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
                 <span class=\"navbar-toggler-icon\"></span>
             </button>
             <div class=\"collapse navbar-collapse justify-content-between\" id=\"navbarNavAltMarkup\">
                 <div class=\"navbar-nav mr-5\">
                     {% block navLinks %}
-                        <a class=\"current-item ml-2 navbar-link\" href=\"#\">Начална страница </a>
-                        <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerTraining\") }}\">Тренировки</a>
+                        <a class=\"current-item ml-2  navbar-link\" href=\"#\">Начална страница </a>
+                        <a class=\"ml-2  navbar-link\" href=\"{{ path(\"playerTraining\") }}\">Тренировки</a>
                     {% endblock %}
                 </div>
                 {% block navContent %}

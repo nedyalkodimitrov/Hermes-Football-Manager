@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="  {{ asset("css/particles/main-information-charts.css") }}">
     <link rel="stylesheet" href="  {{ asset("css/coach/particles/addingPlayerBoxesStyle.css") }}">
     <link rel="stylesheet" href="  {{ asset("css/admin/adminStyle.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/typography.css") }}">
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
     <script type="text/javascript" src="{{  asset("easy-pie-chart-master/dist/jquery.easypiechart.js")}}"></script>
@@ -27,7 +28,7 @@
 <body>
 <div class="p-0 nav-constainer ">
     <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" href="#"><img src="{{ asset("images/fm.png") }}" alt="" class="logo"></a>
+        <a class="navbar-brand" href="#"><img src="{{ asset("images/HERMES-ICON.jpg") }}" alt="" class="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +38,7 @@
                 {% block nav %}
                     <a class="nav-item nav-link  current-item ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
                     <a class="nav-item nav-link ml-2 " href="{{ path("manTeam") }}">Мъжки отбор</a>
-                    <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Юнушестки отбори</a>
+                    <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Юношески отбори</a>
                     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Програма</a>
 
                 {% endblock  %}

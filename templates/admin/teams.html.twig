@@ -1,7 +1,10 @@
 {% extends 'admin/base.html.twig' %}
  {% block nav %}
-     <a class="nav-item nav-link   ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
-     <a class="nav-item nav-link current-item ml-2 " href="{{ path("youthTeams") }}">Юнушестки отбори</a>
+     <a class="nav-item nav-link ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("manTeam") }}">Мъжки отбор</a>
+     <a class="nav-item nav-link ml-2 current-item" href="{{ path("youthTeams") }}">Юнушестки отбори</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Програма</a>
+
 
  {% endblock  %}
 

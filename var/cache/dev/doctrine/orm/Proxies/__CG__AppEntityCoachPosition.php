@@ -232,4 +232,15 @@ class CoachPosition extends \App\Entity\CoachPosition implements \Doctrine\ORM\P
         parent::setCoaches($coaches);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
+    }
+
 }

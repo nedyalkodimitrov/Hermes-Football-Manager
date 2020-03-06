@@ -39,7 +39,93 @@
         </div>
     </div>
 
+    <div id="container ">
+        <div class="row mt-5  justify-content-center">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+                <div class="col-12 text-center">
+                    <h2 >Топ трима играча от мъжкия отбор   </h2>
+                </div>
+                {% set foo = 1 %}
+                {% for player in topPlayers %}
+                    <div class="col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
+                        <div class="col-12 player-container top-player-card-container" id="player-{{  foo }} ">
+                            {#                            {%   if  player.Status == 0 %}#}
+                            {#                                <div class="status-green"></div>#}
+                            {#                                {% else %}#}
+                            {#                                <div class="status-red"></div>#}
+                            {#                            {%  endif %}#}
+                            <div class="top-player-image-container">
+                                {% if player.Image == null or player.Image == ' ' %}
+                                    <img src="{{asset('images/user-image.png')}}" alt="" class="top-player-card-img">
+                                {% else %}
+                                    <img src="{{asset('images/'~ player.Image )}}" alt="" class="top-player-card-img">
+                                {% endif %}
+                            </div>
+                            <p class="top-player-card-name">{{ player.User.Name }} {{ player.User.FName }}</p>
+                            {#                            <span><i class="fas fa-times country-fa-times players" id="{{ player.Id }}"></i></span>#}
+                        </div>
+                    </div>
+                    {% set foo = foo + 1 %}
+                {% endfor %}
 
+            </div>
+        </div>
+    </div>
+
+
+    <div class="table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">
+        <div class="table col-11  mh-25" id="teamLeadership-container ">
+            {% if hasTeam %}
+                <table class="table-bordered col-12 "  style="margin-bottom: 0; padding:0">
+                    <tr class="row col-12 p-0 m-0 bg-success">
+                        <th class="col-1"></th>
+                        <th class="col-4 color-white">Име</th>
+                        <th class="col-1 color-white">ИМ</th>
+                        <th class="col-1 color-white">П</th>
+                        <th class="col-1 color-white">Р</th>
+                        <th class="col-1 color-white">З</th>
+                        <th class="col-1 color-white">ВГ</th>
+                        <th class="col-1 color-white">ДГ</th>
+                        <th class="col-1 color-white">Т</th>
+                    </tr>
+                    {% set rowNum = 1 %}
+                    {% for team in teams %}
+                        {% if myTeam.Id == team.Id %}
+                            <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                                <th class="col-4"> {{ team.name }}</th>
+                                <th class="col-1"> {{ team.playedGames }}</th>
+                                <th class="col-1"> {{ team.wins }}</th>
+                                <th class="col-1"> {{ team.drawsGames}}</th>
+                                <th class="col-1"> {{ team.lostGames}}</th>
+                                <th class="col-1"> {{ team.Goals}}</th>
+                                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>
+                                <th class="col-1">{{ team.points }}</th>
+                            </tr>
+                        {% else %}
+                            <tr class="teamTable row col-12 p-0 m-0">
+                                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                                <th class="col-4"> {{ team.name }}</th>
+                                <th class="col-1"> {{ team.playedGames }}</th>
+                                <th class="col-1"> {{ team.wins }}</th>
+                                <th class="col-1"> {{ team.drawsGames}}</th>
+                                <th class="col-1"> {{ team.lostGames}}</th>
+                                <th class="col-1"> {{ team.Goals}}</th>
+                                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>
+                                <th class="col-1">{{ team.points }}</th>
+                            </tr>
+                        {% endif %}
+
+                        {% set rowNum = rowNum + 1 %}
+                    {% else %}
+                        <li><em>Вие нямате отбор</em></li>
+                    {%  endfor %}
+                </table>
+            {% else %}
+                <h1>Вие нямате отбор</h1>
+            {% endif %}
+        </div>
+    </div>
 
 
 

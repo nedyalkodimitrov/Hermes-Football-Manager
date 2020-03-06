@@ -36,7 +36,7 @@ $(document).ready(function () {
                 //create a table with a new data
                 table += drawHeadOfTable();
                 for (let i = 0; i < data.length; i++) {
-                    var playerTeam = data[i][3];
+                    var playerTeam = data[i][3]["name"];
                     if (playerTeam == null){
                         playerTeam = "Няма";
                     }

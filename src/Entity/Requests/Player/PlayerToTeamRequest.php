@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity\Requests;
+namespace App\Entity\Requests\Player;
 
 use Doctrine\ORM\Mapping as ORM;
 

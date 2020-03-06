@@ -124,10 +124,38 @@ class Team
 
     /**
      * One Product has One Shipment.
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\PlayerToTeamRequest", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Player\PlayerToTeamRequest", mappedBy="team")
      * @ORM\JoinColumn(name="team", referencedColumnName="id")
      */
     private  $requestFromPlayer;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Coach\CoachToTeamRequest", mappedBy="team")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestFromCoach;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Team\TeamToCoachRequest", mappedBy="team")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestToCoach;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Team\TeamToDivisionRequest", mappedBy="team")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestToDivision;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Division\DivisionToTeamRequest", mappedBy="team")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestFromDivision;
 
 
 
@@ -391,6 +419,72 @@ class Team
     {
         $this->requestFromPlayer = $requestFromPlayer;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestFromCoach()
+    {
+        return $this->requestFromCoach;
+    }
+
+    /**
+     * @param mixed $requestFromCoach
+     */
+    public function setRequestFromCoach($requestFromCoach): void
+    {
+        $this->requestFromCoach = $requestFromCoach;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestToCoach()
+    {
+        return $this->requestToCoach;
+    }
+
+    /**
+     * @param mixed $requestToCoach
+     */
+    public function setRequestToCoach($requestToCoach): void
+    {
+        $this->requestToCoach = $requestToCoach;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestToDivision()
+    {
+        return $this->requestToDivision;
+    }
+
+    /**
+     * @param mixed $requestToDivision
+     */
+    public function setRequestToDivision($requestToDivision): void
+    {
+        $this->requestToDivision = $requestToDivision;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestFromDivision()
+    {
+        return $this->requestFromDivision;
+    }
+
+    /**
+     * @param mixed $requestFromDivision
+     */
+    public function setRequestFromDivision($requestFromDivision): void
+    {
+        $this->requestFromDivision = $requestFromDivision;
+    }
+
+
 
     public function __toString()
     {

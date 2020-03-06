@@ -92,7 +92,15 @@ class User implements UserInterface
      *
      * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\WaterGlasses", mappedBy="playerId")
      */
-    public $waterGlasses;
+    public $waterGlasses;  /**
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="sender")
+     */
+    public $requestFromUser;  /**
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="receiver")
+     */
+    public $requestToUser;
 
     /**
      * @ORM\OneToMany(targetEntity="InjuredUsers", mappedBy="user")
@@ -305,6 +313,40 @@ class User implements UserInterface
     {
         $this->waterGlasses = $waterGlasses;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestFromUser()
+    {
+        return $this->requestFromUser;
+    }
+
+    /**
+     * @param mixed $requestFromUser
+     */
+    public function setRequestFromUser($requestFromUser): void
+    {
+        $this->requestFromUser = $requestFromUser;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestToUser()
+    {
+        return $this->requestToUser;
+    }
+
+    /**
+     * @param mixed $requestToUser
+     */
+    public function setRequestToUser($requestToUser): void
+    {
+        $this->requestToUser = $requestToUser;
+    }
+
+
 
 
     public function getUsername()

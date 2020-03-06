@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelProdContainer::class, false)) {
 
 return new \ContainerBZCgZOr\srcApp_KernelProdContainer([
     'container.build_hash' => 'BZCgZOr',
-    'container.build_id' => 'bc6934fc',
-    'container.build_time' => 1582954742,
+    'container.build_id' => 'ca94c568',
+    'container.build_time' => 1582958691,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerBZCgZOr');

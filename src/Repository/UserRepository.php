@@ -38,6 +38,21 @@ class UserRepository extends ServiceEntityRepository
         return $stmt->fetchAll();
     }
 
+  public function findCoach($value)
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT id FROM user u 
+        WHERE concat(u.name,u.fName) LIKE :name
+        ORDER BY u.name ASC, u.fName ASC 
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['name' => '%'.$value.'%']);
+        return $stmt->fetchAll();
+    }
+
 
     /*
     public function findOneBySomeField($value): ?User

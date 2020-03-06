@@ -39,24 +39,34 @@ class CoachController extends AbstractController
     /**
      * @Route("/coache", name = "coacheViewAction" )
      */
-    public function CoacheViewAction(){
+    public function CoacheViewAction(PlayerRepository $playerRepository){
         $coach = $this->getUser()->getCoaches();
 
        $teamCoach = $this->coachRepository->getCoachTeam($coach);
-
+        $topPlayers = $this->coachRepository->getTopPlayersFromCoachTeam($playerRepository, $coach);
         if ($teamCoach == null){
             $players = 0;
+            $teams = null;
         }else {
+            $teams = $teamCoach->getDivision()->getTeams();
             $players = $teamCoach->getPlayers();
         }
+
+
         return $this->render('coaches/index.html.twig', array(
             'playersCount' => count($players),
             'cups' => 0,
             'players' => $players,
+            'topPlayers' => $topPlayers,
             'name' => $this->getUser()->getName() ,
             'fName' => $this->getUser()->getFName(),
             'profile_img' => $this->getUser()->getCoaches()->getImage(),
-            'division' => $teamCoach->getDivision()->getName()));
+            'division' => $teamCoach->getDivision()->getName(),
+            'hasTeam' => true,
+            'myTeam' => $teamCoach,
+            'teams' =>$teams
+
+        ));
 
     }
 
@@ -107,6 +117,9 @@ class CoachController extends AbstractController
         $user = $this->getUser()->getCoaches();
         return $this->render('coaches/trainings/training.html.twig',array(
             'profile_img' => $user->getImage(),
+            'coachTeamName' => $teamCoach->getName(),
+            'coachTeamImage' => $teamCoach->getImage(),
+            'coachPosition' => $coach->getTeamPosition()->getName(),
             'players' => $players
         ));
     }

@@ -36,7 +36,7 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Proxy\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = ['name' => NULL, 'country' => NULL, 'image' => NULL];
+    public static $lazyPropertiesDefaults = ['name' => NULL, 'country' => NULL, 'teams' => NULL, 'image' => NULL];
 
 
 
@@ -46,7 +46,7 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __construct($initializer = null, $cloner = null)
     {
-        unset($this->name, $this->country, $this->image);
+        unset($this->name, $this->country, $this->teams, $this->image);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
@@ -108,10 +108,10 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', 'name', 'country', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'teams', 'image'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', 'name', 'country', 'teams', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam', 'image'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'teams'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam'];
     }
 
     /**
@@ -133,7 +133,7 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
                 }
             };
 
-            unset($this->name, $this->country, $this->image);
+            unset($this->name, $this->country, $this->teams, $this->image);
         }
     }
 
@@ -319,6 +319,50 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage', [$image]);
 
         parent::setImage($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestFromTeam()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestFromTeam', []);
+
+        return parent::getRequestFromTeam();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestFromTeam($requestFromTeam): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestFromTeam', [$requestFromTeam]);
+
+        parent::setRequestFromTeam($requestFromTeam);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestToTeam()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestToTeam', []);
+
+        return parent::getRequestToTeam();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestToTeam($requestToTeam): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestToTeam', [$requestToTeam]);
+
+        parent::setRequestToTeam($requestToTeam);
     }
 
     /**

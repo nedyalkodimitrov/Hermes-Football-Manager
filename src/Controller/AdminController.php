@@ -15,6 +15,7 @@ use App\Entity\YouthTeam;
 use App\Form\CoachType;
 use App\Form\PlayerType;
 use App\Form\UserType;
+use App\Repository\CoachRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
@@ -29,7 +30,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin", name = "adminHomeAction" )
      */
-    public function CoachViewAction(Request $request){
+    public function CoachViewAction(Request $request, PlayerRepository $playerRepository){
 
         $admin = $this->getUser()->getAdmin();
         $team = $admin->getTeam();
@@ -37,11 +38,16 @@ class AdminController extends AbstractController
         $players = $team->getPlayers();
         $coaches = $team->getCoaches();
         $youthTeams = $team->getYouthTeams();
+        $topPlayers = $playerRepository->getTopPlayers($team->getId());
+        $topYouthPlayers = $playerRepository->getTopYouthPlayers($team->getId());
+
+
 
         return $this->render('admin/home.html.twig', array('profile_img' => $admin->getTeam()->getImage(),
             'playersNum' => count($players),
             'division' => $division,
-            'players' => $players,
+            'players' => $topPlayers,
+            'youthPlayers' => $topYouthPlayers,
             'coaches' =>$coaches,
             'team' =>''
         ));
@@ -50,17 +56,16 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/team" , name = "manTeam")
      */
-    public function ManTeam(Request $request)
+    public function MenTeam(Request $request)
     {
 
         $admin = $this->getUser()->getAdmin();
         $team = $admin->getTeam();
 
-
         $players = $team->getPlayers();
         $coaches = $team->getCoaches();
 
-        return $this->render('admin/youthTeam.html.twig', array('players' =>$players,
+        return $this->render('admin/menTeam.html.twig', array('players' =>$players,
             'coaches' => $coaches,
             'teamId' => $team->getId(),
             'profile_img' =>  $admin->getTeam()->getImage()));
@@ -283,6 +288,31 @@ class AdminController extends AbstractController
             $players[$i] = $playerInformation;
         }
         return new JsonResponse($players);
+    }
+
+    /**
+     * @Route("/admin/getCoachesByName" , name = "getCoachesByName")
+     */
+    public function GetCoachesByName(Request $request,CoachRepository $coachRepository, UserRepository $userRepository,TeamRepository $teamRepository, YouthTeamRepository $youthTeamRepository)
+    {
+        $playerInfo =$request->request->get("coacheInfo");
+
+        $results = $userRepository->findCoach($playerInfo);
+        $coaches = [];
+
+        for ($i = 0; $i < count($results); $i++){
+            $coachInformation = [];
+            $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
+            $coach = $user->getPlayer();
+            $coachTeam = $coachRepository->getCoachTeam($coach);
+            $coachInformation[0] = $user;
+            $coachInformation[1] = $coach->getPosition()->getName();
+            $coachInformation[2] = $user->getCity()->getName(). ", " . $user->getCity()->getCountry()->getName()  ;
+            $coachInformation[3] = $coachTeam;
+            $coachInformation[4] =   $coach->getId();
+            $players[$i] = $coachInformation;
+        }
+        return new JsonResponse($coaches);
     }
 
 

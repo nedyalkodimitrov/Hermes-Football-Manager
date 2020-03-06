@@ -1,0 +1,309 @@
+{% extends 'admin/base.html.twig' %}
+ {% block nav %}
+     <a class="nav-item nav-link ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
+     <a class="nav-item nav-link ml-2 current-item" href="{{ path("manTeam") }}">Мъжки отбор</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Юнушестки отбори</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Програма</a>
+ {% endblock  %}
+{%  block body %}
+    <div id="container ">
+        <div class="row mt-5  justify-content-center">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+                <div class="col-12 text-center">
+                    <h2 >Играчи</h2>
+                </div>
+                {% set foo = 1 %}
+                {% for player in players %}
+                    {% if player.position == "Goalkeeper" %}
+                    <div class="col-lg-3 col-sm-12 col-md-12 justify-content- player_portfolio row ">
+                        <div class="col-12 player-container " id="player-{{  foo }} ">
+                            {%   if  player.Status == 0 %}
+                                <div class="status-green"></div>
+                            {%  endif %}
+
+                            {% if player.Image == null or player.Image == ' ' %}
+                                <img src="{{asset('images/user-image.png')}}" alt="" class="player_img">
+                            {% else %}
+                                <img src="{{asset('images/'~ player.Image )}}" alt="" class="player_img">
+                            {% endif %}
+                            <p class="player_name">{{ player.User.Name }} </p>
+                            <p class="player-position">{{ player.position.name }}</p>
+                            <span><i class="fas fa-times country-fa-times players" id="{{ player.Id }}"></i></span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+                <div class="col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row mr-2">
+                    <div class="col-12 player-container add-player justify-content-center text-center" id="player-{{  foo }} ">
+                        <img src="{{ asset('images/plus .png') }}" alt="" class="add-player-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="container ">
+        <div class="row mt-5  justify-content-center">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-center div-charts row pb-3">
+                <div class="col-12 text-center">
+                    <h2 >Треньори</h2>
+                </div>
+                {% set foo = 1 %}
+                {% for coache in coaches%}
+                    <div class="col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
+                        <div class="col-12 player-container " id="player-{{  foo }} ">
+                            {% if coache.Image == null or coache.Image == ' ' %}
+                                <img src="{{asset('images/user1-white2.png')}}" alt="" class="player_img">
+                            {% else %}
+                                <img src="{{asset('images/'~ coache.Image )}}" alt="" class="player_img">
+                            {% endif %}
+                            <p class="player_name">{{ coache.User.Name }} </p>
+                            <span><i class="fas fa-times country-fa-times coaches" id="{{ coache.Id }}"></i></span>
+                        </div>
+                    </div>
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+                <div class="col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
+                    <div class="col-12 player-container add-coach justify-content-center text-center" id="player-{{  foo }} ">
+                        <img src="{{ asset('images/plus .png') }}" alt="" class="add-player-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="team-status-container row justify-content-center align-items-center">
+        <div class="col-9  team-status-div row align-items-center justify-content-center" id="add-player" >
+            <div class="col-8 row justify-content-center">
+                <h3 class="mb-3 col-12 text-center">Искате ли да изтриете записа:</h3>
+                <button class="btn bg-danger" id="no">Не</button>
+                <button class="btn btn-green" id="yes">Да</button>
+            </div>
+            <span><i class="fas fa-times-circle color-black "></i></span>
+        </div>
+    </div>
+    <div class="player-status-container row justify-content-center ">
+        <div class="col-9  player-status-div   justify-content-center" id="add-player" >
+            <div class="container col-12 row justify-content-center search-container-holder">
+                <div class="search-container mt-3  justify-content-center">
+                    <div class="search-box full-sized-search-box">
+                        <input type="text" placeholder="Ивайло Колев" class="search-text" id="search">
+                        <button  class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container col-12 p-0 mx-auto row">
+                <div class="playerSearchResult col-12 p-0  ">
+                </div>
+            </div>
+            <span><i class="fas fa-times-circle"></i></span>
+        </div>
+    </div>
+    <div class="coach-status-container row justify-content-center ">
+        <div class="col-9 coach-status-div row justify-content-center" id="add-coach" >
+            <div class="container col-12 row justify-content-center search-container-holder">
+                <div class="search-container mt-3  justify-content-center">
+                    <div class="search-box full-sized-search-box">
+                        <input type="text" placeholder="Ивайло Колев" class="search-text" id="search">
+                        <button  class="search-button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="container col-12 p-0 mx-auto row">
+                <div class="playerSearchResult col-12 p-0  ">
+                </div>
+            </div>
+            <span><i class="fas fa-times-circle"></i></span>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{  asset("js/admin/searchPlayer.js")}}"></script>
+
+    <script>
+
+        $('.add-player').on('click', function () {
+            $('.player-status-container').css('visibility', 'visible')
+                .css('height', '100vh')
+                .css('top', '0%')
+                .css('transition', 'ease 0.7s');
+            $('.player-status-div')
+                .css('visibility', 'visible')
+                .css('transition', ' ease 0.6s')
+                .css('top', '50%')
+                .css('transform', ' translate(-50%, -50%)');
+
+            $('#treatment_info').css('visibility', 'visible');
+
+            $('.fa-times-circle').on('click', function () {
+                $('.player-status-div')
+                    .css('top', '-50%')
+                    .css('transform', ' translate(-50%, -100%)')
+                    .css('transition', 'ease 1s');
+
+                $('.player-status-container').css('visibility', 'hidden')
+                    .css('height', '0vh')
+                    .css('top', '-50%')
+                    .css('transition', 'ease 1.1s');
+            });
+        });
+
+        $('.add-coach').on('click', function () {
+            $('.coach-status-container').css('visibility', 'visible')
+                .css('height', '100vh')
+                .css('top', '0%')
+                .css('transition', 'ease 0.7s');
+            $('.coach-status-div')
+                .css('visibility', 'visible')
+                .css('transition', ' ease 0.6s')
+                .css('top', '50%')
+                .css('transform', ' translate(-50%, -50%)');
+
+            $('#treatment_info').css('visibility', 'visible');
+
+            $('.fa-times-circle').on('click', function () {
+                $('.coach-status-div')
+                    .css('top', '-50%')
+                    .css('transform', ' translate(-50%, -100%)')
+                    .css('transition', 'ease 1s');
+
+                $('.coach-status-container').css('visibility', 'hidden')
+                    .css('height', '0vh')
+                    .css('top', '-50%')
+                    .css('transition', 'ease 1.1s');
+            });
+        });
+
+        function SendRequestToPlayer (value) {
+            $.ajax({
+                method: "POST",
+                data: {"playerInfo": value, "team" : "Ludogorets19"},
+                url: "{{ path("sendRequestToPlayer") }}",
+            })
+                .done(function (data) {
+
+                    console.log(data)
+                });
+        }
+
+
+
+
+
+
+        $('.players').on('click', function () {
+            var player = $(this).attr('id');
+            $('.team-status-container').css('visibility', 'visible');
+            $('.team-status-div').css('visibility', 'visible');
+
+            $('.fa-times-circle').on('click', function () {
+                $('.team-status-container').css('visibility', 'hidden');
+                $('.team-status-div').css('visibility', 'hidden');
+            });
+            $('#no').on('click', function () {
+                $('.team-status-container').css('visibility', 'hidden');
+                $('.team-status-div').css('visibility', 'hidden');
+            });
+            $('#yes').on('click', function () {
+                $.ajax({
+                    method: "POST",
+
+                    url: " app.php/admin/deletePlayer/" + player,
+                })
+                    .done(function( msg ) {
+                        window.location.href = "app.php/admin/youthTeams";
+
+                    });
+            });
+        });
+
+        $('.coaches').on('click', function () {
+            var coache = $(this).attr('id');
+            $('.team-status-container').css('visibility', 'visible');
+            $('.team-status-div').css('visibility', 'visible');
+
+            $('.fa-times-circle').on('click', function () {
+                $('.team-status-container').css('visibility', 'hidden');
+                $('.team-status-div').css('visibility', 'hidden');
+            });
+            $('#no').on('click', function () {
+                $('.team-status-container').css('visibility', 'hidden');
+                $('.team-status-div').css('visibility', 'hidden');
+            });
+            $('#yes').on('click', function () {
+                $.ajax({
+                    method: "POST",
+
+                    url: " app.php/admin/deleteCoache/" + coache,
+                })
+                    .done(function( msg ) {
+                        window.location.href = "app.php/admin/youthTeams";
+
+                    });
+            });
+        });
+
+
+        $(".coacheFName").inputmask("Regex", {
+            regex:'[А-Я][а-я]+' ,
+            alias: "datetime",
+            clearIncomplete: true
+        });
+
+        $('#send-info').on('click', function () {
+            var name = $('.name').val();
+            var fName = $('.fName').val();
+            var position = $('#position').val();
+            var phone = $('.phone').val();
+
+            $('#position').val(0);
+            $('.name').val('');
+            $('.fName').val('');
+            $('.phone').val('');
+
+            $.ajax({
+                method: "POST",
+                data: {"appbundle_users[name]": name, "appbundle_users[fName]": fName, "position": position, "appbundle_players[phone]": phone},
+                url: "{{ path('youthTeam',{id : teamId}) }}",
+            })
+                .done(function( msg ) {
+                    console.log(msg);
+                    console.log(name);console.log(fName);console.log(position);console.log(phone);
+
+                });
+        });
+
+        $('#send-info-coache').on('click', function () {
+            var name = $('.coacheName').val();
+            var fName = $('.coacheFName').val();
+            var coachePosition = $('#coachePosition').val();
+            var phone = $('.coachePhone').val();
+            console.log(name);console.log(fName);console.log(coachePosition);console.log(phone);
+
+            $.ajax({
+                method: "POST",
+                data: {"appbundle_users[name]": name, "appbundle_users[fName]": fName, "position": coachePosition, "appbundle_coaches[phone]": phone},
+                url: "{{ path('youthTeam',{id : teamId}) }}",
+            })
+                .done(function( msg ) {
+
+
+                    if (msg = 2) {
+                        $('#coachePosition').val(0);
+                        $('.name').val('');
+                        $('.fName').val('');
+                        $('.phone').val('');
+                    }else if (msg = 1){
+                        $('.phone').val('');
+                    }else if(msg = 0){
+                        $('#position').val(0);
+                    }else{
+
+                    }
+
+                });
+        });
+    </script>
+{% endblock %}

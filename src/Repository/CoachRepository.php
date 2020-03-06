@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Coach;
+use App\Entity\Player;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -27,6 +28,15 @@ class CoachRepository extends ServiceEntityRepository
             $teamOfCoach = $coach->getYouthTeam();
         }
         return $teamOfCoach;
+    }
+    public function getTopPlayersFromCoachTeam(PlayerRepository $playerRepository, Coach $coach){
+        if($coach->getTeam() != null){
+            $topPlayers =  $playerRepository->getTopPlayers($coach->getTeam()->getId());
+        }else    {
+            $topPlayers =  $playerRepository->getTopYouthPlayersFromCurrentTeam($coach->getYouthTeam()->getId());
+
+        }
+        return $topPlayers;
     }
 
     // /**

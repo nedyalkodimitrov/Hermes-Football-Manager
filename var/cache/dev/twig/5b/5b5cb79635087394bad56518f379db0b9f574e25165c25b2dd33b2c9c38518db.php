@@ -125,9 +125,9 @@ class __TwigTemplate_ecf1505a8a8d9cc8bb6a9c66760719bef0998ab529ab7aaf2375f5e0e88
         echo "\" alt=\"\" class=\"coache_image \"></label><br>
                <h1 >";
         // line 33
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoache"]) || array_key_exists("bigCoache", $context) ? $context["bigCoache"] : (function () { throw new RuntimeError('Variable "bigCoache" does not exist.', 33, $this->source); })()), "UserId", [], "any", false, false, false, 33), "Name", [], "any", false, false, false, 33), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoache"]) || array_key_exists("bigCoache", $context) ? $context["bigCoache"] : (function () { throw new RuntimeError('Variable "bigCoache" does not exist.', 33, $this->source); })()), "User", [], "any", false, false, false, 33), "Name", [], "any", false, false, false, 33), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoache"]) || array_key_exists("bigCoache", $context) ? $context["bigCoache"] : (function () { throw new RuntimeError('Variable "bigCoache" does not exist.', 33, $this->source); })()), "UserId", [], "any", false, false, false, 33), "FName", [], "any", false, false, false, 33), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoache"]) || array_key_exists("bigCoache", $context) ? $context["bigCoache"] : (function () { throw new RuntimeError('Variable "bigCoache" does not exist.', 33, $this->source); })()), "User", [], "any", false, false, false, 33), "FName", [], "any", false, false, false, 33), "html", null, true);
         echo " </h1><br>
                ";
         // line 34
@@ -291,7 +291,7 @@ class __TwigTemplate_ecf1505a8a8d9cc8bb6a9c66760719bef0998ab529ab7aaf2375f5e0e88
        <div class=\"container row col-4 trainig-program  \">
            <div class=\"col-12 justify-content-center text-center\">
                <img src=\"{{asset(\"images/\" ~ bigCoache.Image)}}\" alt=\"\" class=\"coache_image \"></label><br>
-               <h1 >{{ bigCoache.UserId.Name }} {{ bigCoache.UserId.FName}} </h1><br>
+               <h1 >{{ bigCoache.User.Name }} {{ bigCoache.User.FName}} </h1><br>
                {% for schedules in schedule %}
                    {% if schedules.date == \"now\"|date()|trans %}
                        <p>schedules.date</p>

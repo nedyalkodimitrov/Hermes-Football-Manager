@@ -19,6 +19,22 @@ class DivisionRepository extends ServiceEntityRepository
         parent::__construct($registry, Division::class);
     }
 
+    public function getTopDivision()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM division d
+        INNER JOIN team t 
+        ORDER BY count(t.division_id  ) ASC
+        LIMIT 3 ;
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     // /**
     //  * @return Division[] Returns an array of Division objects
     //  */

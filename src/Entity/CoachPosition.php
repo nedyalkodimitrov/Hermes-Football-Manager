@@ -67,6 +67,10 @@ class CoachPosition
         $this->coaches = $coaches;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
 
 
 }

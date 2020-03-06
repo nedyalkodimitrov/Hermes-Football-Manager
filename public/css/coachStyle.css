@@ -24,3 +24,15 @@ body {
 }
 
 
+.player-container{
+    border: none;
+}
+.player-img
+{
+    bottom: 21%;
+}
+
+.player-container:hover {
+
+}
+

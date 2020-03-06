@@ -66,13 +66,22 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "nav"));
 
         // line 3
-        echo "     <a class=\"nav-item nav-link   ml-2\" href=\"";
+        echo "     <a class=\"nav-item nav-link ml-2\" href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminHomeAction");
         echo "\">Начална страница </a>
-     <a class=\"nav-item nav-link current-item ml-2 \" href=\"";
+     <a class=\"nav-item nav-link ml-2 \" href=\"";
         // line 4
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("manTeam");
+        echo "\">Мъжки отбор</a>
+     <a class=\"nav-item nav-link ml-2 current-item\" href=\"";
+        // line 5
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
         echo "\">Юнушестки отбори</a>
+     <a class=\"nav-item nav-link ml-2 \" href=\"";
+        // line 6
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
+        echo "\">Програма</a>
+
 
  ";
         
@@ -83,7 +92,7 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
 
     }
 
-    // line 8
+    // line 11
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -93,68 +102,68 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 9
+        // line 12
         echo "    <div class=\"container justify-content-center mx-auto text-center row\">
         <div class=\"col-12 row justify-content-center p-3 justify-content-lg-between\">
         ";
-        // line 11
-        if ((((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 11, $this->source); })()) == null) || ((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 11, $this->source); })()) == ""))) {
-            // line 12
+        // line 14
+        if ((((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 14, $this->source); })()) == null) || ((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 14, $this->source); })()) == ""))) {
+            // line 15
             echo "
 
         ";
         } else {
-            // line 15
+            // line 18
             echo "
             ";
-            // line 16
+            // line 19
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 16, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["youthTeams"]) || array_key_exists("youthTeams", $context) ? $context["youthTeams"] : (function () { throw new RuntimeError('Variable "youthTeams" does not exist.', 19, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["youthTeam"]) {
-                // line 17
+                // line 20
                 echo "
                     <div class=\"col-lg-6 col-sm-9 col-md-9 mt-3 justify-content-center youthTeamCard-wrap row \">
                         <div class=\"col-11  youthTeamCard-container\">
                             <a href=\"";
-                // line 20
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeam", ["id" => twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Id", [], "any", false, false, false, 20)]), "html", null, true);
+                // line 23
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeam", ["id" => twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Id", [], "any", false, false, false, 23)]), "html", null, true);
                 echo "\">
                                     <img src=\"";
-                // line 21
+                // line 24
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/footballWall.jpg"), "html", null, true);
                 echo "\" class=\"youthTeamCard-image\" alt=\"\">
                                 <div class=\"youthTeamCard-textInformation\">
                                     <h2 class=\"youthTeam-text\">";
-                // line 23
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Name", [], "any", false, false, false, 23), "html", null, true);
+                // line 26
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Name", [], "any", false, false, false, 26), "html", null, true);
                 echo "</h2>
                                     <h5 class=\"trainer_info\">
                                         Треньори:
                                         ";
-                // line 26
-                if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Coaches", [], "any", false, false, false, 26)) == 0)) {
-                    // line 27
+                // line 29
+                if ((twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Coaches", [], "any", false, false, false, 29)) == 0)) {
+                    // line 30
                     echo "                                            Няма
                                         ";
                 } else {
-                    // line 29
+                    // line 32
                     echo "                                            ";
-                    echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Coaches", [], "any", false, false, false, 29)), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Coaches", [], "any", false, false, false, 32)), "html", null, true);
                     echo "
 
                                         ";
                 }
-                // line 32
+                // line 35
                 echo "                                    </h5>
                                     <h5 class=\"player_info\">Играчи: ";
-                // line 33
-                echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Players", [], "any", false, false, false, 33)), "html", null, true);
+                // line 36
+                echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Players", [], "any", false, false, false, 36)), "html", null, true);
                 echo "</h5>
                                 </div>
                             </a>
                             <span><i class=\"fas fa-times country-fa-times youthTeam-delete\" id=\"";
-                // line 36
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Id", [], "any", false, false, false, 36), "html", null, true);
+                // line 39
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["youthTeam"], "Id", [], "any", false, false, false, 39), "html", null, true);
                 echo "\"></i></span>
                         </div>
                     </div>
@@ -165,22 +174,22 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['youthTeam'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 42
+            // line 45
             echo "
 
         ";
         }
-        // line 48
+        // line 51
         echo "
 ";
-        // line 51
+        // line 54
         echo "        </div>
     </div>
 
     <div class=\"add-team-circle-container row \">
         <div class=\"add-team-circle\" id=\"player- \">
             <img src=\"";
-        // line 56
+        // line 59
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/plus .png"), "html", null, true);
         echo "\" alt=\"\" class=\"add-team\">
 
@@ -204,24 +213,24 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
                     <select class=\"form-control select bg-gray col-sm-12 \" id=\"division\" >
                         <option value=\"0\" selected=\"selected\" disabled=\"disabled\" class=\"bg-gray\">Защо няма да може да доидете </option>
                         ";
-        // line 77
+        // line 80
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["divisions"]) || array_key_exists("divisions", $context) ? $context["divisions"] : (function () { throw new RuntimeError('Variable "divisions" does not exist.', 77, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["divisions"]) || array_key_exists("divisions", $context) ? $context["divisions"] : (function () { throw new RuntimeError('Variable "divisions" does not exist.', 80, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["division"]) {
-            // line 78
+            // line 81
             echo "                            <option value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Id", [], "any", false, false, false, 78), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Id", [], "any", false, false, false, 81), "html", null, true);
             echo "\" selected=\"selected\"  class=\"bg-gray\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Name", [], "any", false, false, false, 78), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Name", [], "any", false, false, false, 81), "html", null, true);
             echo " (";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Age", [], "any", false, false, false, 78), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["division"], "Age", [], "any", false, false, false, 81), "html", null, true);
             echo ") </option>
                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['division'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 80
+        // line 83
         echo "                    </select>
                 </div>
 
@@ -271,14 +280,14 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
                     method: \"POST\",
                     data: {\"name\": name, \"division\": division},
                     url: \"";
-        // line 128
+        // line 131
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("createYouthTeam");
         echo "\",
                 })
                     .done(function( msg ) {
                         console.log(msg);
                         window.location.href = \"";
-        // line 132
+        // line 135
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
         echo "\";
                     });
@@ -297,7 +306,7 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
                 .done(function( msg ) {
 
                     window.location.href = \"";
-        // line 148
+        // line 151
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
         echo "\";
                 });
@@ -329,15 +338,18 @@ class __TwigTemplate_e21305a1f458eb77376c677c35b10dbec3d53c5c1db8bc2f06f53da48e6
 
     public function getDebugInfo()
     {
-        return array (  301 => 148,  282 => 132,  275 => 128,  225 => 80,  212 => 78,  208 => 77,  184 => 56,  177 => 51,  174 => 48,  169 => 42,  157 => 36,  151 => 33,  148 => 32,  141 => 29,  137 => 27,  135 => 26,  129 => 23,  124 => 21,  120 => 20,  115 => 17,  111 => 16,  108 => 15,  103 => 12,  101 => 11,  97 => 9,  87 => 8,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  310 => 151,  291 => 135,  284 => 131,  234 => 83,  221 => 81,  217 => 80,  193 => 59,  186 => 54,  183 => 51,  178 => 45,  166 => 39,  160 => 36,  157 => 35,  150 => 32,  146 => 30,  144 => 29,  138 => 26,  133 => 24,  129 => 23,  124 => 20,  120 => 19,  117 => 18,  112 => 15,  110 => 14,  106 => 12,  96 => 11,  82 => 6,  78 => 5,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'admin/base.html.twig' %}
  {% block nav %}
-     <a class=\"nav-item nav-link   ml-2\" href=\"{{ path(\"adminHomeAction\") }}\">Начална страница </a>
-     <a class=\"nav-item nav-link current-item ml-2 \" href=\"{{ path(\"youthTeams\") }}\">Юнушестки отбори</a>
+     <a class=\"nav-item nav-link ml-2\" href=\"{{ path(\"adminHomeAction\") }}\">Начална страница </a>
+     <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"manTeam\") }}\">Мъжки отбор</a>
+     <a class=\"nav-item nav-link ml-2 current-item\" href=\"{{ path(\"youthTeams\") }}\">Юнушестки отбори</a>
+     <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"youthTeams\") }}\">Програма</a>
+
 
  {% endblock  %}
 

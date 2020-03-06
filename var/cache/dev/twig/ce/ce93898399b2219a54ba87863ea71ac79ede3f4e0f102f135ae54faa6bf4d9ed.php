@@ -75,41 +75,45 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
         // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/admin/adminStyle.css"), "html", null, true);
         echo "\">
+    <link rel=\"stylesheet\" href=\"  ";
+        // line 16
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/typography.css"), "html", null, true);
+        echo "\">
     <!-- Bootstrap tooltips -->
     <script type=\"text/javascript\" src=\"";
-        // line 17
+        // line 18
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("mdb/js/jquery-3.3.1.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 18
+        // line 19
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("easy-pie-chart-master/dist/jquery.easypiechart.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/playerScore.js"), "html", null, true);
         echo "\"></script>
 
     <script type=\"text/javascript\" src=\"";
-        // line 21
+        // line 22
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("mdb/js/mdb.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("mdb/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js\"></script>
     ";
-        // line 25
-        $this->displayBlock('stylesheets', $context, $blocks);
         // line 26
+        $this->displayBlock('stylesheets', $context, $blocks);
+        // line 27
         echo "</head>
 <body>
 <div class=\"p-0 nav-constainer \">
     <nav class=\"navbar navbar-expand-lg navbar-light \">
         <a class=\"navbar-brand\" href=\"#\"><img src=\"";
-        // line 30
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/fm.png"), "html", null, true);
+        // line 31
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/HERMES-ICON.jpg"), "html", null, true);
         echo "\" alt=\"\" class=\"logo\"></a>
         <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon\"></span>
@@ -118,28 +122,28 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
         <div class=\"collapse navbar-collapse justify-content-between\" id=\"navbarNavAltMarkup\">
             <div class=\"navbar-nav mr-5\">
                 ";
-        // line 37
+        // line 38
         $this->displayBlock('nav', $context, $blocks);
-        // line 44
+        // line 45
         echo "
             </div>
             <div class=\" \">
                 ";
-        // line 47
-        if ((((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 47, $this->source); })()) == "") || ((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 47, $this->source); })()) == null))) {
-            // line 48
+        // line 48
+        if ((((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 48, $this->source); })()) == "") || ((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 48, $this->source); })()) == null))) {
+            // line 49
             echo "                    <button class=\"settings-icon\"> <span class=\"mr-3\"><i class=\"fas fa-user\"></i></span></button>
                 ";
         } else {
-            // line 50
+            // line 51
             echo "                    <a href=\" ";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("player_settings");
             echo "\" class=\"profile_pic_a \"><img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 50, $this->source); })()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 51, $this->source); })()))), "html", null, true);
             echo "\" alt=\"\" class=\"user_profile_img\"></a>
                 ";
         }
-        // line 52
+        // line 53
         echo "
             </div>
         </div>
@@ -147,9 +151,9 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 </div>
 
 ";
-        // line 58
-        $this->displayBlock('body', $context, $blocks);
         // line 59
+        $this->displayBlock('body', $context, $blocks);
+        // line 60
         echo "
 </body>
 </html>";
@@ -161,7 +165,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 
     }
 
-    // line 25
+    // line 26
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -179,7 +183,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 
     }
 
-    // line 37
+    // line 38
     public function block_nav($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -189,20 +193,20 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "nav"));
 
-        // line 38
+        // line 39
         echo "                    <a class=\"nav-item nav-link  current-item ml-2\" href=\"";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminHomeAction");
         echo "\">Начална страница </a>
                     <a class=\"nav-item nav-link ml-2 \" href=\"";
-        // line 39
+        // line 40
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("manTeam");
         echo "\">Мъжки отбор</a>
                     <a class=\"nav-item nav-link ml-2 \" href=\"";
-        // line 40
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
-        echo "\">Юнушестки отбори</a>
-                    <a class=\"nav-item nav-link ml-2 \" href=\"";
         // line 41
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
+        echo "\">Юношески отбори</a>
+                    <a class=\"nav-item nav-link ml-2 \" href=\"";
+        // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("youthTeams");
         echo "\">Програма</a>
 
@@ -215,7 +219,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 
     }
 
-    // line 58
+    // line 59
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -245,7 +249,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 
     public function getDebugInfo()
     {
-        return array (  219 => 58,  206 => 41,  202 => 40,  198 => 39,  193 => 38,  183 => 37,  165 => 25,  153 => 59,  151 => 58,  143 => 52,  135 => 50,  131 => 48,  129 => 47,  124 => 44,  122 => 37,  112 => 30,  106 => 26,  104 => 25,  98 => 22,  94 => 21,  89 => 19,  85 => 18,  81 => 17,  76 => 15,  72 => 14,  68 => 13,  64 => 12,  59 => 11,  55 => 8,  46 => 1,);
+        return array (  223 => 59,  210 => 42,  206 => 41,  202 => 40,  197 => 39,  187 => 38,  169 => 26,  157 => 60,  155 => 59,  147 => 53,  139 => 51,  135 => 49,  133 => 48,  128 => 45,  126 => 38,  116 => 31,  110 => 27,  108 => 26,  102 => 23,  98 => 22,  93 => 20,  89 => 19,  85 => 18,  80 => 16,  76 => 15,  72 => 14,  68 => 13,  64 => 12,  59 => 11,  55 => 8,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -265,6 +269,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/particles/main-information-charts.css\") }}\">
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/coach/particles/addingPlayerBoxesStyle.css\") }}\">
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/admin/adminStyle.css\") }}\">
+    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/typography.css\") }}\">
     <!-- Bootstrap tooltips -->
     <script type=\"text/javascript\" src=\"{{  asset(\"mdb/js/jquery-3.3.1.min.js\")}}\"></script>
     <script type=\"text/javascript\" src=\"{{  asset(\"easy-pie-chart-master/dist/jquery.easypiechart.js\")}}\"></script>
@@ -279,7 +284,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
 <body>
 <div class=\"p-0 nav-constainer \">
     <nav class=\"navbar navbar-expand-lg navbar-light \">
-        <a class=\"navbar-brand\" href=\"#\"><img src=\"{{ asset(\"images/fm.png\") }}\" alt=\"\" class=\"logo\"></a>
+        <a class=\"navbar-brand\" href=\"#\"><img src=\"{{ asset(\"images/HERMES-ICON.jpg\") }}\" alt=\"\" class=\"logo\"></a>
         <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
             <span class=\"navbar-toggler-icon\"></span>
         </button>
@@ -289,7 +294,7 @@ class __TwigTemplate_16896706d524b69aa1a3979da06a444bfab60b37289f668194932528482
                 {% block nav %}
                     <a class=\"nav-item nav-link  current-item ml-2\" href=\"{{ path(\"adminHomeAction\") }}\">Начална страница </a>
                     <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"manTeam\") }}\">Мъжки отбор</a>
-                    <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"youthTeams\") }}\">Юнушестки отбори</a>
+                    <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"youthTeams\") }}\">Юношески отбори</a>
                     <a class=\"nav-item nav-link ml-2 \" href=\"{{ path(\"youthTeams\") }}\">Програма</a>
 
                 {% endblock  %}

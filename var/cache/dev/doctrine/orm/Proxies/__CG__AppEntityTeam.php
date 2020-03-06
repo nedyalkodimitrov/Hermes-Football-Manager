@@ -108,10 +108,10 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', 'name', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'players', 'image', 'city', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', 'name', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'players', 'image', 'city', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToDivision', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromDivision'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'players', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'players', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToDivision', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromDivision'];
     }
 
     /**
@@ -583,6 +583,94 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestFromPlayer', [$requestFromPlayer]);
 
         parent::setRequestFromPlayer($requestFromPlayer);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestFromCoach()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestFromCoach', []);
+
+        return parent::getRequestFromCoach();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestFromCoach($requestFromCoach): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestFromCoach', [$requestFromCoach]);
+
+        parent::setRequestFromCoach($requestFromCoach);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestToCoach()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestToCoach', []);
+
+        return parent::getRequestToCoach();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestToCoach($requestToCoach): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestToCoach', [$requestToCoach]);
+
+        parent::setRequestToCoach($requestToCoach);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestToDivision()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestToDivision', []);
+
+        return parent::getRequestToDivision();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestToDivision($requestToDivision): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestToDivision', [$requestToDivision]);
+
+        parent::setRequestToDivision($requestToDivision);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestFromDivision()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestFromDivision', []);
+
+        return parent::getRequestFromDivision();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestFromDivision($requestFromDivision): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestFromDivision', [$requestFromDivision]);
+
+        parent::setRequestFromDivision($requestFromDivision);
     }
 
     /**

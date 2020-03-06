@@ -36,7 +36,21 @@ class Division
     /**
      * @ORM\OneToMany(targetEntity="Team", mappedBy="division")
      */
-    private $teams;
+    public $teams;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Team\TeamToDivisionRequest", mappedBy="division")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestFromTeam;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Division\DivisionToTeamRequest", mappedBy="division")
+     * @ORM\JoinColumn(name="team", referencedColumnName="id")
+     */
+    private  $requestToTeam;
 
 //    /**
 //     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
@@ -137,6 +151,40 @@ class Division
     {
         $this->image = $image;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestFromTeam()
+    {
+        return $this->requestFromTeam;
+    }
+
+    /**
+     * @param mixed $requestFromTeam
+     */
+    public function setRequestFromTeam($requestFromTeam): void
+    {
+        $this->requestFromTeam = $requestFromTeam;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestToTeam()
+    {
+        return $this->requestToTeam;
+    }
+
+    /**
+     * @param mixed $requestToTeam
+     */
+    public function setRequestToTeam($requestToTeam): void
+    {
+        $this->requestToTeam = $requestToTeam;
+    }
+
+
 
     public function __toString()
     {

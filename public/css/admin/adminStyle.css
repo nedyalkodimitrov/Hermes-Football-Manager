@@ -1,9 +1,19 @@
 @import url("../typography.css");
+nav {
+    padding: 0;
+}
 
 .player-container{
     position: relative;
     box-sizing: border-box;
 }
+.div-charts{
+    border: 2px solid rgba(201, 119, 13, 0.8);
+    box-shadow: 1px 1px 5px 1px rgba(201, 119, 13, 0.4);
+    border-radius: 15px;
+    padding: 1rem;
+}
+
 .status-red,
 .status-green
 {

@@ -36,7 +36,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Proxy\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = ['email' => NULL, 'name' => NULL, 'fName' => NULL, 'phone' => NULL, 'city' => NULL, 'player' => NULL, 'waterGlasses' => NULL];
+    public static $lazyPropertiesDefaults = ['email' => NULL, 'name' => NULL, 'fName' => NULL, 'phone' => NULL, 'city' => NULL, 'player' => NULL, 'waterGlasses' => NULL, 'requestFromUser' => NULL, 'requestToUser' => NULL];
 
 
 
@@ -46,7 +46,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __construct($initializer = null, $cloner = null)
     {
-        unset($this->email, $this->name, $this->fName, $this->phone, $this->city, $this->player, $this->waterGlasses);
+        unset($this->email, $this->name, $this->fName, $this->phone, $this->city, $this->player, $this->waterGlasses, $this->requestFromUser, $this->requestToUser);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
@@ -108,7 +108,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'password', 'name', 'fName', 'phone', 'city', '' . "\0" . 'App\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\User' . "\0" . 'coach', '' . "\0" . 'App\\Entity\\User' . "\0" . 'admin', 'player', 'waterGlasses', '' . "\0" . 'App\\Entity\\User' . "\0" . 'treatmentInformation'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', 'email', '' . "\0" . 'App\\Entity\\User' . "\0" . 'password', 'name', 'fName', 'phone', 'city', '' . "\0" . 'App\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\User' . "\0" . 'coach', '' . "\0" . 'App\\Entity\\User' . "\0" . 'admin', 'player', 'waterGlasses', 'requestFromUser', 'requestToUser', '' . "\0" . 'App\\Entity\\User' . "\0" . 'treatmentInformation'];
         }
 
         return ['__isInitialized__', '' . "\0" . 'App\\Entity\\User' . "\0" . 'id', '' . "\0" . 'App\\Entity\\User' . "\0" . 'password', '' . "\0" . 'App\\Entity\\User' . "\0" . 'roles', '' . "\0" . 'App\\Entity\\User' . "\0" . 'coach', '' . "\0" . 'App\\Entity\\User' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\User' . "\0" . 'treatmentInformation'];
@@ -133,7 +133,7 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
                 }
             };
 
-            unset($this->email, $this->name, $this->fName, $this->phone, $this->city, $this->player, $this->waterGlasses);
+            unset($this->email, $this->name, $this->fName, $this->phone, $this->city, $this->player, $this->waterGlasses, $this->requestFromUser, $this->requestToUser);
         }
     }
 
@@ -506,6 +506,50 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWaterGlasses', [$waterGlasses]);
 
         parent::setWaterGlasses($waterGlasses);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestFromUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestFromUser', []);
+
+        return parent::getRequestFromUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestFromUser($requestFromUser): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestFromUser', [$requestFromUser]);
+
+        parent::setRequestFromUser($requestFromUser);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRequestToUser()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRequestToUser', []);
+
+        return parent::getRequestToUser();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRequestToUser($requestToUser): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRequestToUser', [$requestToUser]);
+
+        parent::setRequestToUser($requestToUser);
     }
 
     /**

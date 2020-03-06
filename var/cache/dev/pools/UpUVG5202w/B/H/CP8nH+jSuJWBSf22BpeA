@@ -14,7 +14,7 @@ return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
                 'team',
             ],
             'targetEntity' => [
-                'App\\Entity\\Requests\\PlayerToTeamRequest',
+                'App\\Entity\\Requests\\Player\\PlayerToTeamRequest',
             ],
             'name' => [
                 1 => 'team',

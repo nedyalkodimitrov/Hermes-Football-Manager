@@ -2,11 +2,12 @@
     box-sizing: border-box;
     max-width: 1900px;
     margin: auto;
-    border: 2px solid #dddfe2;
-    /*box-shadow: 1px 1px 1px 1px rgba(89, 88, 89, 0.2);*/
+    border: 2px solid #b8babd;
+    box-shadow: 1px 1px 10px 0px rgba(24, 23, 24, 0.38);
     border-radius: 15px;
     height: auto;
     align-items: center;
+
 }
 .chart-container, .min-chart{
     display: flex;

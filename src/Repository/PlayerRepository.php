@@ -41,6 +41,45 @@ class PlayerRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getTopPlayers($teamId)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.stats ', 's')
+            ->andWhere('p.team = :team')
+            ->setParameter('team', $teamId)
+            ->orderBy('s.statusFromCoaches', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getTopYouthPlayers($teamId)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.stats ', 's')
+            ->leftJoin('p.youthTeams', 't')
+            ->andWhere('t.motherTeam = :team')
+            ->setParameter('team', $teamId)
+            ->orderBy('s.statusFromCoaches', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getTopYouthPlayersFromCurrentTeam($teamId)
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.stats ', 's')
+            ->andWhere('p.youthTeams= :team')
+            ->setParameter('team', $teamId)
+            ->orderBy('s.statusFromCoaches', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     /*
     public function findOneBySomeField($value): ?Player

@@ -65,9 +65,21 @@ class Coach
     private $teamPosition;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\CoachToPlayerRequest", mappedBy="coach")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Coach\CoachToPlayerRequest", mappedBy="coach")
      */
     private $requestsToPlayers;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Coach\CoachToTeamRequest", mappedBy="coach")
+     */
+    private $requestsToTeams;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Team\TeamToCoachRequest", mappedBy="coach")
+     */
+    private $requestsFromTeams;
+
+
 
     /**
      * @var string
