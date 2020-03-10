@@ -1,0 +1,36 @@
+
+
+.add-team-circle-container, .add-matches-circle-container, .add-division-circle-container, .add-country-circle-container{
+    position: fixed;
+    top: 90%;
+    right: 5%;
+    background-color: #ff7b7b;
+    padding: 2.3rem;
+    border: 1px solid red;
+    border-radius: 100%;
+    transition: 0.3s ease all;
+    z-index:300000;
+}
+
+.add-team-circle-container:hover, .add-matches-circle-container:hover, .add-division-circle-container:hover, .add-country-circle-container:hover {
+    background-color: #ff3a35;
+}
+
+.add-team-circle,.add-matches-circle, .add-division-circle, .add-country-circle {
+    position: absolute;
+    top: 0;left: 0;bottom: 0;right: 0;
+    pointer-events: fill;
+    cursor: pointer;
+}
+
+
+.add-team, .add-matches, .add-division, .add-country  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    border-radius: 100%;
+    width: 2.7rem;
+}
+

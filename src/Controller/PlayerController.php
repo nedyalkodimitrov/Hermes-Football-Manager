@@ -167,6 +167,7 @@ class PlayerController extends AbstractController
                 "image" => $currentPlayer->getImage(),
                 'profile_img' =>$currentPlayer->getImage(),
                 'player' => $currentPlayer,
+                'form' => $formPlayer->createView(),
                 'team' => $this->playerPropService->getTeam($currentPlayer),
                 'playerStats' => $playerStats,
                 'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
@@ -244,6 +245,15 @@ class PlayerController extends AbstractController
         $em->remove($stat);
         $em->flush();
         return 1;
+    }
+
+    /**
+     * @Route("/player/requests", name="playerRequestes")
+     */
+    public function PlayerRequests()
+    {
+        $requests = $this->getUser()->getrequestToUser();
+        return $this->render('player/requests.html.twig', array("requests" => $requests, "playerName" => $this->getUser()->getName(), "profile_img" => " "));
     }
 
     /**

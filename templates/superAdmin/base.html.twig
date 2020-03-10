@@ -8,7 +8,10 @@
     <link href="{{ asset("mdb/css/mdb.min.css") }}" rel="stylesheet">
     <link rel="stylesheet" href="  {{ asset("css/player/playerStyle.css") }}    ">
     <link rel="stylesheet" href="  {{ asset("css/coachStyle.css") }}    ">
+    <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}    ">
     <link rel="stylesheet" href="  {{ asset("css/particles/main-information-charts.css") }}    ">
+    <link href="{{ asset("css/particles/addCircle.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/superAdmin/style.css") }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     {% block style %}{% endblock %}
     <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
@@ -34,8 +37,8 @@
         <div class="navbar-nav mr-5">
             {% block nav %}
                 <a class="nav-item nav-link  current-item ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
-                <a class="nav-item nav-link ml-2 " href="{{ path("superAdminCountries") }}">Държави</a>
-                <a class="nav-item nav-link ml-2 " href="{{ path("superAdminDivisionsCountry") }}">Първенства</a>
+                <a class="nav-item nav-link ml-2 " href="{{ path("superAdminCountries") }}">Мачове</a>
+                <a class="nav-item nav-link ml-2 " href="{{ path("superAdminDivisionsCountry") }}">Мачове</a>
                 <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Отбори</a>
 
             {% endblock  %}

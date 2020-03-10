@@ -108,10 +108,10 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', 'name', 'country', 'teams', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam', 'image'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', 'name', 'country', 'teams', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'matches', 'image'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestFromTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'requestToTeam', '' . "\0" . 'App\\Entity\\Division' . "\0" . 'matches'];
     }
 
     /**
@@ -374,6 +374,28 @@ class Division extends \App\Entity\Division implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
 
         return parent::__toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMatches()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMatches', []);
+
+        return parent::getMatches();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMatches($matches): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMatches', [$matches]);
+
+        parent::setMatches($matches);
     }
 
 }

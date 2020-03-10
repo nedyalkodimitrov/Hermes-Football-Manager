@@ -379,4 +379,11 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    public function __toString()
+    {
+       return $this->name . ' '. $this->fName;
+    }
+
+
 }

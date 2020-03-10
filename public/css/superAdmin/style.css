@@ -1,0 +1,97 @@
+.country-container{
+
+    /*position: relative;*/
+    /*padding-top: 22%;*/
+
+    padding: 0.5rem;
+    border-radius: 15px;
+    margin: 0;
+    color: black;
+
+}
+
+.country-container:hover{
+    box-shadow: 1px 1px 10px 2px grey;
+}
+.country-container > a {
+
+}
+.country-container img {
+    margin: 0;
+    width: 100% ;
+}
+
+.country-container h1{
+    color: white;
+}
+.match-card{
+    border-radius: 15px;
+    transition: 0.3s all ease;
+}
+.match-card:hover{
+    box-shadow: 1px 1px 10px 2px grey;
+    border-radius: 15px;
+}
+
+.match-card img {
+    width: 100%;
+}
+
+.match-card h5, h6 {
+    color: black;
+}
+
+.match-card .information{
+    background-color: #046330;
+    border-radius: 15px;
+    color: white;
+}
+.color-black{
+    color: black;
+}
+.division-futures-holder:hover .division-futures-container{
+display: block;
+}
+
+.division-futures-container{
+
+    position: fixed;
+    top: 72%;
+    right: 5%;
+    z-index: 3000000;
+    background-color: #ff7b7b;
+    border-radius: 15px;
+
+}
+.rectangle {
+    position: absolute;
+    top: 100%;
+    right: 8%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    border-top: 20px solid #ff7b7b;
+}
+
+.division-futures{
+    margin: 1%;
+}
+.division-futures-button-holder{
+    margin: 8%;
+}
+.division-futures-button{
+    border: none;
+    outline-style: none;
+    outline-offset: unset;
+    background-color: #ff7b7b;
+    color:white;
+}
+
+.add-division-circle-container:hover + .division-futures-container{
+    display: block;
+}
+table{
+    border-radius: 15px;
+}

@@ -1,0 +1,30 @@
+{% extends 'player/playerBaseTemplate.html.twig' %}
+{% block body %}
+    <div class="table-container justify-content-center max-resolution col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">
+        <div class="table col-11  mh-25" id="teamLeadership-container ">
+            {% if requests|length != 0 %}
+                <table class="table-bordered col-12 "  style="margin-bottom: 0; padding:0">
+                    <tr class="row col-12 p-0 m-0 bg-success">
+                        <th class="col-1"></th>
+                        <th class="col-4 color-white">Ot</th>
+                        <th class="col-1 color-white">date</th>
+                    </tr>
+                    {% set rowNum = 1 %}
+                    {% for request in requests %}
+                        <tr class="teamTable row col-12 p-0 m-0">
+                            <th  class="col-1 justify-content-end"> {{ request.sender }}</th>
+                            <th class="col-4"> {{ request.date }}</th>
+
+                        </tr>
+
+                        {% set rowNum = rowNum + 1 %}
+                    {% else %}
+                        <li><em>Вие нямате отбор</em></li>
+                    {%  endfor %}
+                </table>
+            {% else %}
+                <h1>Вие нямате отбор</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

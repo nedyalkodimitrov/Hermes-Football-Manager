@@ -22,10 +22,14 @@
                                <label for="form_image" class="">    <img src="{{asset("images/user1.png")}}" alt="" class="profile-pic-changer m-2"></label>
 
                            {% else %}
-                               <img src="{{asset("images/" ~ image)}}" alt="" class="profile-pic-changer m-2">
+                               <label for="form_image" class=""><img src="{{asset("images/" ~ image)}}" alt="" class="profile-pic-changer m-2"></label>
                            {% endif %}
+{#                           <input type="file" id="form_image">#}
+                           {{ form_widget(form.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
+                           {{ form_row(form.save, {'attr' : {'class':'btn'}} ) }}
                            <h4> {{ playerName }}</h4>
                            <h6>{{ player.Position.Name }}</h6>
+
                        </div>
                        <div class=" col-lg-8 col-sm-12 col-12 mx-auto text-center  justify-content-center">
                            <div class="visiting-player-card-text-holder col-12">

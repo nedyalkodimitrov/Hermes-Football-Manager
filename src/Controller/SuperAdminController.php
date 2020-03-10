@@ -5,10 +5,15 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Entity\Country;
 use App\Entity\Division;
+use App\Entity\Match;
+use App\Entity\Matches;
+use App\Entity\MatchStats;
 use App\Entity\Team;
 use App\Entity\User;
 use App\Entity\YouthDivision;
+use App\Form\MatchesType;
 use App\Repository\DivisionRepository;
+use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,15 +69,23 @@ class SuperAdminController extends AbstractController
      * @Route("/superAdmin/teams/{id}" ,name  = "superAdminTeams")
      *
      */
-    public function Teams($id)
+    public function Teams($id, TeamRepository $teamRepository)
     {
-        $teams = $this->getDoctrine()->getRepository(Team::class)->findBy(["division" => strval($id)]);
+        $teams = $this->getDoctrine()->getRepository(Team::class)->findBy(["division" => strval($id)], ['name' => 'ASC']);
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         $division = $this->getDoctrine()->getRepository(Division::class)->find(strval($id));
+        $teamStanding = $teamRepository->getTeamByDivisionDesc($id);
+        $matches = $this->getDoctrine()->getRepository(Matches::class)->findBy(['division'=>intval($id)]);
+        $match = new Matches();
+        $matchForm = $this->createForm(MatchesType::class, $match)->createView();
         return $this->render('superAdmin/teams.html.twig', array(
             'division' => $division,
+            'hasTeam' => true,
             'teams' => $teams,
+            'matches' => $matches,
+            'standingTeams' => $teamStanding,
             'users' => count($users),
+            'matchForm' => $matchForm,
         ));
     }
 
@@ -227,6 +240,39 @@ class SuperAdminController extends AbstractController
         ));
     }
 
+
+    /**
+     * @Route("/superAdmin/createMatch" ,name  = "createMatch")
+     *
+     */
+    public function createMatch(TeamRepository $teamRepository, Request $request)
+    {
+        $match = new Matches();
+        $stats = new MatchStats();
+        $em = $this->getDoctrine()->getManager();
+        $homeTeamId = $request->request->get("homeTeam");
+        $awayTeamId = $request->request->get("awayTeam");
+        $date = $request->request->get("date");
+        $time = $request->request->get("time");
+
+        $homeTeam = $teamRepository->findBy(intval($homeTeamId));
+        $awayTeam = $teamRepository->findBy(intval($awayTeamId));
+
+        $match->setHomeTeam($homeTeam);
+        $match->setAwayTeam($awayTeam);
+        $match->setDate($date);
+        $match->setTime($time);
+
+        $em->persist($stats);
+        $em->flush();
+        $match->setMatchStats($stats);
+
+        echo "suxxel";
+        exit;
+
+
+
+    }
 
     public function PhoneCheker($phone)
     {

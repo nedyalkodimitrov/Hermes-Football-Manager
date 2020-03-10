@@ -149,6 +149,19 @@ class Team
      * @ORM\JoinColumn(name="team", referencedColumnName="id")
      */
     private  $requestToDivision;
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Matches", mappedBy="homeTeam")
+     * @ORM\JoinColumn(name="homeMatches", referencedColumnName="id")
+     */
+    public  $homeMatches;
+
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Matches", mappedBy="awayTeam")
+     * @ORM\JoinColumn(name="awayMatches", referencedColumnName="id")
+     */
+    public  $awayMatches;
 
     /**
      * One Product has One Shipment.

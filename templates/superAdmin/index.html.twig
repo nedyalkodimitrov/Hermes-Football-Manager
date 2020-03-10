@@ -1,6 +1,7 @@
 {% extends 'superAdmin/base.html.twig' %}
 {% block style %}
     <link rel="stylesheet" href="  {{ asset("css/admin/topPlayerCard.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}">
 {% endblock %}
 {% block body %}
     <div id="container ">
@@ -58,7 +59,7 @@
                         <div class="col-12 player-container top-player-card-container" id="player-{{  foo }} ">
 
                             <div class="top-player-image-container">
-                                {% if divisions.image == null or divisions.Image == ' ' %}
+                                {% if divisions.image == null or divisions.image == ' ' %}
                                     <img src="{{asset('images/user-image.png')}}" alt="" class="top-player-card-img">
                                 {% else %}
                                     <img src="{{asset('images/'~ divisions.image )}}" alt="" class="top-player-card-img">

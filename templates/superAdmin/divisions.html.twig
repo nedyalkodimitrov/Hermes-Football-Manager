@@ -4,20 +4,17 @@
         <div class="col-lg-11 col-md-7 col-sm-11 col-10   row pb-3">
             {% for division in divisions%}
                 <div class="col-lg-4 col-sm-11 row m-0 ">
-                    <div class="col-lg-12  col-sm-9 col-md-6 country-container text-center mt-3 mx-auto">
-                        <a href="{{ path("superAdminDivision", {id: division.id}) }}" class="m-0 ">
+                    <div class="col-lg-12  col-sm-9 col-md-6 country-container justify-content-around text-center mt-3 mx-auto">
+                        <a href="{{ path("superAdminTeams", {id: division.Id}) }}" class="m-0 ">
                             <img src="{{asset("images/" ~ division.Image)}}" alt="" class="country-img m-0 mt-4">
-                            <h1 class="country-text mt-1 ml-2 text-left mb-2 mt-3">{{ division.Name }}</h1>
+                            <h1 class="country-text mt-1 ml-2 text-left mb-2 mt-3">{{ division.name }}</h1>
                         </a>
-                        <span><i class="fas fa-times country-fa-times"></i></span>
                     </div>
                 </div>
-
             {% endfor %}
-            <div class="col-lg-4 col-sm-12 col-md-12 ml-lg-2 pl-0 justify-content-center player_portfolio row ">
-                <div class="col-12 player-container add-player justify-content-center text-center" id="player- ">
-
-                    <img src="{{ asset('images/plus .png') }}" alt="" class="add-player-img">
+            <div class="add-division-circle-container  row " id="add-player-container">
+                <div class="add-division-circle" id="player- ">
+                    <img src="{{ asset('images/plus .png') }}" alt="" class="add-division " >
 
                 </div>
             </div>

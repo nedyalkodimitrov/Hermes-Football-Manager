@@ -376,6 +376,9 @@
     <service id="App\Form\InjuredUsersType" class="App\Form\InjuredUsersType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\MatchesType" class="App\Form\MatchesType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\PlayerStatsType" class="App\Form\PlayerStatsType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -409,6 +412,18 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\InjuredUsersRepository" class="App\Repository\InjuredUsersRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MatchRepository" class="App\Repository\MatchRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MatchStatsRepository" class="App\Repository\MatchStatsRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\MatchesRepository" class="App\Repository\MatchesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -924,6 +939,7 @@
       <argument type="collection">
         <argument>App\Form\CoachType</argument>
         <argument>App\Form\InjuredUsersType</argument>
+        <argument>App\Form\MatchesType</argument>
         <argument>App\Form\PlayerStatsType</argument>
         <argument>App\Form\PlayerType</argument>
         <argument>App\Form\ScheduleType</argument>
@@ -1268,7 +1284,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.xWGfZZZ"/>
+      <argument type="service" id=".service_locator.1JpAar."/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -3603,7 +3619,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.ySrA4h."/>
+      <argument type="service" id=".service_locator.K626FgA"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4965,6 +4981,8 @@
     <service id=".abstract.instanceof.App\Form\CoachType" class="App\Form\CoachType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InjuredUsersType" class="App\Form\InjuredUsersType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\InjuredUsersType" class="App\Form\InjuredUsersType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MatchesType" class="App\Form\MatchesType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MatchesType" class="App\Form\MatchesType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PlayerStatsType" class="App\Form\PlayerStatsType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\PlayerStatsType" class="App\Form\PlayerStatsType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\PlayerType" class="App\Form\PlayerType" autowire="true" abstract="true"/>
@@ -4985,6 +5003,12 @@
     <service id=".abstract.instanceof.App\Repository\DivisionRepository" class="App\Repository\DivisionRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\InjuredUsersRepository" class="App\Repository\InjuredUsersRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\InjuredUsersRepository" class="App\Repository\InjuredUsersRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MatchRepository" class="App\Repository\MatchRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MatchRepository" class="App\Repository\MatchRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MatchStatsRepository" class="App\Repository\MatchStatsRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MatchStatsRepository" class="App\Repository\MatchStatsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MatchesRepository" class="App\Repository\MatchesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MatchesRepository" class="App\Repository\MatchesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PlayerProperties\CupRepository" class="App\Repository\PlayerProperties\CupRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PlayerProperties\CupRepository" class="App\Repository\PlayerProperties\CupRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PlayerProperties\PlayerStatsRepository" class="App\Repository\PlayerProperties\PlayerStatsRepository" autowire="true" abstract="true"/>
@@ -5228,6 +5252,13 @@
         <argument key="youthTeamRepository" type="service" id="App\Repository\YouthTeamRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.uaSCNEy" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
+        <argument key="teamRepository" type="service" id="App\Repository\TeamRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.XMrSp6S" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5297,13 +5328,13 @@
         <argument key="authUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.xxy0a0." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.8.SLfk9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\AdminController::GetCoachesByName" type="service" id=".service_locator.X_2bD3Y"/>
         <argument key="App\Controller\AdminController::GetPlayersByName" type="service" id=".service_locator.3V9w6cg"/>
-        <argument key="App\Controller\CoachController::CoacheViewAction" type="service" id=".service_locator.tG3aThG"/>
+        <argument key="App\Controller\CoachController::CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
         <argument key="App\Controller\CoachController::TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
         <argument key="App\Controller\CoachController::removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController::sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
@@ -5318,12 +5349,14 @@
         <argument key="App\Controller\SuperAdminController::DeleteDivision" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::DeleteTeam" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
+        <argument key="App\Controller\SuperAdminController::Teams" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController::TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
+        <argument key="App\Controller\SuperAdminController::createMatch" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController::signInView" type="service" id=".service_locator.fIS0gvA"/>
         <argument key="App\Controller\AdminController:CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\AdminController:GetCoachesByName" type="service" id=".service_locator.X_2bD3Y"/>
         <argument key="App\Controller\AdminController:GetPlayersByName" type="service" id=".service_locator.3V9w6cg"/>
-        <argument key="App\Controller\CoachController:CoacheViewAction" type="service" id=".service_locator.tG3aThG"/>
+        <argument key="App\Controller\CoachController:CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
         <argument key="App\Controller\CoachController:TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
         <argument key="App\Controller\CoachController:removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController:sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
@@ -5338,7 +5371,9 @@
         <argument key="App\Controller\SuperAdminController:DeleteDivision" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:DeleteTeam" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
+        <argument key="App\Controller\SuperAdminController:Teams" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController:TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
+        <argument key="App\Controller\SuperAdminController:createMatch" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController:signInView" type="service" id=".service_locator.fIS0gvA"/>
       </argument>
     </service>
@@ -5401,11 +5436,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.xWGfZZZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.1JpAar." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CoachType" type="service" id="App\Form\CoachType"/>
         <argument key="App\Form\InjuredUsersType" type="service" id="App\Form\InjuredUsersType"/>
+        <argument key="App\Form\MatchesType" type="service" id="App\Form\MatchesType"/>
         <argument key="App\Form\PlayerStatsType" type="service" id="App\Form\PlayerStatsType"/>
         <argument key="App\Form\PlayerType" type="service" id="App\Form\PlayerType"/>
         <argument key="App\Form\ScheduleType" type="service" id="App\Form\ScheduleType"/>
@@ -5427,7 +5463,7 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.ySrA4h." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.K626FgA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AdminRepository" type="service" id="App\Repository\AdminRepository"/>
@@ -5436,6 +5472,9 @@
         <argument key="App\Repository\CountryRepository" type="service" id="App\Repository\CountryRepository"/>
         <argument key="App\Repository\DivisionRepository" type="service" id="App\Repository\DivisionRepository"/>
         <argument key="App\Repository\InjuredUsersRepository" type="service" id="App\Repository\InjuredUsersRepository"/>
+        <argument key="App\Repository\MatchRepository" type="service" id="App\Repository\MatchRepository"/>
+        <argument key="App\Repository\MatchStatsRepository" type="service" id="App\Repository\MatchStatsRepository"/>
+        <argument key="App\Repository\MatchesRepository" type="service" id="App\Repository\MatchesRepository"/>
         <argument key="App\Repository\PlayerProperties\CupRepository" type="service" id="App\Repository\PlayerProperties\CupRepository"/>
         <argument key="App\Repository\PlayerProperties\PlayerStatsRepository" type="service" id="App\Repository\PlayerProperties\PlayerStatsRepository"/>
         <argument key="App\Repository\PlayerProperties\PositionRepository" type="service" id="App\Repository\PlayerProperties\PositionRepository"/>
@@ -5791,12 +5830,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.xxy0a0."/>
+      <argument type="service" id=".service_locator.8.SLfk9"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.xxy0a0."/>
+      <argument type="service" id=".service_locator.8.SLfk9"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6219,7 +6258,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xxy0a0."/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.8.SLfk9"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

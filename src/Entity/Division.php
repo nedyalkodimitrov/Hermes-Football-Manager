@@ -52,6 +52,13 @@ class Division
      */
     private  $requestToTeam;
 
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Matches", mappedBy="division")
+     * @ORM\JoinColumn(name="matches", referencedColumnName="id")
+     */
+    private  $matches;
+
 //    /**
 //     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
 //     */
@@ -189,6 +196,22 @@ class Division
     public function __toString()
     {
      return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatches()
+    {
+        return $this->matches;
+    }
+
+    /**
+     * @param mixed $matches
+     */
+    public function setMatches($matches): void
+    {
+        $this->matches = $matches;
     }
 
 

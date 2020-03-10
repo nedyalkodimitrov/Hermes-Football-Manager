@@ -31,6 +31,7 @@ return [
         '/player/addWaterGlasses' => [[['_route' => 'addWaterGlassAction', '_controller' => 'App\\Controller\\PlayerController::AddWaterGlassesAction'], null, null, null, false, false, null]],
         '/player/settings' => [[['_route' => 'player_settings', '_controller' => 'App\\Controller\\PlayerController::SettingsView'], null, null, null, false, false, null]],
         '/player/training' => [[['_route' => 'playerTraining', '_controller' => 'App\\Controller\\PlayerController::TrainingView'], null, null, null, false, false, null]],
+        '/player/requests' => [[['_route' => 'playerRequestes', '_controller' => 'App\\Controller\\PlayerController::PlayerRequests'], null, null, null, false, false, null]],
         '/player/getOutOfTeam' => [[['_route' => 'getOutOfteam', '_controller' => 'App\\Controller\\PlayerController::getOutOfTeam'], null, null, null, false, false, null]],
         '/player/removeCurrentClub' => [[['_route' => 'app_player_removecurrentclub', '_controller' => 'App\\Controller\\PlayerController::removeCurrentClubAction'], null, null, null, false, false, null]],
         '/player/getPlayerRequests' => [[['_route' => 'app_player_getteamrequest', '_controller' => 'App\\Controller\\PlayerController::getTeamRequest'], null, null, null, false, false, null]],
@@ -45,6 +46,7 @@ return [
         '/superAdmin/divisionsCountry' => [[['_route' => 'superAdminDivisionsCountry', '_controller' => 'App\\Controller\\SuperAdminController::DivisionsCountry'], null, null, null, false, false, null]],
         '/superAdmin/createTeams' => [[['_route' => 'superAdminCreateTeam', '_controller' => 'App\\Controller\\SuperAdminController::CreateTeams'], null, null, null, false, false, null]],
         '/superAdmin/deleteDivision' => [[['_route' => 'superAdminDeleteDivision', '_controller' => 'App\\Controller\\SuperAdminController::DeleteDivision'], null, null, null, false, false, null]],
+        '/superAdmin/createMatch' => [[['_route' => 'createMatch', '_controller' => 'App\\Controller\\SuperAdminController::createMatch'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

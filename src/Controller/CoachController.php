@@ -13,6 +13,7 @@ use App\Form\UserType;
 use App\Repository\CoachRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
+use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Schema\SchemaDiff;
 use phpDocumentor\Reflection\Types\Self_;
@@ -39,7 +40,7 @@ class CoachController extends AbstractController
     /**
      * @Route("/coache", name = "coacheViewAction" )
      */
-    public function CoacheViewAction(PlayerRepository $playerRepository){
+    public function CoacheViewAction(TeamRepository $teamRepository, PlayerRepository $playerRepository){
         $coach = $this->getUser()->getCoaches();
 
        $teamCoach = $this->coachRepository->getCoachTeam($coach);
@@ -47,8 +48,10 @@ class CoachController extends AbstractController
         if ($teamCoach == null){
             $players = 0;
             $teams = null;
+            $hasTeam = false;
         }else {
-            $teams = $teamCoach->getDivision()->getTeams();
+            $hasTeam = true;
+            $teams = $teamRepository->getTeamByDivisionDesc($teamCoach->getDivision()->getId());
             $players = $teamCoach->getPlayers();
         }
 
@@ -62,7 +65,7 @@ class CoachController extends AbstractController
             'fName' => $this->getUser()->getFName(),
             'profile_img' => $this->getUser()->getCoaches()->getImage(),
             'division' => $teamCoach->getDivision()->getName(),
-            'hasTeam' => true,
+            'hasTeam' => $hasTeam,
             'myTeam' => $teamCoach,
             'teams' =>$teams
 

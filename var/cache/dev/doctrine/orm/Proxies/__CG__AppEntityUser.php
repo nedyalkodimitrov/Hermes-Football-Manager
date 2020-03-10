@@ -596,4 +596,15 @@ class User extends \App\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         return parent::eraseCredentials();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
+    }
+
 }

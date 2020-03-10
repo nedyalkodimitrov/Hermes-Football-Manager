@@ -43,6 +43,7 @@ return [
     'player_settings' => [[], ['_controller' => 'App\\Controller\\PlayerController::SettingsView'], [], [['text', '/player/settings']], [], []],
     'playerTraining' => [[], ['_controller' => 'App\\Controller\\PlayerController::TrainingView'], [], [['text', '/player/training']], [], []],
     'playerStatDeleting' => [['id'], ['_controller' => 'App\\Controller\\PlayerController::StatRemove'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/player/deleteStat']], [], []],
+    'playerRequestes' => [[], ['_controller' => 'App\\Controller\\PlayerController::PlayerRequests'], [], [['text', '/player/requests']], [], []],
     'getOutOfteam' => [[], ['_controller' => 'App\\Controller\\PlayerController::getOutOfTeam'], [], [['text', '/player/getOutOfTeam']], [], []],
     'app_player_searchteam' => [['name'], ['_controller' => 'App\\Controller\\PlayerController::searchTeam'], [], [['variable', '/', '[^/]++', 'name'], ['text', '/player/searchTeam']], [], []],
     'app_player_acceptcoachrequest' => [['id'], ['_controller' => 'App\\Controller\\PlayerController::acceptCoachRequest'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/player/acceptCoachRequest']], [], []],
@@ -64,4 +65,5 @@ return [
     'superAdminTeamsDivisions' => [['id'], ['_controller' => 'App\\Controller\\SuperAdminController::SuperAdminTeamsDivisions'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/superAdmin/teamsDivisions']], [], []],
     'superAdminDeleteTeam' => [['id'], ['_controller' => 'App\\Controller\\SuperAdminController::DeleteTeam'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/superAdmin/deleteTeam']], [], []],
     'superAdminDeleteDivision' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::DeleteDivision'], [], [['text', '/superAdmin/deleteDivision']], [], []],
+    'createMatch' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::createMatch'], [], [['text', '/superAdmin/createMatch']], [], []],
 ];
