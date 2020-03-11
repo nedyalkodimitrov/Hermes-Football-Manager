@@ -4,6 +4,10 @@
     position: fixed;
     top: 90%;
     right: 5%;
+
+}
+
+.add-team-circle-container, .add-matches-circle-container, .add-division-circle-container, .add-country-circle-container, .add-circle{
     background-color: #ff7b7b;
     padding: 2.3rem;
     border: 1px solid red;
@@ -12,11 +16,11 @@
     z-index:300000;
 }
 
-.add-team-circle-container:hover, .add-matches-circle-container:hover, .add-division-circle-container:hover, .add-country-circle-container:hover {
+.add-circle:hover, .add-team-circle-container:hover, .add-matches-circle-container:hover, .add-division-circle-container:hover, .add-country-circle-container:hover {
     background-color: #ff3a35;
 }
 
-.add-team-circle,.add-matches-circle, .add-division-circle, .add-country-circle {
+.add-circle, .add-team-circle,.add-matches-circle, .add-division-circle, .add-country-circle {
     position: absolute;
     top: 0;left: 0;bottom: 0;right: 0;
     pointer-events: fill;
@@ -24,7 +28,7 @@
 }
 
 
-.add-team, .add-matches, .add-division, .add-country  {
+.add-circle-default, .add-team, .add-matches, .add-division, .add-country  {
     position: absolute;
     top: 50%;
     left: 50%;

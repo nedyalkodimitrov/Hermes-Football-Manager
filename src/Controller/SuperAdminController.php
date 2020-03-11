@@ -252,20 +252,24 @@ class SuperAdminController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $homeTeamId = $request->request->get("homeTeam");
         $awayTeamId = $request->request->get("awayTeam");
+        var_dump($awayTeamId);
         $date = $request->request->get("date");
+        var_dump($date);
         $time = $request->request->get("time");
+        var_dump($time);
 
-        $homeTeam = $teamRepository->findBy(intval($homeTeamId));
-        $awayTeam = $teamRepository->findBy(intval($awayTeamId));
+        $homeTeam = $teamRepository->find(intval($homeTeamId));
+        $awayTeam = $teamRepository->find(intval($awayTeamId));
 
         $match->setHomeTeam($homeTeam);
         $match->setAwayTeam($awayTeam);
         $match->setDate($date);
         $match->setTime($time);
+        $match->setDivision($homeTeam->getDivision());
 
-        $em->persist($stats);
+        $em->persist($match);
         $em->flush();
-        $match->setMatchStats($stats);
+
 
         echo "suxxel";
         exit;

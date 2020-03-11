@@ -17,17 +17,17 @@ class MatchStats
     private $id;
 
     /**
-     * @ORM\Column(type="integer", name="home_team_goals")
+     * @ORM\Column(type="integer", name="home_team_goals",  nullable=true)
      */
     public $homeTeamGoals;
 
     /**
-     * @ORM\Column(type="integer", name = "away_team_goals")
+     * @ORM\Column(type="integer", name = "away_team_goals", nullable=true )
      */
     public $awayTeamGoals;
 
     /**
-     * @ORM\Column(type="boolean", name = "is_played")
+     * @ORM\Column(type="boolean", name = "is_played",  nullable=true)
      */
     public $isPlayed;
 

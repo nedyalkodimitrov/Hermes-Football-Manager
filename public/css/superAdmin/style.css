@@ -49,14 +49,34 @@
 .color-black{
     color: black;
 }
+/*division add team and add match style*/
+.division-futures-holder{
+    z-index:3000;
+    position: fixed;
+    bottom: 15%;
+    right: 5%;
+    width: 20%;
+    height: 20%;
+    max-height: 200px;
+}
+
+.division-futures-holder > .add-circle-container{
+    position: absolute;
+    bottom: 5%;
+    right: 40%;
+    transform: translate(-40%, -5%);
+
+
+}
+
 .division-futures-holder:hover .division-futures-container{
 display: block;
 }
 
 .division-futures-container{
 
-    position: fixed;
-    top: 72%;
+    position: absolute;
+    top: 0;
     right: 5%;
     z-index: 3000000;
     background-color: #ff7b7b;
@@ -66,7 +86,7 @@ display: block;
 .rectangle {
     position: absolute;
     top: 100%;
-    right: 8%;
+    right: 10%;
     width: 0;
     height: 0;
     border-left: 20px solid transparent;
@@ -94,4 +114,7 @@ display: block;
 }
 table{
     border-radius: 15px;
+}
+.table-color{
+    background-color: #046330;
 }
