@@ -37,6 +37,8 @@ return [
     'app_coach_removeplayerrequest' => [['id'], ['_controller' => 'App\\Controller\\CoachController::removePlayerRequestAction'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/coache/removePlayerRequest']], [], []],
     'app_coach_removeplayerfromteam' => [['id'], ['_controller' => 'App\\Controller\\CoachController::removePlayerFromTeam'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/coache/removePlayerFromTeam']], [], []],
     'app_coach_acceptplayerrequest' => [['playerId'], ['_controller' => 'App\\Controller\\CoachController::acceptPlayerRequest'], [], [['variable', '/', '[^/]++', 'playerId'], ['text', '/coache/acceptPlayerRequest']], [], []],
+    'wsasd' => [[], ['_controller' => 'App\\Controller\\MatchController::matchesView'], [], [['text', '/coache/matches']], [], []],
+    'createMatchList' => [['id'], ['_controller' => 'App\\Controller\\MatchController::matchView'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/coache/match']], [], []],
     'playerView' => [[], ['_controller' => 'App\\Controller\\PlayerController::IndexView'], [], [['text', '/player']], [], []],
     'removeWaterGlassAction' => [[], ['_controller' => 'App\\Controller\\PlayerController::RemoveWaterGlassesAction'], [], [['text', '/player/removeWaterGlasses']], [], []],
     'addWaterGlassAction' => [[], ['_controller' => 'App\\Controller\\PlayerController::AddWaterGlassesAction'], [], [['text', '/player/addWaterGlasses']], [], []],
@@ -66,4 +68,5 @@ return [
     'superAdminDeleteTeam' => [['id'], ['_controller' => 'App\\Controller\\SuperAdminController::DeleteTeam'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/superAdmin/deleteTeam']], [], []],
     'superAdminDeleteDivision' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::DeleteDivision'], [], [['text', '/superAdmin/deleteDivision']], [], []],
     'createMatch' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::createMatch'], [], [['text', '/superAdmin/createMatch']], [], []],
+    'matchView' => [['id'], ['_controller' => 'App\\Controller\\SuperAdminController::MatchView'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/superAdmin/matches']], [], []],
 ];

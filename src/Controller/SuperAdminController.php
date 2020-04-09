@@ -13,6 +13,7 @@ use App\Entity\User;
 use App\Entity\YouthDivision;
 use App\Form\MatchesType;
 use App\Repository\DivisionRepository;
+use App\Repository\MatchesRepository;
 use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -278,6 +279,21 @@ class SuperAdminController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/superAdmin/matches/{id}" ,name  = "matchView")
+     *
+     */
+    public function MatchView(MatchesRepository $matchesRepository, $id)
+    {
+        $match = $matchesRepository->find(intval($id));
+
+        return $this->render('superAdmin/match.html.twig', array(
+           "match" => $match
+
+        ));
+
+    }
     public function PhoneCheker($phone)
     {
         $player = $this->getDoctrine()->getRepository(Players::class)->findBy(["phone" => $phone]);

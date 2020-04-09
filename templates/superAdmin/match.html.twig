@@ -1,0 +1,72 @@
+{% extends 'superAdmin/base.html.twig' %}
+{% block style %}
+{#    <link rel="stylesheet" href="  {{ asset("css/admin/topPlayerCard.css") }}">#}
+    <link rel="stylesheet" href="  {{ asset("css/superAdmin/matchPageStyle.css") }}">
+{% endblock %}
+{% block body %}
+    <div>
+
+        <form action="" class="col-12 row p-0 m-0 justify-content-around">
+            <div class="match-info-holder col-10 row mt-3  p-0">
+                <div class="homeTeam-info-holder col-5 p-0 m-0 text-center  ">
+                    <img src="{{ asset("images/" ~ match.homeTeam.Image) }}" class="mx-auto" alt="">
+                    <h3>{{ match.homeTeam.Name }}</h3>
+                </div>
+                <div class=" col-2 p-0 m-0 text-center ">
+                    <input type="checkbox" class="mt-5" class="checkbox">
+                </div>
+                <div class="awayTeam-info-holder col-5 p-0 m-0 text-center">
+                    <img src="{{ asset("images/" ~ match.awayTeam.Image) }}" class="mx-auto" alt="">
+                    <h3>{{ match.awayTeam.Name }}</h3>
+                </div>
+            </div>
+            <div class="match-goals-holder col-10 p-0 m-0 mt-2 row">
+              <div class="homeTeam-goals col-6 p-0">
+                  <div class="add-circle-container  row " id="add-container">
+                      <div class="add-circle" id="player- ">
+                          <img src="{{ asset('images/plus .png') }}" alt="" class="add-circle-default " >
+                      </div>
+                  </div>
+
+              </div>
+              <div class="awayTeam-goals col-6 p-0">
+                  <div class="add-circle-container  row " id="add-container">
+                      <button class="add-circle" id="player- ">
+                          <img src="{{ asset('images/plus .png') }}" alt="" class="add-circle-default " >
+                      </button>
+                  </div>
+              </div>
+
+            </div>
+        </form>
+
+        <div class="container row">
+            <div class="col-12 row">
+                <div class="col-6">
+                    {% for homePlayer in match.MatchList %}
+                        {% if homePlayer.Team.Name == match.HomeTeam.Name %}
+                            <p>{{ homePlayer }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="col-6">
+                    {% for awayPlayer in match.MatchList %}
+                        {% if awayPlayer.Team.Name == match.AwayTeam.Name %}
+                            <p>{{ awayPlayer }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        $(".checkbox").change( function () {
+            $(".add-circle").prop("disable", true);
+            console.log("loasdo")
+        });
+
+    </script>>
+{% endblock %}

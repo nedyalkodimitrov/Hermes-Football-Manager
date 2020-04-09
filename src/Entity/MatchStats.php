@@ -33,7 +33,8 @@ class MatchStats
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Matches", mappedBy="matchStats")
+     * @ORM\OneToOne(targetEntity="Matches", inversedBy="matchStats")
+     * @ORM\JoinColumn(name="match", referencedColumnName="id")
      */
     public $match;
 
@@ -106,6 +107,10 @@ class MatchStats
         $this->match = $match;
     }
 
+    public function __toString()
+    {
+        return ' '.$this->homeTeamGoals;
+    }
 
 
 }

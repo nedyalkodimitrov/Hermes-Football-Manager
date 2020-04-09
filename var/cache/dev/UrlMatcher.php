@@ -26,6 +26,7 @@ return [
         '/coache/trainingCalendar' => [[['_route' => 'trainingCalendarActionView', '_controller' => 'App\\Controller\\CoachController::TrainingCalendarViewAction'], null, null, null, false, false, null]],
         '/coache/settings' => [[['_route' => 'coache_settings', '_controller' => 'App\\Controller\\CoachController::SettingsView'], null, null, null, false, false, null]],
         '/coache/searchEngine' => [[['_route' => 'searchEngine', '_controller' => 'App\\Controller\\CoachController::SearchEngine'], null, null, null, false, false, null]],
+        '/coache/matches' => [[['_route' => 'wsasd', '_controller' => 'App\\Controller\\MatchController::matchesView'], null, null, null, false, false, null]],
         '/player' => [[['_route' => 'playerView', '_controller' => 'App\\Controller\\PlayerController::IndexView'], null, null, null, false, false, null]],
         '/player/removeWaterGlasses' => [[['_route' => 'removeWaterGlassAction', '_controller' => 'App\\Controller\\PlayerController::RemoveWaterGlassesAction'], null, null, null, false, false, null]],
         '/player/addWaterGlasses' => [[['_route' => 'addWaterGlassAction', '_controller' => 'App\\Controller\\PlayerController::AddWaterGlassesAction'], null, null, null, false, false, null]],
@@ -79,24 +80,26 @@ return [
                         .'|FromTeam/([^/]++)(*:423)'
                     .')'
                     .'|acceptPlayerRequest/([^/]++)(*:460)'
+                    .'|match/([^/]++)(*:482)'
                 .')'
                 .'|/player/(?'
-                    .'|deleteStat/([^/]++)(*:499)'
+                    .'|deleteStat/([^/]++)(*:521)'
                     .'|se(?'
-                        .'|archTeam/([^/]++)(*:529)'
-                        .'|ndRequestToClub/([^/]++)/([^/]++)(*:570)'
+                        .'|archTeam/([^/]++)(*:551)'
+                        .'|ndRequestToClub/([^/]++)/([^/]++)(*:592)'
                     .')'
-                    .'|acceptCoachRequest/([^/]++)(*:606)'
+                    .'|acceptCoachRequest/([^/]++)(*:628)'
                 .')'
                 .'|/superAdmin/(?'
                     .'|teams(?'
-                        .'|/([^/]++)(*:647)'
-                        .'|Divisions/([^/]++)(*:673)'
+                        .'|/([^/]++)(*:669)'
+                        .'|Divisions/([^/]++)(*:695)'
                     .')'
                     .'|d(?'
-                        .'|ivisions/([^/]++)(*:703)'
-                        .'|eleteTeam/([^/]++)(*:729)'
+                        .'|ivisions/([^/]++)(*:725)'
+                        .'|eleteTeam/([^/]++)(*:751)'
                     .')'
+                    .'|matches/([^/]++)(*:776)'
                 .')'
             .')/?$}sD',
     ],
@@ -117,15 +120,17 @@ return [
         398 => [[['_route' => 'app_coach_removeplayerrequest', '_controller' => 'App\\Controller\\CoachController::removePlayerRequestAction'], ['id'], null, null, false, true, null]],
         423 => [[['_route' => 'app_coach_removeplayerfromteam', '_controller' => 'App\\Controller\\CoachController::removePlayerFromTeam'], ['id'], null, null, false, true, null]],
         460 => [[['_route' => 'app_coach_acceptplayerrequest', '_controller' => 'App\\Controller\\CoachController::acceptPlayerRequest'], ['playerId'], null, null, false, true, null]],
-        499 => [[['_route' => 'playerStatDeleting', '_controller' => 'App\\Controller\\PlayerController::StatRemove'], ['id'], null, null, false, true, null]],
-        529 => [[['_route' => 'app_player_searchteam', '_controller' => 'App\\Controller\\PlayerController::searchTeam'], ['name'], null, null, false, true, null]],
-        570 => [[['_route' => 'app_player_sendrequesttoteam', '_controller' => 'App\\Controller\\PlayerController::sendRequestToTeam'], ['id', 'message'], null, null, false, true, null]],
-        606 => [[['_route' => 'app_player_acceptcoachrequest', '_controller' => 'App\\Controller\\PlayerController::acceptCoachRequest'], ['id'], null, null, false, true, null]],
-        647 => [[['_route' => 'superAdminTeams', '_controller' => 'App\\Controller\\SuperAdminController::Teams'], ['id'], null, null, false, true, null]],
-        673 => [[['_route' => 'superAdminTeamsDivisions', '_controller' => 'App\\Controller\\SuperAdminController::SuperAdminTeamsDivisions'], ['id'], null, null, false, true, null]],
-        703 => [[['_route' => 'superAdminDivisions', '_controller' => 'App\\Controller\\SuperAdminController::SuperAdminDivisions'], ['id'], null, null, false, true, null]],
-        729 => [
-            [['_route' => 'superAdminDeleteTeam', '_controller' => 'App\\Controller\\SuperAdminController::DeleteTeam'], ['id'], null, null, false, true, null],
+        482 => [[['_route' => 'createMatchList', '_controller' => 'App\\Controller\\MatchController::matchView'], ['id'], null, null, false, true, null]],
+        521 => [[['_route' => 'playerStatDeleting', '_controller' => 'App\\Controller\\PlayerController::StatRemove'], ['id'], null, null, false, true, null]],
+        551 => [[['_route' => 'app_player_searchteam', '_controller' => 'App\\Controller\\PlayerController::searchTeam'], ['name'], null, null, false, true, null]],
+        592 => [[['_route' => 'app_player_sendrequesttoteam', '_controller' => 'App\\Controller\\PlayerController::sendRequestToTeam'], ['id', 'message'], null, null, false, true, null]],
+        628 => [[['_route' => 'app_player_acceptcoachrequest', '_controller' => 'App\\Controller\\PlayerController::acceptCoachRequest'], ['id'], null, null, false, true, null]],
+        669 => [[['_route' => 'superAdminTeams', '_controller' => 'App\\Controller\\SuperAdminController::Teams'], ['id'], null, null, false, true, null]],
+        695 => [[['_route' => 'superAdminTeamsDivisions', '_controller' => 'App\\Controller\\SuperAdminController::SuperAdminTeamsDivisions'], ['id'], null, null, false, true, null]],
+        725 => [[['_route' => 'superAdminDivisions', '_controller' => 'App\\Controller\\SuperAdminController::SuperAdminDivisions'], ['id'], null, null, false, true, null]],
+        751 => [[['_route' => 'superAdminDeleteTeam', '_controller' => 'App\\Controller\\SuperAdminController::DeleteTeam'], ['id'], null, null, false, true, null]],
+        776 => [
+            [['_route' => 'matchView', '_controller' => 'App\\Controller\\SuperAdminController::MatchView'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

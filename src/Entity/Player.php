@@ -44,7 +44,7 @@ class Player
      * @ORM\OneToOne(targetEntity="User", inversedBy="player")
      * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
-    private  $user;
+    public  $user;
     
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\PlayerProperties\Position", inversedBy="players")
@@ -84,6 +84,10 @@ class Player
      * @ORM\OneToMany(targetEntity="App\Entity\Requests\Player\PlayerToTeamRequest", mappedBy="player")
      */
     private $requestToTeam;
+    /**
+     * @ORM\OneToMany(targetEntity="MatchList", mappedBy="player")
+     */
+    public $matchList;
 
 
     public function getId(): ?int
@@ -255,6 +259,22 @@ class Player
     public function setRequestToTeam($requestToTeam): void
     {
         $this->requestToTeam = $requestToTeam;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatchList()
+    {
+        return $this->matchList;
+    }
+
+    /**
+     * @param mixed $matchList
+     */
+    public function setMatchList($matchList): void
+    {
+        $this->matchList = $matchList;
     }
 
 

@@ -5,7 +5,7 @@
 }
 
 html {
-    font: 10px/1.5 -apple-system, BlinkMacSystemFont, sans-seri;
+    font: 10px/1.5 -apple-system, BlinkMacSystemFont, sans-seri, HighTide ;
     font-weight: 400;
 }
 body, form, input, select, option, p, a, span, table,thead, tbody,th, table th  {

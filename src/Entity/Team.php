@@ -103,7 +103,7 @@ class Team
     /**
      * @ORM\OneToMany(targetEntity="Player", mappedBy="team")
      */
-    private $players;
+    public $players;
 
 
     /**
@@ -495,6 +495,38 @@ class Team
     public function setRequestFromDivision($requestFromDivision): void
     {
         $this->requestFromDivision = $requestFromDivision;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHomeMatches()
+    {
+        return $this->homeMatches;
+    }
+
+    /**
+     * @param mixed $homeMatches
+     */
+    public function setHomeMatches($homeMatches): void
+    {
+        $this->homeMatches = $homeMatches;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAwayMatches()
+    {
+        return $this->awayMatches;
+    }
+
+    /**
+     * @param mixed $awayMatches
+     */
+    public function setAwayMatches($awayMatches): void
+    {
+        $this->awayMatches = $awayMatches;
     }
 
 

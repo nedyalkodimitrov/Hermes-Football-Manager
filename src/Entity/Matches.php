@@ -53,10 +53,24 @@ class Matches
 
     /**
      * @ORM\OneToOne(targetEntity="MatchStats", mappedBy="match")
-     * @ORM\JoinColumn(name="match_stats", referencedColumnName="id")
      */
     public $matchStats;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MatchList", mappedBy="match")
+     */
+    public $matchList;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="SoccerScheme")
+     * @ORM\JoinTable(name="match_scheme",
+     *      joinColumns={@ORM\JoinColumn(name="match", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="scheme", referencedColumnName="id")}
+     *      )
+     * @var Collection\Scheme[]
+     */
+    private  $schemes;
 
     public function getId(): ?int
     {
@@ -157,6 +171,38 @@ class Matches
     public function setMatchStats($matchStats): void
     {
         $this->matchStats = $matchStats;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMatchList()
+    {
+        return $this->matchList;
+    }
+
+    /**
+     * @param mixed $matchList
+     */
+    public function setMatchList($matchList): void
+    {
+        $this->matchList = $matchList;
+    }
+
+    /**
+     * @return Collection\Scheme[]
+     */
+    public function getSchemes(): array
+    {
+        return $this->schemes;
+    }
+
+    /**
+     * @param Collection\Scheme[] $schemes
+     */
+    public function setSchemes(array $schemes): void
+    {
+        $this->schemes = $schemes;
     }
 
 

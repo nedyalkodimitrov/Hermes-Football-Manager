@@ -19,6 +19,33 @@ class MatchesRepository extends ServiceEntityRepository
         parent::__construct($registry, Matches::class);
     }
 
+
+    public function findUpcomingMatchesByTeam($teamId)
+    {
+        $matches = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m FROM App\Entity\Matches m 
+                    WHERE  (m.homeTeam = :teamId
+                    OR m.awayTeam = :teamId )
+                    AND m.date > CURRENT_TIMESTAMP()  
+                    ORDER BY m.date ASC'
+            )->setParameter('teamId', $teamId)->getResult();
+        return $matches;
+    }
+
+    public function findPastMatchesByTeam($teamId)
+    {
+        $matches = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m FROM App\Entity\Matches m 
+                    WHERE  (m.homeTeam = :teamId
+                    OR m.awayTeam = :teamId )
+                    AND m.date < CURRENT_TIMESTAMP()  
+                    ORDER BY m.date ASC'
+            )->setParameter('teamId', $teamId)->getResult();
+        return $matches;
+    }
+
     // /**
     //  * @return Matches[] Returns an array of Matches objects
     //  */

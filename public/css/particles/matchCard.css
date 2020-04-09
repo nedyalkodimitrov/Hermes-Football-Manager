@@ -1,0 +1,38 @@
+.match-card{
+    border-radius: 15px;
+    transition: 0.3s all ease;
+}
+.match-card:hover{
+    box-shadow: 1px 1px 10px 2px grey;
+    border-radius: 15px;
+}
+
+.match-card img {
+    width: 100%;
+}
+
+.match-card h5, h6 {
+    color: black;
+}
+
+.match-card .information{
+    background-color: #046330;
+    border-radius: 15px;
+    color: white;
+}
+
+.winner-card {
+   border:2px solid #046330;
+
+}
+
+.winner-card:hover {
+    box-shadow: 1px 1px 10px 3px rgba(4, 99, 48, 0.5);
+}
+
+.loser-card {
+    border: 2px solid #990505;
+}
+.loser-card:hover {
+    box-shadow: 1px 1px 10px 3px rgba(153, 5, 5, 0.5 );
+}
