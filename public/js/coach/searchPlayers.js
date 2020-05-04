@@ -23,7 +23,7 @@ $(document).ready(function () {
         console.log(playerName);
         $.ajax({
             method: "POST",
-            data: {"playerInfo": playerName},
+            data: {"playerName": playerName},
             url: "trainingsw",
         })
             .done(function (data) {

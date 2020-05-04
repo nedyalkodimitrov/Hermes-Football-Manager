@@ -19,6 +19,21 @@ class MatchListRepository extends ServiceEntityRepository
         parent::__construct($registry, MatchList::class);
     }
 
+    public function findPlayerById($playerId, $matchId)
+    {
+        $teams = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m
+                FROM  App\Entity\MatchList m 
+                WHERE m.player = :playerId AND m.match = :matchId
+               '
+            )
+            ->setParameter('playerId', $playerId)
+            ->setParameter('matchId', $matchId)
+            ->getResult();
+        return $teams;
+    }
+
     // /**
     //  * @return MatchList[] Returns an array of MatchList objects
     //  */

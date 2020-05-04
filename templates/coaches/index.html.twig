@@ -1,5 +1,10 @@
 
 {% extends 'coaches/base.html.twig' %}
+{% block style  %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("css/coach/indexPageStyle.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/player/playerStyle.css") }}">
+{% endblock %}
 {% block body %}
     <div id="container">
         <div class="row mt-5  justify-content-center">
@@ -40,10 +45,10 @@
     </div>
 
     <div id="container ">
-        <div class="row mt-5  justify-content-center">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+        <div class="row mt-5  justify-content-center ">
+            <div class="col-lg-11 col-md-7 col-sm-11 main-charts-container col-10 justify-content-around div-charts row pb-3">
                 <div class="col-12 text-center">
-                    <h2 >Топ трима играча от мъжкия отбор   </h2>
+                    <h2 class="mt-4"    >Топ трима играча от мъжкия отбор   </h2>
                 </div>
                 {% set foo = 1 %}
                 {% for player in topPlayers %}
@@ -60,8 +65,9 @@
                                 {% else %}
                                     <img src="{{asset('images/'~ player.Image )}}" alt="" class="top-player-card-img">
                                 {% endif %}
+
                             </div>
-                            <p class="top-player-card-name">{{ player.User.Name }} {{ player.User.FName }}</p>
+                            <p class=" p-3 top-player-card-name">{{ player.User.Name }} {{ player.User.FName }}</p>
                             {#                            <span><i class="fas fa-times country-fa-times players" id="{{ player.Id }}"></i></span>#}
                         </div>
                     </div>
@@ -73,10 +79,11 @@
     </div>
 
 
-    <div class="table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">
-        <div class="table col-11  mh-25" id="teamLeadership-container ">
+    <div class="table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 ">
+        <div class="table col-11  main-charts-container  p-4 mx-auto mh-25" id="teamLeadership-container ">
             {% if hasTeam %}
-                <table class="table-bordered col-12 "  style="margin-bottom: 0; padding:0">
+                <h4 class="col-12 text-center mt-2 mb-4">Текущо класиране</h4>
+                <table class="table-bordered col-12  mx-auto"  style="margin-bottom: 0; padding:0">
                     <tr class="row col-12 p-0 m-0 bg-success">
                         <th class="col-1"></th>
                         <th class="col-4 color-white">Име</th>

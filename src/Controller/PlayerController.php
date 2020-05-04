@@ -16,6 +16,7 @@ use App\Form\InjuredUsersType;
 use App\Form\PlayerStatsType;
 use App\Form\PlayerType;
 use App\Repository\InjuredUsersRepository;
+use App\Repository\MatchesRepository;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
@@ -33,6 +34,8 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class PlayerController extends AbstractController
 {
@@ -133,8 +136,10 @@ class PlayerController extends AbstractController
 
         if ($formPlayer->isSubmitted() && $formPlayer->isValid()) {
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            $file = new UploadedFile();
             $file = $newPlayer->getImage();
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $fileName = $this->generateUniqueFileName().'.'.$this->$file->guessExtension();
+
             try {
                 $file->move(
                     $this->getParameter('images_directory'),
@@ -156,7 +161,7 @@ class PlayerController extends AbstractController
                     'player' => $currentPlayer,
                     'team' => $this->playerPropService->getTeam($currentPlayer),
                     'playerStats' => $playerStats,
-                    'playerName' => $currentPlayer->getUserId()->getName(). ' '.$currentPlayer->getUserId()->getFName()
+                    'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
                 ));
         }
 
@@ -173,6 +178,9 @@ class PlayerController extends AbstractController
                 'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
             ));
     }
+
+
+
 
     private function generateUniqueFileName()
     {
@@ -252,8 +260,30 @@ class PlayerController extends AbstractController
      */
     public function PlayerRequests()
     {
+        $user = $this->getUser();
         $requests = $this->getUser()->getrequestToUser();
-        return $this->render('player/requests.html.twig', array("requests" => $requests, "playerName" => $this->getUser()->getName(), "profile_img" => " "));
+        return $this->render('player/requests.html.twig', array("requests" => $requests,
+            "playerName" =>$user->getName(),
+            "profile_img" => $user->getPlayer()->getImage()));
+    }
+
+    /**
+     * @Route("/player/stats", name="playerStats")
+     */
+    public function PlayerStats(PlayerRepository $playerRepository, MatchesRepository $matchesRepository)
+    {
+        $player =  $this->getUser()->getPlayer();
+        $playerTeam = $playerRepository->getPlayerTeam($player);
+        $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($playerTeam->getId());
+        $teams = $this->playerPropService->getTeams($playerTeam->getDivision()  );
+        return $this->render('player/stats.html.twig', array(
+            "playerName" => $this->getUser()->getName(),
+            "profile_img" => $player->getImage(),
+            "player" =>  $this->getUser()->getPlayer(),
+            "upComingMatches" => $upComingMatches,
+            "teams" => $teams
+
+        ));
     }
 
     /**

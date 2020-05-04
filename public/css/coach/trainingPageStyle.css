@@ -1,6 +1,17 @@
-@import "particles/addingPlayerBoxesStyle.css";
+/*@import "particles/addingPlayerBoxesStyle.css";*/
 @import "../particles/tableStyle.css";
+@import "particles/teamPlayerCard.css";
 
+
+.team-image{
+    width: 17%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+}
 /*create training style*/
 .create-training-container{
     position: relative;

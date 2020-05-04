@@ -343,4 +343,15 @@ class City extends \App\Entity\City implements \Doctrine\ORM\Proxy\Proxy
         parent::setUsers($users);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
+    }
+
 }

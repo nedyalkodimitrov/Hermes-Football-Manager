@@ -16,36 +16,36 @@ class MatchList
      */
     private $id;
     /**
-     * @ORM\Column(name = "is_starting", type="boolean")
+     * @ORM\Column(name = "is_starting", type="boolean", nullable=true)
      */
     public $is_starting;
     /**
-     * @ORM\Column(name = "is_played", type="boolean")
+     * @ORM\Column(name = "is_played", type="boolean", nullable=true)
      */
     public $is_played;
     /**
-     * @ORM\Column(name = "goals", type="integer")
+     * @ORM\Column(name = "goals", type="integer", nullable=true)
      */
     public $goals;
     /**
-     * @ORM\Column(name = "assits", type="integer")
+     * @ORM\Column(name = "assits", type="integer", nullable=true)
      */
     public $assits;
     /**
-     * @ORM\Column(name = "saves", type="integer")
+     * @ORM\Column(name = "saves", type="integer", nullable=true)
      */
     public $saves;
     /**
-     * @ORM\Column(name = "played_time", type="integer")
+     * @ORM\Column(name = "played_time", type="integer", nullable=true)
      */
     public $playedTime;
     /**
-     * @ORM\Column(name = "start_time", type="integer")
+     * @ORM\Column(name = "start_time", type="integer", nullable=true)
      */
     public $startTime;
 
     /**
-     * @ORM\Column(name = "end_time", type="integer")
+     * @ORM\Column(name = "end_time", type="integer", nullable=true)
      */
     public $endTime;
 
@@ -61,7 +61,7 @@ class MatchList
      */
     public $player;
 
-    public function getId(): ?int
+    public function getId()
     {
         return $this->id;
     }
@@ -225,6 +225,10 @@ class MatchList
     {
         $this->player = $player;
     }
+
+
+
+
 
 
 }

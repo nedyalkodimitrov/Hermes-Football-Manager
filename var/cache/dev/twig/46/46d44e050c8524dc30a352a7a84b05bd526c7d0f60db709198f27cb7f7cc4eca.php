@@ -89,15 +89,17 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/settingsMenu.js"), "html", null, true);
         echo "\"></script>
+        <link href=\"https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&display=swap\" rel=\"stylesheet\">
+        <link href=\"https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400&display=swap\" rel=\"stylesheet\">
         ";
-        // line 22
+        // line 24
         $this->displayBlock('style', $context, $blocks);
-        // line 23
+        // line 25
         echo "    </head>
     <body>
         <nav class=\"navbar navbar-expand-lg navbar-light nav-container \">
             <a class=\"navbar-brand\" href=\"#\"><img src=\"";
-        // line 26
+        // line 28
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/HERMES-ICON.jpg"), "html", null, true);
         echo "\" alt=\"\" class=\"logo\"></a>
             <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\" aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">
@@ -106,20 +108,20 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
             <div class=\"collapse navbar-collapse justify-content-between\" id=\"navbarNavAltMarkup\">
                 <div class=\"navbar-nav mr-5\">
                     ";
-        // line 32
+        // line 34
         $this->displayBlock('navLinks', $context, $blocks);
-        // line 36
+        // line 38
         echo "                </div>
                 ";
-        // line 37
-        $this->displayBlock('navContent', $context, $blocks);
         // line 39
+        $this->displayBlock('navContent', $context, $blocks);
+        // line 41
         echo "            </div>
         </nav>
         ";
-        // line 41
-        $this->displayBlock('body', $context, $blocks);
         // line 43
+        $this->displayBlock('body', $context, $blocks);
+        // line 45
         echo "    </body>
 </html>";
         
@@ -130,7 +132,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
 
     }
 
-    // line 22
+    // line 24
     public function block_style($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -148,7 +150,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
 
     }
 
-    // line 32
+    // line 34
     public function block_navLinks($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -158,10 +160,10 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navLinks"));
 
-        // line 33
+        // line 35
         echo "                        <a class=\"current-item ml-2  navbar-link\" href=\"#\">Начална страница </a>
                         <a class=\"ml-2  navbar-link\" href=\"";
-        // line 34
+        // line 36
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerTraining");
         echo "\">Тренировки</a>
                     ";
@@ -173,7 +175,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
 
     }
 
-    // line 37
+    // line 39
     public function block_navContent($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -183,7 +185,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navContent"));
 
-        // line 38
+        // line 40
         echo "                ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -193,7 +195,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
 
     }
 
-    // line 41
+    // line 43
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -203,7 +205,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 42
+        // line 44
         echo "        ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -225,7 +227,7 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
 
     public function getDebugInfo()
     {
-        return array (  207 => 42,  197 => 41,  187 => 38,  177 => 37,  165 => 34,  162 => 33,  152 => 32,  134 => 22,  123 => 43,  121 => 41,  117 => 39,  115 => 37,  112 => 36,  110 => 32,  101 => 26,  96 => 23,  94 => 22,  90 => 21,  86 => 20,  82 => 19,  78 => 18,  74 => 17,  70 => 16,  66 => 15,  56 => 8,  47 => 1,);
+        return array (  209 => 44,  199 => 43,  189 => 40,  179 => 39,  167 => 36,  164 => 35,  154 => 34,  136 => 24,  125 => 45,  123 => 43,  119 => 41,  117 => 39,  114 => 38,  112 => 34,  103 => 28,  98 => 25,  96 => 24,  90 => 21,  86 => 20,  82 => 19,  78 => 18,  74 => 17,  70 => 16,  66 => 15,  56 => 8,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -251,6 +253,8 @@ class __TwigTemplate_47c83e82f1a8eb8778fbb51073641ba61eec6daa184a6c431ef61ff84e3
         <script type=\"text/javascript\" src=\"{{ asset(\"mdb/js/mdb.min.js\") }}\"></script>
         <script type=\"text/javascript\" src=\"{{ asset(\"mdb/js/bootstrap.min.js\") }}\"></script>
         <script type=\"text/javascript\" src=\"{{ asset(\"js/settingsMenu.js\") }}\"></script>
+        <link href=\"https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&display=swap\" rel=\"stylesheet\">
+        <link href=\"https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400&display=swap\" rel=\"stylesheet\">
         {% block style %}{% endblock %}
     </head>
     <body>

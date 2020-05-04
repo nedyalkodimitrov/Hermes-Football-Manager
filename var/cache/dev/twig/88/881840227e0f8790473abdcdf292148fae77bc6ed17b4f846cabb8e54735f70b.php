@@ -108,6 +108,10 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
         // line 11
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("trainingCalendarActionView");
         echo "\">Тренировъчен план</a>
+    <a class=\"ml-2 na navbar-link\" href=\"";
+        // line 12
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("trainingCalendarActionView");
+        echo "\">Мачове</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -117,7 +121,7 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
 
     }
 
-    // line 13
+    // line 14
     public function block_navContent($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -127,17 +131,17 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "navContent"));
 
-        // line 14
+        // line 15
         echo "        <div class=\"row justify-content-end\">
-        <i class=\"far fa-envelope\"></i>
+
     </div>
     <div class=\"mt-md-2 mt-sm-2 row  col-sm-6 col-md-6  justify-content-end\">
         <p class=\"nav-username \">Иван Драганов</p>
         <div class=\" \">
             ";
-        // line 20
-        if ((((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 20, $this->source); })()) == "") || ((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 20, $this->source); })()) == null))) {
-            // line 21
+        // line 21
+        if ((((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 21, $this->source); })()) == "") || ((isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 21, $this->source); })()) == null))) {
+            // line 22
             echo "                <a href=\" ";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("coache_settings");
             echo "\" class=\"profile_pic_a \"><img src=\"";
@@ -145,15 +149,15 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
             echo "\" alt=\"\" class=\"user-nav-profile-img\"></a>
             ";
         } else {
-            // line 23
+            // line 24
             echo "                <a href=\" ";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("coache_settings");
             echo "\" class=\"profile_pic_a \"><img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 23, $this->source); })()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["profile_img"]) || array_key_exists("profile_img", $context) ? $context["profile_img"] : (function () { throw new RuntimeError('Variable "profile_img" does not exist.', 24, $this->source); })()))), "html", null, true);
             echo "\" alt=\"\" class=\"user-nav-profile-img\"></a>
             ";
         }
-        // line 25
+        // line 26
         echo "        </div>
     </div>
 ";
@@ -177,7 +181,7 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
 
     public function getDebugInfo()
     {
-        return array (  157 => 25,  149 => 23,  141 => 21,  139 => 20,  131 => 14,  121 => 13,  109 => 11,  105 => 10,  100 => 9,  90 => 8,  77 => 5,  73 => 4,  70 => 3,  60 => 2,  37 => 1,);
+        return array (  161 => 26,  153 => 24,  145 => 22,  143 => 21,  135 => 15,  125 => 14,  113 => 12,  109 => 11,  105 => 10,  100 => 9,  90 => 8,  77 => 5,  73 => 4,  70 => 3,  60 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -193,10 +197,11 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
     <a class=\"ml-2 na navbar-link current-item\" href=\"{{ path(\"trainingView\") }}\">Начална страница</a>
     <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingView\") }}\">Отбор</a>
     <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingCalendarActionView\") }}\">Тренировъчен план</a>
+    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingCalendarActionView\") }}\">Мачове</a>
 {% endblock %}
 {% block navContent %}
         <div class=\"row justify-content-end\">
-        <i class=\"far fa-envelope\"></i>
+
     </div>
     <div class=\"mt-md-2 mt-sm-2 row  col-sm-6 col-md-6  justify-content-end\">
         <p class=\"nav-username \">Иван Драганов</p>

@@ -16,7 +16,6 @@
 
 input[type="checkbox"] {
     cursor: pointer;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50% );
@@ -53,3 +52,4 @@ input[type="checkbox"]:checked:after {
     background-color: #fff;
     left: 3.5em;
 }
+

@@ -13,46 +13,75 @@ $(document).ready(function () {
     $('.fut-player-card').on('click', function () {
         var position = $(this);
         var playerInfo = position.attr('id');
-        var playerId = playerInfo.split(seperator)[0];
+        var playerId = parseInt(playerInfo.split(seperator)[0]);
         var playerPosition = playerInfo.split(seperator)[1];
 
-        var found = players.find(function(element, playerId) {
-            let elements = 0;
-            if ( element == playerId){
-                 element++;
-             }
-             return elements;
+        var found = players.find(function(player) {
+             return player == playerId;
 
         });
-        if (found == 0){
-            addPlayer(playerId, playerPosition);
-            $(this).addClass("fut-player-card-clicked");
+        console.log(goalkeepers);
+        console.log(defenders);
+        console.log(midfielders);
+        console.log(attackers);
+
+        if (found === undefined){
+            if( addPlayer(playerId, playerPosition)) {
+                $(this).addClass("fut-player-card-clicked");
+            }
         }else {
-            $(this).removeClass("fut-player-card-clicked");
-            removePlayers(playerId, playerPosition);
+            if(removePlayers(playerId, playerPosition)){
+                $(this).removeClass("fut-player-card-clicked");
+            }
         }
+        console.log(players)
     });
 
+
+    $('.sendPlayers').on('click', function () {
+
+        $.ajax({
+            type: "POST",
+            url: "/coache/match/3",
+            data: {'players': players}
+        })
+            .done(function( msg ) {
+                console.log(  msg );
+            });
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
     function addPlayer(playerId, playerPosition) {
-        if (playerPosition == "Goalkeeper") {
-        if (goalkeepers < goalkeeperCount) {
-            players.push(playerId);
-            goalkeepers++;
-            return true;
-        }
-        }else  if (playerPosition == "Defender"){
+        if (playerPosition === "Goalkeeper") {
+            if (goalkeepers < goalkeeperCount) {
+                players.push(playerId);
+                goalkeepers++;
+                return true;
+            }
+        }else  if (playerPosition === "Defender"){
             if (defenders < defendersCount ) {
                 players.push(playerId);
                 defenders++;
                 return true;
             }
-        }else  if (playerPosition == "Midfielder") {
+        }else  if (playerPosition === "Midfielder") {
             if (midfielders < midfieldersCount) {
                 players.push(playerId);
                 midfielders++;
                 return true;
             }
-        }else if (playerPosition == "Attacker"){
+        }else if (playerPosition === "Attacker"){
             if (attackers < attackersCount ){
                 players.push(playerId);
                 attackers++;
@@ -63,25 +92,25 @@ $(document).ready(function () {
 
     function removePlayers(playerId, playerPosition) {
         var playerPositionInArray = players.indexOf(playerId);
-        if (playerPosition == "Goalkeeper") {
+        if (playerPosition === "Goalkeeper") {
             if (goalkeepers < goalkeeperCount) {
                 players.splice(playerPositionInArray, 1);
                 goalkeepers--;
                 return true;
             }
-        }else  if (playerPosition == "Defender"){
+        }else  if (playerPosition === "Defender"){
             if (defenders < defendersCount ) {
                 players.splice(playerPositionInArray, 1);
                 defenders--;
                 return true;
             }
-        }else  if (playerPosition == "Midfielder") {
+        }else  if (playerPosition === "Midfielder") {
             if (midfielders < midfieldersCount) {
                 players.splice(playerPositionInArray, 1);
                 midfielders--;
                 return true;
             }
-        }else if (playerPosition == "Attacker"){
+        }else if (playerPosition === "Attacker"){
             if (attackers < attackersCount ){
                 players.splice(playerPositionInArray, 1);
                 attackers--;

@@ -122,7 +122,10 @@ class City
         $this->users = $users;
     }
 
-
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
 
 }

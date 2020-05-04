@@ -1,0 +1,16 @@
+.coach-training-picture {
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    height: auto;
+    width: auto;
+}
+.coach-training-picture-information{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+
+}

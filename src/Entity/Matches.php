@@ -192,8 +192,9 @@ class Matches
     /**
      * @return Collection\Scheme[]
      */
-    public function getSchemes(): array
+    public function getSchemes()
     {
+        return [];
         return $this->schemes;
     }
 

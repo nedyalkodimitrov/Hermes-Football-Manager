@@ -117,6 +117,16 @@ class Team
     public $image;
 
     /**
+     * @Assert\Image(
+     *     allowLandscape = false,
+     *     allowPortrait = false
+     * )
+     * @ORM\Column(name="cover_image", type="string", nullable=true)
+     */
+
+    public $coverImage;
+
+    /**
      * @ORM\ManyToOne(targetEntity="City", inversedBy="teams")
      * @ORM\JoinColumn(name="city", referencedColumnName="id")
      */
@@ -527,6 +537,22 @@ class Team
     public function setAwayMatches($awayMatches): void
     {
         $this->awayMatches = $awayMatches;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoverImage()
+    {
+        return $this->coverImage;
+    }
+
+    /**
+     * @param mixed $coverImage
+     */
+    public function setCoverImage($coverImage): void
+    {
+        $this->coverImage = $coverImage;
     }
 
 

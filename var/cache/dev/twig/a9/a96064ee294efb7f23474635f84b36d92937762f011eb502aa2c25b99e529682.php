@@ -25,6 +25,7 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
         $this->source = $this->getSourceContext();
 
         $this->blocks = [
+            'style' => [$this, 'block_style'],
             'body' => [$this, 'block_body'],
         ];
     }
@@ -55,6 +56,37 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
     }
 
     // line 3
+    public function block_style($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->enter($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "style"));
+
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "style"));
+
+        // line 4
+        echo "    ";
+        $this->displayParentBlock("style", $context, $blocks);
+        echo "
+    <link rel=\"stylesheet\" href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/coach/indexPageStyle.css"), "html", null, true);
+        echo "\">
+    <link rel=\"stylesheet\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/player/playerStyle.css"), "html", null, true);
+        echo "\">
+";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+        
+        $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
+
+    }
+
+    // line 8
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,7 +96,7 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 4
+        // line 9
         echo "    <div id=\"container\">
         <div class=\"row mt-5  justify-content-center\">
             <div class=\"col-lg-11 col-md-7 col-sm-11 col-9  main-charts-container row pb-3\">
@@ -74,8 +106,8 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
                 <div class=\"col-lg-4 col-md-12 col-sm-12 text-center align-content-center chart-container \">
                     <div class=\"information-container \">
                           <p>";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["playersCount"]) || array_key_exists("playersCount", $context) ? $context["playersCount"] : (function () { throw new RuntimeError('Variable "playersCount" does not exist.', 12, $this->source); })()), "html", null, true);
+        // line 17
+        echo twig_escape_filter($this->env, (isset($context["playersCount"]) || array_key_exists("playersCount", $context) ? $context["playersCount"] : (function () { throw new RuntimeError('Variable "playersCount" does not exist.', 17, $this->source); })()), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"fat-percent-div\">
@@ -95,8 +127,8 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
                 <div class=\"col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container\">
                     <div class=\"information-container\">
                        <p>";
-        // line 30
-        echo twig_escape_filter($this->env, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 30, $this->source); })()), "html", null, true);
+        // line 35
+        echo twig_escape_filter($this->env, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 35, $this->source); })()), "html", null, true);
         echo "</p>
                     </div>
                     <div class=\"fat-percent-div\">
@@ -110,86 +142,88 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
     </div>
 
     <div id=\"container \">
-        <div class=\"row mt-5  justify-content-center\">
-            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3\">
+        <div class=\"row mt-5  justify-content-center \">
+            <div class=\"col-lg-11 col-md-7 col-sm-11 main-charts-container col-10 justify-content-around div-charts row pb-3\">
                 <div class=\"col-12 text-center\">
-                    <h2 >Топ трима играча от мъжкия отбор   </h2>
+                    <h2 class=\"mt-4\"    >Топ трима играча от мъжкия отбор   </h2>
                 </div>
                 ";
-        // line 48
+        // line 53
         $context["foo"] = 1;
-        // line 49
+        // line 54
         echo "                ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["topPlayers"]) || array_key_exists("topPlayers", $context) ? $context["topPlayers"] : (function () { throw new RuntimeError('Variable "topPlayers" does not exist.', 49, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["topPlayers"]) || array_key_exists("topPlayers", $context) ? $context["topPlayers"] : (function () { throw new RuntimeError('Variable "topPlayers" does not exist.', 54, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
-            // line 50
+            // line 55
             echo "                    <div class=\"col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row \">
                         <div class=\"col-12 player-container top-player-card-container\" id=\"player-";
-            // line 51
-            echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 51, $this->source); })()), "html", null, true);
+            // line 56
+            echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 56, $this->source); })()), "html", null, true);
             echo " \">
                             ";
-            // line 53
+            // line 58
             echo "                            ";
-            // line 54
+            // line 59
             echo "                            ";
-            // line 55
+            // line 60
             echo "                            ";
-            // line 56
+            // line 61
             echo "                            ";
-            // line 57
+            // line 62
             echo "                            <div class=\"top-player-image-container\">
                                 ";
-            // line 58
-            if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 58) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 58) == " "))) {
-                // line 59
+            // line 63
+            if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 63) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 63) == " "))) {
+                // line 64
                 echo "                                    <img src=\"";
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
                 echo "\" alt=\"\" class=\"top-player-card-img\">
                                 ";
             } else {
-                // line 61
+                // line 66
                 echo "                                    <img src=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 61))), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 66))), "html", null, true);
                 echo "\" alt=\"\" class=\"top-player-card-img\">
                                 ";
             }
-            // line 63
-            echo "                            </div>
-                            <p class=\"top-player-card-name\">";
-            // line 64
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 64), "Name", [], "any", false, false, false, 64), "html", null, true);
+            // line 68
+            echo "
+                            </div>
+                            <p class=\" p-3 top-player-card-name\">";
+            // line 70
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 70), "Name", [], "any", false, false, false, 70), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 64), "FName", [], "any", false, false, false, 64), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 70), "FName", [], "any", false, false, false, 70), "html", null, true);
             echo "</p>
                             ";
-            // line 66
+            // line 72
             echo "                        </div>
                     </div>
                     ";
-            // line 68
-            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 68, $this->source); })()) + 1);
-            // line 69
+            // line 74
+            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 74, $this->source); })()) + 1);
+            // line 75
             echo "                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 70
+        // line 76
         echo "
             </div>
         </div>
     </div>
 
 
-    <div class=\"table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row \">
-        <div class=\"table col-11  mh-25\" id=\"teamLeadership-container \">
+    <div class=\"table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 \">
+        <div class=\"table col-11  main-charts-container  p-4 mx-auto mh-25\" id=\"teamLeadership-container \">
             ";
-        // line 78
-        if ((isset($context["hasTeam"]) || array_key_exists("hasTeam", $context) ? $context["hasTeam"] : (function () { throw new RuntimeError('Variable "hasTeam" does not exist.', 78, $this->source); })())) {
-            // line 79
-            echo "                <table class=\"table-bordered col-12 \"  style=\"margin-bottom: 0; padding:0\">
+        // line 84
+        if ((isset($context["hasTeam"]) || array_key_exists("hasTeam", $context) ? $context["hasTeam"] : (function () { throw new RuntimeError('Variable "hasTeam" does not exist.', 84, $this->source); })())) {
+            // line 85
+            echo "                <h4 class=\"col-12 text-center mt-2 mb-4\">Текущо класиране</h4>
+                <table class=\"table-bordered col-12  mx-auto\"  style=\"margin-bottom: 0; padding:0\">
                     <tr class=\"row col-12 p-0 m-0 bg-success\">
                         <th class=\"col-1\"></th>
                         <th class=\"col-4 color-white\">Име</th>
@@ -202,125 +236,125 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
                         <th class=\"col-1 color-white\">Т</th>
                     </tr>
                     ";
-            // line 91
+            // line 98
             $context["rowNum"] = 1;
-            // line 92
+            // line 99
             echo "                    ";
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 92, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 99, $this->source); })()));
             $context['_iterated'] = false;
             foreach ($context['_seq'] as $context["_key"] => $context["team"]) {
-                // line 93
+                // line 100
                 echo "                        ";
-                if ((twig_get_attribute($this->env, $this->source, (isset($context["myTeam"]) || array_key_exists("myTeam", $context) ? $context["myTeam"] : (function () { throw new RuntimeError('Variable "myTeam" does not exist.', 93, $this->source); })()), "Id", [], "any", false, false, false, 93) == twig_get_attribute($this->env, $this->source, $context["team"], "Id", [], "any", false, false, false, 93))) {
-                    // line 94
+                if ((twig_get_attribute($this->env, $this->source, (isset($context["myTeam"]) || array_key_exists("myTeam", $context) ? $context["myTeam"] : (function () { throw new RuntimeError('Variable "myTeam" does not exist.', 100, $this->source); })()), "Id", [], "any", false, false, false, 100) == twig_get_attribute($this->env, $this->source, $context["team"], "Id", [], "any", false, false, false, 100))) {
+                    // line 101
                     echo "                            <tr class=\"teamTable row col-12 p-0 m-0 bg-gray\">
                                 <th  class=\"col-1 justify-content-end\"> ";
-                    // line 95
-                    echo twig_escape_filter($this->env, (isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 95, $this->source); })()), "html", null, true);
+                    // line 102
+                    echo twig_escape_filter($this->env, (isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 102, $this->source); })()), "html", null, true);
                     echo "</th>
                                 <th class=\"col-4\"> ";
-                    // line 96
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "name", [], "any", false, false, false, 96), "html", null, true);
+                    // line 103
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "name", [], "any", false, false, false, 103), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 97
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "playedGames", [], "any", false, false, false, 97), "html", null, true);
+                    // line 104
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "playedGames", [], "any", false, false, false, 104), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 98
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "wins", [], "any", false, false, false, 98), "html", null, true);
+                    // line 105
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "wins", [], "any", false, false, false, 105), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 99
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "drawsGames", [], "any", false, false, false, 99), "html", null, true);
+                    // line 106
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "drawsGames", [], "any", false, false, false, 106), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 100
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "lostGames", [], "any", false, false, false, 100), "html", null, true);
+                    // line 107
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "lostGames", [], "any", false, false, false, 107), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 101
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Goals", [], "any", false, false, false, 101), "html", null, true);
+                    // line 108
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Goals", [], "any", false, false, false, 108), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 102
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "GoalsInTheTeamDoor", [], "any", false, false, false, 102), "html", null, true);
+                    // line 109
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "GoalsInTheTeamDoor", [], "any", false, false, false, 109), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\">";
-                    // line 103
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "points", [], "any", false, false, false, 103), "html", null, true);
+                    // line 110
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "points", [], "any", false, false, false, 110), "html", null, true);
                     echo "</th>
                             </tr>
                         ";
                 } else {
-                    // line 106
+                    // line 113
                     echo "                            <tr class=\"teamTable row col-12 p-0 m-0\">
                                 <th  class=\"col-1 justify-content-end\"> ";
-                    // line 107
-                    echo twig_escape_filter($this->env, (isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 107, $this->source); })()), "html", null, true);
+                    // line 114
+                    echo twig_escape_filter($this->env, (isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 114, $this->source); })()), "html", null, true);
                     echo "</th>
                                 <th class=\"col-4\"> ";
-                    // line 108
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "name", [], "any", false, false, false, 108), "html", null, true);
+                    // line 115
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "name", [], "any", false, false, false, 115), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 109
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "playedGames", [], "any", false, false, false, 109), "html", null, true);
+                    // line 116
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "playedGames", [], "any", false, false, false, 116), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 110
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "wins", [], "any", false, false, false, 110), "html", null, true);
+                    // line 117
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "wins", [], "any", false, false, false, 117), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 111
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "drawsGames", [], "any", false, false, false, 111), "html", null, true);
+                    // line 118
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "drawsGames", [], "any", false, false, false, 118), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 112
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "lostGames", [], "any", false, false, false, 112), "html", null, true);
+                    // line 119
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "lostGames", [], "any", false, false, false, 119), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 113
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Goals", [], "any", false, false, false, 113), "html", null, true);
+                    // line 120
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Goals", [], "any", false, false, false, 120), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\"> ";
-                    // line 114
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "GoalsInTheTeamDoor", [], "any", false, false, false, 114), "html", null, true);
+                    // line 121
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "GoalsInTheTeamDoor", [], "any", false, false, false, 121), "html", null, true);
                     echo "</th>
                                 <th class=\"col-1\">";
-                    // line 115
-                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "points", [], "any", false, false, false, 115), "html", null, true);
+                    // line 122
+                    echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "points", [], "any", false, false, false, 122), "html", null, true);
                     echo "</th>
                             </tr>
                         ";
                 }
-                // line 118
+                // line 125
                 echo "
                         ";
-                // line 119
-                $context["rowNum"] = ((isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 119, $this->source); })()) + 1);
-                // line 120
+                // line 126
+                $context["rowNum"] = ((isset($context["rowNum"]) || array_key_exists("rowNum", $context) ? $context["rowNum"] : (function () { throw new RuntimeError('Variable "rowNum" does not exist.', 126, $this->source); })()) + 1);
+                // line 127
                 echo "                    ";
                 $context['_iterated'] = true;
             }
             if (!$context['_iterated']) {
-                // line 121
+                // line 128
                 echo "                        <li><em>Вие нямате отбор</em></li>
                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['team'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 123
+            // line 130
             echo "                </table>
             ";
         } else {
-            // line 125
+            // line 132
             echo "                <h1>Вие нямате отбор</h1>
             ";
         }
-        // line 127
+        // line 134
         echo "        </div>
     </div>
 
@@ -365,13 +399,18 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
 
     public function getDebugInfo()
     {
-        return array (  324 => 127,  320 => 125,  316 => 123,  309 => 121,  304 => 120,  302 => 119,  299 => 118,  293 => 115,  289 => 114,  285 => 113,  281 => 112,  277 => 111,  273 => 110,  269 => 109,  265 => 108,  261 => 107,  258 => 106,  252 => 103,  248 => 102,  244 => 101,  240 => 100,  236 => 99,  232 => 98,  228 => 97,  224 => 96,  220 => 95,  217 => 94,  214 => 93,  208 => 92,  206 => 91,  192 => 79,  190 => 78,  180 => 70,  174 => 69,  172 => 68,  168 => 66,  162 => 64,  159 => 63,  153 => 61,  147 => 59,  145 => 58,  142 => 57,  140 => 56,  138 => 55,  136 => 54,  134 => 53,  130 => 51,  127 => 50,  122 => 49,  120 => 48,  99 => 30,  78 => 12,  68 => 4,  58 => 3,  35 => 2,);
+        return array (  358 => 134,  354 => 132,  350 => 130,  343 => 128,  338 => 127,  336 => 126,  333 => 125,  327 => 122,  323 => 121,  319 => 120,  315 => 119,  311 => 118,  307 => 117,  303 => 116,  299 => 115,  295 => 114,  292 => 113,  286 => 110,  282 => 109,  278 => 108,  274 => 107,  270 => 106,  266 => 105,  262 => 104,  258 => 103,  254 => 102,  251 => 101,  248 => 100,  242 => 99,  240 => 98,  225 => 85,  223 => 84,  213 => 76,  207 => 75,  205 => 74,  201 => 72,  195 => 70,  191 => 68,  185 => 66,  179 => 64,  177 => 63,  174 => 62,  172 => 61,  170 => 60,  168 => 59,  166 => 58,  162 => 56,  159 => 55,  154 => 54,  152 => 53,  131 => 35,  110 => 17,  100 => 9,  90 => 8,  78 => 6,  74 => 5,  69 => 4,  59 => 3,  36 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("
 {% extends 'coaches/base.html.twig' %}
+{% block style  %}
+    {{ parent() }}
+    <link rel=\"stylesheet\" href=\"{{ asset(\"css/coach/indexPageStyle.css\") }}\">
+    <link rel=\"stylesheet\" href=\"{{ asset(\"css/player/playerStyle.css\") }}\">
+{% endblock %}
 {% block body %}
     <div id=\"container\">
         <div class=\"row mt-5  justify-content-center\">
@@ -412,10 +451,10 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
     </div>
 
     <div id=\"container \">
-        <div class=\"row mt-5  justify-content-center\">
-            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3\">
+        <div class=\"row mt-5  justify-content-center \">
+            <div class=\"col-lg-11 col-md-7 col-sm-11 main-charts-container col-10 justify-content-around div-charts row pb-3\">
                 <div class=\"col-12 text-center\">
-                    <h2 >Топ трима играча от мъжкия отбор   </h2>
+                    <h2 class=\"mt-4\"    >Топ трима играча от мъжкия отбор   </h2>
                 </div>
                 {% set foo = 1 %}
                 {% for player in topPlayers %}
@@ -432,8 +471,9 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
                                 {% else %}
                                     <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"top-player-card-img\">
                                 {% endif %}
+
                             </div>
-                            <p class=\"top-player-card-name\">{{ player.User.Name }} {{ player.User.FName }}</p>
+                            <p class=\" p-3 top-player-card-name\">{{ player.User.Name }} {{ player.User.FName }}</p>
                             {#                            <span><i class=\"fas fa-times country-fa-times players\" id=\"{{ player.Id }}\"></i></span>#}
                         </div>
                     </div>
@@ -445,10 +485,11 @@ class __TwigTemplate_901303697e1b8fff6fd10068e36cd61608f5116fea294f14492baca8306
     </div>
 
 
-    <div class=\"table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row \">
-        <div class=\"table col-11  mh-25\" id=\"teamLeadership-container \">
+    <div class=\"table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 \">
+        <div class=\"table col-11  main-charts-container  p-4 mx-auto mh-25\" id=\"teamLeadership-container \">
             {% if hasTeam %}
-                <table class=\"table-bordered col-12 \"  style=\"margin-bottom: 0; padding:0\">
+                <h4 class=\"col-12 text-center mt-2 mb-4\">Текущо класиране</h4>
+                <table class=\"table-bordered col-12  mx-auto\"  style=\"margin-bottom: 0; padding:0\">
                     <tr class=\"row col-12 p-0 m-0 bg-success\">
                         <th class=\"col-1\"></th>
                         <th class=\"col-4 color-white\">Име</th>

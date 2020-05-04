@@ -107,7 +107,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
         echo "\">
     <link rel=\"stylesheet\" href=\"  ";
         // line 10
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/coach/trainingPageStyle.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/coach/trainingPageStyle.css  "), "html", null, true);
         echo "\">
     <link rel=\"stylesheet\" href=\"  ";
         // line 11
@@ -122,7 +122,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
 
     }
 
-    // line 14
+    // line 15
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -132,329 +132,335 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 15
+        // line 16
         echo "    <img src=\"";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["coachTeamImage"]) || array_key_exists("coachTeamImage", $context) ? $context["coachTeamImage"] : (function () { throw new RuntimeError('Variable "coachTeamImage" does not exist.', 15, $this->source); })()))), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["coachTeamImage"]) || array_key_exists("coachTeamImage", $context) ? $context["coachTeamImage"] : (function () { throw new RuntimeError('Variable "coachTeamImage" does not exist.', 16, $this->source); })()))), "html", null, true);
         echo "\" class=\"mx-auto team-image mt-3\" alt=\"\">
     <h2 class=\"text-center mt-1\">";
-        // line 16
-        echo twig_escape_filter($this->env, (isset($context["coachTeamName"]) || array_key_exists("coachTeamName", $context) ? $context["coachTeamName"] : (function () { throw new RuntimeError('Variable "coachTeamName" does not exist.', 16, $this->source); })()), "html", null, true);
+        // line 17
+        echo twig_escape_filter($this->env, (isset($context["coachTeamName"]) || array_key_exists("coachTeamName", $context) ? $context["coachTeamName"] : (function () { throw new RuntimeError('Variable "coachTeamName" does not exist.', 17, $this->source); })()), "html", null, true);
         echo "</h2>
     <div id=\"container\">
-        <div class=\"row mt-1 justify-content-center \">
-            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 coach-player-adding-container justify-content-around row pb-3\">
+        <div class=\"row mt-1 justify-content-center col-12\">
+            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 p-0 m-0 coach-player-adding-container justify-content-center row pb-3\">
                 <div class=\"col-12 mb-1 mt-2\">
-                    <h4>Вратари</h4>
+                    <h4 class=\"col-12 text-center\">Вратари</h4>
                 </div>
-                ";
-        // line 23
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    ";
+        // line 25
         $context["foo"] = 1;
-        // line 24
-        echo "                ";
+        // line 26
+        echo "                    ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 24, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 26, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
-            // line 25
+            // line 27
+            echo "                        ";
+            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 27) == "Goalkeeper")) {
+                // line 28
+                echo "                            <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2 p-0\">
+                                <div class=\"col-11 player-container \" id=\"player-";
+                // line 29
+                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 29, $this->source); })()), "html", null, true);
+                echo " \">
+                                    <a href=\"";
+                // line 30
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+                echo "\">
+                                        ";
+                // line 31
+                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 31) == 0)) {
+                    // line 32
+                    echo "                                            <div class=\"status-green\"></div>
+                                        ";
+                } else {
+                    // line 34
+                    echo "                                            <div class=\"status-red\"></div>
+                                        ";
+                }
+                // line 36
+                echo "
+                                        ";
+                // line 37
+                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 37) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 37) == " "))) {
+                    // line 38
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
+                    echo "\" alt=\"\" class=\"player-img\">
+                                        ";
+                } else {
+                    // line 40
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 40))), "html", null, true);
+                    echo "\" alt=\"\" class=\"player-img\">
+                                        ";
+                }
+                // line 42
+                echo "
+                                        <p class=\"player-name\">";
+                // line 43
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 43), "Name", [], "any", false, false, false, 43), "html", null, true);
+                echo " ";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 43), "FName", [], "any", false, false, false, 43), "html", null, true);
+                echo " </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        ";
+            }
+            // line 49
+            echo "                        ";
+            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 49, $this->source); })()) + 1);
+            // line 50
             echo "                    ";
-            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 25) == "Goalkeeper")) {
-                // line 26
-                echo "                        <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 51
+        echo "                </div>
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4  class=\"col-12 text-center\">Защитници</h4>
+                </div>
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    ";
+        // line 57
+        $context["foo"] = 1;
+        // line 58
+        echo "                    ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 58, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
+            // line 59
+            echo "                        ";
+            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 59) == "Defender")) {
+                // line 60
+                echo "
+                        <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
                             <div class=\"col-12 player-container \" id=\"player-";
-                // line 27
-                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 27, $this->source); })()), "html", null, true);
+                // line 62
+                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 62, $this->source); })()), "html", null, true);
                 echo " \">
                                 <a href=\"";
-                // line 28
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 28)]), "html", null, true);
+                // line 63
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 63)]), "html", null, true);
                 echo "\">
                                     ";
-                // line 29
-                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 29) == 0)) {
-                    // line 30
+                // line 64
+                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 64) == 0)) {
+                    // line 65
                     echo "                                        <div class=\"status-green\"></div>
                                     ";
                 } else {
-                    // line 32
+                    // line 67
                     echo "                                        <div class=\"status-red\"></div>
                                     ";
                 }
-                // line 34
+                // line 69
                 echo "
                                     ";
-                // line 35
-                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 35) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 35) == " "))) {
-                    // line 36
+                // line 70
+                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 70) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 70) == " "))) {
+                    // line 71
                     echo "                                        <img src=\"";
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
                     echo "\" alt=\"\" class=\"player-img\">
                                     ";
                 } else {
-                    // line 38
+                    // line 73
                     echo "                                        <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 38))), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 73))), "html", null, true);
                     echo "\" alt=\"\" class=\"player-img\">
                                     ";
                 }
-                // line 40
+                // line 75
                 echo "
                                     <p class=\"player-name\">";
-                // line 41
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 41), "Name", [], "any", false, false, false, 41), "html", null, true);
+                // line 76
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 76), "Name", [], "any", false, false, false, 76), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 41), "FName", [], "any", false, false, false, 41), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 76), "FName", [], "any", false, false, false, 76), "html", null, true);
                 echo " </p>
                                 </a>
                             </div>
                         </div>
 
-                    ";
+                        ";
             }
-            // line 47
+            // line 82
+            echo "                        ";
+            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 82, $this->source); })()) + 1);
+            // line 83
             echo "                    ";
-            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 47, $this->source); })()) + 1);
-            // line 48
-            echo "                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 49
-        echo "
-                <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Защитници</h4>
+        // line 84
+        echo "                </div>
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4 class=\"col-12 text-center \">Халфове</h4>
                 </div>
-                ";
-        // line 53
-        $context["foo"] = 1;
-        // line 54
-        echo "                ";
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 54, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
-            // line 55
-            echo "                    ";
-            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 55) == "Defender")) {
-                // line 56
-                echo "
-                    <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-";
-                // line 58
-                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 58, $this->source); })()), "html", null, true);
-                echo " \">
-                            <a href=\"";
-                // line 59
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 59)]), "html", null, true);
-                echo "\">
-                                ";
-                // line 60
-                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 60) == 0)) {
-                    // line 61
-                    echo "                                    <div class=\"status-green\"></div>
-                                ";
-                } else {
-                    // line 63
-                    echo "                                    <div class=\"status-red\"></div>
-                                ";
-                }
-                // line 65
-                echo "
-                                ";
-                // line 66
-                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 66) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 66) == " "))) {
-                    // line 67
-                    echo "                                    <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
-                    echo "\" alt=\"\" class=\"player-img\">
-                                ";
-                } else {
-                    // line 69
-                    echo "                                    <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 69))), "html", null, true);
-                    echo "\" alt=\"\" class=\"player-img\">
-                                ";
-                }
-                // line 71
-                echo "
-                                <p class=\"player-name\">";
-                // line 72
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 72), "Name", [], "any", false, false, false, 72), "html", null, true);
-                echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 72), "FName", [], "any", false, false, false, 72), "html", null, true);
-                echo " </p>
-                            </a>
-                        </div>
-                    </div>
-
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
                     ";
-            }
-            // line 78
-            echo "                    ";
-            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 78, $this->source); })()) + 1);
-            // line 79
-            echo "                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        echo "    <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Халфове</h4>
-                </div>
-                ";
-        // line 82
+        // line 90
         $context["foo"] = 1;
-        // line 83
-        echo "                ";
+        // line 91
+        echo "                    ";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 83, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 91, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
-            // line 84
-            echo "                    ";
-            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 84) == "Midfilder")) {
-                // line 85
-                echo "
-                    <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-";
-                // line 87
-                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 87, $this->source); })()), "html", null, true);
-                echo " \">
-                            <a href=\"";
-                // line 88
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 88)]), "html", null, true);
-                echo "\">
-                                ";
-                // line 89
-                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 89) == 0)) {
-                    // line 90
-                    echo "                                    <div class=\"status-green\"></div>
-                                ";
-                } else {
-                    // line 92
-                    echo "                                    <div class=\"status-red\"></div>
-                                ";
-                }
+            // line 92
+            echo "                        ";
+            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 92) == "Midfielder")) {
+                // line 93
+                echo "                            <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
+                                <div class=\"col-12 player-container \" id=\"player-";
                 // line 94
-                echo "
-                                ";
-                // line 95
-                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 95) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 95) == " "))) {
-                    // line 96
-                    echo "                                    <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
-                    echo "\" alt=\"\" class=\"player-img\">
-                                ";
-                } else {
-                    // line 98
-                    echo "                                    <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 98))), "html", null, true);
-                    echo "\" alt=\"\" class=\"player-img\">
-                                ";
-                }
-                // line 100
-                echo "
-                                <p class=\"player-name\">";
-                // line 101
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 101), "Name", [], "any", false, false, false, 101), "html", null, true);
-                echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 101), "FName", [], "any", false, false, false, 101), "html", null, true);
-                echo " </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    ";
-            }
-            // line 107
-            echo "                    ";
-            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 107, $this->source); })()) + 1);
-            // line 108
-            echo "                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 109
-        echo "
-                <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Нападатели</h4>
-                </div>
-                ";
-        // line 113
-        $context["foo"] = 1;
-        // line 114
-        echo "                ";
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 114, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
-            // line 115
-            echo "                    ";
-            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 115) == "Attacker")) {
-                // line 116
-                echo "
-                    <div class=\"col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-";
-                // line 118
-                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 118, $this->source); })()), "html", null, true);
+                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 94, $this->source); })()), "html", null, true);
                 echo " \">
-                            <a href=\"";
-                // line 119
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 119)]), "html", null, true);
+                                    <a href=\"";
+                // line 95
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 95)]), "html", null, true);
                 echo "\">
-                                ";
-                // line 120
-                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 120) == 0)) {
-                    // line 121
-                    echo "                                    <div class=\"status-green\"></div>
-                                ";
+                                        ";
+                // line 96
+                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 96) == 0)) {
+                    // line 97
+                    echo "                                            <div class=\"status-green\"></div>
+                                        ";
                 } else {
-                    // line 123
-                    echo "                                    <div class=\"status-red\"></div>
-                                ";
+                    // line 99
+                    echo "                                            <div class=\"status-red\"></div>
+                                        ";
                 }
-                // line 125
+                // line 101
                 echo "
-                                ";
-                // line 126
-                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 126) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 126) == " "))) {
-                    // line 127
-                    echo "                                    <img src=\"";
+                                        ";
+                // line 102
+                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 102) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 102) == " "))) {
+                    // line 103
+                    echo "                                            <img src=\"";
                     echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
                     echo "\" alt=\"\" class=\"player-img\">
-                                ";
+                                        ";
                 } else {
-                    // line 129
-                    echo "                                    <img src=\"";
-                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 129))), "html", null, true);
+                    // line 105
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 105))), "html", null, true);
                     echo "\" alt=\"\" class=\"player-img\">
-                                ";
+                                        ";
                 }
-                // line 131
+                // line 107
                 echo "
-                                <p class=\"player-name\">";
-                // line 132
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 132), "Name", [], "any", false, false, false, 132), "html", null, true);
+                                        <p class=\"player-name\">";
+                // line 108
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 108), "Name", [], "any", false, false, false, 108), "html", null, true);
                 echo " ";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 132), "FName", [], "any", false, false, false, 132), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 108), "FName", [], "any", false, false, false, 108), "html", null, true);
                 echo " </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    ";
+                                    </a>
+                                </div>
+                            </div>
+                        ";
             }
-            // line 138
+            // line 113
+            echo "                        ";
+            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 113, $this->source); })()) + 1);
+            // line 114
             echo "                    ";
-            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 138, $this->source); })()) + 1);
-            // line 139
-            echo "                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 140
-        echo "                <div class=\"add-team-circle-container  row \" id=\"add-player-container\">
+        // line 115
+        echo "                </div>
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4 class=\"col-12 text-center\">Нападатели</h4>
+                </div>
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    ";
+        // line 121
+        $context["foo"] = 1;
+        // line 122
+        echo "                    ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["players"]) || array_key_exists("players", $context) ? $context["players"] : (function () { throw new RuntimeError('Variable "players" does not exist.', 122, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["player"]) {
+            // line 123
+            echo "                        ";
+            if ((twig_get_attribute($this->env, $this->source, $context["player"], "Position", [], "any", false, false, false, 123) == "Attacker")) {
+                // line 124
+                echo "                            <div class=\"col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2\">
+                                <div class=\"col-12 player-container \" id=\"player-";
+                // line 125
+                echo twig_escape_filter($this->env, (isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 125, $this->source); })()), "html", null, true);
+                echo " \">
+                                    <a href=\"";
+                // line 126
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 126)]), "html", null, true);
+                echo "\">
+                                        ";
+                // line 127
+                if ((twig_get_attribute($this->env, $this->source, $context["player"], "Status", [], "any", false, false, false, 127) == 0)) {
+                    // line 128
+                    echo "                                            <div class=\"status-green\"></div>
+                                        ";
+                } else {
+                    // line 130
+                    echo "                                            <div class=\"status-red\"></div>
+                                        ";
+                }
+                // line 132
+                echo "
+                                        ";
+                // line 133
+                if (((twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 133) == null) || (twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 133) == " "))) {
+                    // line 134
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user-image.png"), "html", null, true);
+                    echo "\" alt=\"\" class=\"player-img\">
+                                        ";
+                } else {
+                    // line 136
+                    echo "                                            <img src=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, $context["player"], "Image", [], "any", false, false, false, 136))), "html", null, true);
+                    echo "\" alt=\"\" class=\"player-img\">
+                                        ";
+                }
+                // line 138
+                echo "
+                                        <p class=\"player-name\">";
+                // line 139
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 139), "Name", [], "any", false, false, false, 139), "html", null, true);
+                echo " ";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["player"], "User", [], "any", false, false, false, 139), "FName", [], "any", false, false, false, 139), "html", null, true);
+                echo " </p>
+                                    </a>
+                                </div>
+                            </div>
+                        ";
+            }
+            // line 144
+            echo "                        ";
+            $context["foo"] = ((isset($context["foo"]) || array_key_exists("foo", $context) ? $context["foo"] : (function () { throw new RuntimeError('Variable "foo" does not exist.', 144, $this->source); })()) + 1);
+            // line 145
+            echo "                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['player'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 146
+        echo "                </div>
+                <div class=\"add-team-circle-container  row \" id=\"add-player-container\">
                     <div class=\"add-team-circle\" id=\"player- \">
                         <img src=\"";
-        // line 142
+        // line 149
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/plus .png"), "html", null, true);
         echo "\" alt=\"\" class=\"add-team \" >
 
@@ -483,15 +489,15 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
         </div>
     </div>
     <script type=\"text/javascript\" src=\"";
-        // line 168
+        // line 175
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("mdb/js/jquery-3.3.1.min.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 169
+        // line 176
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/coach/searchPlayers.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 170
+        // line 177
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/coach/sendRequestToPlayer.js"), "html", null, true);
         echo "\"></script>
 
@@ -514,24 +520,24 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
     </script>
 
 ";
-        // line 206
+        // line 213
         echo "
 
 ";
-        // line 218
+        // line 225
         echo "
 ";
-        // line 220
+        // line 227
         echo "
 ";
-        // line 224
+        // line 231
         echo "
 
 ";
-        // line 239
+        // line 246
         echo "
     <script type=\"text/javascript\" src=\"";
-        // line 240
+        // line 247
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/hidingDiv.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -555,7 +561,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
 
     public function getDebugInfo()
     {
-        return array (  535 => 240,  532 => 239,  528 => 224,  525 => 220,  522 => 218,  518 => 206,  495 => 170,  491 => 169,  487 => 168,  458 => 142,  454 => 140,  448 => 139,  445 => 138,  434 => 132,  431 => 131,  425 => 129,  419 => 127,  417 => 126,  414 => 125,  410 => 123,  406 => 121,  404 => 120,  400 => 119,  396 => 118,  392 => 116,  389 => 115,  384 => 114,  382 => 113,  376 => 109,  370 => 108,  367 => 107,  356 => 101,  353 => 100,  347 => 98,  341 => 96,  339 => 95,  336 => 94,  332 => 92,  328 => 90,  326 => 89,  322 => 88,  318 => 87,  314 => 85,  311 => 84,  306 => 83,  304 => 82,  294 => 79,  291 => 78,  280 => 72,  277 => 71,  271 => 69,  265 => 67,  263 => 66,  260 => 65,  256 => 63,  252 => 61,  250 => 60,  246 => 59,  242 => 58,  238 => 56,  235 => 55,  230 => 54,  228 => 53,  222 => 49,  216 => 48,  213 => 47,  202 => 41,  199 => 40,  193 => 38,  187 => 36,  185 => 35,  182 => 34,  178 => 32,  174 => 30,  172 => 29,  168 => 28,  164 => 27,  161 => 26,  158 => 25,  153 => 24,  151 => 23,  141 => 16,  136 => 15,  126 => 14,  114 => 11,  110 => 10,  106 => 9,  102 => 8,  97 => 7,  87 => 6,  75 => 4,  70 => 3,  60 => 2,  37 => 1,);
+        return array (  541 => 247,  538 => 246,  534 => 231,  531 => 227,  528 => 225,  524 => 213,  501 => 177,  497 => 176,  493 => 175,  464 => 149,  459 => 146,  453 => 145,  450 => 144,  440 => 139,  437 => 138,  431 => 136,  425 => 134,  423 => 133,  420 => 132,  416 => 130,  412 => 128,  410 => 127,  406 => 126,  402 => 125,  399 => 124,  396 => 123,  391 => 122,  389 => 121,  381 => 115,  375 => 114,  372 => 113,  362 => 108,  359 => 107,  353 => 105,  347 => 103,  345 => 102,  342 => 101,  338 => 99,  334 => 97,  332 => 96,  328 => 95,  324 => 94,  321 => 93,  318 => 92,  313 => 91,  311 => 90,  303 => 84,  297 => 83,  294 => 82,  283 => 76,  280 => 75,  274 => 73,  268 => 71,  266 => 70,  263 => 69,  259 => 67,  255 => 65,  253 => 64,  249 => 63,  245 => 62,  241 => 60,  238 => 59,  233 => 58,  231 => 57,  223 => 51,  217 => 50,  214 => 49,  203 => 43,  200 => 42,  194 => 40,  188 => 38,  186 => 37,  183 => 36,  179 => 34,  175 => 32,  173 => 31,  169 => 30,  165 => 29,  162 => 28,  159 => 27,  154 => 26,  152 => 25,  141 => 17,  136 => 16,  126 => 15,  114 => 11,  110 => 10,  106 => 9,  102 => 8,  97 => 7,  87 => 6,  75 => 4,  70 => 3,  60 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -569,22 +575,57 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
     {{ parent() }}
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/particles/hiddenFormStyle.css\") }}\">
     <link rel=\"stylesheet\" href=\"{{ asset(\"css/particles/searchEngine.css\") }}\">
-    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/coach/trainingPageStyle.css\") }}\">
+    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/coach/trainingPageStyle.css  \") }}\">
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/particles/searchResultsTable.css\") }}\">
+{#    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/coach/particles/teamPlayerCard.css\") }}\">#}
 {% endblock %}
 
 {% block body %}
     <img src=\"{{ asset(\"images/\" ~ coachTeamImage) }}\" class=\"mx-auto team-image mt-3\" alt=\"\">
     <h2 class=\"text-center mt-1\">{{ coachTeamName }}</h2>
     <div id=\"container\">
-        <div class=\"row mt-1 justify-content-center \">
-            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 coach-player-adding-container justify-content-around row pb-3\">
+        <div class=\"row mt-1 justify-content-center col-12\">
+            <div class=\"col-lg-11 col-md-7 col-sm-11 col-10 p-0 m-0 coach-player-adding-container justify-content-center row pb-3\">
                 <div class=\"col-12 mb-1 mt-2\">
-                    <h4>Вратари</h4>
+                    <h4 class=\"col-12 text-center\">Вратари</h4>
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == \"Goalkeeper\" %}
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == \"Goalkeeper\" %}
+                            <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2 p-0\">
+                                <div class=\"col-11 player-container \" id=\"player-{{  foo }} \">
+                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                        {%   if  player.Status == 0 %}
+                                            <div class=\"status-green\"></div>
+                                        {% else %}
+                                            <div class=\"status-red\"></div>
+                                        {%  endif %}
+
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
+                                        {% else %}
+                                            <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
+                                        {% endif %}
+
+                                        <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
+                </div>
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4  class=\"col-12 text-center\">Защитници</h4>
+                </div>
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == \"Defender\" %}
+
                         <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
                             <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
                                 <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
@@ -605,100 +646,72 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                             </div>
                         </div>
 
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
-
-                <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Защитници</h4>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == \"Defender\" %}
-
-                    <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                            <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
-                                {%   if  player.Status == 0 %}
-                                    <div class=\"status-green\"></div>
-                                {% else %}
-                                    <div class=\"status-red\"></div>
-                                {%  endif %}
-
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
-                                {% else %}
-                                    <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
-                                {% endif %}
-
-                                <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}    <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Халфове</h4>
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4 class=\"col-12 text-center \">Халфове</h4>
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == \"Midfilder\" %}
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == \"Midfielder\" %}
+                            <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
+                                <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
+                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                        {%   if  player.Status == 0 %}
+                                            <div class=\"status-green\"></div>
+                                        {% else %}
+                                            <div class=\"status-red\"></div>
+                                        {%  endif %}
 
-                    <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                            <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
-                                {%   if  player.Status == 0 %}
-                                    <div class=\"status-green\"></div>
-                                {% else %}
-                                    <div class=\"status-red\"></div>
-                                {%  endif %}
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
+                                        {% else %}
+                                            <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
+                                        {% endif %}
 
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
-                                {% else %}
-                                    <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
-                                {% endif %}
-
-                                <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
-
-                <div class=\"col-12 mt-5 mb-1\">
-                    <h4>Нападатели</h4>
+                                        <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == \"Attacker\" %}
+                <hr class=\"col-9 mt-4 mx-auto\">
+                <div class=\"col-12 mt-3 mb-1\">
+                    <h4 class=\"col-12 text-center\">Нападатели</h4>
+                </div>
+                <div class=\"col-12 row players-row m-0 p-0 justify-content-center\">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == \"Attacker\" %}
+                            <div class=\"col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2\">
+                                <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
+                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                        {%   if  player.Status == 0 %}
+                                            <div class=\"status-green\"></div>
+                                        {% else %}
+                                            <div class=\"status-red\"></div>
+                                        {%  endif %}
 
-                    <div class=\"col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2\">
-                        <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                            <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
-                                {%   if  player.Status == 0 %}
-                                    <div class=\"status-green\"></div>
-                                {% else %}
-                                    <div class=\"status-red\"></div>
-                                {%  endif %}
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
+                                        {% else %}
+                                            <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
+                                        {% endif %}
 
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src=\"{{asset('images/user-image.png')}}\" alt=\"\" class=\"player-img\">
-                                {% else %}
-                                    <img src=\"{{asset('images/'~ player.Image )}}\" alt=\"\" class=\"player-img\">
-                                {% endif %}
-
-                                <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
+                                        <p class=\"player-name\">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
+                </div>
                 <div class=\"add-team-circle-container  row \" id=\"add-player-container\">
                     <div class=\"add-team-circle\" id=\"player- \">
                         <img src=\"{{ asset('images/plus .png') }}\" alt=\"\" class=\"add-team \" >

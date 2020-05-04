@@ -127,35 +127,252 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
 
         // line 13
         echo "
+    <div class=\"container col-12 row mt-3\">
+        <div class=\"col-10 mx-auto p-0 m-0\">
+           <div class=\"cover-photo-container\">
+               <img src=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 17, $this->source); })()), "Team", [], "any", false, false, false, 17), "CoverImage", [], "any", false, false, false, 17))), "html", null, true);
+        echo "\" alt=\"\" class=\"cover-photo\">
+           </div>
+            <div class=\"profile-image-container\">
+                <img src=\"";
+        // line 20
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 20, $this->source); })()))), "html", null, true);
+        echo "\" alt=\"\" class=\"profile-image m-2\">
+                <div class=\"name-holder\">
+                    <h4 class=\"text-center\"> ";
+        // line 22
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 22, $this->source); })()), "User", [], "any", false, false, false, 22), "Name", [], "any", false, false, false, 22), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 22, $this->source); })()), "User", [], "any", false, false, false, 22), "FName", [], "any", false, false, false, 22), "html", null, true);
+        echo "</h4>
+                    <h6 class=\"text-center\">";
+        // line 23
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 23, $this->source); })()), "Position", [], "any", false, false, false, 23), "Name", [], "any", false, false, false, 23), "html", null, true);
+        echo "</h6>
+                </div>
+            </div>
+
+            <div class=\"container col-12 m-0 justify-content-between p-0 row\">
+             <div class=\"col-5 m-0 p-0\">
+                 <div class=\"col-11 m-0  mt-2 information-holder p-4 \">
+                     <div class=\"col-12 m-0 row p-0   text-center \"><h4 class=\"text-center my-auto mx-auto\">Информация за играча</h4></div>
+                     <hr class=\"col-8 mx-auto\">
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Килограми: ";
+        // line 32
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 32, $this->source); })()), "Weight", [], "any", false, false, false, 32), "html", null, true);
+        echo "</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Височина: ";
+        // line 33
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 33, $this->source); })()), "Height", [], "any", false, false, false, 33), "html", null, true);
+        echo "</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\"> Град на раждане: ";
+        // line 34
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 34, $this->source); })()), "User", [], "any", false, false, false, 34), "City", [], "any", false, false, false, 34), "html", null, true);
+        echo "</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\">
+                         <h5 class=\"my-auto\">Националност: ";
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 36, $this->source); })()), "User", [], "any", false, false, false, 36), "City", [], "any", false, false, false, 36), "Country", [], "any", false, false, false, 36), "Name", [], "any", false, false, false, 36), "html", null, true);
+        echo "</h5>
+                         <img src=\"";
+        // line 37
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 37, $this->source); })()), "User", [], "any", false, false, false, 37), "City", [], "any", false, false, false, 37), "Country", [], "any", false, false, false, 37), "Image", [], "any", false, false, false, 37))), "html", null, true);
+        echo "\" alt=\"\">
+                     </div>
+                     <div class=\"col-12 row p-0 mt-3  ml-1\"><h5  class=\"my-auto\">Телефонене номер: ";
+        // line 39
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 39, $this->source); })()), "User", [], "any", false, false, false, 39), "Phone", [], "any", false, false, false, 39), "html", null, true);
+        echo "</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Емейл: ";
+        // line 40
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 40, $this->source); })()), "User", [], "any", false, false, false, 40), "Email", [], "any", false, false, false, 40), "html", null, true);
+        echo "</h5></div>
+                 </div>
+             </div>
+                <div class=\"col-7 m-0 mt-2  information-holder p-4 \">
+                    <div class=\"season-player-stats col-12 m-0 p-0  my-ayto  text-center row\">
+                        <h4 class=\"col-12 text-center\">Статистика за сезона</h4>
+                        <div class=\"col-lg-4 my-auto col-md-12 col-sm-12 text-center  align-content-center chart-container \">
+                            <div class=\"information-container p-0 m-0 \">
+                                <p>14</p>
+                            </div>
+                            <div class=\"fat-percent-div\">
+                                <h3>
+                                    <span class=\"label green badge fat-percent-badge\">Вкарани голове</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class=\"col-lg-4 my-auto col-sm-12 col-md-12 mt-2 text-center chart-container\">
+                            <div class=\"information-container\">
+                                <p>5</p>
+                            </div>
+                            <h3>
+                                <span class=\"label green badge \">Асистенции</span>
+                            </h3>
+                        </div>
+                        <div class=\"col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container\">
+                            <div class=\"information-container\">
+                                <p>25</p>
+                            </div>
+                            <div class=\"fat-percent-div\">
+                                <h3>
+                                    <span class=\"green badge fat-percent-badge  label\">Изиграни мача</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=\"col-10 mt-4 row container stat-container mx-auto m-0 p-4 \">
+            <h3 class=\"col-12  mt-3 text-center\">Статиситики от треньора</h3>
+            <div class=\"col-12 mt-3 pt-3\">
+                <div class=\"col-12 justify-content-around summarizing-results\">
+              <span class=\"min-chart status-from-coach-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 82
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 82, $this->source); })()), "stats", [], "any", false, false, false, 82), "statusFromCoaches", [], "any", false, false, false, 82), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+              </span>
+                    <h5 class=\"text-center mt-2\">Обобщен резултат</h5>
+                </div>
+            </div>
+            <div class=\"container col-12   mx-auto p-0 m-0 row mt-5\">
+                <div class=\"col-12 m-0 p-0 row justify-content-around\">
+                    <div class=\"col-2 p-0 \">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 91
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 91, $this->source); })()), "stats", [], "any", false, false, false, 91), "pace", [], "any", false, false, false, 91) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Скорост</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 97
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 97, $this->source); })()), "stats", [], "any", false, false, false, 97), "technique", [], "any", false, false, false, 97) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Техника</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 103
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 103, $this->source); })()), "stats", [], "any", false, false, false, 103), "shot", [], "any", false, false, false, 103) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Удар</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 109
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 109, $this->source); })()), "stats", [], "any", false, false, false, 109), "dribble", [], "any", false, false, false, 109) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Дрибъл</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 115
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 115, $this->source); })()), "stats", [], "any", false, false, false, 115), "tacticks", [], "any", false, false, false, 115) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Тактика</h5>
+                    </div>
+                </div>
+            </div>
+            <div class=\"container col-12 mx-auto p-0 m-0 row mt-5\">
+
+                <div class=\"col-12 m-0 p-0 row justify-content-around\">
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 126
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 126, $this->source); })()), "stats", [], "any", false, false, false, 126), "pass", [], "any", false, false, false, 126), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Пас</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 132
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 132, $this->source); })()), "stats", [], "any", false, false, false, 132), "longPass", [], "any", false, false, false, 132) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Дълъг пас</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 138
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 138, $this->source); })()), "stats", [], "any", false, false, false, 138), "relax", [], "any", false, false, false, 138) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Спокойствие на терена</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 144
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 144, $this->source); })()), "stats", [], "any", false, false, false, 144), "willpower", [], "any", false, false, false, 144) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Воля</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"";
+        // line 150
+        echo twig_escape_filter($this->env, (twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 150, $this->source); })()), "stats", [], "any", false, false, false, 150), "perspective", [], "any", false, false, false, 150) * 10), "html", null, true);
+        echo "\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Перспектива</h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class=\"col-8 mx-auto\">
+
+
     <div class=\" justify-content-center row mt-4 mb-5\">
         <div class=\"col-12 justify-content-center text-center row \">
             <div class=\"text-center information-div row\">
                 <div class=\"col-12 row player-visit-container\">
                     <div class=\"col-lg-4 col-sm-12 col-12 p-1 \">
                         ";
-        // line 19
-        if ((((isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 19, $this->source); })()) == "0") || ((isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 19, $this->source); })()) == null))) {
-            // line 20
+        // line 168
+        if ((((isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 168, $this->source); })()) == "0") || ((isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 168, $this->source); })()) == null))) {
+            // line 169
             echo "                            <img src=\"";
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/user1.png"), "html", null, true);
             echo "\" alt=\"\" class=\"profile-pic-changer  m-2\">
                         ";
         } else {
-            // line 22
+            // line 171
             echo "                            <img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 22, $this->source); })()))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . (isset($context["image"]) || array_key_exists("image", $context) ? $context["image"] : (function () { throw new RuntimeError('Variable "image" does not exist.', 171, $this->source); })()))), "html", null, true);
             echo "\" alt=\"\" class=\"profile-pic-changer m-2\">
                         ";
         }
-        // line 24
+        // line 173
         echo "                        <h4> ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 24, $this->source); })()), "User", [], "any", false, false, false, 24), "Name", [], "any", false, false, false, 24), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 173, $this->source); })()), "User", [], "any", false, false, false, 173), "Name", [], "any", false, false, false, 173), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 24, $this->source); })()), "User", [], "any", false, false, false, 24), "FName", [], "any", false, false, false, 24), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 173, $this->source); })()), "User", [], "any", false, false, false, 173), "FName", [], "any", false, false, false, 173), "html", null, true);
         echo "</h4>
                         <h6>";
-        // line 25
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 25, $this->source); })()), "Position", [], "any", false, false, false, 25), "Name", [], "any", false, false, false, 25), "html", null, true);
+        // line 174
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 174, $this->source); })()), "Position", [], "any", false, false, false, 174), "Name", [], "any", false, false, false, 174), "html", null, true);
         echo "</h6>
                     </div>
                     <div class=\" col-lg-8 col-sm-12 col-12 mx-auto text-center  justify-content-center\">
@@ -166,19 +383,19 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                             <div class=\"col-lg-12 col-sm-4 col-md-6  mt-4 row\">
                                 <div class=\"col-lg-6 col-sm-4 col-md-6   text-left align-top\">
                                     ";
-        // line 34
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 34, $this->source); })()), "Team", [], "any", false, false, false, 34) == null)) {
-            // line 35
+        // line 183
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 183, $this->source); })()), "Team", [], "any", false, false, false, 183) == null)) {
+            // line 184
             echo "                                        <h5>Отбор: Няма</h5>
                                     ";
         } else {
-            // line 37
+            // line 186
             echo "                                        <h5>Отбор: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 37, $this->source); })()), "Team", [], "any", false, false, false, 37), "Name", [], "any", false, false, false, 37), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 186, $this->source); })()), "Team", [], "any", false, false, false, 186), "Name", [], "any", false, false, false, 186), "html", null, true);
             echo "</h5>
                                     ";
         }
-        // line 39
+        // line 188
         echo "                                </div>
                                 <div class=\"col-lg-6 col-sm-4 col-md-6 text-left align-top\">
                                     <h5>Отбелязани голове: 0</h5>
@@ -187,19 +404,19 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                             <div class=\"col-lg-12 col-sm-4 col-md-6  mt-4 row\">
                                 <div class=\"col-lg-6 col-sm-4 col-md-6   text-left align-top\">
                                     ";
-        // line 46
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 46, $this->source); })()), "team", [], "any", false, false, false, 46), "Division", [], "any", false, false, false, 46) == null)) {
-            // line 47
+        // line 195
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 195, $this->source); })()), "team", [], "any", false, false, false, 195), "Division", [], "any", false, false, false, 195) == null)) {
+            // line 196
             echo "                                        <h5>Първенство: Няма</h5>
                                     ";
         } else {
-            // line 49
+            // line 198
             echo "                                        <h5>Първенство: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 49, $this->source); })()), "team", [], "any", false, false, false, 49), "Division", [], "any", false, false, false, 49), "Name", [], "any", false, false, false, 49), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 198, $this->source); })()), "team", [], "any", false, false, false, 198), "Division", [], "any", false, false, false, 198), "Name", [], "any", false, false, false, 198), "html", null, true);
             echo "</h5>
                                     ";
         }
-        // line 51
+        // line 200
         echo "                                </div>
                                 <div class=\"col-lg-6 col-sm-4 col-md-6 text-left align-top\">
                                     <h5>Асистенции: 0</h5>
@@ -208,19 +425,19 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                             <div class=\"col-lg-12 col-sm-4 col-md-6  mt-4 row\">
                                 <div class=\"col-lg-6 col-sm-4 col-md-6   text-left align-top\">
                                     ";
-        // line 58
-        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 58, $this->source); })()), "User", [], "any", false, false, false, 58), "City", [], "any", false, false, false, 58) == null)) {
-            // line 59
+        // line 207
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 207, $this->source); })()), "User", [], "any", false, false, false, 207), "City", [], "any", false, false, false, 207) == null)) {
+            // line 208
             echo "                                        <h5>Националност: Не е зададен</h5>
                                     ";
         } else {
-            // line 61
+            // line 210
             echo "                                        <h5>Националност: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 61, $this->source); })()), "User", [], "any", false, false, false, 61), "City", [], "any", false, false, false, 61), "Country", [], "any", false, false, false, 61), "Name", [], "any", false, false, false, 61), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 210, $this->source); })()), "User", [], "any", false, false, false, 210), "City", [], "any", false, false, false, 210), "Country", [], "any", false, false, false, 210), "Name", [], "any", false, false, false, 210), "html", null, true);
             echo "</h5>
                                     ";
         }
-        // line 63
+        // line 212
         echo "                                </div>
                                 <div class=\"col-lg-6 col-sm-4 col-md-6 text-left align-top\">
                                     <h5>Изиграни мачове: 0</h5>
@@ -229,19 +446,19 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                             <div class=\"col-lg-12 col-sm-4 col-md-6  mt-4 row\">
                                 <div class=\"col-lg-6 col-sm-4 col-md-6   text-left align-top\">
                                     ";
-        // line 70
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 70, $this->source); })()), "BirthDay", [], "any", false, false, false, 70) == null)) {
-            // line 71
+        // line 219
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 219, $this->source); })()), "BirthDay", [], "any", false, false, false, 219) == null)) {
+            // line 220
             echo "                                        <h5>Ден на раждане: Не е зададен</h5>
                                     ";
         } else {
-            // line 73
+            // line 222
             echo "                                        <h5>Ден на раждане: ";
-            echo twig_escape_filter($this->env, twig_join_filter(twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 73, $this->source); })()), "BirthDay", [], "any", false, false, false, 73), "d.m.Y")), "html", null, true);
+            echo twig_escape_filter($this->env, twig_join_filter(twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 222, $this->source); })()), "BirthDay", [], "any", false, false, false, 222), "d.m.Y")), "html", null, true);
             echo "</h5>
                                     ";
         }
-        // line 75
+        // line 224
         echo "
                                 </div>
                                 <div class=\"col-lg-6 col-sm-4 col-md-6 text-left align-top\">
@@ -256,240 +473,240 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                         <h4 class=\"col-12 text-center\">Статистически данни</h4>
                         <div class=\"col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0 mt-4   myBorderPlayerStat-left  text-center\">
                             ";
-        // line 88
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 88, $this->source); })()), "Weight", [], "any", false, false, false, 88) == null)) {
-            // line 89
+        // line 237
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 237, $this->source); })()), "Weight", [], "any", false, false, false, 237) == null)) {
+            // line 238
             echo "                                <h5>Килограми: 0кг</h5>
                             ";
         } else {
-            // line 91
+            // line 240
             echo "                                <h5>Килограми: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 91, $this->source); })()), "Weight", [], "any", false, false, false, 91), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 240, $this->source); })()), "Weight", [], "any", false, false, false, 240), "html", null, true);
             echo "кг</h5>
                             ";
         }
-        // line 93
+        // line 242
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-3  ml-lg-4 ml-md-4 ml-sm-0 mt-4   myBorderPlayerStat-left  text-center\">
                             ";
-        // line 95
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 95, $this->source); })()), "Height", [], "any", false, false, false, 95) == null)) {
-            // line 96
+        // line 244
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 244, $this->source); })()), "Height", [], "any", false, false, false, 244) == null)) {
+            // line 245
             echo "                                <h5>Височина: 0см</h5>
                             ";
         } else {
-            // line 98
+            // line 247
             echo "                                <h5>Височина: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 98, $this->source); })()), "Height", [], "any", false, false, false, 98), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 247, $this->source); })()), "Height", [], "any", false, false, false, 247), "html", null, true);
             echo "см</h5>
                             ";
         }
-        // line 100
+        // line 249
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0  mt-4  myBorderPlayerStat-left text-center\">
                             ";
-        // line 104
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 104, $this->source); })()), "Pace", [], "any", false, false, false, 104) == null)) {
-            // line 105
+        // line 253
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 253, $this->source); })()), "Pace", [], "any", false, false, false, 253) == null)) {
+            // line 254
             echo "                                <h5>Скорост: 0 km/h</h5>
                             ";
         } else {
-            // line 107
+            // line 256
             echo "                                <h5>Скорост: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 107, $this->source); })()), "Pace", [], "any", false, false, false, 107), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 256, $this->source); })()), "Pace", [], "any", false, false, false, 256), "html", null, true);
             echo " km/h</h5>
                             ";
         }
-        // line 109
+        // line 258
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-3 ml-lg-4 ml-md-4 ml-sm-0 mt-4  myBorderPlayerStat-left  text-center\">
                             ";
-        // line 111
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 111, $this->source); })()), "LongPass", [], "any", false, false, false, 111) == null)) {
-            // line 112
+        // line 260
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 260, $this->source); })()), "LongPass", [], "any", false, false, false, 260) == null)) {
+            // line 261
             echo "                                <h5>Дълъг пас: 0</h5>
                             ";
         } else {
-            // line 114
+            // line 263
             echo "                                <h5>Дълъг пас: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 114, $this->source); })()), "LongPass", [], "any", false, false, false, 114), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 263, $this->source); })()), "LongPass", [], "any", false, false, false, 263), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 116
+        // line 265
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-3 mr-lg-4 mr-md-4 mr-sm-0 mt-4  myBorderPlayerStat-left  text-center\">
                             ";
-        // line 120
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 120, $this->source); })()), "Relax", [], "any", false, false, false, 120) == null)) {
-            // line 121
+        // line 269
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 269, $this->source); })()), "Relax", [], "any", false, false, false, 269) == null)) {
+            // line 270
             echo "                                <h5>Спокойствие на терена: 0</h5>
                             ";
         } else {
-            // line 123
+            // line 272
             echo "                                <h5>Спокойствие на терена: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 123, $this->source); })()), "Relax", [], "any", false, false, false, 123), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 272, $this->source); })()), "Relax", [], "any", false, false, false, 272), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 125
+        // line 274
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-3 ml-lg-4 ml-md-4 ml-sm-0 mt-4    myBorderPlayerStat-left text-center\">
                             ";
-        // line 127
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 127, $this->source); })()), "Fat", [], "any", false, false, false, 127) == null)) {
-            // line 128
+        // line 276
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 276, $this->source); })()), "Fat", [], "any", false, false, false, 276) == null)) {
+            // line 277
             echo "                                <h5>Подкожни мазнини: 0%</h5>
                             ";
         } else {
-            // line 130
+            // line 279
             echo "                                <h5>Подкожни мазнини: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 130, $this->source); })()), "Fat", [], "any", false, false, false, 130), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 279, $this->source); })()), "Fat", [], "any", false, false, false, 279), "html", null, true);
             echo "%</h5>
                             ";
         }
-        // line 132
+        // line 281
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 136
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 136, $this->source); })()), "Work", [], "any", false, false, false, 136) == null)) {
-            // line 137
+        // line 285
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 285, $this->source); })()), "Work", [], "any", false, false, false, 285) == null)) {
+            // line 286
             echo "                                <h5>Усърдна работа: 0</h5>
                             ";
         } else {
-            // line 139
+            // line 288
             echo "                                <h5>Усърдна работа: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 139, $this->source); })()), "Work", [], "any", false, false, false, 139), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 288, $this->source); })()), "Work", [], "any", false, false, false, 288), "html", null, true);
             echo "</h5>
 
                             ";
         }
-        // line 142
+        // line 291
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 144
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 144, $this->source); })()), "Tacticks", [], "any", false, false, false, 144) == null)) {
-            // line 145
+        // line 293
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 293, $this->source); })()), "Tacticks", [], "any", false, false, false, 293) == null)) {
+            // line 294
             echo "                                <h5>Тактика: 0</h5>
                             ";
         } else {
-            // line 147
+            // line 296
             echo "                                <h5>Тактика: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 147, $this->source); })()), "Tacticks", [], "any", false, false, false, 147), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 296, $this->source); })()), "Tacticks", [], "any", false, false, false, 296), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 149
+        // line 298
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 153
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 153, $this->source); })()), "WillPower", [], "any", false, false, false, 153) == null)) {
-            // line 154
+        // line 302
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 302, $this->source); })()), "WillPower", [], "any", false, false, false, 302) == null)) {
+            // line 303
             echo "                                <h5>Воля: 0</h5>
                             ";
         } else {
-            // line 156
+            // line 305
             echo "                                <h5>Воля:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 156, $this->source); })()), "WillPower", [], "any", false, false, false, 156), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 305, $this->source); })()), "WillPower", [], "any", false, false, false, 305), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 158
+        // line 307
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 160
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 160, $this->source); })()), "Dribble", [], "any", false, false, false, 160) == null)) {
-            // line 161
+        // line 309
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 309, $this->source); })()), "Dribble", [], "any", false, false, false, 309) == null)) {
+            // line 310
             echo "                                <h5>Дрибъл: 0</h5>
                             ";
         } else {
-            // line 163
+            // line 312
             echo "                                <h5>Дрибъл:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 163, $this->source); })()), "Dribble", [], "any", false, false, false, 163), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 312, $this->source); })()), "Dribble", [], "any", false, false, false, 312), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 165
+        // line 314
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 169
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 169, $this->source); })()), "Shot", [], "any", false, false, false, 169) == null)) {
-            // line 170
+        // line 318
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 318, $this->source); })()), "Shot", [], "any", false, false, false, 318) == null)) {
+            // line 319
             echo "                                <h5>Удар: 0</h5>
                             ";
         } else {
-            // line 172
+            // line 321
             echo "                                <h5>Удар:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 172, $this->source); })()), "Shot", [], "any", false, false, false, 172), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 321, $this->source); })()), "Shot", [], "any", false, false, false, 321), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 174
+        // line 323
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 176
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 176, $this->source); })()), "Technique", [], "any", false, false, false, 176) == null)) {
-            // line 177
+        // line 325
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 325, $this->source); })()), "Technique", [], "any", false, false, false, 325) == null)) {
+            // line 326
             echo "                                <h5>Техника: 0</h5>
                             ";
         } else {
-            // line 179
+            // line 328
             echo "                                <h5>Техника:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 179, $this->source); })()), "Technique", [], "any", false, false, false, 179), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 328, $this->source); })()), "Technique", [], "any", false, false, false, 328), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 181
+        // line 330
         echo "                        </div>
                     </div>
                     <div class=\"col-12 justify-content-center text-center row\">
                         <div class=\"col-lg-3 col-sm-4 col-md-4 mr-lg-4 mr-md-4 mr-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 185
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 185, $this->source); })()), "Pass", [], "any", false, false, false, 185) == null)) {
-            // line 186
+        // line 334
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 334, $this->source); })()), "Pass", [], "any", false, false, false, 334) == null)) {
+            // line 335
             echo "                                <h5>Пас: 0</h5>
                             ";
         } else {
-            // line 188
+            // line 337
             echo "                                <h5>Пас: ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 188, $this->source); })()), "Pass", [], "any", false, false, false, 188), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 337, $this->source); })()), "Pass", [], "any", false, false, false, 337), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 190
+        // line 339
         echo "                        </div>
                         <div class=\"col-lg-3 col-sm-4 col-md-4 ml-lg-4 ml-md-4 ml-sm-0 mt-4 myBorderPlayerStat-left  text-center\">
                             ";
-        // line 192
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 192, $this->source); })()), "Perspective", [], "any", false, false, false, 192) == null)) {
-            // line 193
+        // line 341
+        if ((twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 341, $this->source); })()), "Perspective", [], "any", false, false, false, 341) == null)) {
+            // line 342
             echo "                                <h5>Перспектива: 0</h5>
                             ";
         } else {
-            // line 195
+            // line 344
             echo "                                <h5>Перспектива:";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 195, $this->source); })()), "Perspective", [], "any", false, false, false, 195), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 344, $this->source); })()), "Perspective", [], "any", false, false, false, 344), "html", null, true);
             echo "</h5>
                             ";
         }
-        // line 197
+        // line 346
         echo "                        </div>
                     </div>
                 </div>
@@ -502,8 +719,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                 <h2 class=\"d-inline-block\">Дълъг пас: <span id=\"stat-1\"></span> </h2>
                 <div class=\"slidecontainer \">
                   <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 208
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 208, $this->source); })()), "longPass", [], "any", false, false, false, 208), "html", null, true);
+        // line 357
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 357, $this->source); })()), "longPass", [], "any", false, false, false, 357), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-1\">
                 </div>
             </div>
@@ -511,8 +728,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                 <h2 class=\"d-inline-block\">Спокойствие на терена <span id=\"stat-2\"></span> </h2>
                 <div class=\"slidecontainer \">
                   <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 214
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 214, $this->source); })()), "Relax", [], "any", false, false, false, 214), "html", null, true);
+        // line 363
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 363, $this->source); })()), "Relax", [], "any", false, false, false, 363), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-2\">
                 </div>
             </div>
@@ -524,8 +741,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Усърдна работа: <span id=\"stat-3\"></span> </h2>
                     <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 224
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 224, $this->source); })()), "Work", [], "any", false, false, false, 224), "html", null, true);
+        // line 373
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 373, $this->source); })()), "Work", [], "any", false, false, false, 373), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-3\">
                     </div>
                 </div>
@@ -533,8 +750,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Тактика: <span id=\"stat-4\"></span> </h2>
                     <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 230
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 230, $this->source); })()), "Tacticks", [], "any", false, false, false, 230), "html", null, true);
+        // line 379
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 379, $this->source); })()), "Tacticks", [], "any", false, false, false, 379), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-4\">
                     </div>
                 </div>
@@ -546,8 +763,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Воля: <span id=\"stat-5\"></span> </h2>
                     <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 240
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 240, $this->source); })()), "willPower", [], "any", false, false, false, 240), "html", null, true);
+        // line 389
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 389, $this->source); })()), "willPower", [], "any", false, false, false, 389), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-5\">
                     </div>
                 </div>
@@ -556,8 +773,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Дрибъл: <span id=\"stat-6\"></span> </h2>
                     <div class=\"slidecontainer \">
                         <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 247
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 247, $this->source); })()), "dribble", [], "any", false, false, false, 247), "html", null, true);
+        // line 396
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 396, $this->source); })()), "dribble", [], "any", false, false, false, 396), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-6\">
                     </div>
                 </div>
@@ -570,8 +787,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Удар: <span id=\"stat-7\"></span> </h2>
                     <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 258
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 258, $this->source); })()), "shot", [], "any", false, false, false, 258), "html", null, true);
+        // line 407
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 407, $this->source); })()), "shot", [], "any", false, false, false, 407), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-7\">
                     </div>
                 </div>
@@ -579,8 +796,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                     <h2 class=\"d-inline-block\">Техника: <span id=\"stat-8\"></span> </h2>
                     <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 264
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 264, $this->source); })()), "Technique", [], "any", false, false, false, 264), "html", null, true);
+        // line 413
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 413, $this->source); })()), "Technique", [], "any", false, false, false, 413), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-8\">
                     </div>
                 </div>
@@ -592,8 +809,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                         <h2 class=\"d-inline-block\">Перспектива: <span id=\"stat-9\"></span> </h2>
                         <div class=\"slidecontainer \">
                           <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 274
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 274, $this->source); })()), "perspective", [], "any", false, false, false, 274), "html", null, true);
+        // line 423
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 423, $this->source); })()), "perspective", [], "any", false, false, false, 423), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-9\">
                         </div>
                     </div>
@@ -601,8 +818,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
                         <h2 class=\"d-inline-block\">Пас: <span id=\"stat-10\"></span> </h2>
                         <div class=\"slidecontainer \">
                       <input type=\"range\" min=\"0\" max=\"10\" value=\"";
-        // line 280
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 280, $this->source); })()), "pass", [], "any", false, false, false, 280), "html", null, true);
+        // line 429
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["playerStats"]) || array_key_exists("playerStats", $context) ? $context["playerStats"] : (function () { throw new RuntimeError('Variable "playerStats" does not exist.', 429, $this->source); })()), "pass", [], "any", false, false, false, 429), "html", null, true);
         echo "\" class=\"slider\" id=\"myRange-10\">
                     </div>
                 </div>
@@ -709,8 +926,8 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
 
                     },
                     url: \"";
-        // line 385
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStats", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 385, $this->source); })()), "Id", [], "any", false, false, false, 385)]), "html", null, true);
+        // line 534
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStats", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["player"]) || array_key_exists("player", $context) ? $context["player"] : (function () { throw new RuntimeError('Variable "player" does not exist.', 534, $this->source); })()), "Id", [], "any", false, false, false, 534)]), "html", null, true);
         echo "\",
                 })
                     .done(function (msg) {
@@ -747,7 +964,7 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
 
     public function getDebugInfo()
     {
-        return array (  713 => 385,  605 => 280,  596 => 274,  583 => 264,  574 => 258,  560 => 247,  550 => 240,  537 => 230,  528 => 224,  515 => 214,  506 => 208,  493 => 197,  487 => 195,  483 => 193,  481 => 192,  477 => 190,  471 => 188,  467 => 186,  465 => 185,  459 => 181,  453 => 179,  449 => 177,  447 => 176,  443 => 174,  437 => 172,  433 => 170,  431 => 169,  425 => 165,  419 => 163,  415 => 161,  413 => 160,  409 => 158,  403 => 156,  399 => 154,  397 => 153,  391 => 149,  385 => 147,  381 => 145,  379 => 144,  375 => 142,  368 => 139,  364 => 137,  362 => 136,  356 => 132,  350 => 130,  346 => 128,  344 => 127,  340 => 125,  334 => 123,  330 => 121,  328 => 120,  322 => 116,  316 => 114,  312 => 112,  310 => 111,  306 => 109,  300 => 107,  296 => 105,  294 => 104,  288 => 100,  282 => 98,  278 => 96,  276 => 95,  272 => 93,  266 => 91,  262 => 89,  260 => 88,  245 => 75,  239 => 73,  235 => 71,  233 => 70,  224 => 63,  218 => 61,  214 => 59,  212 => 58,  203 => 51,  197 => 49,  193 => 47,  191 => 46,  182 => 39,  176 => 37,  172 => 35,  170 => 34,  158 => 25,  151 => 24,  145 => 22,  139 => 20,  137 => 19,  129 => 13,  119 => 12,  107 => 10,  102 => 9,  92 => 8,  79 => 5,  75 => 4,  70 => 3,  60 => 2,  37 => 1,);
+        return array (  930 => 534,  822 => 429,  813 => 423,  800 => 413,  791 => 407,  777 => 396,  767 => 389,  754 => 379,  745 => 373,  732 => 363,  723 => 357,  710 => 346,  704 => 344,  700 => 342,  698 => 341,  694 => 339,  688 => 337,  684 => 335,  682 => 334,  676 => 330,  670 => 328,  666 => 326,  664 => 325,  660 => 323,  654 => 321,  650 => 319,  648 => 318,  642 => 314,  636 => 312,  632 => 310,  630 => 309,  626 => 307,  620 => 305,  616 => 303,  614 => 302,  608 => 298,  602 => 296,  598 => 294,  596 => 293,  592 => 291,  585 => 288,  581 => 286,  579 => 285,  573 => 281,  567 => 279,  563 => 277,  561 => 276,  557 => 274,  551 => 272,  547 => 270,  545 => 269,  539 => 265,  533 => 263,  529 => 261,  527 => 260,  523 => 258,  517 => 256,  513 => 254,  511 => 253,  505 => 249,  499 => 247,  495 => 245,  493 => 244,  489 => 242,  483 => 240,  479 => 238,  477 => 237,  462 => 224,  456 => 222,  452 => 220,  450 => 219,  441 => 212,  435 => 210,  431 => 208,  429 => 207,  420 => 200,  414 => 198,  410 => 196,  408 => 195,  399 => 188,  393 => 186,  389 => 184,  387 => 183,  375 => 174,  368 => 173,  362 => 171,  356 => 169,  354 => 168,  333 => 150,  324 => 144,  315 => 138,  306 => 132,  297 => 126,  283 => 115,  274 => 109,  265 => 103,  256 => 97,  247 => 91,  235 => 82,  190 => 40,  186 => 39,  181 => 37,  177 => 36,  172 => 34,  168 => 33,  164 => 32,  152 => 23,  146 => 22,  141 => 20,  135 => 17,  129 => 13,  119 => 12,  107 => 10,  102 => 9,  92 => 8,  79 => 5,  75 => 4,  70 => 3,  60 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -764,6 +981,155 @@ class __TwigTemplate_1345ec0cad09e66f8dd0fefc0f2fca1086126e66b87dc1b9c0c73f2a844
     <a class=\"nav-item nav-link current-item ml-2\" href=\"{{ path(\"trainingView\") }}\">Тренировки</a>
 {% endblock %}
 {% block body %}
+
+    <div class=\"container col-12 row mt-3\">
+        <div class=\"col-10 mx-auto p-0 m-0\">
+           <div class=\"cover-photo-container\">
+               <img src=\"{{ asset(\"images/\"~player.Team.CoverImage) }}\" alt=\"\" class=\"cover-photo\">
+           </div>
+            <div class=\"profile-image-container\">
+                <img src=\"{{asset(\"images/\" ~ image)}}\" alt=\"\" class=\"profile-image m-2\">
+                <div class=\"name-holder\">
+                    <h4 class=\"text-center\"> {{ player.User.Name }} {{ player.User.FName }}</h4>
+                    <h6 class=\"text-center\">{{ player.Position.Name }}</h6>
+                </div>
+            </div>
+
+            <div class=\"container col-12 m-0 justify-content-between p-0 row\">
+             <div class=\"col-5 m-0 p-0\">
+                 <div class=\"col-11 m-0  mt-2 information-holder p-4 \">
+                     <div class=\"col-12 m-0 row p-0   text-center \"><h4 class=\"text-center my-auto mx-auto\">Информация за играча</h4></div>
+                     <hr class=\"col-8 mx-auto\">
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Килограми: {{ playerStats.Weight }}</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Височина: {{ playerStats.Height }}</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\"> Град на раждане: {{ player.User.City }}</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\">
+                         <h5 class=\"my-auto\">Националност: {{ player.User.City.Country.Name }}</h5>
+                         <img src=\"{{ asset(\"images/\"~player.User.City.Country.Image ) }}\" alt=\"\">
+                     </div>
+                     <div class=\"col-12 row p-0 mt-3  ml-1\"><h5  class=\"my-auto\">Телефонене номер: {{ player.User.Phone }}</h5></div>
+                     <div class=\"col-12 row p-0 mt-3 ml-1\"><h5  class=\"my-auto\">Емейл: {{ player.User.Email }}</h5></div>
+                 </div>
+             </div>
+                <div class=\"col-7 m-0 mt-2  information-holder p-4 \">
+                    <div class=\"season-player-stats col-12 m-0 p-0  my-ayto  text-center row\">
+                        <h4 class=\"col-12 text-center\">Статистика за сезона</h4>
+                        <div class=\"col-lg-4 my-auto col-md-12 col-sm-12 text-center  align-content-center chart-container \">
+                            <div class=\"information-container p-0 m-0 \">
+                                <p>14</p>
+                            </div>
+                            <div class=\"fat-percent-div\">
+                                <h3>
+                                    <span class=\"label green badge fat-percent-badge\">Вкарани голове</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class=\"col-lg-4 my-auto col-sm-12 col-md-12 mt-2 text-center chart-container\">
+                            <div class=\"information-container\">
+                                <p>5</p>
+                            </div>
+                            <h3>
+                                <span class=\"label green badge \">Асистенции</span>
+                            </h3>
+                        </div>
+                        <div class=\"col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container\">
+                            <div class=\"information-container\">
+                                <p>25</p>
+                            </div>
+                            <div class=\"fat-percent-div\">
+                                <h3>
+                                    <span class=\"green badge fat-percent-badge  label\">Изиграни мача</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=\"col-10 mt-4 row container stat-container mx-auto m-0 p-4 \">
+            <h3 class=\"col-12  mt-3 text-center\">Статиситики от треньора</h3>
+            <div class=\"col-12 mt-3 pt-3\">
+                <div class=\"col-12 justify-content-around summarizing-results\">
+              <span class=\"min-chart status-from-coach-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.statusFromCoaches  }}\">
+                        <span class=\"chart-text percent\"></span>
+              </span>
+                    <h5 class=\"text-center mt-2\">Обобщен резултат</h5>
+                </div>
+            </div>
+            <div class=\"container col-12   mx-auto p-0 m-0 row mt-5\">
+                <div class=\"col-12 m-0 p-0 row justify-content-around\">
+                    <div class=\"col-2 p-0 \">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.pace *10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Скорост</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.technique * 10 }}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Техника</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.shot * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Удар</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.dribble * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Дрибъл</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.tacticks * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Тактика</h5>
+                    </div>
+                </div>
+            </div>
+            <div class=\"container col-12 mx-auto p-0 m-0 row mt-5\">
+
+                <div class=\"col-12 m-0 p-0 row justify-content-around\">
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.pass }}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Пас</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.longPass * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Дълъг пас</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.relax * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Спокойствие на терена</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.willpower * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Воля</h5>
+                    </div>
+                    <div class=\"col-2 p-0\">
+                  <span class=\"min-chart\" id=\"chart-sales\" data-percent=\"{{ player.stats.perspective * 10}}\">
+                        <span class=\"chart-text percent\"></span>
+                  </span>
+                        <h5 class=\"text-center mt-2\">Перспектива</h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class=\"col-8 mx-auto\">
+
 
     <div class=\" justify-content-center row mt-4 mb-5\">
         <div class=\"col-12 justify-content-center text-center row \">

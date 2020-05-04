@@ -36,7 +36,7 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Proxy\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = ['name' => NULL, 'players' => NULL, 'image' => NULL, 'city' => NULL, 'homeMatches' => NULL, 'awayMatches' => NULL];
+    public static $lazyPropertiesDefaults = ['name' => NULL, 'players' => NULL, 'image' => NULL, 'coverImage' => NULL, 'city' => NULL, 'homeMatches' => NULL, 'awayMatches' => NULL];
 
 
 
@@ -46,7 +46,7 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __construct($initializer = null, $cloner = null)
     {
-        unset($this->name, $this->players, $this->image, $this->city, $this->homeMatches, $this->awayMatches);
+        unset($this->name, $this->players, $this->image, $this->coverImage, $this->city, $this->homeMatches, $this->awayMatches);
 
         $this->__initializer__ = $initializer;
         $this->__cloner__      = $cloner;
@@ -108,7 +108,7 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', 'name', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', 'players', 'image', 'city', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToDivision', 'homeMatches', 'awayMatches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromDivision'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', 'name', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', 'players', 'image', 'coverImage', 'city', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToDivision', 'homeMatches', 'awayMatches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromDivision'];
         }
 
         return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'points', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'playedGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'wins', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'lostGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'drawsGames', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'division', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'youthTeams', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goals', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'goalsInTheTeamDoor', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'coaches', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'admin', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromPlayer', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToCoach', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestToDivision', '' . "\0" . 'App\\Entity\\Team' . "\0" . 'requestFromDivision'];
@@ -133,7 +133,7 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
                 }
             };
 
-            unset($this->name, $this->players, $this->image, $this->city, $this->homeMatches, $this->awayMatches);
+            unset($this->name, $this->players, $this->image, $this->coverImage, $this->city, $this->homeMatches, $this->awayMatches);
         }
     }
 
@@ -715,6 +715,28 @@ class Team extends \App\Entity\Team implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAwayMatches', [$awayMatches]);
 
         parent::setAwayMatches($awayMatches);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCoverImage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCoverImage', []);
+
+        return parent::getCoverImage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCoverImage($coverImage): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCoverImage', [$coverImage]);
+
+        parent::setCoverImage($coverImage);
     }
 
     /**

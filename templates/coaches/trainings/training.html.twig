@@ -7,22 +7,57 @@
     {{ parent() }}
     <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}">
     <link rel="stylesheet" href="{{ asset("css/particles/searchEngine.css") }}">
-    <link rel="stylesheet" href="  {{ asset("css/coach/trainingPageStyle.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/coach/trainingPageStyle.css  ") }}">
     <link rel="stylesheet" href="  {{ asset("css/particles/searchResultsTable.css") }}">
+{#    <link rel="stylesheet" href="  {{ asset("css/coach/particles/teamPlayerCard.css") }}">#}
 {% endblock %}
 
 {% block body %}
     <img src="{{ asset("images/" ~ coachTeamImage) }}" class="mx-auto team-image mt-3" alt="">
     <h2 class="text-center mt-1">{{ coachTeamName }}</h2>
     <div id="container">
-        <div class="row mt-1 justify-content-center ">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 coach-player-adding-container justify-content-around row pb-3">
+        <div class="row mt-1 justify-content-center col-12">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 p-0 m-0 coach-player-adding-container justify-content-center row pb-3">
                 <div class="col-12 mb-1 mt-2">
-                    <h4>Вратари</h4>
+                    <h4 class="col-12 text-center">Вратари</h4>
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == "Goalkeeper" %}
+                <div class="col-12 row players-row m-0 p-0 justify-content-center">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == "Goalkeeper" %}
+                            <div class="col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2 p-0">
+                                <div class="col-11 player-container " id="player-{{  foo }} ">
+                                    <a href="{{ path("playerAction", {id: player.id}) }}">
+                                        {%   if  player.Status == 0 %}
+                                            <div class="status-green"></div>
+                                        {% else %}
+                                            <div class="status-red"></div>
+                                        {%  endif %}
+
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                        {% else %}
+                                            <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                        {% endif %}
+
+                                        <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
+                </div>
+                <hr class="col-9 mt-4 mx-auto">
+                <div class="col-12 mt-3 mb-1">
+                    <h4  class="col-12 text-center">Защитници</h4>
+                </div>
+                <div class="col-12 row players-row m-0 p-0 justify-content-center">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == "Defender" %}
+
                         <div class="col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2">
                             <div class="col-12 player-container " id="player-{{  foo }} ">
                                 <a href="{{ path("playerAction", {id: player.id}) }}">
@@ -43,100 +78,72 @@
                             </div>
                         </div>
 
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
-
-                <div class="col-12 mt-5 mb-1">
-                    <h4>Защитници</h4>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == "Defender" %}
-
-                    <div class="col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2">
-                        <div class="col-12 player-container " id="player-{{  foo }} ">
-                            <a href="{{ path("playerAction", {id: player.id}) }}">
-                                {%   if  player.Status == 0 %}
-                                    <div class="status-green"></div>
-                                {% else %}
-                                    <div class="status-red"></div>
-                                {%  endif %}
-
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
-                                {% else %}
-                                    <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
-                                {% endif %}
-
-                                <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}    <div class="col-12 mt-5 mb-1">
-                    <h4>Халфове</h4>
+                <hr class="col-9 mt-4 mx-auto">
+                <div class="col-12 mt-3 mb-1">
+                    <h4 class="col-12 text-center ">Халфове</h4>
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == "Midfilder" %}
+                <div class="col-12 row players-row m-0 p-0 justify-content-center">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == "Midfielder" %}
+                            <div class="col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2">
+                                <div class="col-12 player-container " id="player-{{  foo }} ">
+                                    <a href="{{ path("playerAction", {id: player.id}) }}">
+                                        {%   if  player.Status == 0 %}
+                                            <div class="status-green"></div>
+                                        {% else %}
+                                            <div class="status-red"></div>
+                                        {%  endif %}
 
-                    <div class="col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2">
-                        <div class="col-12 player-container " id="player-{{  foo }} ">
-                            <a href="{{ path("playerAction", {id: player.id}) }}">
-                                {%   if  player.Status == 0 %}
-                                    <div class="status-green"></div>
-                                {% else %}
-                                    <div class="status-red"></div>
-                                {%  endif %}
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                        {% else %}
+                                            <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                        {% endif %}
 
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
-                                {% else %}
-                                    <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
-                                {% endif %}
-
-                                <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
-
-                <div class="col-12 mt-5 mb-1">
-                    <h4>Нападатели</h4>
+                                        <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
                 </div>
-                {% set foo = 1 %}
-                {% for player in players %}
-                    {% if player.Position == "Attacker" %}
+                <hr class="col-9 mt-4 mx-auto">
+                <div class="col-12 mt-3 mb-1">
+                    <h4 class="col-12 text-center">Нападатели</h4>
+                </div>
+                <div class="col-12 row players-row m-0 p-0 justify-content-center">
+                    {% set foo = 1 %}
+                    {% for player in players %}
+                        {% if player.Position == "Attacker" %}
+                            <div class="col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2">
+                                <div class="col-12 player-container " id="player-{{  foo }} ">
+                                    <a href="{{ path("playerAction", {id: player.id}) }}">
+                                        {%   if  player.Status == 0 %}
+                                            <div class="status-green"></div>
+                                        {% else %}
+                                            <div class="status-red"></div>
+                                        {%  endif %}
 
-                    <div class="col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2">
-                        <div class="col-12 player-container " id="player-{{  foo }} ">
-                            <a href="{{ path("playerAction", {id: player.id}) }}">
-                                {%   if  player.Status == 0 %}
-                                    <div class="status-green"></div>
-                                {% else %}
-                                    <div class="status-red"></div>
-                                {%  endif %}
+                                        {% if player.Image == null or player.Image == ' ' %}
+                                            <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                        {% else %}
+                                            <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                        {% endif %}
 
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
-                                {% else %}
-                                    <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
-                                {% endif %}
-
-                                <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
-                            </a>
-                        </div>
-                    </div>
-
-                    {% endif %}
-                    {% set foo = foo + 1 %}
-                {% endfor %}
+                                        <p class="player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% set foo = foo + 1 %}
+                    {% endfor %}
+                </div>
                 <div class="add-team-circle-container  row " id="add-player-container">
                     <div class="add-team-circle" id="player- ">
                         <img src="{{ asset('images/plus .png') }}" alt="" class="add-team " >

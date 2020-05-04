@@ -1,0 +1,103 @@
+.players-row {
+  box-sizing: border-box;
+  height: 24em;
+}
+
+.player-container {
+  box-sizing: border-box;
+  max-width: 14em;
+  margin: auto;
+  height: 17em;
+  padding: 0px;
+  background-color: white;
+  border-radius: 0;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  padding-top: 100%;
+}
+.player-container:hover {
+  box-shadow: 1px 1px 15px 2px #7d7c7b;
+  max-width: 16em;
+  height: 20em;
+}
+.player-container:hover:after {
+  opacity: 0.9;
+}
+.player-container .player-name {
+  position: absolute;
+  top: 55%;
+  font-size: 1.3em;
+  padding-left: 5%;
+  padding-top: 3em;
+  color: white;
+  font-family: sans-serif;
+  background: linear-gradient(360deg, rgba(9, 7, 7, 0.9), rgba(0, 0, 0, 0));
+  width: 100%;
+  height: 45%;
+  text-shadow: 1px 0 0 #3f3f3f, 0 -1px 0 #3f3f3f, 0 1px 0 #3f3f3f, -1px 0 0 #3f3f3f;
+}
+.player-container .player-position {
+  position: absolute;
+  top: 54%;
+  left: 24%;
+  width: 96%;
+  font-size: 1rem;
+  padding: 3%;
+  color: white;
+  font-family: sans-serif;
+  visibility: hidden;
+}
+.player-container .player-img, .player-container .image {
+  position: absolute;
+  bottom: 21%;
+  height: 100%;
+  width: 100%;
+  max-width: 35em;
+  object-fit: cover;
+  opacity: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: scale(1.2, 1.2);
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.player-container:hover ~ .player-name {
+  padding: 3rem;
+}
+
+.player-container:after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: red;
+  height: 0;
+}
+
+.player-container:hover ~ .player-container:after {
+  height: 100%;
+}
+
+.add-player-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: rgba(255, 105, 84, 0.76);
+}
+.add-player-container:hover {
+  background-color: rgba(255, 105, 84, 0.89);
+}
+
+/*# sourceMappingURL=teamPlayerCard.css.map */

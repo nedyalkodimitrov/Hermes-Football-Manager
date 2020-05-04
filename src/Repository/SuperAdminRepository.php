@@ -21,22 +21,21 @@ class SuperAdminRepository extends ServiceEntityRepository
 
 
 
-    // /**
-    //  * @return SuperAdmin[] Returns an array of SuperAdmin objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findPlayerById($playerId, $matchId)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $teams = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m
+                FROM  App\Entity\MatchList m
+                WHERE (m.player = :playerId AND m.match = :matchId)
+               '
+            )
+            ->setParameter('playerId', "%".$playerId."%")
+            ->setParameter('matchId', "%".$matchId."%")
+            ->getResult();
+        return $teams;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?SuperAdmin

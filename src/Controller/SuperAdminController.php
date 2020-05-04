@@ -14,11 +14,18 @@ use App\Entity\YouthDivision;
 use App\Form\MatchesType;
 use App\Repository\DivisionRepository;
 use App\Repository\MatchesRepository;
+use App\Repository\MatchListRepository;
+use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class SuperAdminController extends AbstractController
 {
@@ -281,7 +288,7 @@ class SuperAdminController extends AbstractController
 
 
     /**
-     * @Route("/superAdmin/matches/{id}" ,name  = "matchView")
+     * @Route("/superAdmin/matches/{id}" ,name  = "matchView", methods={"GET"})
      *
      */
     public function MatchView(MatchesRepository $matchesRepository, $id)
@@ -291,7 +298,25 @@ class SuperAdminController extends AbstractController
         return $this->render('superAdmin/match.html.twig', array(
            "match" => $match
 
+
         ));
+
+    }
+
+    /**
+     * @Route("/superAdmin/matches/{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
+     *
+     */
+    public function MatchPlayerDetailList(Request $request,PlayerRepository $playerRepository, MatchListRepository $matchListRepository, $id)
+    {
+        $playerInformation = [];
+        $playerId = $request->request->get('playerId');
+        $matchList = $matchListRepository->findPlayerById(intval($playerId), intval($id));
+
+        $playerInformation[0] = $matchList[0]->getPlayer()->getUser()->getName(). ' '.$matchList[0]->getPlayer()->getUser()->getFName();
+        $playerInformation[1] = $matchList[0]->getPlayer()->getImage();
+        return $this->json($playerInformation);
+
 
     }
     public function PhoneCheker($phone)

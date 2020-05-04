@@ -3,8 +3,8 @@
     max-width: 1900px;
     margin: auto;
     border: 2px solid #b8babd;
-    box-shadow: 1px 1px 10px 0px rgba(24, 23, 24, 0.38);
-    border-radius: 15px;
+    box-shadow: 1px 1px 5px 0px rgba(24, 23, 24, 0.38);
+    border-radius: 0px;
     height: auto;
     align-items: center;
 
@@ -36,7 +36,7 @@ canvas{
 }
 
 .badge{
-    border-radius: 5px;
+    border-radius: 0px;
     font-size: 1.7em;
     padding: 0.4rem;
     margin: 1rem 0 1rem 0;

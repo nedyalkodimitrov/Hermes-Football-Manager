@@ -11,6 +11,155 @@
 {% endblock %}
 {% block body %}
 
+    <div class="container col-12 row mt-3">
+        <div class="col-10 mx-auto p-0 m-0">
+           <div class="cover-photo-container">
+               <img src="{{ asset("images/"~player.Team.CoverImage) }}" alt="" class="cover-photo">
+           </div>
+            <div class="profile-image-container">
+                <img src="{{asset("images/" ~ image)}}" alt="" class="profile-image m-2">
+                <div class="name-holder">
+                    <h4 class="text-center"> {{ player.User.Name }} {{ player.User.FName }}</h4>
+                    <h6 class="text-center">{{ player.Position.Name }}</h6>
+                </div>
+            </div>
+
+            <div class="container col-12 m-0 justify-content-between p-0 row">
+             <div class="col-5 m-0 p-0">
+                 <div class="col-11 m-0  mt-2 information-holder p-4 ">
+                     <div class="col-12 m-0 row p-0   text-center "><h4 class="text-center my-auto mx-auto">Информация за играча</h4></div>
+                     <hr class="col-8 mx-auto">
+                     <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto">Килограми: {{ playerStats.Weight }}</h5></div>
+                     <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto">Височина: {{ playerStats.Height }}</h5></div>
+                     <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto"> Град на раждане: {{ player.User.City }}</h5></div>
+                     <div class="col-12 row p-0 mt-3 ml-1">
+                         <h5 class="my-auto">Националност: {{ player.User.City.Country.Name }}</h5>
+                         <img src="{{ asset("images/"~player.User.City.Country.Image ) }}" alt="">
+                     </div>
+                     <div class="col-12 row p-0 mt-3  ml-1"><h5  class="my-auto">Телефонене номер: {{ player.User.Phone }}</h5></div>
+                     <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto">Емейл: {{ player.User.Email }}</h5></div>
+                 </div>
+             </div>
+                <div class="col-7 m-0 mt-2  information-holder p-4 ">
+                    <div class="season-player-stats col-12 m-0 p-0  my-ayto  text-center row">
+                        <h4 class="col-12 text-center">Статистика за сезона</h4>
+                        <div class="col-lg-4 my-auto col-md-12 col-sm-12 text-center  align-content-center chart-container ">
+                            <div class="information-container p-0 m-0 ">
+                                <p>14</p>
+                            </div>
+                            <div class="fat-percent-div">
+                                <h3>
+                                    <span class="label green badge fat-percent-badge">Вкарани голове</span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 my-auto col-sm-12 col-md-12 mt-2 text-center chart-container">
+                            <div class="information-container">
+                                <p>5</p>
+                            </div>
+                            <h3>
+                                <span class="label green badge ">Асистенции</span>
+                            </h3>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                            <div class="information-container">
+                                <p>25</p>
+                            </div>
+                            <div class="fat-percent-div">
+                                <h3>
+                                    <span class="green badge fat-percent-badge  label">Изиграни мача</span>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 mt-4 row container stat-container mx-auto m-0 p-4 ">
+            <h3 class="col-12  mt-3 text-center">Статиситики от треньора</h3>
+            <div class="col-12 mt-3 pt-3">
+                <div class="col-12 justify-content-around summarizing-results">
+              <span class="min-chart status-from-coach-chart" id="chart-sales" data-percent="{{ player.stats.statusFromCoaches  }}">
+                        <span class="chart-text percent"></span>
+              </span>
+                    <h5 class="text-center mt-2">Обобщен резултат</h5>
+                </div>
+            </div>
+            <div class="container col-12   mx-auto p-0 m-0 row mt-5">
+                <div class="col-12 m-0 p-0 row justify-content-around">
+                    <div class="col-2 p-0 ">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pace *10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Скорост</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.technique * 10 }}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Техника</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.shot * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Удар</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.dribble * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Дрибъл</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.tacticks * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Тактика</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="container col-12 mx-auto p-0 m-0 row mt-5">
+
+                <div class="col-12 m-0 p-0 row justify-content-around">
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pass }}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Пас</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.longPass * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Дълъг пас</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.relax * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Спокойствие на терена</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.willpower * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Воля</h5>
+                    </div>
+                    <div class="col-2 p-0">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.perspective * 10}}">
+                        <span class="chart-text percent"></span>
+                  </span>
+                        <h5 class="text-center mt-2">Перспектива</h5>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="col-8 mx-auto">
+
+
     <div class=" justify-content-center row mt-4 mb-5">
         <div class="col-12 justify-content-center text-center row ">
             <div class="text-center information-div row">

@@ -1,19 +1,33 @@
 {% extends 'player/playerBaseTemplate.html.twig' %}
+{%  block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("css/player/requestPageStyle.css") }}">
+{% endblock %}
 {% block body %}
     <div class="table-container justify-content-center max-resolution col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">
         <div class="table col-11  mh-25" id="teamLeadership-container ">
             {% if requests|length != 0 %}
                 <table class="table-bordered col-12 "  style="margin-bottom: 0; padding:0">
                     <tr class="row col-12 p-0 m-0 bg-success">
-                        <th class="col-1"></th>
-                        <th class="col-4 color-white">Ot</th>
-                        <th class="col-1 color-white">date</th>
+                        <th class="col-4 color-white ">Отбор </th>
+                        <th class="col-4 color-white ">Треньор </th>
+                        <th class="col-2 color-white ">Дата</th>
+                        <th class="col-2 color-white ">Действия</th>
                     </tr>
                     {% set rowNum = 1 %}
                     {% for request in requests %}
-                        <tr class="teamTable row col-12 p-0 m-0">
-                            <th  class="col-1 justify-content-end"> {{ request.sender }}</th>
-                            <th class="col-4"> {{ request.date }}</th>
+                        <tr class="requestTable row col-12 p-0 m-0">
+                            <th  class="col-4 text-center  p-0 m-0 row  ">
+                                <img src="{{asset( "images/"~ request.sender.coach.Team.Image)}}" class="my-auto" alt="">
+                                <p class="my-auto"> {{ request.sender.coach.Team.Name}}</p>
+                            </th>
+                            <th  class="col-4 my-auto"> <p class="my-auto">{{ request.sender }}</p></th>
+                            <th class="col-2  my-auto"><p class="my-auto"> {{ request.date }}</p></th>
+                            <th class="col-2 my-auto "><p class="my-auto">
+                                <button class="btn btn-success col-1 m-0"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-danger col-1 m-0"><i class=" fas fa-times-circle"></i></button>
+
+                            </th>
 
                         </tr>
 

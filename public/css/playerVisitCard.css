@@ -29,4 +29,78 @@
     object-fit:cover;
 
 }
+.cover-photo-container{
+    position: relative;
+    padding-top: 47.65%;
 
+}
+.cover-photo{
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    border: 1px solid black ;
+}
+.profile-image-container{
+    position: relative;
+    padding-top: 27.65%;
+}
+
+
+.profile-image{
+    position: absolute;
+    top: -15%;
+    width: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 100%;
+    padding: 0.5rem;
+    background: white;
+}
+
+.name-holder{
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.information-holder {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 0px;
+}
+.information-holder h4 {
+    font-size: 1.7em;
+}
+.information-holder h5 {
+    font-size: 1.3em;
+    font-style: normal;
+    font-weight:normal ;
+}
+.information-holder img{
+    width: 2em;
+    height: auto;
+}
+
+.season-player-stats span {
+    border-radius: 0;
+    box-shadow: 0px 0px 0px gray;
+
+}
+.stat-container {
+    border: 1px solid gray;
+
+}
+.stat-container canvas {
+    width: 8em;
+    height: 8em;
+}
+.status-from-coach-chart canvas{
+    width: 9em;
+    height: 9em;
+}

@@ -16,13 +16,21 @@ use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Schema\SchemaDiff;
+use http\Env\Response;
 use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
+
 
 class CoachController extends AbstractController
 {
@@ -135,10 +143,9 @@ class CoachController extends AbstractController
      */
     public function TrainingAction(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository)
     {
-         $playerInfo = $request->get("playerInfo");
-          $results = $userRepository->findPlayer($playerInfo);
+          $playerInfo = $request->get("playerName");
+          $results = $userRepository->findPlayer('Нед');
           $players = [];
-
 
         for ($i = 0; $i < count($results); $i++){
               $playerInformation = [];
@@ -152,7 +159,20 @@ class CoachController extends AbstractController
               $playerInformation[4] =   $player->getId();
               $players[$i] = $playerInformation;
           }
-        return new JsonResponse($players);
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $jsonObject = $serializer->serialize($players, 'json', [
+            'circular_reference_handler' => function ($object) {
+                return $object->getId();
+            }
+        ]   );
+
+       return $jsonObject;
+// For instance, return a Response with encoded Json
+//        return new ($jsonObject, 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -202,40 +222,42 @@ class CoachController extends AbstractController
      *
      */
     public function SettingsView(\Symfony\Component\HttpFoundation\Request $request){
-        $user = $this->getUser()->getCoaches();
-        $coaches = new Coach();
-        $form = $this->createFormBuilder($coaches)
+        $coach = $this->getUser()->getCoaches();
+        $newCoach = new Coach();
+        $form = $this->createFormBuilder($newCoach)
             ->add('image', FileType::class, array('data_class' => null, ))
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
             ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = $coaches->getImage();
-            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            /** @var UploadedFile $file */
+            $coachImage =$form->get('image')->getData();
+
+            $coachNewFileName = 'asdas-'.uniqid().'.'.$file->guessExtension();
+
 
             try {
                 $file->move(
                     $this->getParameter('images_directory'),
-                    $fileName
+                    $coachNewFileName
                 );
             } catch (FileException $e) {
 
             }
             $em = $this->getDoctrine()->getManager();
 
-            $user->setImage($fileName);
-            $em->persist($user);
+            $coach->setImage($coachNewFileName);
+            $em->persist($coach);
             $em->flush();
 
             // ... persist the $product variable or any other work
             return $this->render('coaches/settings/settings.html.twig',
-                array("image" => $user->getImage(),'form' => $form->createView()));
+                array("image" => $coach->getImage(),'form' => $form->createView()));
         }
 
         return $this->render('coaches/settings/settings.html.twig',
-            array('form' => $form->createView(), "image" => 0 ));
+            array('form' => $form->createView(), "image" =>  $coach->getImage()    ));
     }
 
     private function generateUniqueFileName()
@@ -284,7 +306,7 @@ class CoachController extends AbstractController
                 'profile_img' => $coach->getImage(),
                 'player' => $player,
                 'playerStats' => $playerStats,
-                'image' => $this->getUser()->getCoaches()->getImage(),
+                'image' => $player->getImage(),
             )
         );
     }
@@ -394,7 +416,7 @@ class CoachController extends AbstractController
      *
      */
     public function removePlayerFromTeam($id, Request $request){
-        $coach = $this->getUser->getCoach();
+        $coach = $this->getUser()->getCoach();
         $this->isHeadCoach($coach);
 
         $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($id));
@@ -450,6 +472,34 @@ class CoachController extends AbstractController
         // if we reach here, then
         // element was not present
         return -1;
+    }
+
+    public function ChangeImage(Form $form){
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $file */
+            $coachImage =$form->get('image')->getData();
+
+            $coachNewFileName = 'asdas-'.uniqid().'.'.$file->guessExtension();
+
+
+            try {
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $coachNewFileName
+                );
+            } catch (FileException $e) {
+
+            }
+//            $em = $this->getDoctrine()->getManager();
+//
+//            $coach->setImage($coachNewFileName);
+//            $em->persist($coach);
+//            $em->flush();
+
+            // ... persist the $product variable or any other work
+            return $this->render('coaches/settings/settings.html.twig',
+                array("image" => $coach->getImage(),'form' => $form->createView()));
+        }
     }
 
 
