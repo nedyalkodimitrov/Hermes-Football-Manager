@@ -94,11 +94,11 @@ class User implements UserInterface
      */
     public $waterGlasses;  /**
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="sender")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="receiver")
      */
     public $requestFromUser;  /**
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="receiver")
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="sender")
      */
     public $requestToUser;
 

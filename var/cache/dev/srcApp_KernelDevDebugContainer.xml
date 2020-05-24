@@ -328,7 +328,7 @@
     <service id="App\Controller\CoachController" class="App\Controller\CoachController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
-      <argument type="service" id="App\Repository\CoachRepository"/>
+      <argument type="service" id="App\Service\CoachService"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.WkgBPi_.App\Controller\CoachController"/>
       </call>
@@ -350,7 +350,7 @@
     <service id="App\Controller\PlayerController" class="App\Controller\PlayerController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
-      <argument type="service" id="App\Service\PlayerProperties"/>
+      <argument type="service" id="App\Service\PlayerService"/>
       <argument type="service" id="App\Repository\PlayerProperties\WaterGlassesRepository"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.WkgBPi_.App\Controller\PlayerController"/>
@@ -530,7 +530,11 @@
       <argument type="service" id="router.default"/>
       <argument type="service" id="security.csrf.token_manager"/>
     </service>
-    <service id="App\Service\PlayerProperties" class="App\Service\PlayerProperties" autowire="true" autoconfigure="true">
+    <service id="App\Service\CoachService" class="App\Service\CoachService" autowire="true" autoconfigure="true"/>
+    <service id="App\Service\FileService" class="App\Service\FileService" autowire="true" autoconfigure="true">
+      <argument type="service" id="parameter_bag"/>
+    </service>
+    <service id="App\Service\PlayerService" class="App\Service\PlayerService" autowire="true" autoconfigure="true">
       <argument type="service" id="App\Repository\PlayerProperties\WaterGlassesRepository"/>
       <argument type="service" id="App\Repository\TeamRepository"/>
       <argument type="service" id="App\Repository\YouthTeamRepository"/>
@@ -5299,10 +5303,29 @@
         <argument key="userRepository" type="service" id="App\Repository\UserRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.VUShwbM" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="fileService" type="service" id="App\Service\FileService"/>
+      </argument>
+    </service>
+    <service id=".service_locator.zd49r8R" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="coachService" type="service" id="App\Service\CoachService"/>
+        <argument key="playerService" type="service" id="App\Service\PlayerService"/>
+      </argument>
+    </service>
     <service id=".service_locator.VaamZA8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="coachToPlayerRequestRepository" type="service" id="App\Repository\Requests\CoachToPlayerRequestRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.yPfykcG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="form" type="service" id=".errored..service_locator.yPfykcG.Symfony\Component\Form\FormInterface"/>
       </argument>
     </service>
     <service id=".service_locator.ZJSUHJc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5311,10 +5334,10 @@
         <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.w200.Ja" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.qTzrxMf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="coachRepository" type="service" id="App\Repository\CoachRepository"/>
+        <argument key="coachService" type="service" id="App\Service\CoachService"/>
       </argument>
     </service>
     <service id=".service_locator..wwUUjh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5387,18 +5410,21 @@
         <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Q4SWcIW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.bx6Tpyd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\AdminController::GetCoachesByName" type="service" id=".service_locator.X_2bD3Y"/>
         <argument key="App\Controller\AdminController::GetPlayersByName" type="service" id=".service_locator.3V9w6cg"/>
+        <argument key="App\Controller\CoachController::ChangeImage" type="service" id=".service_locator.yPfykcG"/>
         <argument key="App\Controller\CoachController::CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
+        <argument key="App\Controller\CoachController::PlayerAction" type="service" id=".service_locator.zd49r8R"/>
+        <argument key="App\Controller\CoachController::SettingsView" type="service" id=".service_locator.VUShwbM"/>
         <argument key="App\Controller\CoachController::TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
         <argument key="App\Controller\CoachController::removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController::sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController::matchListAction" type="service" id=".service_locator.tG3aThG"/>
-        <argument key="App\Controller\MatchController::matchView" type="service" id=".service_locator.w200.Ja"/>
+        <argument key="App\Controller\MatchController::matchView" type="service" id=".service_locator.qTzrxMf"/>
         <argument key="App\Controller\MatchController::matchesView" type="service" id=".service_locator.ZJSUHJc"/>
         <argument key="App\Controller\PlayerController::PlayerStats" type="service" id=".service_locator.B2GpINr"/>
         <argument key="App\Controller\PlayerController::TrainingView" type="service" id=".service_locator..wwUUjh"/>
@@ -5421,12 +5447,15 @@
         <argument key="App\Controller\AdminController:CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\AdminController:GetCoachesByName" type="service" id=".service_locator.X_2bD3Y"/>
         <argument key="App\Controller\AdminController:GetPlayersByName" type="service" id=".service_locator.3V9w6cg"/>
+        <argument key="App\Controller\CoachController:ChangeImage" type="service" id=".service_locator.yPfykcG"/>
         <argument key="App\Controller\CoachController:CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
+        <argument key="App\Controller\CoachController:PlayerAction" type="service" id=".service_locator.zd49r8R"/>
+        <argument key="App\Controller\CoachController:SettingsView" type="service" id=".service_locator.VUShwbM"/>
         <argument key="App\Controller\CoachController:TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
         <argument key="App\Controller\CoachController:removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController:sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController:matchListAction" type="service" id=".service_locator.tG3aThG"/>
-        <argument key="App\Controller\MatchController:matchView" type="service" id=".service_locator.w200.Ja"/>
+        <argument key="App\Controller\MatchController:matchView" type="service" id=".service_locator.qTzrxMf"/>
         <argument key="App\Controller\MatchController:matchesView" type="service" id=".service_locator.ZJSUHJc"/>
         <argument key="App\Controller\PlayerController:PlayerStats" type="service" id=".service_locator.B2GpINr"/>
         <argument key="App\Controller\PlayerController:TrainingView" type="service" id=".service_locator..wwUUjh"/>
@@ -5915,12 +5944,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.Q4SWcIW"/>
+      <argument type="service" id=".service_locator.bx6Tpyd"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.Q4SWcIW"/>
+      <argument type="service" id=".service_locator.bx6Tpyd"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5964,6 +5993,7 @@
         <argument key="security.token_storage" type="service" id="security.token_storage"/>
       </argument>
     </service>
+    <service id=".errored..service_locator.yPfykcG.Symfony\Component\Form\FormInterface" class="Symfony\Component\Form\FormInterface"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.YQT1s2V"/>
       <argument type="collection">
@@ -6217,7 +6247,7 @@
     </service>
     <service id="Psr\Container\ContainerInterface" alias="service_container" public="false"/>
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container" public="false"/>
-    <service id="App\Service\PlayerPropertiesInterface" alias="App\Service\PlayerProperties" public="false"/>
+    <service id="App\Service\PlayerServiceInterface" alias="App\Service\PlayerService" public="false"/>
     <service id="controller_name_converter" alias=".legacy_controller_name_converter" public="false">
       <deprecated>The "%alias_id%" service is deprecated since Symfony 4.3.</deprecated>
     </service>
@@ -6343,7 +6373,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Q4SWcIW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.bx6Tpyd"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

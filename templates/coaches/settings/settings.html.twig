@@ -1,19 +1,80 @@
-<html>
-<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="{{ asset("css/coache/settingStyle.css") }}" rel="stylesheet">
+{% extends 'coaches/base.html.twig' %}
+{% block style %}
+{{ parent() }}
     <link href="{{ asset("mdb/css/mdb.min.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/settingPageStyle.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/particles/hiddenDiv.css") }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div class="container col-12 row mt-3 mb-4">
+    <div class="col-10 mx-auto p-0 m-0">
+        <div class="cover-photo-container">
+            <img src="{{ asset("images/"~coach.Team.CoverImage) }}" alt="" class="cover-photo">
+        </div>
+        <div class="profile-image-container">
+            <img src="{{asset("images/" ~ image)}}" alt="" class="profile-image m-2">
+            <div class="name-holder">
+                <h4 class="text-center"> {{ coach.User.Name }} {{ coach.User.FName }}</h4>
+                <h6 class="text-center">{{ coach.TeamPosition.Name }}</h6>
+            </div>
+            <div class="edit-button-holder">
+                <button class=" edit-settings" id="edit-settings"><i class="fas fa-pen edit-settings"></i></button>
+            </div>
+        </div>
 
-    <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
-    <script type="text/javascript" src="{{ asset("mdb/js/bootstrap.min.js") }}"></script>
-</head>
-<body>
-<div class="row">
-    <div class="col-12 justify-content-center row ">
+        <div class="container col-12 m-0 justify-content-between p-0 row">
+            <div class="col-5 m-0 p-0">
+                <div class="col-11 m-0  mt-2 information-holder p-4 ">
+                    <div class="col-12 m-0 row p-0   text-center "><h4 class="text-center my-auto mx-auto">Информация за играча</h4></div>
+                    <hr class="col-8 mx-auto">
+                    <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto"> Град на раждане: {{ coach.User.City }}</h5></div>
+                    <div class="col-12 row p-0 mt-3 ml-1">
+                        <h5 class="my-auto">Националност: {{ coach.User.City.Country.Name }}</h5>
+                        <img src="{{ asset("images/"~coach.User.City.Country.Image ) }}" alt="">
+                    </div>
+                    <div class="col-12 row p-0 mt-3  ml-1"><h5  class="my-auto">Телефонене номер: {{ coach.User.Phone }}</h5></div>
+                    <div class="col-12 row p-0 mt-3 ml-1"><h5  class="my-auto">Емейл: {{ coach.User.Email }}</h5></div>
+                </div>
+            </div>
+            <div class="col-7 m-0 mt-2 information-holder align-content-center p-4 ">
+                <div class="season-player-stats col-12 m-0 p-0  my-auto align-bottom  text-center row">
+                    <h4 class="col-12 text-center">Статистика за сезона</h4>
+                    <div class="col-lg-4 my-auto col-md-12 col-sm-12 p-0 m-0 row text-center mt-4 align-content-center chart-container">
+                        <div class="information-container p-0 m-0 col-12">
+                            <p>10</p>
+                        </div>
+                        <div class="fat-percent-div col-12">
+                            <h3 class="col-12">
+                                <span class="label green badge fat-percent-badge">Победи</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 my-auto col-sm-12 col-md-12 p-0 m-0 row mt-2 text-center chart-container">
+                        <div class="information-container col-12">
+                            <p class="p-0">5</p>
+                        </div>
+                        <h3 class="col-12">
+                            <span class="label bg-warning badge ">Равенства</span>
+                        </h3>
+                    </div>
+                    <div class="col-lg-4 my-auto col-sm-12 col-md-12 p-0 m-0 row mt-2 text-center chart-container">
+                        <div class="information-container col-12">
+                            <p class="p-0">3</p>
+                        </div>
+                        <h3 class="col-12">
+                            <span class="label bg-danger badge ">Равенства</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row hidden-container">
+    <div class="col-12 justify-content-center row hidden-div">
         <div class="text-center information-div">
             {% if image == '0'%}
                 <i class="fas fa-user"></i>
@@ -23,7 +84,7 @@
 
             {{ form_start(form) }}
 
-               <label for="form_image profile_pic" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
+            <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
 
             {{ form_widget(form.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
             {{ form_row(form.save, {'attr' : {'class':'btn'}} ) }}
@@ -32,9 +93,5 @@
         </div>
     </div>
 </div>
-
-
-
-</body>
-
-</html>
+    <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
+{% endblock %}

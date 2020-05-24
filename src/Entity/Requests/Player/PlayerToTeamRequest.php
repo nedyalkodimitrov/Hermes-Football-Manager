@@ -17,7 +17,7 @@ class PlayerToTeamRequest
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Player", inversedBy="requestsToTeam")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Player", inversedBy="requestToTeam")
      * @ORM\JoinColumn(name="player", referencedColumnName="id")
      */
     public $player;

@@ -15,6 +15,9 @@ use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
+use App\Service\CoachService;
+use App\Service\FileService;
+use App\Service\PlayerService;
 use Doctrine\DBAL\Schema\SchemaDiff;
 use http\Env\Response;
 use phpDocumentor\Reflection\Types\Self_;
@@ -23,6 +26,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,11 +39,11 @@ use Symfony\Component\Serializer\Serializer;
 class CoachController extends AbstractController
 {
      const HeadCoach = 'HEAD_COACH';
-    private $coachRepository;
+    private $coachService;
     private $bCryptAlgorithmOption;
-    public function __construct(CoachRepository $coachRepository)
+    public function __construct(CoachService $coachService)
     {
-        $this->coachRepository = $coachRepository;
+        $this->coachService = $coachService;
         $this->bCryptAlgorithmOption = [
             'cost' => 12,
         ];
@@ -53,8 +57,8 @@ class CoachController extends AbstractController
     public function CoacheViewAction(TeamRepository $teamRepository, PlayerRepository $playerRepository){
         $coach = $this->getUser()->getCoaches();
 
-       $teamCoach = $this->coachRepository->getCoachTeam($coach);
-        $topPlayers = $this->coachRepository->getTopPlayersFromCoachTeam($playerRepository, $coach);
+       $teamCoach = $this->coachService->getCoachTeam($coach);
+        $topPlayers = $this->coachService->getTopPlayersFromCoachTeam($playerRepository, $coach);
         if ($teamCoach == null){
             $players = 0;
             $teams = null;
@@ -91,7 +95,7 @@ class CoachController extends AbstractController
         $user = new User();
         $player = new Player();
         $coach = $this->getUser()->getCoaches();
-        $teamCoach = $this->coachRepository->getCoachTeam($coach);
+        $teamCoach = $this->coachService->getCoachTeam($coach);
 
         if ($teamCoach == null){
             $players = null;
@@ -221,7 +225,7 @@ class CoachController extends AbstractController
      * @Route("/coache/settings", name = "coache_settings")
      *
      */
-    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request){
+    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request, FileService $fileService){
         $coach = $this->getUser()->getCoaches();
         $newCoach = new Coach();
         $form = $this->createFormBuilder($newCoach)
@@ -230,74 +234,56 @@ class CoachController extends AbstractController
             ->getForm();
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var UploadedFile $file */
-            $coachImage =$form->get('image')->getData();
+        $coachNewFileName = $fileService->MoveImage($form);
+        if ($coachNewFileName != false) {
+               $em = $this->getDoctrine()->getManager();
 
-            $coachNewFileName = 'asdas-'.uniqid().'.'.$file->guessExtension();
+               $coach->setImage($coachNewFileName);
+               $em->persist($coach);
+               $em->flush();
 
 
-            try {
-                $file->move(
-                    $this->getParameter('images_directory'),
-                    $coachNewFileName
-                );
-            } catch (FileException $e) {
-
-            }
-            $em = $this->getDoctrine()->getManager();
-
-            $coach->setImage($coachNewFileName);
-            $em->persist($coach);
-            $em->flush();
-
-            // ... persist the $product variable or any other work
-            return $this->render('coaches/settings/settings.html.twig',
-                array("image" => $coach->getImage(),'form' => $form->createView()));
+                return $this->render('coaches/settings/settings.html.twig',
+                    array(
+                        "image" => $coach->getImage(),
+                        'form' => $form->createView(),
+                        "coach" => $coach,
+                        "profile_img" => $coach->getImage()
+                    ));
         }
 
         return $this->render('coaches/settings/settings.html.twig',
-            array('form' => $form->createView(), "image" =>  $coach->getImage()    ));
-    }
+            array(
+                'form' => $form->createView(),
+                "image" =>  $coach->getImage(),
+                "coach" => $coach,
+                "profile_img" => $coach->getImage()
 
-    private function generateUniqueFileName()
-    {
-        return md5(uniqid());
+                ));
     }
-
 
     /**
-     * @Route("/coache/player/{id}", name = "playerAction")
+     * @Route("/coache/player/{id}", name = "playerStatsView")
      *
      */
-    public function PlayerAction($id, \Symfony\Component\HttpFoundation\Request $request)
+    public function PlayerAction($id, \Symfony\Component\HttpFoundation\Request $request, PlayerService $playerService, CoachService $coachService)
     {
         $coach = $this->getUser()->getCoaches();
         $player = $this->getDoctrine()->getRepository(Player::class)->find($id);
         $playerStats = $player->getStats();
-        $coachYouthTeam = false;
-        $playerYouthTeam = false;
-        $players = new Player();
+        $newPlayers = new Player();
 
-        $form = $this->createFormBuilder($players)->add('pace');
+        $form = $this->createFormBuilder($newPlayers)->add('pace');
 
-        if($player->getTeam() != null){
-            $team = $player->getTeam();
+        $playerTeam = $playerService->getPlayerTeam($player);
+        $coachTeam = $coachService->getCoachTeam($coach);
 
-        }else {
-            $team = $player->getYouthTeams();
-            $playerYouthTeam = true;
-        }
-
-        if($coach->getTeam() != null){
-            $coachTeam = $coach->getTeam();
-
-        }else {
-            $coachTeam = $coach->getYouthTeams();
-            $coachYouthTeam = true;
-        }
-
-        if ($team->getId() != $coachTeam->getId() || $coachYouthTeam != $playerYouthTeam){
+        if ($playerTeam->getId() != $coachTeam->getId() &&
+                (
+                    ($player->getYouthTeam() == null && $coach->getYouthTeam() != null) ||
+                    ($player->getYouthTeam() != null && $coach->getYouthTeam() == null)
+                )
+            ){
             return $this->redirectToRoute("trainingView");
         }
 
@@ -431,7 +417,7 @@ class CoachController extends AbstractController
      */
     public function acceptPlayerRequest($playerId){
         $coach = $this->getUser->getCoach();
-        $team = $this->coachRepository->getCoachTeam($coach);
+        $team = $this->coachService->getCoachTeam($coach);
         $this->isHeadCoach($coach);
 
         $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($playerId));
@@ -474,31 +460,22 @@ class CoachController extends AbstractController
         return -1;
     }
 
-    public function ChangeImage(Form $form){
+    public function ChangeImage(FormInterface $form)
+    {
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $file */
-            $coachImage =$form->get('image')->getData();
+            $file = $form->get('image')->getData();
 
-            $coachNewFileName = 'asdas-'.uniqid().'.'.$file->guessExtension();
-
-
+            $imageNewFileName = 'asadas-' . uniqid() . '.' . $file->guessExtension();
             try {
                 $file->move(
                     $this->getParameter('images_directory'),
-                    $coachNewFileName
+                    $imageNewFileName
                 );
+                return $imageNewFileName;
             } catch (FileException $e) {
-
+                return false;
             }
-//            $em = $this->getDoctrine()->getManager();
-//
-//            $coach->setImage($coachNewFileName);
-//            $em->persist($coach);
-//            $em->flush();
-
-            // ... persist the $product variable or any other work
-            return $this->render('coaches/settings/settings.html.twig',
-                array("image" => $coach->getImage(),'form' => $form->createView()));
         }
     }
 

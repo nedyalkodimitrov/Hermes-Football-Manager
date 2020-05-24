@@ -61,6 +61,24 @@ class Matches
      */
     public $matchList;
 
+    /**
+     * @ORM\Column(type="boolean", name= "Is_played")
+     */
+    private $isPlayed;
+    /**
+     * @ORM\Column(type="boolean", name= "is_dalayed")
+     */
+    private $isDelayed;
+    /**
+     * @ORM\Column(type="boolean", name= "is_friendly")
+     */
+    private $isFriendly;
+    /**
+     * @ORM\Column(type="boolean", name= "is_canceled")
+     */
+    private $isCanceled;
+
+
 
     /**
      * @ORM\ManyToMany(targetEntity="SoccerScheme")

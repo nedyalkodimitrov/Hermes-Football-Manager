@@ -319,16 +319,16 @@ class srcApp_KernelProdContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Controller\\ControllerTrait.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Controller\\AbstractController.php';
         include_once \dirname(__DIR__, 4).'\\src\\Controller\\PlayerController.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Service\\PlayerPropertiesInterface.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Service\\PlayerProperties.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Service\\PlayerServiceInterface.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Service\\PlayerService.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\persistence\\lib\\Doctrine\\Common\\Persistence\\ObjectRepository.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\collections\\lib\\Doctrine\\Common\\Collections\\Selectable.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerProperties\\WaterGlassesRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerService\\WaterGlassesRepository.php';
 
         $a = new \App\Repository\PlayerProperties\WaterGlassesRepository(($this->services['doctrine.orm.default_entity_manager'] ?? $this->getDoctrine_Orm_DefaultEntityManagerService()));
 
-        $this->services['App\\Controller\\PlayerController'] = $instance = new \App\Controller\PlayerController(new \App\Service\PlayerProperties($a, ($this->privates['App\\Repository\\TeamRepository'] ?? $this->getTeamRepositoryService()), ($this->privates['App\\Repository\\YouthTeamRepository'] ?? $this->getYouthTeamRepositoryService())), $a);
+        $this->services['App\\Controller\\PlayerController'] = $instance = new \App\Controller\PlayerController(new \App\Service\PlayerService($a, ($this->privates['App\\Repository\\TeamRepository'] ?? $this->getTeamRepositoryService()), ($this->privates['App\\Repository\\YouthTeamRepository'] ?? $this->getYouthTeamRepositoryService())), $a);
 
         $instance->setContainer(($this->privates['.service_locator.WkgBPi_'] ?? $this->get_ServiceLocator_WkgBPiService())->withContext('App\\Controller\\PlayerController', $this));
 
@@ -1910,9 +1910,9 @@ class srcApp_KernelProdContainer extends Container
     }
 
     /*
-     * Gets the private 'App\Repository\PlayerProperties\CupRepository' shared autowired service.
+     * Gets the private 'App\Repository\PlayerService\CupRepository' shared autowired service.
      *
-     * @return \App\Repository\PlayerProperties\CupRepository
+     * @return \App\Repository\PlayerService\CupRepository
      */
     protected function getCupRepositoryService()
     {
@@ -1921,15 +1921,15 @@ class srcApp_KernelProdContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerProperties\\CupRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerService\\CupRepository.php';
 
         return $this->privates['App\\Repository\\PlayerProperties\\CupRepository'] = new \App\Repository\PlayerProperties\CupRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }
 
     /*
-     * Gets the private 'App\Repository\PlayerProperties\PlayerStatsRepository' shared autowired service.
+     * Gets the private 'App\Repository\PlayerService\PlayerStatsRepository' shared autowired service.
      *
-     * @return \App\Repository\PlayerProperties\PlayerStatsRepository
+     * @return \App\Repository\PlayerService\PlayerStatsRepository
      */
     protected function getPlayerStatsRepositoryService()
     {
@@ -1938,15 +1938,15 @@ class srcApp_KernelProdContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerProperties\\PlayerStatsRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerService\\PlayerStatsRepository.php';
 
         return $this->privates['App\\Repository\\PlayerProperties\\PlayerStatsRepository'] = new \App\Repository\PlayerProperties\PlayerStatsRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }
 
     /*
-     * Gets the private 'App\Repository\PlayerProperties\PositionRepository' shared autowired service.
+     * Gets the private 'App\Repository\PlayerService\PositionRepository' shared autowired service.
      *
-     * @return \App\Repository\PlayerProperties\PositionRepository
+     * @return \App\Repository\PlayerService\PositionRepository
      */
     protected function getPositionRepositoryService()
     {
@@ -1955,7 +1955,7 @@ class srcApp_KernelProdContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\orm\\lib\\Doctrine\\ORM\\EntityRepository.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepositoryInterface.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Repository\\ServiceEntityRepository.php';
-        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerProperties\\PositionRepository.php';
+        include_once \dirname(__DIR__, 4).'\\src\\Repository\\PlayerService\\PositionRepository.php';
 
         return $this->privates['App\\Repository\\PlayerProperties\\PositionRepository'] = new \App\Repository\PlayerProperties\PositionRepository(($this->services['doctrine'] ?? $this->getDoctrineService()));
     }

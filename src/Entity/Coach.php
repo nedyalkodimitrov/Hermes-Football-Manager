@@ -53,7 +53,7 @@ class Coach
     private $birthDay;
 
 //    /**
-//     * @ORM\ManyToOne(targetEntity="App PlayerProperties\Positions")
+//     * @ORM\ManyToOne(targetEntity="App PlayerService\Positions")
 //     * @ORM\JoinColumn(name="position", referencedColumnName="id")
 //     */
     private $position;

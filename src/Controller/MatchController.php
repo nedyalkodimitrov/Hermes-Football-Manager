@@ -8,6 +8,7 @@ use App\Entity\MatchList;
 use App\Repository\CoachRepository;
 use App\Repository\MatchesRepository;
 use App\Repository\PlayerRepository;
+use App\Service\CoachService;
 use Symfony\Bridge\Twig\TokenParser\DumpTokenParser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MatchController extends AbstractController
 {
     /**
-     * @Route("/coache/matches", name="wsasd")
+     * @Route("/coache/matches", name="coachMatches")
      */
     public function matchesView(MatchesRepository $matchesRepository)
     {
@@ -38,11 +39,11 @@ class MatchController extends AbstractController
     /**
      * @Route("/coache/match/{id}", name="matchList", methods={"GET"})
      */
-    public function matchView($id, \Symfony\Component\HttpFoundation\Request $request, CoachRepository $coachRepository)
+    public function matchView($id, \Symfony\Component\HttpFoundation\Request $request, CoachService $coachService)
     {
         $match = $this->getDoctrine()->getRepository(Matches::class)->find($id);
         $coach = $this->getUser()->getCoach();
-        $team = $coachRepository->getCoachTeam($coach);
+        $team = $coachService->getCoachTeam($coach);
         $players = $team->getPlayers();
         return $this->render('coaches/matches/match.html.twig',
             array(
@@ -53,22 +54,25 @@ class MatchController extends AbstractController
     }
 
     /**
-     * @Route("/coache/match/{id}", name="createMatchList", methods={"POST"})
+     * @Route("/coache/match2/2", name="createMatchList")
      */
-    public function matchListAction($id, \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
+    public function matchListAction(\Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
     {
-        $players = $request->request->get('players');
+//        $players = $request->request->get('players');
         $em = $this->getDoctrine()->getManager();
-        $match = $this->getDoctrine()->getRepository(Matches::class)->find($id);
-        for ($i = 0; $i < count($players); $i++){
-            var_dump(intval($players[$i]));
+        $match = $this->getDoctrine()->getRepository(Matches::class)->find(3);
+//        for ($i = 0; $i < count($players); $i++){
+//            var_dump(intval($players[$i]));
 //            $matchList->setPlayer($playerRepository->find(intval($players[$i])));
 //            $matchList->setMatch($match);
+//
 //            $em->flush();
-
-        }
+//
+//        }
+        $player = $playerRepository->find(intval(1));
         $matchList = new MatchList();
-
+        $matchList->setPlayer($player);
+        $matchList->setMatch($match);
         $em->persist($matchList);
         $em->flush();
 

@@ -166,7 +166,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                 echo " \">
                                     <a href=\"";
                 // line 30
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStatsView", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 30)]), "html", null, true);
                 echo "\">
                                         ";
                 // line 31
@@ -246,7 +246,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                 echo " \">
                                 <a href=\"";
                 // line 63
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 63)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStatsView", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 63)]), "html", null, true);
                 echo "\">
                                     ";
                 // line 64
@@ -325,7 +325,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                 echo " \">
                                     <a href=\"";
                 // line 95
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 95)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStatsView", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 95)]), "html", null, true);
                 echo "\">
                                         ";
                 // line 96
@@ -403,7 +403,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                 echo " \">
                                     <a href=\"";
                 // line 126
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerAction", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 126)]), "html", null, true);
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStats", ["id" => twig_get_attribute($this->env, $this->source, $context["player"], "id", [], "any", false, false, false, 126)]), "html", null, true);
                 echo "\">
                                         ";
                 // line 127
@@ -595,7 +595,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                         {% if player.Position == \"Goalkeeper\" %}
                             <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2 p-0\">
                                 <div class=\"col-11 player-container \" id=\"player-{{  foo }} \">
-                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                    <a href=\"{{ path(\"playerStatsView\", {id: player.id}) }}\">
                                         {%   if  player.Status == 0 %}
                                             <div class=\"status-green\"></div>
                                         {% else %}
@@ -628,7 +628,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
 
                         <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
                             <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                                <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                <a href=\"{{ path(\"playerStatsView\", {id: player.id}) }}\">
                                     {%   if  player.Status == 0 %}
                                         <div class=\"status-green\"></div>
                                     {% else %}
@@ -660,7 +660,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                         {% if player.Position == \"Midfielder\" %}
                             <div class=\"col-lg-3 col-sm-12 col-md-12 mt-4 justify-content-center row mb-sm-2\">
                                 <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                    <a href=\"{{ path(\"playerStatsView\", {id: player.id}) }}\">
                                         {%   if  player.Status == 0 %}
                                             <div class=\"status-green\"></div>
                                         {% else %}
@@ -691,7 +691,7 @@ class __TwigTemplate_8a8e06c3941b745097dea1b5423951b3707a3cff02e65b01779be713712
                         {% if player.Position == \"Attacker\" %}
                             <div class=\"col-lg-3 col-sm-12 mt-4 col-md-12 justify-content-center row mb-sm-2\">
                                 <div class=\"col-12 player-container \" id=\"player-{{  foo }} \">
-                                    <a href=\"{{ path(\"playerAction\", {id: player.id}) }}\">
+                                    <a href=\"{{ path(\"playerStats\", {id: player.id}) }}\">
                                         {%   if  player.Status == 0 %}
                                             <div class=\"status-green\"></div>
                                         {% else %}

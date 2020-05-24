@@ -60,7 +60,7 @@ class Division
     private  $matches;
 
 //    /**
-//     * @ORM\OneToMany(targetEntity="App\Entity\PlayerProperties\Cup", mappedBy="divisions")
+//     * @ORM\OneToMany(targetEntity="App\Entity\PlayerService\Cup", mappedBy="divisions")
 //     */
 //    private $cups;
 

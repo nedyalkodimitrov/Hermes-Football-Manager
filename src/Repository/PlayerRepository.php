@@ -19,14 +19,6 @@ class PlayerRepository extends ServiceEntityRepository
         parent::__construct($registry, Player::class);
     }
 
-    public function getPlayerTeam(Player $player){
-        if ($player->getYouthTeams() != null){
-            $team = $player->getYouthTeams();
-        }else{
-            $team = $player->getTeam();
-        }
-        return $team;
-    }
 
 
     public function findByText($value)

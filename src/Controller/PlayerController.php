@@ -21,7 +21,7 @@ use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\TeamRepository;
-use App\Service\PlayerProperties;
+use App\Service\PlayerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +42,7 @@ class PlayerController extends AbstractController
     private $playerPropService;
     private $waterGlassRepo;
 
-    public function __construct(PlayerProperties $playerProperties, WaterGlassesRepository $waterGlassesRepository)
+    public function __construct(PlayerService $playerProperties, WaterGlassesRepository $waterGlassesRepository)
     {
         $this->playerPropService = $playerProperties;
         $this->waterGlassRepo = $waterGlassesRepository;

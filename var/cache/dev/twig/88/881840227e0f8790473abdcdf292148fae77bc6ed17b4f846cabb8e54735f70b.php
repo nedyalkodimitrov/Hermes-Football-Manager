@@ -110,7 +110,7 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
         echo "\">Тренировъчен план</a>
     <a class=\"ml-2 na navbar-link\" href=\"";
         // line 12
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("trainingCalendarActionView");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("coachMatches");
         echo "\">Мачове</a>
 ";
         
@@ -197,7 +197,7 @@ class __TwigTemplate_1ba0e038e7ecc29308e986c60fe024388ca22f780d0316894580b267a2e
     <a class=\"ml-2 na navbar-link current-item\" href=\"{{ path(\"trainingView\") }}\">Начална страница</a>
     <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingView\") }}\">Отбор</a>
     <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingCalendarActionView\") }}\">Тренировъчен план</a>
-    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"trainingCalendarActionView\") }}\">Мачове</a>
+    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"coachMatches\") }}\">Мачове</a>
 {% endblock %}
 {% block navContent %}
         <div class=\"row justify-content-end\">

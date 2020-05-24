@@ -6,7 +6,7 @@ namespace App\Service;
 
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 
-interface PlayerPropertiesInterface
+interface PlayerServiceInterface
 {
 
     public function LastWaterRecord($user, $userId);

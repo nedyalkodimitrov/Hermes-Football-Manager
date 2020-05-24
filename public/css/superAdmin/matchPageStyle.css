@@ -1,55 +1,87 @@
-.match-info-holder img{
-    max-height: 250px;
-    height: 17em;
+.match-info-holder img {
+  max-height: 250px;
+  height: 17em;
 }
 
-.add-circle-container{
-    position: absolute;
-    height: 6em;
-    width: 6em;
-    left: 50%;
-    transform: translate(-35%, 0%);
+.add-circle-container {
+  position: absolute;
+  height: 6em;
+  width: 6em;
+  left: 50%;
+  transform: translate(-35%, 0%);
 }
-
 
 /*check button */
+input[type=checkbox] {
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(0%, 0%);
+  height: 3em;
+  width: 7em;
+}
+input[type=checkbox]:before {
+  background-color: #95a5a6;
+  border-radius: 2em;
+  content: "";
+  display: block;
+  height: 3em;
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 7em;
+}
+input[type=checkbox]:after {
+  background-color: #ecf0f1;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 2.5em;
+  left: 0.5em;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+  transition: all 0.4s ease;
+  width: 2.5em;
+}
+input[type=checkbox]:checked:before {
+  background-color: #27ae60;
+}
+input[type=checkbox]:checked:after {
+  background-color: #fff;
+  left: 3.5em;
+}
 
-input[type="checkbox"] {
-    cursor: pointer;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50% );
-    height: 3em;
-    width: 7em;
+table img {
+  height: 4.5em;
+  width: 4.5em;
+  border-radius: 100%;
 }
-input[type="checkbox"]:before {
-    background-color: #95a5a6;
-    border-radius: 2em;
-    content: "";
-    display: block;
-    height: 3em;
-    position: absolute;
-    transition: all 0.5s ease;
-    width: 7em;
+table input[type=checkbox] {
+  height: 1.7em;
+  width: 4em;
+  top: 100%;
+  left: 100%;
 }
-input[type="checkbox"]:after {
-    background-color: #ecf0f1;
-    border-radius: 50%;
-    content: "";
-    display: block;
-    height: 2.5em;
-    left: 0.5em;
-    position: absolute;
-    top: 50%;
-    transform: translate(0%, -50%);
-    transition: all 0.4s ease;
-    width: 2.5em;
+table input[type=checkbox]:before {
+  height: 1.7em;
+  width: 4em;
 }
-input[type="checkbox"]:checked:before {
-    background-color: #27ae60;
+table input[type=checkbox]:after {
+  width: 1.3em;
+  height: 1.3em;
 }
-input[type="checkbox"]:checked:after {
-    background-color: #fff;
-    left: 3.5em;
+table input[type=checkbox]:checked:after {
+  left: 2em;
 }
 
+/*# sourceMappingURL=matchPageStyle.css.map */
+table input[type=number] {
+  border: none;
+  border-bottom: 2px solid grey;
+  transition: 0.4s;
+  -moz-appearance: textfield;
+}
+table input[type=number]:focus {
+  border: none;
+  border-bottom: 2px solid red;
+}

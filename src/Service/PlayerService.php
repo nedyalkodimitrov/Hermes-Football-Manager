@@ -3,12 +3,13 @@
 namespace App\Service;
 
 
+use App\Entity\Player;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\TeamRepository;
 use App\Repository\YouthTeamRepository;
 
 
-class PlayerProperties implements PlayerPropertiesInterface
+class PlayerService implements PlayerServiceInterface
 {
 
     private $waterGlassesRepo;
@@ -118,6 +119,16 @@ class PlayerProperties implements PlayerPropertiesInterface
             return "Добър ден, господин ".$name;
         }
         return "Добър вечер, господин ".$name;
+    }
+
+    //get player team
+    public function getPlayerTeam(Player $player){
+        if ($player->getYouthTeams() != null){
+            $team = $player->getYouthTeams();
+        }else{
+            $team = $player->getTeam();
+        }
+        return $team;
     }
 
 
