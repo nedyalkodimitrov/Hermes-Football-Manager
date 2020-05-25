@@ -6,6 +6,7 @@
         <link href="{{ asset("css/settingsStyle.css") }}" rel="stylesheet">
         <link href="{{ asset("css/coachStyle.css") }}" rel="stylesheet">
         <link href="{{ asset("mdb/css/mdb.min.css") }}" rel="stylesheet">
+        <link href="{{ asset("css/particles/hiddenDiv.css") }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset("css/playerVisitCard.css") }}">
         <link rel="stylesheet" href="{{ asset("css/coach/playerStatPageStyle.css") }}">
         <link href="{{ asset("css/settingPageStyle.css") }}" rel="stylesheet">
@@ -161,4 +162,28 @@
 {#                    {{ form_widget(formPlayer.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}#}
 {#                    {{ form_row(formPlayer.save, {'attr' : {'class':'btn'}} ) }}#}
 {#                </div>#}
+
+
+        <div class="row hidden-container">
+            <div class="col-12 justify-content-center row hidden-div">
+                <div class="text-center information-div">
+                    {% if image == '0'%}
+                        <i class="fas fa-user"></i>
+                    {% else %}
+
+                    {% endif %}
+
+                    {{ form_start(playerForm) }}
+
+                    <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
+
+                    {{ form_widget(playerForm.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
+                    {{ form_row(playerForm.save, {'attr' : {'class':'btn'}} ) }}
+                    {{ form_end(playerForm) }}
+
+                </div>
+            </div>
+        </div>
+        <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
+
     {% endblock %}

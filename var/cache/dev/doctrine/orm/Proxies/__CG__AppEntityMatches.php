@@ -108,10 +108,10 @@ class Matches extends \App\Entity\Matches implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'id', 'homeTeam', 'awayTeam', 'division', 'date', 'time', 'matchStats', 'matchList', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'schemes'];
+            return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'id', 'homeTeam', 'awayTeam', 'division', 'date', 'time', 'matchStats', 'matchList', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isPlayed', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isDelayed', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isFriendly', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isCanceled', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'schemes'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'schemes'];
+        return ['__isInitialized__', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'id', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isPlayed', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isDelayed', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isFriendly', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'isCanceled', '' . "\0" . 'App\\Entity\\Matches' . "\0" . 'schemes'];
     }
 
     /**
