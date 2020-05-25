@@ -190,7 +190,7 @@ class PlayerController extends AbstractController
     /**
      * @Route("/player/training", name="playerTraining")
      */
-    public function TrainingView(\Symfony\Component\HttpFoundation\Request $request,InjuredUsersRepository $injuredUserRepository, PlayerRepository $playersRepository)
+    public function TrainingView(\Symfony\Component\HttpFoundation\Request $request,InjuredUsersRepository $injuredUserRepository, PlayerService $playerService)
     {
         $Current = Date('N');
         $DaysToSunday = 7 - $Current;
@@ -212,7 +212,7 @@ class PlayerController extends AbstractController
             return new Response($querySucceed);
         }
 
-        $team = $playersRepository->getPlayerTeam($player);
+        $team = $playerService->getPlayerTeam($player);
 
         if ($team == null) {
             $coaches = null;
@@ -258,7 +258,7 @@ class PlayerController extends AbstractController
     /**
      * @Route("/player/requests", name="playerRequestes")
      */
-    public function PlayerRequests()
+    public function Requests()
     {
         $user = $this->getUser();
         $requests = $this->getUser()->getrequestToUser();
@@ -270,12 +270,13 @@ class PlayerController extends AbstractController
     /**
      * @Route("/player/stats", name="playerStats")
      */
-    public function PlayerStats(PlayerRepository $playerRepository, MatchesRepository $matchesRepository)
+    public function Stats(PlayerService $playerService, MatchesRepository $matchesRepository)
     {
         $player =  $this->getUser()->getPlayer();
-        $playerTeam = $playerRepository->getPlayerTeam($player);
+        $playerTeam = $playerService->getPlayerTeam($player);
         $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($playerTeam->getId());
         $teams = $this->playerPropService->getTeams($playerTeam->getDivision()  );
+
         return $this->render('player/stats.html.twig', array(
             "playerName" => $this->getUser()->getName(),
             "profile_img" => $player->getImage(),

@@ -170,50 +170,52 @@ class __TwigTemplate_2988d6d81aea57e169250390e2946656cf17426e64418d2da1c925a34f4
                 $context['_seq'] = twig_ensure_traversable(range(0, (twig_length_filter($this->env, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 43, $this->source); })())) - 1), 1));
                 foreach ($context['_seq'] as $context["_key"] => $context["j"]) {
                     // line 44
-                    echo "                                        ";
-                    if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 44, $this->source); })()), $context["j"], [], "array", false, false, false, 44), "date", [], "any", false, false, false, 44) == $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_date_format_filter($this->env, $context["x"], "d/m/Y")))) {
-                        // line 45
-                        echo "                                            ";
-                        $context["flag"] = false;
+                    echo "
+                                        ";
+                    // line 45
+                    if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 45, $this->source); })()), $context["j"], [], "array", false, false, false, 45), "date", [], "any", false, false, false, 45) == $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_date_format_filter($this->env, $context["x"], "d/m/Y")))) {
                         // line 46
                         echo "                                            ";
-                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 46, $this->source); })()), $context["j"], [], "array", false, false, false, 46), "StartTime", [], "any", false, false, false, 46), "html", null, true);
+                        $context["flag"] = false;
+                        // line 47
+                        echo "                                            ";
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 47, $this->source); })()), $context["j"], [], "array", false, false, false, 47), "StartTime", [], "any", false, false, false, 47), "html", null, true);
                         echo "   <br>  ";
-                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 46, $this->source); })()), $context["j"], [], "array", false, false, false, 46), "Description", [], "any", false, false, false, 46), "html", null, true);
+                        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 47, $this->source); })()), $context["j"], [], "array", false, false, false, 47), "Description", [], "any", false, false, false, 47), "html", null, true);
                         echo "
                                             <br>
                                         ";
                     }
-                    // line 49
+                    // line 50
                     echo "                                    ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['j'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 50
+                // line 51
                 echo "                                    ";
-                if ((isset($context["flag"]) || array_key_exists("flag", $context) ? $context["flag"] : (function () { throw new RuntimeError('Variable "flag" does not exist.', 50, $this->source); })())) {
-                    // line 51
+                if ((isset($context["flag"]) || array_key_exists("flag", $context) ? $context["flag"] : (function () { throw new RuntimeError('Variable "flag" does not exist.', 51, $this->source); })())) {
+                    // line 52
                     echo "                                        <h6>Почивка</h6>
                                     ";
                 }
-                // line 53
+                // line 54
                 echo "                                    ";
                 $context["flag"] = true;
-                // line 54
+                // line 55
                 echo "                                </th>
                             ";
             }
-            // line 56
-            echo "                            ";
-            $context["dateCounter"] = ((isset($context["dateCounter"]) || array_key_exists("dateCounter", $context) ? $context["dateCounter"] : (function () { throw new RuntimeError('Variable "dateCounter" does not exist.', 56, $this->source); })()) + 1);
             // line 57
+            echo "                            ";
+            $context["dateCounter"] = ((isset($context["dateCounter"]) || array_key_exists("dateCounter", $context) ? $context["dateCounter"] : (function () { throw new RuntimeError('Variable "dateCounter" does not exist.', 57, $this->source); })()) + 1);
+            // line 58
             echo "                    ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['x'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 58
+        // line 59
         echo "                </tr>
             </table>
         </div>
@@ -222,47 +224,47 @@ class __TwigTemplate_2988d6d81aea57e169250390e2946656cf17426e64418d2da1c925a34f4
         <div class=\"container row col-lg-12 col-sm-12 justify-content-sm-center mt-sm-3  text-center m-0 \">
             <div class=\"col-12 justify-content-center text-center\">
                 ";
-        // line 65
-        if (((isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 65, $this->source); })()) != null)) {
-            // line 66
+        // line 66
+        if (((isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 66, $this->source); })()) != null)) {
+            // line 67
             echo "                    <img src=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 66, $this->source); })()), "Image", [], "any", false, false, false, 66))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("images/" . twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 67, $this->source); })()), "Image", [], "any", false, false, false, 67))), "html", null, true);
             echo "\" alt=\"\" title=\"them's hoverin' words\" class=\"coache_image \"></label><br>
                     <h3 class=\"mt-3\" >";
-            // line 67
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 67, $this->source); })()), "User", [], "any", false, false, false, 67), "Name", [], "any", false, false, false, 67), "html", null, true);
+            // line 68
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 68, $this->source); })()), "User", [], "any", false, false, false, 68), "Name", [], "any", false, false, false, 68), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 67, $this->source); })()), "User", [], "any", false, false, false, 67), "FName", [], "any", false, false, false, 67), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["bigCoach"]) || array_key_exists("bigCoach", $context) ? $context["bigCoach"] : (function () { throw new RuntimeError('Variable "bigCoach" does not exist.', 68, $this->source); })()), "User", [], "any", false, false, false, 68), "FName", [], "any", false, false, false, 68), "html", null, true);
             echo " </h3>
                     <h5 class=\"mt-2\">Днескашно занимание: Почивка</h5>
                     ";
-            // line 69
+            // line 70
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 69, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["schedule"]) || array_key_exists("schedule", $context) ? $context["schedule"] : (function () { throw new RuntimeError('Variable "schedule" does not exist.', 70, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["schedules"]) {
-                // line 70
+                // line 71
                 echo "                        ";
-                if ((twig_get_attribute($this->env, $this->source, $context["schedules"], "date", [], "any", false, false, false, 70) == $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_date_format_filter($this->env, "now")))) {
-                    // line 71
+                if ((twig_get_attribute($this->env, $this->source, $context["schedules"], "date", [], "any", false, false, false, 71) == $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_date_format_filter($this->env, "now")))) {
+                    // line 72
                     echo "                            <p>schedules.date</p>
                         ";
                 }
-                // line 73
+                // line 74
                 echo "                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['schedules'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 74
+            // line 75
             echo "                        <button class=\"btn main-color treatment mb-5\" >Пропускане на тренировка </button>
                 ";
         } else {
-            // line 76
+            // line 77
             echo "                         <h2>Нямате главен треньор и съобщението може да не бъде видяно</h2>
                         <button class=\"btn main-color treatment\">Пропускане на тренировка </button>
                 ";
         }
-        // line 79
+        // line 80
         echo "            </div>
         </div>
     </div>
@@ -299,14 +301,14 @@ class __TwigTemplate_2988d6d81aea57e169250390e2946656cf17426e64418d2da1c925a34f4
         </div>
     </div>
 ";
-        // line 133
+        // line 134
         echo "
 ";
-        // line 139
+        // line 140
         echo "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js\"></script>
     <script src=\"";
-        // line 141
+        // line 142
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/playerTraining.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -330,7 +332,7 @@ class __TwigTemplate_2988d6d81aea57e169250390e2946656cf17426e64418d2da1c925a34f4
 
     public function getDebugInfo()
     {
-        return array (  310 => 141,  306 => 139,  303 => 133,  266 => 79,  261 => 76,  257 => 74,  251 => 73,  247 => 71,  244 => 70,  240 => 69,  233 => 67,  228 => 66,  226 => 65,  217 => 58,  211 => 57,  208 => 56,  204 => 54,  201 => 53,  197 => 51,  194 => 50,  188 => 49,  179 => 46,  176 => 45,  173 => 44,  169 => 43,  166 => 42,  162 => 40,  159 => 39,  155 => 37,  152 => 36,  146 => 35,  137 => 32,  134 => 31,  131 => 30,  127 => 29,  124 => 28,  121 => 27,  116 => 26,  113 => 25,  111 => 24,  96 => 11,  86 => 10,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  312 => 142,  308 => 140,  305 => 134,  268 => 80,  263 => 77,  259 => 75,  253 => 74,  249 => 72,  246 => 71,  242 => 70,  235 => 68,  230 => 67,  228 => 66,  219 => 59,  213 => 58,  210 => 57,  206 => 55,  203 => 54,  199 => 52,  196 => 51,  190 => 50,  181 => 47,  178 => 46,  176 => 45,  173 => 44,  169 => 43,  166 => 42,  162 => 40,  159 => 39,  155 => 37,  152 => 36,  146 => 35,  137 => 32,  134 => 31,  131 => 30,  127 => 29,  124 => 28,  121 => 27,  116 => 26,  113 => 25,  111 => 24,  96 => 11,  86 => 10,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -378,6 +380,7 @@ class __TwigTemplate_2988d6d81aea57e169250390e2946656cf17426e64418d2da1c925a34f4
                             {% else %}
                                 <th  class=\"col-2 my-auto text-center justify-content-end\">
                                     {% for j in range(0, schedule|length - 1, 1) %}
+
                                         {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}
                                             {% set flag = false %}
                                             {{ schedule[j].StartTime }}   <br>  {{ schedule[j].Description }}

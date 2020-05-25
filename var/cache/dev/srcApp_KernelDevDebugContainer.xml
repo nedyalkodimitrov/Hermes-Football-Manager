@@ -5340,18 +5340,18 @@
         <argument key="coachService" type="service" id="App\Service\CoachService"/>
       </argument>
     </service>
-    <service id=".service_locator..wwUUjh" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.U5BnL3." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="injuredUserRepository" type="service" id="App\Repository\InjuredUsersRepository"/>
-        <argument key="playersRepository" type="service" id="App\Repository\PlayerRepository"/>
+        <argument key="playerService" type="service" id="App\Service\PlayerService"/>
       </argument>
     </service>
-    <service id=".service_locator.B2GpINr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.G2vIHgx" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
-        <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
+        <argument key="playerService" type="service" id="App\Service\PlayerService"/>
       </argument>
     </service>
     <service id=".service_locator.V7XE6E8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5410,7 +5410,7 @@
         <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.bx6Tpyd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.aYb1ACV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
@@ -5426,8 +5426,8 @@
         <argument key="App\Controller\MatchController::matchListAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController::matchView" type="service" id=".service_locator.qTzrxMf"/>
         <argument key="App\Controller\MatchController::matchesView" type="service" id=".service_locator.ZJSUHJc"/>
-        <argument key="App\Controller\PlayerController::PlayerStats" type="service" id=".service_locator.B2GpINr"/>
-        <argument key="App\Controller\PlayerController::TrainingView" type="service" id=".service_locator..wwUUjh"/>
+        <argument key="App\Controller\PlayerController::Stats" type="service" id=".service_locator.G2vIHgx"/>
+        <argument key="App\Controller\PlayerController::TrainingView" type="service" id=".service_locator.U5BnL3."/>
         <argument key="App\Controller\PlayerController::acceptCoachRequest" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\PlayerController::getTeamRequest" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\PlayerController::searchTeam" type="service" id=".service_locator.V7XE6E8"/>
@@ -5457,8 +5457,8 @@
         <argument key="App\Controller\MatchController:matchListAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController:matchView" type="service" id=".service_locator.qTzrxMf"/>
         <argument key="App\Controller\MatchController:matchesView" type="service" id=".service_locator.ZJSUHJc"/>
-        <argument key="App\Controller\PlayerController:PlayerStats" type="service" id=".service_locator.B2GpINr"/>
-        <argument key="App\Controller\PlayerController:TrainingView" type="service" id=".service_locator..wwUUjh"/>
+        <argument key="App\Controller\PlayerController:Stats" type="service" id=".service_locator.G2vIHgx"/>
+        <argument key="App\Controller\PlayerController:TrainingView" type="service" id=".service_locator.U5BnL3."/>
         <argument key="App\Controller\PlayerController:acceptCoachRequest" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\PlayerController:getTeamRequest" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\PlayerController:searchTeam" type="service" id=".service_locator.V7XE6E8"/>
@@ -5944,12 +5944,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.bx6Tpyd"/>
+      <argument type="service" id=".service_locator.aYb1ACV"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.bx6Tpyd"/>
+      <argument type="service" id=".service_locator.aYb1ACV"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6373,7 +6373,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.bx6Tpyd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.aYb1ACV"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

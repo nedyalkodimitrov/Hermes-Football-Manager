@@ -69,11 +69,11 @@ class __TwigTemplate_fae9cfe2a968e3cc2d9ffe9f759f3c1820434445d660147f90cba20edbf
 
         // line 3
         echo "    <link rel=\"stylesheet\" href=\"  ";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/player/playerStyle.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/coachStyle.css"), "html", null, true);
         echo "    \">
     <link rel=\"stylesheet\" href=\"  ";
         // line 4
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/coachStyle.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/player/playerStyle.css"), "html", null, true);
         echo "    \">
 ";
         
@@ -102,11 +102,11 @@ class __TwigTemplate_fae9cfe2a968e3cc2d9ffe9f759f3c1820434445d660147f90cba20edbf
         echo "\">Тренировки</a>
     <a class=\"ml-2 na navbar-link\" href=\"";
         // line 9
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerTraining");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerStats");
         echo "\">Статистики</a>
     <a class=\"ml-2 na navbar-link\" href=\"";
         // line 10
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerTraining");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("playerRequestes");
         echo "\">Заявки</a>
 ";
         
@@ -206,14 +206,14 @@ class __TwigTemplate_fae9cfe2a968e3cc2d9ffe9f759f3c1820434445d660147f90cba20edbf
     {
         return new Source("{% extends 'base.html.twig' %}
 {% block style %}
-    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/player/playerStyle.css\") }}    \">
     <link rel=\"stylesheet\" href=\"  {{ asset(\"css/coachStyle.css\") }}    \">
+    <link rel=\"stylesheet\" href=\"  {{ asset(\"css/player/playerStyle.css\") }}    \">
 {% endblock %}
 {% block navLinks %}
     <a class=\"current-item ml-2 navbar-link\" href=\"#\">Начална страница </a>
     <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerTraining\") }}\">Тренировки</a>
-    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerTraining\") }}\">Статистики</a>
-    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerTraining\") }}\">Заявки</a>
+    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerStats\") }}\">Статистики</a>
+    <a class=\"ml-2 na navbar-link\" href=\"{{ path(\"playerRequestes\") }}\">Заявки</a>
 {% endblock %}
 {% block navContent %}
     <div class=\" mt-md-2 mt-sm-2 row text-sm-left text-md-left col-sm-6 col-md-6 justify-content-sm-left justify-content-md-left\">

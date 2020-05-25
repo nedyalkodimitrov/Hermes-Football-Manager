@@ -17,12 +17,17 @@
                <tr class="taining-program-tr">
                    {% set j = 0 %}
                    {% for x in range(monday|date('U'), sunday|date('U'), 86400 ) %}
-                       {% if  j < schedule|length and schedule[j].date ==  x|date('d/m/Y')|trans   %}
-                           <td>{{ schedule[j].Description }} </br> {{ schedule[j].startTime }}  </td>
-                           {% set j = j + 1 %}
-                       {% else %}
-                           <td>Почивка</td>
+                       {% if  schedule is empty%}
+                            <td>Почивка</td>
+                           {% else %}
+                               {% if  j < schedule|length and schedule[j].date ==  x|date('d/m/Y')|trans   %}
+                                   <td>{{ schedule[j].Description }} </br> {{ schedule[j].startTime }}  </td>
+                                   {% set j = j + 1 %}
+                               {% else %}
+                                   <td>Почивка</td>
+                               {% endif %}
                        {% endif %}
+
                    {% endfor %}
                </tr>
            </tbody>
