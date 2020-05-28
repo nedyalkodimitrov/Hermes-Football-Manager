@@ -30,7 +30,7 @@ class FileService
                 );
                 return $imageNewFileName;
             } catch (FileException $e) {
-                return false;
+                return null;
             }
         }
     }

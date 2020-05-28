@@ -235,21 +235,12 @@ class CoachController extends AbstractController
         $form->handleRequest($request);
 
         $coachNewFileName = $fileService->MoveImage($form);
-        if ($coachNewFileName != false) {
+        if ($coachNewFileName != null) {
                $em = $this->getDoctrine()->getManager();
-
                $coach->setImage($coachNewFileName);
                $em->persist($coach);
                $em->flush();
 
-
-                return $this->render('coaches/settings/settings.html.twig',
-                    array(
-                        "image" => $coach->getImage(),
-                        'form' => $form->createView(),
-                        "coach" => $coach,
-                        "profile_img" => $coach->getImage()
-                    ));
         }
 
         return $this->render('coaches/settings/settings.html.twig',

@@ -336,37 +336,35 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                     <span class=\"focus-border\"></span>
                 </div>
                 <button class=\"btn bg-mycolor\" id=\"send-info\">Създаване на нов отбор</button>
-
             </div>
-            <span><i class=\"fas fa-times-circle color-black \"></i></span>
+            <span><i class=\"fas fa-times-circle color-black  adding-matach\"></i></span>
         </div>
     </div>
 
 
     <div class=\"player-status-container row justify-content-center align-items-center\">
         <div class=\"col-lg-9 col-sm-10 player-status-div row align-items-center justify-content-center\" id=\"add-player\" >
-
             <div class=\"col-lg-8 col-sm-11 row justify-content-around\">
                 <h2 class=\"mb-5 col-12 text-center justify-content-center\">Добавяне на  мач отбор</h2>
                 <div class=\"input-group mb-3 col-lg-5 col-sm-12\">
                     <select name=\"\" id=\"homeTeam\">
                         ";
-        // line 160
+        // line 158
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 160, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 158, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["team"]) {
-            // line 161
+            // line 159
             echo "                            <option value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "id", [], "any", false, false, false, 161), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "id", [], "any", false, false, false, 159), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Name", [], "any", false, false, false, 161), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Name", [], "any", false, false, false, 159), "html", null, true);
             echo "</option>
                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['team'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 163
+        // line 161
         echo "                    </select>
                 </div>
 
@@ -374,22 +372,22 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                     <select class=\"form-control select bg-gray col-sm-12 \" id=\"awayTeam\" >
                         <option value=\"0\" selected=\"selected\" disabled=\"disabled\" class=\"bg-gray\">Защо няма да може да доидете </option>
                         ";
-        // line 169
+        // line 167
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 169, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["teams"]) || array_key_exists("teams", $context) ? $context["teams"] : (function () { throw new RuntimeError('Variable "teams" does not exist.', 167, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["team"]) {
-            // line 170
+            // line 168
             echo "                            <option value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "id", [], "any", false, false, false, 170), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "id", [], "any", false, false, false, 168), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Name", [], "any", false, false, false, 170), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["team"], "Name", [], "any", false, false, false, 168), "html", null, true);
             echo "</option>
                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['team'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 172
+        // line 170
         echo "                    </select>
                 </div>
                
@@ -440,15 +438,15 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                 \$.ajax({
                     method: \"POST\",
                     data: {\"division\" : ";
-        // line 221
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 221, $this->source); })()), "Id", [], "any", false, false, false, 221), "html", null, true);
+        // line 219
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 219, $this->source); })()), "Id", [], "any", false, false, false, 219), "html", null, true);
         echo " },
                     url: \" app.php/superAdmin/deleteTeam/\" + team,
                 })
                     .done(function( msg ) {
                         window.location.href = \"/superAdmin/teams/\" + ";
-        // line 225
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 225, $this->source); })()), "Id", [], "any", false, false, false, 225), "html", null, true);
+        // line 223
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 223, $this->source); })()), "Id", [], "any", false, false, false, 223), "html", null, true);
         echo ";
 
                     });
@@ -509,19 +507,19 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                 \$.ajax({
                     method: \"POST\",
                     data: {\"name\": name, \"phone\": phone, \"division\" : ";
-        // line 284
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 284, $this->source); })()), "Id", [], "any", false, false, false, 284), "html", null, true);
+        // line 282
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 282, $this->source); })()), "Id", [], "any", false, false, false, 282), "html", null, true);
         echo " },
                     url: \"";
-        // line 285
+        // line 283
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("superAdminCreateTeam");
         echo "\",
                 })
                     .done(function( msg ) {
                         if(msg == 2){
                             window.location.href = \"app.php/superAdmin/teams/\" + ";
-        // line 289
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 289, $this->source); })()), "Id", [], "any", false, false, false, 289), "html", null, true);
+        // line 287
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["division"]) || array_key_exists("division", $context) ? $context["division"] : (function () { throw new RuntimeError('Variable "division" does not exist.', 287, $this->source); })()), "Id", [], "any", false, false, false, 287), "html", null, true);
         echo ";
                         }else if (msg == 0){
                             iziToast.warning({
@@ -557,7 +555,7 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                 method: \"POST\",
                 data: {\"homeTeam\": homeTeam, \"awayTeam\": awayTeam, \"date\" : date, \"time\" : time },
                 url: \"";
-        // line 323
+        // line 321
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("createMatch");
         echo "\",
             })
@@ -643,7 +641,7 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
 
     public function getDebugInfo()
     {
-        return array (  561 => 323,  524 => 289,  517 => 285,  513 => 284,  451 => 225,  444 => 221,  393 => 172,  382 => 170,  378 => 169,  370 => 163,  359 => 161,  355 => 160,  312 => 119,  304 => 116,  295 => 111,  289 => 108,  285 => 107,  279 => 104,  275 => 103,  270 => 101,  266 => 99,  262 => 98,  251 => 89,  247 => 87,  243 => 85,  236 => 83,  231 => 82,  229 => 81,  223 => 78,  219 => 77,  215 => 76,  211 => 75,  207 => 74,  203 => 73,  199 => 72,  195 => 71,  191 => 70,  188 => 69,  182 => 68,  180 => 67,  166 => 55,  164 => 54,  154 => 46,  148 => 32,  143 => 29,  135 => 26,  130 => 23,  127 => 22,  121 => 20,  115 => 18,  113 => 17,  108 => 14,  104 => 13,  96 => 7,  86 => 6,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
+        return array (  559 => 321,  522 => 287,  515 => 283,  511 => 282,  449 => 223,  442 => 219,  391 => 170,  380 => 168,  376 => 167,  368 => 161,  357 => 159,  353 => 158,  312 => 119,  304 => 116,  295 => 111,  289 => 108,  285 => 107,  279 => 104,  275 => 103,  270 => 101,  266 => 99,  262 => 98,  251 => 89,  247 => 87,  243 => 85,  236 => 83,  231 => 82,  229 => 81,  223 => 78,  219 => 77,  215 => 76,  211 => 75,  207 => 74,  203 => 73,  199 => 72,  195 => 71,  191 => 70,  188 => 69,  182 => 68,  180 => 67,  166 => 55,  164 => 54,  154 => 46,  148 => 32,  143 => 29,  135 => 26,  130 => 23,  127 => 22,  121 => 20,  115 => 18,  113 => 17,  108 => 14,  104 => 13,  96 => 7,  86 => 6,  74 => 4,  69 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -793,16 +791,14 @@ class __TwigTemplate_99437e6a5e373c5a5642f2b0503303851b16b2c37b15dc04261639c2553
                     <span class=\"focus-border\"></span>
                 </div>
                 <button class=\"btn bg-mycolor\" id=\"send-info\">Създаване на нов отбор</button>
-
             </div>
-            <span><i class=\"fas fa-times-circle color-black \"></i></span>
+            <span><i class=\"fas fa-times-circle color-black  adding-matach\"></i></span>
         </div>
     </div>
 
 
     <div class=\"player-status-container row justify-content-center align-items-center\">
         <div class=\"col-lg-9 col-sm-10 player-status-div row align-items-center justify-content-center\" id=\"add-player\" >
-
             <div class=\"col-lg-8 col-sm-11 row justify-content-around\">
                 <h2 class=\"mb-5 col-12 text-center justify-content-center\">Добавяне на  мач отбор</h2>
                 <div class=\"input-group mb-3 col-lg-5 col-sm-12\">

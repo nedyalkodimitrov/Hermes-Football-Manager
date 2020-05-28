@@ -4,10 +4,17 @@
     <link rel="stylesheet" href="  {{ asset("css/superAdmin/matchPageStyle.css") }}">
 {% endblock %}
 {% block body %}
-    <div class="container m-0 p-0    col-12 row">
-        <div class=" col-12 p-0 m-0 text-center ">
-            <input type="checkbox" class="mt-5" class="checkbox">
+
+    <div class="col-12 container justify-content-center p-0 m-0 row ">
+        <div class="col-4 p-0 m-0 justify-content-center mx-auto row ">
+            <h2 class="col-7">Мачът е:
+               <button type="btn btn-success" name="button"><i class="fas fa-check"></i></button>
+               <button type="btn btn-danger" name="button"><i class="fas fa-check"></i></button>
+               <button type="btn btn-success" name="button"><i class="fas fa-check"></i></button>
+            </h2>
         </div>
+    </div>
+    <div class="container m-0 p-0    col-12 row">
         <div class="col-12 row p-0 m-0 justify-content-around">
             <div class="match-info-holder col-11 row mt-3  mx-auto  justify-content-center p-0">
                 <div class="homeTeam-info-holder col-5 p-0 m-0 text-center justify-content-center ">
@@ -27,8 +34,6 @@
             <div class="col-lg-9 col-sm-10 player-status-div player-{{ matchList.Player.Id }} row align-items-center justify-content-center" id="add-player" >
                 <div class="col-lg-9 col-sm-11 row justify-content-around">
                     <h2 class="mb-5 col-12 text-center justify-content-center">{{ matchList.Player.User.Name }}</h2>
-
-
                     <span><i class="fas fa-times-circle"></i></span>
                 </div>
             </div>
@@ -37,33 +42,58 @@
 
     <table class="table-bordered col-12 mt-5"  style="margin-bottom: 0; padding:0;">
         <tr class="row col-12 p-1 m-0 table-color">
-            <th class="col-4 color-white"><img src="{{ asset("images/"~match.HomeTeam.Image) }}" alt="">{{match.HomeTeam.Name}}</th>
+            <th class="col-2 col-lg-4 color-white"><img src="{{ asset("images/"~match.HomeTeam.Image) }}" alt="">{{match.HomeTeam.Name}}</th>
             <th class="col-1 my-auto color-white">Г</th>
             <th class="col-1 my-auto color-white">А</th>
             <th class="col-1 my-auto color-white">У</th>
-            <th class="col-1 my-auto color-white">Започнал</th>
+            <th class="col-2 col-lg-1 my-auto color-white">Започнал</th>
             <th class="col-1 my-auto color-white">От</th>
             <th class="col-1 my-auto color-white">До</th>
+            <th class="col-1 my-auto color-white">Позиция</th>
+        </tr>
+        <tr class="startedPlayers">
+          <th class="col-12">Титуляри</th>
         </tr>
         {% for matchList in match.MatchList %}
                 {% if matchList.Player.Team == match.HomeTeam.Name %}
-                    {% set player = matchList.Player %}
+                  {% if matchList.IsStarting == 1 %}
+                      {% set player = matchList.Player %}
 
-            <tr class="teamTable row col-12 p-1 m-0">
-                <th  class="col-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}}</th>
-                <th class="col-1 my-auto"><input type="number" min="0" max="6" value="0"></th>
-                <th class="col-1 my-auto"><input type="number" min="0" max="6" value="0"></th>
-                <th class="col-1 my-auto"><input type="number" min="0" max="15" value="0"></th>
-                <th class="col-1 my-auto"><input type="checkbox"></th>
-                <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
-                <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
-{#                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>#}
-{#                <th class="col-1">{{ team.points }}</th>#}
-            </tr>
-                {% endif %}
+                      <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                          <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                          <th class="col-1 my-auto"><input type="number" min="0" max="6" class="goals" value="0"></th>
+                          <th class="col-1 my-auto"><input type="number" min="0" max="6" value="0"></th>
+                          <th class="col-1 my-auto"><input type="number" min="0" max="15" value="0"></th>
+                          <th class="col-2 col-lg-1 my-auto"><input type="checkbox" checked disabled></th>
+                          <th class="col-1 my-auto"><input type="number" min="0" max="0" value="0"></th>
+                          <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
+                          <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
+                          <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                      </tr>
+                    {% endif %}
+                  {% endif %}
             {% endfor %}
-
-
+            <tr class="reservePlayers">
+              <th class="col-12">Резерви</th>
+            </tr>
+            {% for matchList in match.MatchList %}
+                    {% if matchList.Player.Team == match.HomeTeam.Name %}
+                      {% if matchList.IsStarting == 0 %}
+                          {% set player = matchList.Player %}
+                          <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                              <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                              <th class="col-1 my-auto"><input type="number" min="0" max="6" value="0"></th>
+                              <th class="col-1 my-auto"><input type="number" min="0" max="6" value="0"></th>
+                              <th class="col-1 my-auto"><input type="number" min="0" max="15" value="0"></th>
+                              <th class="col-2 col-lg-1 my-auto"><input type="checkbox"></th>
+                              <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
+                              <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
+                              <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
+                              <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                          </tr>
+                        {% endif %}
+                      {% endif %}
+                {% endfor %}
     </table>
     <table class="table-bordered col-12 mt-4 mb-4 "  style="margin-bottom: 0; padding:0;">
         <tr class="row col-12 p-1 m-0 table-color">
@@ -78,32 +108,65 @@
         {% for matchList in match.MatchList %}
                 {% if matchList.Player.Team == match.AwayTeam.Name %}
                     {% set player = matchList.Player %}
-                    <tr class="teamTable row col-12 p-1 m-0">
+                    <tr class="teamTable awayTeamPlayer ow col-12 p-1 m-0">
                         <th  class="col-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}}</th>
-
                         <th class="col-1 my-auto"><input type="number" min="0" max="6"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="6"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="15"></th>
                         <th class="col-1 my-auto"><input type="checkbox"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
-        {#                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>#}
-        {#                <th class="col-1">{{ team.points }}</th>#}
                     </tr>
                     {% else %}
                 {% endif %}
             {% endfor %}
-
-
     </table>
 
-
     <div class="col-12 text-center">
-        <button class="btn btn-danger">Потвърждаване на резултата</button>
+        <button class="btn btn-danger sendInformation">Потвърждаване на резултата</button>
     </div>
 
 
     <script>
+
+        $('.sendInformation').on('click', function(){
+          var homeTeamPlayers = [];
+          var awayTeamPlayers = [];
+          var homeTeamPlayersElements = document.getElementsByClassName("homeTeamPlayer");
+          var awayTeamPlayersElements = document.getElementsByClassName("awayTeamPlayer");
+
+          var player = [];
+
+          for (var i = 0; i < homeTeamPlayersElements.length; i++) {
+            var homeTeamPlayer = homeTeamPlayersElements[i].getElementsByTagName("th");
+            var player = [];
+            player.Goal =  homeTeamPlayer[1].getElementsByTagName("input")[0].value;
+            player.Assists = homeTeamPlayer[2].getElementsByTagName("input")[0].value;
+            player.Shoots = homeTeamPlayer[3].getElementsByTagName("input")[0].value;
+            player.MinStart = homeTeamPlayer[5].getElementsByTagName("input")[0].value;
+            player.Shootss = homeTeamPlayer[3].getElementsByTagName("input")[0].checked;
+            player.MinEnd = homeTeamPlayer[6].getElementsByTagName("input")[0].value;
+            homeTeamPlayers.push(player);
+
+          }
+
+          for (var i = 0; i < awayTeamPlayersElements.length; i++) {
+            var awayTeamPlayer = awayTeamPlayersElements[i].getElementsByTagName("th");
+            var player = [];
+            player.Goal =  awayTeamPlayer[1].getElementsByTagName("input")[0].value;
+            player.Assists = awayTeamPlayer[2].getElementsByTagName("input")[0].value;
+            player.Shoots = awayTeamPlayer[3].getElementsByTagName("input")[0].value;
+              // player.Shootss = awayTeamPlayer[3].getElementsByTagName("input")[0].checked;
+            player.MinStart = awayTeamPlayer[5].getElementsByTagName("input")[0].value;
+            player.MinEnd = awayTeamPlayer[6].getElementsByTagName("input")[0].value;
+            awayTeamPlayers.push(player);
+          }
+
+           console.log(homeTeamPlayers);
+
+
+        });
+
 
         $('.adding-match').on('click', function () {
             let playerId = $(this).attr('id');

@@ -21,6 +21,7 @@ use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
 use App\Repository\TeamRepository;
+use App\Service\FileService;
 use App\Service\PlayerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -121,7 +122,7 @@ class PlayerController extends AbstractController
      * @Route("/player/settings", name = "player_settings")
      *
      */
-    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request){
+    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request, FileService $fileService){
         $currentPlayer = $this->getUser()->getPlayer();
         $newPlayer = new Player();
         $newPlayerStats = new PlayerStats();
@@ -130,49 +131,27 @@ class PlayerController extends AbstractController
 
         $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
         $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
-        $formPlayer = $this->createForm(PlayerType::class, $newPlayer);
+        $playerForm = $this->createForm(PlayerType::class, $newPlayer);
         $formStats->handleRequest($request);
-        $formPlayer->handleRequest($request);
+        $playerForm->handleRequest($request);
 
-        if ($formPlayer->isSubmitted() && $formPlayer->isValid()) {
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-            $file = new UploadedFile();
-            $file = $newPlayer->getImage();
-            $fileName = $this->generateUniqueFileName().'.'.$this->$file->guessExtension();
-
-            try {
-                $file->move(
-                    $this->getParameter('images_directory'),
-                    $fileName
-                );
-            } catch (FileException $e) {
-
-            }
-
+        $fileName = $fileService->MoveImage($playerForm);
+      if ($fileName != null){
             $em = $this->getDoctrine()->getManager();
             $currentPlayer->setImage($fileName);
             $em->persist($currentPlayer);
             $em->flush();
 
-            return $this->render('player/settings/newSettingPage.html.twig',
-                array("image" => $currentPlayer->getImage(),
-                    'formPlayer' => $formPlayer->createView(),
-                    'formStats' => $formStats->createView(),
-                    'player' => $currentPlayer,
-                    'team' => $this->playerPropService->getTeam($currentPlayer),
-                    'playerStats' => $playerStats,
-                    'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
-                ));
         }
 
         return $this->render('player/settings/newSettingPage.html.twig',
             array(
-                'formPlayer' => $formPlayer->createView(),
+                'playerForm' => $playerForm->createView(),
                 'formStats' => $formStats->createView(),
                 "image" => $currentPlayer->getImage(),
                 'profile_img' =>$currentPlayer->getImage(),
                 'player' => $currentPlayer,
-                'form' => $formPlayer->createView(),
+                'form' => $playerForm->createView(),
                 'team' => $this->playerPropService->getTeam($currentPlayer),
                 'playerStats' => $playerStats,
                 'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()

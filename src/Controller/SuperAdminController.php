@@ -6,6 +6,7 @@ use App\Entity\Admin;
 use App\Entity\Country;
 use App\Entity\Division;
 use App\Entity\Match;
+use App\Entity\MatchList;
 use App\Entity\Matches;
 use App\Entity\MatchStats;
 use App\Entity\Team;
@@ -182,7 +183,6 @@ class SuperAdminController extends AbstractController
             'divisions' => $divisions,
         ));
     }
-
 
 
     /**
