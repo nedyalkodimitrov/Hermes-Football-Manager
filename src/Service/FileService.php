@@ -18,7 +18,7 @@ class FileService
 
     public function MoveImage(FormInterface $form)
     {
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             /** @var UploadedFile $file */
             $file = $form->get('image')->getData();
 

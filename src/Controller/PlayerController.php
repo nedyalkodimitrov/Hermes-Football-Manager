@@ -24,6 +24,8 @@ use App\Repository\TeamRepository;
 use App\Service\FileService;
 use App\Service\PlayerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -131,23 +133,44 @@ class PlayerController extends AbstractController
 
         $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
         $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
+<<<<<<< HEAD
         $playerForm = $this->createForm(PlayerType::class, $newPlayer);
         $formStats->handleRequest($request);
         $playerForm->handleRequest($request);
 
         $fileName = $fileService->MoveImage($playerForm);
       if ($fileName != null){
+=======
+        $formPlayer = $this->createFormBuilder($newPlayer)
+            ->add('image', FileType::class, array('data_class' => null, ))
+            ->add('save', SubmitType::class, ['label' => 'Create Task'])
+            ->getForm();
+        $formStats->handleRequest($request);
+        $formPlayer->handleRequest($request);
+
+        $newFileName = $fileService->MoveImage($formPlayer);
+
+        if($newFileName != false) {
+>>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
             $em = $this->getDoctrine()->getManager();
-            $currentPlayer->setImage($fileName);
+            $currentPlayer->setImage($newFileName);
             $em->persist($currentPlayer);
             $em->flush();
+<<<<<<< HEAD
 
+=======
+>>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
         }
 
         return $this->render('player/settings/newSettingPage.html.twig',
             array(
+<<<<<<< HEAD
                 'playerForm' => $playerForm->createView(),
                 'formStats' => $formStats->createView(),
+=======
+                'playerForm' => $formPlayer->createView(),
+                'statsForm' => $formStats->createView(),
+>>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
                 "image" => $currentPlayer->getImage(),
                 'profile_img' =>$currentPlayer->getImage(),
                 'player' => $currentPlayer,
