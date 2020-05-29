@@ -7,6 +7,8 @@ use App\Entity\Player;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\TeamRepository;
 use App\Repository\YouthTeamRepository;
+use App\Repository\MatchListRepository;
+
 
 
 class PlayerService implements PlayerServiceInterface
@@ -15,11 +17,13 @@ class PlayerService implements PlayerServiceInterface
     private $waterGlassesRepo;
     private $teamRepo;
     private $youthTeam;
-    public function __construct(WaterGlassesRepository $waterGlassesRepository, TeamRepository $teamRepository, YouthTeamRepository $youthTeam)
+    private $matchList;
+    public function __construct(MatchListRepository $matchListRepository, WaterGlassesRepository $waterGlassesRepository, TeamRepository $teamRepository, YouthTeamRepository $youthTeam)
     {
         $this->waterGlassesRepo = $waterGlassesRepository;
         $this->teamRepo = $teamRepository;
         $this->youthTeam = $youthTeam;
+        $this->matchList = $matchListRepository;
 
     }
 
@@ -131,7 +135,10 @@ class PlayerService implements PlayerServiceInterface
         return $team;
     }
 
+    public function getPlayerFromMatchList($playerId, $matchId){
+      $matchListRecord = $this->matchList->findBy(['match' => $matchId, "player" => $playerId]);
+      return $matchListRecord;
+    }
+
 
 }
-
-

@@ -18,6 +18,7 @@ use App\Repository\MatchesRepository;
 use App\Repository\MatchListRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\TeamRepository;
+use App\Service\MatchService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -307,15 +308,27 @@ class SuperAdminController extends AbstractController
      * @Route("/superAdmin/matches/{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
      *
      */
-    public function MatchPlayerDetailList(Request $request,PlayerRepository $playerRepository, MatchListRepository $matchListRepository, $id)
+    public function MatchPlayerDetailList(MatchService $matchService, Request $request,MatchesRepository $matchesRepository,PlayerRepository $playerRepository, MatchListRepository $matchListRepository, $id)
     {
-        $playerInformation = [];
-        $playerId = $request->request->get('playerId');
-        $matchList = $matchListRepository->findPlayerById(intval($playerId), intval($id));
 
-        $playerInformation[0] = $matchList[0]->getPlayer()->getUser()->getName(). ' '.$matchList[0]->getPlayer()->getUser()->getFName();
-        $playerInformation[1] = $matchList[0]->getPlayer()->getImage();
-        return $this->json($playerInformation);
+      $homeTeamPlayers = $request->request->get('homeTeamPlayers');
+      $awayTeamPlayers = $request->request->get('awayTeamPlayers');
+  $em = $this->getDoctrine()->getManager();
+      for ($i=0; $i < count($homeTeamPlayers) ; $i++) {
+        $matchListRecord = $matchService->getMatchListRecodByMatchAndPlayer($homeTeamPlayers[$i], $id);
+        $matchListRecord->setGoals($homeTeamPlayers[$i][0]);
+        $matchListRecord->setAssits($homeTeamPlayers[$i][1]);
+        $matchListRecord->setSaves($homeTeamPlayers[$i][2]);
+        $matchListRecord->setStartTime($homeTeamPlayers[$i][4]);
+        $matchListRecord->setEndTime($homeTeamPlayers[$i][5]);
+        // $em->persist($matchListRecord);
+        // $em->flush();
+          var_dump($homeTeamPlayers[$i]);
+      }
+      var_dump(json_decode($homeTeamPlayers));
+
+      exit;
+
 
 
     }

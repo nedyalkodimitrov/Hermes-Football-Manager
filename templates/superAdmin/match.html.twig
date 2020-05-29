@@ -69,6 +69,7 @@
                           <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
                           <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
                           <input type="hidden" name="" value="{{matchList.IsStarting}}">
+
                       </tr>
                     {% endif %}
                   {% endif %}
@@ -116,6 +117,8 @@
                         <th class="col-1 my-auto"><input type="checkbox"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
                         <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
+                        <input type="hidden" name="" value="{{matchList.IsStarting}}">
+
                     </tr>
                     {% else %}
                 {% endif %}
@@ -125,47 +128,13 @@
     <div class="col-12 text-center">
         <button class="btn btn-danger sendInformation">Потвърждаване на резултата</button>
     </div>
+<script type="text/javascript" src="{{asset('js/superAdmin/matchStatsEvent.js')}}">
 
+</script>
 
     <script>
 
-        $('.sendInformation').on('click', function(){
-          var homeTeamPlayers = [];
-          var awayTeamPlayers = [];
-          var homeTeamPlayersElements = document.getElementsByClassName("homeTeamPlayer");
-          var awayTeamPlayersElements = document.getElementsByClassName("awayTeamPlayer");
 
-          var player = [];
-
-          for (var i = 0; i < homeTeamPlayersElements.length; i++) {
-            var homeTeamPlayer = homeTeamPlayersElements[i].getElementsByTagName("th");
-            var player = [];
-            player.Goal =  homeTeamPlayer[1].getElementsByTagName("input")[0].value;
-            player.Assists = homeTeamPlayer[2].getElementsByTagName("input")[0].value;
-            player.Shoots = homeTeamPlayer[3].getElementsByTagName("input")[0].value;
-            player.MinStart = homeTeamPlayer[5].getElementsByTagName("input")[0].value;
-            player.Shootss = homeTeamPlayer[3].getElementsByTagName("input")[0].checked;
-            player.MinEnd = homeTeamPlayer[6].getElementsByTagName("input")[0].value;
-            homeTeamPlayers.push(player);
-
-          }
-
-          for (var i = 0; i < awayTeamPlayersElements.length; i++) {
-            var awayTeamPlayer = awayTeamPlayersElements[i].getElementsByTagName("th");
-            var player = [];
-            player.Goal =  awayTeamPlayer[1].getElementsByTagName("input")[0].value;
-            player.Assists = awayTeamPlayer[2].getElementsByTagName("input")[0].value;
-            player.Shoots = awayTeamPlayer[3].getElementsByTagName("input")[0].value;
-              player.Shootss = awayTeamPlayer[3].getElementsByTagName("input")[0].checked;
-            player.MinStart = awayTeamPlayer[5].getElementsByTagName("input")[0].value;
-            player.MinEnd = awayTeamPlayer[6].getElementsByTagName("input")[0].value;
-            awayTeamPlayers.push(player);
-          }
-
-           console.log(homeTeamPlayers);
- console.log(homeTeamPlayers);
-
-        });
 
 
         $('.adding-match').on('click', function () {

@@ -133,14 +133,12 @@ class PlayerController extends AbstractController
 
         $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
         $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
-<<<<<<< HEAD
         $playerForm = $this->createForm(PlayerType::class, $newPlayer);
         $formStats->handleRequest($request);
         $playerForm->handleRequest($request);
 
         $fileName = $fileService->MoveImage($playerForm);
       if ($fileName != null){
-=======
         $formPlayer = $this->createFormBuilder($newPlayer)
             ->add('image', FileType::class, array('data_class' => null, ))
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
@@ -151,34 +149,31 @@ class PlayerController extends AbstractController
         $newFileName = $fileService->MoveImage($formPlayer);
 
         if($newFileName != false) {
->>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
             $em = $this->getDoctrine()->getManager();
             $currentPlayer->setImage($newFileName);
             $em->persist($currentPlayer);
             $em->flush();
-<<<<<<< HEAD
 
-=======
->>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
         }
+      }
 
-        return $this->render('player/settings/newSettingPage.html.twig',
-            array(
-<<<<<<< HEAD
-                'playerForm' => $playerForm->createView(),
-                'formStats' => $formStats->createView(),
-=======
-                'playerForm' => $formPlayer->createView(),
-                'statsForm' => $formStats->createView(),
->>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
-                "image" => $currentPlayer->getImage(),
-                'profile_img' =>$currentPlayer->getImage(),
-                'player' => $currentPlayer,
-                'form' => $playerForm->createView(),
-                'team' => $this->playerPropService->getTeam($currentPlayer),
-                'playerStats' => $playerStats,
-                'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
-            ));
+      return $this->render('player/settings/newSettingPage.html.twig',
+          array(
+
+              'playerForm' => $playerForm->createView(),
+              'formStats' => $formStats->createView(),
+
+              'playerForm' => $formPlayer->createView(),
+              'statsForm' => $formStats->createView(),
+
+              "image" => $currentPlayer->getImage(),
+              'profile_img' =>$currentPlayer->getImage(),
+              'player' => $currentPlayer,
+              'form' => $playerForm->createView(),
+              'team' => $this->playerPropService->getTeam($currentPlayer),
+              'playerStats' => $playerStats,
+              'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
+          ));
     }
 
 
