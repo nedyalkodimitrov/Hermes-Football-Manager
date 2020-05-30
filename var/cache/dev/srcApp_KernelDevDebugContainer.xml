@@ -5403,16 +5403,14 @@
         <argument key="authUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.mZghXf3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.b5KXv4K" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="matchListRepository" type="service" id="App\Repository\MatchListRepository"/>
         <argument key="matchService" type="service" id="App\Service\MatchService"/>
         <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
-        <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.ZOLnLko" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.XchR_aH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
@@ -5441,7 +5439,7 @@
         <argument key="App\Controller\SuperAdminController::DeleteDivision" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::DeleteTeam" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
-        <argument key="App\Controller\SuperAdminController::MatchPlayerDetailList" type="service" id=".service_locator.mZghXf3"/>
+        <argument key="App\Controller\SuperAdminController::MatchPlayerDetailList" type="service" id=".service_locator.b5KXv4K"/>
         <argument key="App\Controller\SuperAdminController::MatchView" type="service" id=".service_locator.ZJSUHJc"/>
         <argument key="App\Controller\SuperAdminController::Teams" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController::TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
@@ -5473,7 +5471,7 @@
         <argument key="App\Controller\SuperAdminController:DeleteDivision" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:DeleteTeam" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
-        <argument key="App\Controller\SuperAdminController:MatchPlayerDetailList" type="service" id=".service_locator.mZghXf3"/>
+        <argument key="App\Controller\SuperAdminController:MatchPlayerDetailList" type="service" id=".service_locator.b5KXv4K"/>
         <argument key="App\Controller\SuperAdminController:MatchView" type="service" id=".service_locator.ZJSUHJc"/>
         <argument key="App\Controller\SuperAdminController:Teams" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController:TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
@@ -5947,12 +5945,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZOLnLko"/>
+      <argument type="service" id=".service_locator.XchR_aH"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.ZOLnLko"/>
+      <argument type="service" id=".service_locator.XchR_aH"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6376,7 +6374,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ZOLnLko"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.XchR_aH"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

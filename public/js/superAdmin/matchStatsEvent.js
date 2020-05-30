@@ -13,7 +13,7 @@ $('.sendInformation').on('click', function(){
        type: "POST",
        url: window.location.pathname,
        data: {
-         'homeTeamPlayers': JSON.stringify(homeTeamPlayers[0]),
+         'homeTeamPlayers': JSON.stringify(homeTeamPlayers),
          'awayTeamPlayers': awayTeamPlayers,
        }
    })
@@ -42,6 +42,8 @@ function pushPlayersDataIntoArray(array, data){
     player[5] = teamPlayer[5].value;
     // is player start a match
     player[6] = teamPlayer[6].value;
+    // is player id
+    player[7] = teamPlayer[7].value;
 
     if (player[6] == true) {
       if (player[5] == 0) {

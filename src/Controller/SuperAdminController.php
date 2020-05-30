@@ -308,30 +308,66 @@ class SuperAdminController extends AbstractController
      * @Route("/superAdmin/matches/{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
      *
      */
-    public function MatchPlayerDetailList(MatchService $matchService, Request $request,MatchesRepository $matchesRepository,PlayerRepository $playerRepository, MatchListRepository $matchListRepository, $id)
+    public function MatchPlayerDetailList(MatchService $matchService, Request $request,MatchesRepository $matchesRepository, $id)
     {
 
-      $homeTeamPlayers = $request->request->get('homeTeamPlayers');
-      $awayTeamPlayers = $request->request->get('awayTeamPlayers');
-  $em = $this->getDoctrine()->getManager();
+      $homeTeamPlayers = json_decode($request->request->get('homeTeamPlayers'));
+      $awayTeamPlayers = json_decode($request->request->get('awayTeamPlayers'));
+      $em = $this->getDoctrine()->getManager();
+
+      $homeTeamGoals = 0;
+      $awayTeamGoals = 0;
+      $match = $matchesRepository->find($id);
       for ($i=0; $i < count($homeTeamPlayers) ; $i++) {
-        $matchListRecord = $matchService->getMatchListRecodByMatchAndPlayer($homeTeamPlayers[$i], $id);
+        $homeTeamGoals += $homeTeamPlayers[$i][0];
+        $matchListRecord = $matchService->getMatchListRecodByMatchAndPlayer(intval($homeTeamPlayers[$i][7]), $id);
         $matchListRecord->setGoals($homeTeamPlayers[$i][0]);
         $matchListRecord->setAssits($homeTeamPlayers[$i][1]);
         $matchListRecord->setSaves($homeTeamPlayers[$i][2]);
         $matchListRecord->setStartTime($homeTeamPlayers[$i][4]);
         $matchListRecord->setEndTime($homeTeamPlayers[$i][5]);
-        // $em->persist($matchListRecord);
-        // $em->flush();
-          var_dump($homeTeamPlayers[$i]);
+        $em->persist($matchListRecord);
+        $em->flush();
+
       }
-      var_dump(json_decode($homeTeamPlayers));
+
+      for ($i=0; $i < count($awayTeamPlayers) ; $i++) {
+        $awayTeamGoals += $awayTeamPlayers[$i][0];
+        $matchListRecord = $matchService->getMatchListRecodByMatchAndPlayer(intval($awayTeamPlayers[$i][7]), $id);
+        $matchListRecord->setGoals($awayTeamPlayers[$i][0]);
+        $matchListRecord->setAssits($awayTeamPlayers[$i][1]);
+        $matchListRecord->setSaves($awayTeamPlayers[$i][2]);
+        $matchListRecord->setStartTime($awayTeamPlayers[$i][4]);
+        $matchListRecord->setEndTime($awayTeamPlayers[$i][5]);
+        $em->persist($matchListRecord);
+        $em->flush();
+
+      }
+
+      $matchStats = $match->getMatchStats();
+      if ($matchStats == null) {
+            $matchStats = new MatchStats();
+            $matchStats->setMatch($match);
+            $em->persist($matchStats);
+            $match->setMatchStats($matchStats);
+            $em->persist($match);
+            $em->flush();
+      }
+
+      $matchStats->setHomeTeamGoals($homeTeamGoals);
+
+      $matchStats->setAwayTeamGoals($awayTeamGoals);
+      $matchStats->setMatch($match);
+      $matchStats->setIsPlayed(true);
+      $em->persist($matchStats);
+
+      $em->persist($match);
+      $em->flush();
 
       exit;
-
-
-
     }
+
+
     public function PhoneCheker($phone)
     {
         $player = $this->getDoctrine()->getRepository(Players::class)->findBy(["phone" => $phone]);

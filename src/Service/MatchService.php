@@ -23,8 +23,8 @@ class MatchService
   }
 
   public function getMatchListRecodByMatchAndPlayer($playerId, $matchId){
-    $matchListRecord = $this->matchList->findBy(['match' => $matchId, "player" => $playerId]);
-    return $matchListRecord;
+    $matchListRecord = $this->matchListRepo->findBy(['match' => $matchId, "player" => $playerId]);
+    return $matchListRecord[0];
   }
 }
 

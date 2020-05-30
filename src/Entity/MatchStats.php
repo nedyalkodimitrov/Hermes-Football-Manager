@@ -34,7 +34,7 @@ class MatchStats
 
     /**
      * @ORM\OneToOne(targetEntity="Matches", inversedBy="matchStats")
-     * @ORM\JoinColumn(name="match", referencedColumnName="id")
+     * @ORM\JoinColumn(name="matches", referencedColumnName="id")
      */
     public $match;
 

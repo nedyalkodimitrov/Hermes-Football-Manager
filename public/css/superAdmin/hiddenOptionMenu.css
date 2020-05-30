@@ -1,0 +1,60 @@
+.option-hidden-menu{
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+
+}
+
+.options {
+  visibility: inherit;
+  background: whitesmoke;
+  border-radius: 15px;
+  border: 2px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  transition: 0s
+}
+.options > button:first-child{
+  border-top: none;
+}
+.options > button {
+  border: none;
+  border-top: 1px solid black;
+  padding: 0.75em;
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  transition: 0.2s background-color ;
+  width: 100%
+}
+
+.options > button:hover {
+  background-color: #FD382C ;
+  color: white;
+}
+
+.options > button:focus {
+  outline: none;
+}
+.options p {
+  font-size: 1.1em;
+  font-style: normal;
+  font-weight: 500;
+  color: inherit;
+  transition: 0s;
+}
+.options > button:last-child > p {
+  color: red;
+}
+
+.options > button:last-child:hover > p {
+  color: white;
+}

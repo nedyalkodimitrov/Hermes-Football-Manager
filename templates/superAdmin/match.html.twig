@@ -69,6 +69,8 @@
                           <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
                           <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
                           <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                          <input type="hidden" name="" value="{{player.Id}}">
+
 
                       </tr>
                     {% endif %}
@@ -91,6 +93,7 @@
                               <th class="col-1 my-auto"><input type="number" min="0" max="90" value="0"></th>
                               <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
                               <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                              <input type="hidden" name="" value="{{player.Id}}">
                           </tr>
                         {% endif %}
                       {% endif %}
