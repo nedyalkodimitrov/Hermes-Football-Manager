@@ -96,11 +96,11 @@ class User implements UserInterface
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="receiver")
      */
-    public $requestFromUser;  /**
+    private $requestFromUser;  /**
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Requests\UserToUserRequest", mappedBy="sender")
      */
-    public $requestToUser;
+    private $requestToUser;
 
     /**
      * @ORM\OneToMany(targetEntity="InjuredUsers", mappedBy="user")

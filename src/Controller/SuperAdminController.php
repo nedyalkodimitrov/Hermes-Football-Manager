@@ -79,13 +79,16 @@ class SuperAdminController extends AbstractController
      * @Route("/superAdmin/teams/{id}" ,name  = "superAdminTeams")
      *
      */
-    public function Teams($id, TeamRepository $teamRepository)
+    public function Teams($id, TeamRepository $teamRepository, MatchesRepository $matchesRepository)
     {
         $teams = $this->getDoctrine()->getRepository(Team::class)->findBy(["division" => strval($id)], ['name' => 'ASC']);
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         $division = $this->getDoctrine()->getRepository(Division::class)->find(strval($id));
         $teamStanding = $teamRepository->getTeamByDivisionDesc($id);
         $matches = $this->getDoctrine()->getRepository(Matches::class)->findBy(['division'=>intval($id)]);
+        $pastMatches = $matchesRepository->findPastMatchesWithNoMatchStats();
+        $upcomingMatches = $matchesRepository->findUpcomingMatches();
+
         $match = new Matches();
         $matchForm = $this->createForm(MatchesType::class, $match)->createView();
         return $this->render('superAdmin/teams.html.twig', array(
@@ -93,6 +96,8 @@ class SuperAdminController extends AbstractController
             'hasTeam' => true,
             'teams' => $teams,
             'matches' => $matches,
+            'upcomingMatches' => $upcomingMatches,
+            'pastMatches' => $pastMatches,
             'standingTeams' => $teamStanding,
             'users' => count($users),
             'matchForm' => $matchForm,
@@ -257,7 +262,6 @@ class SuperAdminController extends AbstractController
     public function createMatch(TeamRepository $teamRepository, Request $request)
     {
         $match = new Matches();
-        $stats = new MatchStats();
         $em = $this->getDoctrine()->getManager();
         $homeTeamId = $request->request->get("homeTeam");
         $awayTeamId = $request->request->get("awayTeam");
@@ -269,7 +273,7 @@ class SuperAdminController extends AbstractController
 
         $homeTeam = $teamRepository->find(intval($homeTeamId));
         $awayTeam = $teamRepository->find(intval($awayTeamId));
-
+        //
         $match->setHomeTeam($homeTeam);
         $match->setAwayTeam($awayTeam);
         $match->setDate($date);

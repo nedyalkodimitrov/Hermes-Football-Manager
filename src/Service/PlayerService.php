@@ -140,5 +140,54 @@ class PlayerService implements PlayerServiceInterface
       return $matchListRecord;
     }
 
+    public function getPlayedMatches(Player $player){
+        $matchListRecords = $player->getMatchList();
+
+        $playedMatches = 0;
+        for ($i=0; $i < count($matchListRecords); $i++) {
+          if ($matchListRecords[$i]->getIsPlayed() == true || $matchListRecords[$i]->getIsStarting() == true) {
+            $playedMatches++;
+          }
+        }
+
+        return $playedMatches;
+    }
+
+    public function getTitularPlayedMatches(Player $player){
+        $matchListRecords = $player->getMatchList();
+
+        $playedMatches = 0;
+        for ($i=0; $i < count($matchListRecords); $i++) {
+          if ($matchListRecords[$i]->getIsStarting() == true) {
+            $playedMatches++;
+          }
+        }
+
+        return $playedMatches;
+    }
+
+
+    public function getGoals(Player $player) {
+      $matchListRecords = $player->getMatchList();
+
+      $goals = 0;
+      for ($i=0; $i < count($matchListRecords); $i++) {
+        $goals += $matchListRecords[$i]->getGoals();
+      }
+
+      return $goals;
+    }
+
+    public function getTotalPlayedMinutes(Player $player){
+      $matchListRecords = $player->getMatchList();
+
+      $playedMinutes = 0;
+      for ($i=0; $i < count($matchListRecords); $i++) {
+        $playedMinutes += ($matchListRecords[$i]->getEndTime() -  $matchListRecords[$i]->getStartTime());
+      }
+      return $playedMinutes;
+
+    }
+
 
 }

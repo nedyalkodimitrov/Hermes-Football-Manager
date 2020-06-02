@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Coach;
 use App\Entity\Player;
-use App\Entity\Requests\CoachToPlayerRequest;
+use App\Entity\Requests\UserToUserRequest;
 use App\Entity\Schedule;
 use App\Entity\User;
 use App\Form\PlayerType;
@@ -19,7 +19,6 @@ use App\Service\CoachService;
 use App\Service\FileService;
 use App\Service\PlayerService;
 use Doctrine\DBAL\Schema\SchemaDiff;
-use http\Env\Response;
 use phpDocumentor\Reflection\Types\Self_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -29,6 +28,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -38,7 +38,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class CoachController extends AbstractController
 {
-     const HeadCoach = 'HEAD_COACH';
+    const HeadCoach = 'HEAD_COACH';
+    const requestType = "coach-player";
     private $coachService;
     private $bCryptAlgorithmOption;
     public function __construct(CoachService $coachService)
@@ -145,17 +146,17 @@ class CoachController extends AbstractController
      *
      * @Route("/coache/trainingsw", name = "trainingAction")
      */
-    public function TrainingAction(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository)
+    public function TrainingAction(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository, PlayerService $playerService)
     {
           $playerInfo = $request->get("playerName");
-          $results = $userRepository->findPlayer('Нед');
+          $results = $userRepository->findPlayer($playerInfo);
           $players = [];
 
         for ($i = 0; $i < count($results); $i++){
               $playerInformation = [];
               $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
               $player = $user->getPlayer();
-              $playerTeam = $playerRepository->getPlayerTeam($player);
+              $playerTeam = $playerService->getPlayerTeam($player);
               $playerInformation[0] = $user;
               $playerInformation[1] = $player->getPosition()->getName();
               $playerInformation[2] = $user->getCity()->getName(). ", " . $user->getCity()->getCountry()->getName()  ;
@@ -163,20 +164,14 @@ class CoachController extends AbstractController
               $playerInformation[4] =   $player->getId();
               $players[$i] = $playerInformation;
           }
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
+          $response = new JsonResponse();
+        // ...
+        $response->setData($players);
 
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $jsonObject = $serializer->serialize($players, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
-        ]   );
-
-       return $jsonObject;
+       // return $jsonObject;
 // For instance, return a Response with encoded Json
-//        return new ($jsonObject, 200, ['Content-Type' => 'application/json']);
+       return $response;
+       exit;
     }
 
     /**
@@ -278,12 +273,20 @@ class CoachController extends AbstractController
             return $this->redirectToRoute("trainingView");
         }
 
+        $playedMatches = $playerService->getPlayedMatches($player);
+        $titularMatchers = $playerService->getTitularPlayedMatches($player);
+        $playerGoals = $playerService->getGoals($player);
+        $playedMinutes = $playerService->getTotalPlayedMinutes($player);
         return $this->render('coaches/playerStat.html.twig',
             array(
                 'profile_img' => $coach->getImage(),
                 'player' => $player,
                 'playerStats' => $playerStats,
                 'image' => $player->getImage(),
+                'playedMatches' => $playedMatches,
+                'titularMatches' => $titularMatchers,
+                'goals' => $playerGoals,
+                'playedMinutes' => $playedMinutes
             )
         );
     }
@@ -329,29 +332,31 @@ class CoachController extends AbstractController
     }
 
     /**
-     * @Route("/coache/sendPlayerRequest/{id}", name = "playerStats")
+     * @Route("/coache/sendPlayerRequest/{id}", name = "sendPlayerRequest")
      */
     public function sendPlayerRequestAction($id,$message = "all is alrright", \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
     {
-        
+
         $coach = $this->getUser()->getCoach();
         $this->isHeadCoach($coach);
-        $player = $playerRepository->find(intval($id));
+        $player = $playerRepository->find(intval($id))->getUser();
         $em = $this->getDoctrine()->getManager();
-        $allPlayerRequest = $coach->getRequestsToPlayers();
-        foreach($allPlayerRequest as $playerRequest){
-            if ($playerRequest->getPlayer()->getId() ==  intval($id)){
+        $allRequestFromCoach = $coach->getUser()->getRequestToUser();
+
+        foreach($allRequestFromCoach as $requestFromCoach){
+            if ($requestFromCoach->getReceiver()->getId() ==  $player->getId()){
                 echo "this player has a request ";
                 exit;
             }
         }
+
         if($player != null)
         {
-            $toPlayerRequest = new CoachToPlayerRequest();
-            $toPlayerRequest->setCoach($coach);
-            $toPlayerRequest->setPlayer($player);
+            $toPlayerRequest = new UserToUserRequest();
+            $toPlayerRequest->setSender($coach->getUser());
+            $toPlayerRequest->setReceiver($player);
             $toPlayerRequest->setDate(date("d/m/Y"));
-            $toPlayerRequest->setMessage($message);
+            $toPlayerRequest->setType(self::requestType);
             $em->persist($toPlayerRequest);
             $em->flush();
 //            var_dump($toPlayerRequest);
@@ -369,23 +374,25 @@ class CoachController extends AbstractController
     public function removePlayerRequestAction($id, \Symfony\Component\HttpFoundation\Request $request, CoachToPlayerRequestRepository $coachToPlayerRequestRepository)
     {
         $coach = $this->getUser()->getCoach();
-        $this->isHeadCoach($coach);
+        if ($this->isHeadCoach($coach)) {
+          $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($id));
+          $em = $this->getDoctrine()->getManager();
+          $playerRequest = $coachToPlayerRequestRepository->findBy(["player" => $player]);
+          if($playerRequest != null)
+          {
+              $em->remove($playerRequest[0]);
+              $em->flush();
 
+              echo "The request is removed successful";
+              exit;
+          }
 
-        $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($id));
-        $em = $this->getDoctrine()->getManager();
-        $playerRequest = $coachToPlayerRequestRepository->findBy(["player" => $player]);
-        if($playerRequest != null)
-        {
-            $em->remove($playerRequest[0]);
-            $em->flush();
-
-            echo "The request is removed successful";
-            exit;
-        }
-
-        echo "Sorry, but you haven't send a request to that player";
+          echo "Sorry, but you haven't send a request to that player";
+          exit;
+      }else {
+        echo "sorry but you are not a head coach";
         exit;
+      }
     }
 
     /**
@@ -416,11 +423,12 @@ class CoachController extends AbstractController
         echo "The player is accepted successful";
         exit();
     }
-    
+
     private function isHeadCoach(Coach $coach ){
         if ($coach->getTeamPosition()->getName() != self::HeadCoach){
-            echo "You are not a head coach and you can not use that functionality";
+          return false;
         }
+        return true;
     }
 
 

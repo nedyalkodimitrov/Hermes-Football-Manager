@@ -53,6 +53,7 @@ class Matches
 
     /**
      * @ORM\OneToOne(targetEntity="MatchStats", mappedBy="match")
+      *@ORM\JoinColumn(name="matchStats", referencedColumnName="id")
      */
     public $matchStats;
 
@@ -62,22 +63,23 @@ class Matches
     public $matchList;
 
     /**
-     * @ORM\Column(type="boolean", name= "Is_played")
+     * @ORM\Column(type="boolean", name= "Is_played", nullable = true)
      */
     private $isPlayed;
     /**
-     * @ORM\Column(type="boolean", name= "is_dalayed")
+     * @ORM\Column(type="boolean", name= "is_dalayed", nullable = true)
      */
     private $isDelayed;
     /**
-     * @ORM\Column(type="boolean", name= "is_friendly")
+     * @ORM\Column(type="boolean", name= "is_friendly", nullable = true)
      */
     private $isFriendly;
     /**
-     * @ORM\Column(type="boolean", name= "is_canceled")
+     * @ORM\Column(type="boolean", name= "is_canceled", nullable = true)
      */
     private $isCanceled;
 
+    
 
 
     /**

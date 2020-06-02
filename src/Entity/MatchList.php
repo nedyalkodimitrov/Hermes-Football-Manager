@@ -51,7 +51,7 @@ class MatchList
 
     /**
      * @ORM\ManyToOne(targetEntity="Matches", inversedBy="matchList")
-     * @ORM\JoinColumn(name="match", referencedColumnName="id")
+     * @ORM\JoinColumn(name="matches", referencedColumnName="id")
      */
     public $match;
 

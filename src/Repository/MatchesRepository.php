@@ -24,10 +24,10 @@ class MatchesRepository extends ServiceEntityRepository
     {
         $matches = $this->getEntityManager()
             ->createQuery(
-                'SELECT m FROM App\Entity\Matches m 
+                'SELECT m FROM App\Entity\Matches m
                     WHERE  (m.homeTeam = :teamId
                     OR m.awayTeam = :teamId )
-                    AND m.date > CURRENT_TIMESTAMP()  
+                    AND m.date > CURRENT_TIMESTAMP()
                     ORDER BY m.date ASC'
             )->setParameter('teamId', $teamId)->getResult();
         return $matches;
@@ -37,12 +37,35 @@ class MatchesRepository extends ServiceEntityRepository
     {
         $matches = $this->getEntityManager()
             ->createQuery(
-                'SELECT m FROM App\Entity\Matches m 
+                'SELECT m FROM App\Entity\Matches m
                     WHERE  (m.homeTeam = :teamId
                     OR m.awayTeam = :teamId )
-                    AND m.date < CURRENT_TIMESTAMP()  
+                    AND m.date < CURRENT_TIMESTAMP()
                     ORDER BY m.date ASC'
             )->setParameter('teamId', $teamId)->getResult();
+        return $matches;
+    }
+
+    public function findPastMatchesWithNoMatchStats()
+    {
+        $matches = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m FROM App\Entity\Matches m
+                    WHERE m.date < CURRENT_TIMESTAMP()
+                    AND m.matchStats is null
+                    ORDER BY m.date ASC'
+            )->getResult();
+        return $matches;
+    }
+
+    public function findUpcomingMatches()
+    {
+        $matches = $this->getEntityManager()
+            ->createQuery(
+                'SELECT m FROM App\Entity\Matches m
+                    WHERE m.date > CURRENT_TIMESTAMP()
+                    ORDER BY m.date ASC'
+            )->getResult();
         return $matches;
     }
 

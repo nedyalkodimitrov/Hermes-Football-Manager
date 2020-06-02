@@ -15,11 +15,13 @@
     color: black;
 }
 
-.match-card .information{
+.match-card .information, .match-date-time .information{
     background-color: #046330;
     border-radius: 15px;
     color: white;
+    padding: 0.3em  0em;
 }
+
 
 .winner-card {
    border:2px solid #046330;

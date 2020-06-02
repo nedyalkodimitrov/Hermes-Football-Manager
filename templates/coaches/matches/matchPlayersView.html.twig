@@ -1,0 +1,90 @@
+{% extends 'coaches/base.html.twig' %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/particles/fut-player-card.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
+        <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10 justify-content-center  row pb-3">
+            <div class="col-12 mt-2 mb-3">
+                <h2 class="col-12 text-center">Моля изберете играчите, които ще започнат мача  </h2>
+                <h4 class="col-12 text-center mt-4">Брой играча в групата - {{matchListRecords|length}}</h4>
+            </div>
+            {% for matchListRecord in matchListRecords %}
+            {% set player = matchListRecord.Player %}
+              {% if player.id in startingPlayers %}
+                <div class="wrapper col-lg-3 col-md-6 col-sm-6">
+
+                    <!-- *** fut-player-card ***-->
+                    <div class="fut-player-card fut-player-card-clicked" id="{{ player.id }}-{{ player.position.Name }}">
+                        <!-- Player Card Top-->
+                        <div class="player-card-top">
+                            <div class="player-master-info">
+                                <div class="player-rating"><span >{{ player.stats.statusFromCoaches }}</span></div>
+                                <div class="player-position"><span class="position">{{ player.position.Name }}</span></div>
+                                <div class="player-nation"><img src="{{ asset('images/' ~ player.User.City.Country.Image) }}" alt="Argentina" draggable="false" /></div>
+  {#                                <div class="player-club"><img src="{{ asset('images/' ~ player.Team.Image) }}" alt="Barcelona" draggable="false" /></div>#}
+                            </div>
+                            <div class="player-picture"><img src="{{ asset('images/' ~ player.Image) }}" alt="Messi" draggable="false" />
+
+                            </div>
+                        </div>
+                        <!-- Player Card Bottom-->
+                        <div class="player-card-bottom">
+                            <div class="player-info">
+                                <!-- Player Name-->
+                                <div class="player-name"><span>{{ player.user.fName }}</span></div>
+                                <!-- Player Features-->
+                                <div class="player-features">
+                                    <div class="player-features-col"><span>
+                                            <div class="player-feature-value">97</div><div class="player-feature-title">PAC</div></span><span><div class="player-feature-value">95</div><div class="player-feature-title">SHO</div></span><span><div class="player-feature-value">94</div><div class="player-feature-title">PAS</div></span></div>
+                                    <div class="player-features-col"><span><div class="player-feature-value">99</div><div class="player-feature-title">DRI</div></span><span><div class="player-feature-value">35</div><div class="player-feature-title">DEF</div></span><span><div class="player-feature-value">68</div><div class="player-feature-title">PHY</div></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% else %}
+                  <div class="wrapper col-lg-3 col-md-6 col-sm-6">
+
+                      <!-- *** fut-player-card ***-->
+                      <div class="fut-player-card " id="{{ player.id }}-{{ player.position.Name }}">
+                          <!-- Player Card Top-->
+                          <div class="player-card-top">
+                              <div class="player-master-info">
+                                  <div class="player-rating"><span >{{ player.stats.statusFromCoaches }}</span></div>
+                                  <div class="player-position"><span class="position">{{ player.position.Name }}</span></div>
+                                  <div class="player-nation"><img src="{{ asset('images/' ~ player.User.City.Country.Image) }}" alt="Argentina" draggable="false" /></div>
+    {#                                <div class="player-club"><img src="{{ asset('images/' ~ player.Team.Image) }}" alt="Barcelona" draggable="false" /></div>#}
+                              </div>
+                              <div class="player-picture"><img src="{{ asset('images/' ~ player.Image) }}" alt="Messi" draggable="false" />
+
+                              </div>
+                          </div>
+                          <!-- Player Card Bottom-->
+                          <div class="player-card-bottom">
+                              <div class="player-info">
+                                  <!-- Player Name-->
+                                  <div class="player-name"><span>{{ player.user.fName }}</span></div>
+                                  <!-- Player Features-->
+                                  <div class="player-features">
+                                      <div class="player-features-col"><span>
+                                              <div class="player-feature-value">97</div><div class="player-feature-title">PAC</div></span><span><div class="player-feature-value">95</div><div class="player-feature-title">SHO</div></span><span><div class="player-feature-value">94</div><div class="player-feature-title">PAS</div></span></div>
+                                      <div class="player-features-col"><span><div class="player-feature-value">99</div><div class="player-feature-title">DRI</div></span><span><div class="player-feature-value">35</div><div class="player-feature-title">DEF</div></span><span><div class="player-feature-value">68</div><div class="player-feature-title">PHY</div></span></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              {% endif %}
+            {% endfor %}
+            <div class="col-12 texte-center justify-content-center row  ">
+              <button class="sendPlayers btn btn-success mx-auto p-4">Потвърдете изборът си!</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset("js/coach/matchEvent.js") }}"></script>
+{% endblock %}

@@ -92,32 +92,62 @@
 
 
     <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
-       <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10 justify-content-around  row pb-3">
+       <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10   row pb-3">
            <div class="col-12 mt-2 mb-3">
                <h2>Мачове в първенството</h2>
            </div>
-        {% for match in matches %}
-      {% if match.Date < "now"|date("y-m-d") %}
-      <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
-          <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
-              <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
-                  <div class="col-6">
-                      <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
-                      <h5>{{ match.homeTeam.Name }}</h5>
-                  </div>
-                  <div class="col-6">
-                      <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
-                      <h5>{{ match.awayTeam.Name }}</h5>
-                  </div>
-                  <div class="col-12 justify-content-center mt-2 mb-1">
-                      <h5 class="information">{{ match.date }} {{ match.time }}</h5>
-                  </div>
-      <p>{{match.matchStats.homeTeamGoals}}</p>
-              </a>
-        </div>
-      </div>
-      {% endif %}
-        {% endfor %}
+           <div class="col-12 mt-2 text-center mb-2">
+             <h3>Мачове на които трябва да попълните данните</h3>
+           </div>
+          {% for match in pastMatches %}
+            <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+                <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                    <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                        <div class="col-6">
+                            <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                            <h5>{{ match.homeTeam.Name }}</h5>
+                        </div>
+                        <div class="col-6">
+                            <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                            <h5>{{ match.awayTeam.Name }}</h5>
+                        </div>
+                        <div class="col-12 justify-content-center mt-2 mb-1">
+                            <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% else %}
+              <div class="col-12 text-center">
+                <h4>Няма мачове, които трябва да попълните</h4>
+              </div>
+          {% endfor %}
+          <div class="col-12 mt-5 text-center mb-2">
+            <h3>Мачове на които трябва да попълните данните</h3>
+          </div>
+         {% for match in upcomingMatches %}
+           <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+               <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                   <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                       <div class="col-6">
+                           <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                           <h5>{{ match.homeTeam.Name }}</h5>
+                       </div>
+                       <div class="col-6">
+                           <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                           <h5>{{ match.awayTeam.Name }}</h5>
+                       </div>
+                       <div class="col-12 justify-content-center mt-2 mb-1">
+                           <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                       </div>
+                   </a>
+               </div>
+           </div>
+           {% else %}
+              <div class="col-12 text-center">
+                <h4>Няма предстоящи мачове в първенството</h4>
+              </div>
+         {% endfor %}
        </div>
     </div>
 

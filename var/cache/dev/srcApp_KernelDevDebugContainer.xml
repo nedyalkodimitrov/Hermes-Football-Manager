@@ -5296,10 +5296,11 @@
         <argument key="teamRepository" type="service" id="App\Repository\TeamRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.XMrSp6S" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.H3e3o_k" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="playerRepository" type="service" id="App\Repository\PlayerRepository"/>
+        <argument key="playerService" type="service" id="App\Service\PlayerService"/>
         <argument key="userRepository" type="service" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -5334,10 +5335,11 @@
         <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.qTzrxMf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.GKUbg4I" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="coachService" type="service" id="App\Service\CoachService"/>
+        <argument key="matchService" type="service" id="App\Service\MatchService"/>
       </argument>
     </service>
     <service id=".service_locator.U5BnL3." class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5403,6 +5405,13 @@
         <argument key="authUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
+    <service id=".service_locator.znAR2Qz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
+        <argument key="teamRepository" type="service" id="App\Repository\TeamRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.b5KXv4K" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5410,7 +5419,7 @@
         <argument key="matchesRepository" type="service" id="App\Repository\MatchesRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.XchR_aH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.NQ9Caml" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\AdminController::CoachViewAction" type="service" id=".service_locator.tG3aThG"/>
@@ -5420,12 +5429,14 @@
         <argument key="App\Controller\CoachController::CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
         <argument key="App\Controller\CoachController::PlayerAction" type="service" id=".service_locator.zd49r8R"/>
         <argument key="App\Controller\CoachController::SettingsView" type="service" id=".service_locator.VUShwbM"/>
-        <argument key="App\Controller\CoachController::TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
+        <argument key="App\Controller\CoachController::TrainingAction" type="service" id=".service_locator.H3e3o_k"/>
         <argument key="App\Controller\CoachController::removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController::sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController::matchListAction" type="service" id=".service_locator.tG3aThG"/>
-        <argument key="App\Controller\MatchController::matchView" type="service" id=".service_locator.qTzrxMf"/>
+        <argument key="App\Controller\MatchController::matchView" type="service" id=".service_locator.GKUbg4I"/>
         <argument key="App\Controller\MatchController::matchesView" type="service" id=".service_locator.ZJSUHJc"/>
+        <argument key="App\Controller\MatchController::pastMatchView" type="service" id=".service_locator.tG3aThG"/>
+        <argument key="App\Controller\MatchController::setStartingPlayers" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\PlayerController::SettingsView" type="service" id=".service_locator.VUShwbM"/>
         <argument key="App\Controller\PlayerController::Stats" type="service" id=".service_locator.G2vIHgx"/>
         <argument key="App\Controller\PlayerController::TrainingView" type="service" id=".service_locator.U5BnL3."/>
@@ -5441,7 +5452,7 @@
         <argument key="App\Controller\SuperAdminController::DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::MatchPlayerDetailList" type="service" id=".service_locator.b5KXv4K"/>
         <argument key="App\Controller\SuperAdminController::MatchView" type="service" id=".service_locator.ZJSUHJc"/>
-        <argument key="App\Controller\SuperAdminController::Teams" type="service" id=".service_locator.V7XE6E8"/>
+        <argument key="App\Controller\SuperAdminController::Teams" type="service" id=".service_locator.znAR2Qz"/>
         <argument key="App\Controller\SuperAdminController::TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController::createMatch" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController::signInView" type="service" id=".service_locator.fIS0gvA"/>
@@ -5452,12 +5463,14 @@
         <argument key="App\Controller\CoachController:CoacheViewAction" type="service" id=".service_locator.uaSCNEy"/>
         <argument key="App\Controller\CoachController:PlayerAction" type="service" id=".service_locator.zd49r8R"/>
         <argument key="App\Controller\CoachController:SettingsView" type="service" id=".service_locator.VUShwbM"/>
-        <argument key="App\Controller\CoachController:TrainingAction" type="service" id=".service_locator.XMrSp6S"/>
+        <argument key="App\Controller\CoachController:TrainingAction" type="service" id=".service_locator.H3e3o_k"/>
         <argument key="App\Controller\CoachController:removePlayerRequestAction" type="service" id=".service_locator.VaamZA8"/>
         <argument key="App\Controller\CoachController:sendPlayerRequestAction" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\MatchController:matchListAction" type="service" id=".service_locator.tG3aThG"/>
-        <argument key="App\Controller\MatchController:matchView" type="service" id=".service_locator.qTzrxMf"/>
+        <argument key="App\Controller\MatchController:matchView" type="service" id=".service_locator.GKUbg4I"/>
         <argument key="App\Controller\MatchController:matchesView" type="service" id=".service_locator.ZJSUHJc"/>
+        <argument key="App\Controller\MatchController:pastMatchView" type="service" id=".service_locator.tG3aThG"/>
+        <argument key="App\Controller\MatchController:setStartingPlayers" type="service" id=".service_locator.tG3aThG"/>
         <argument key="App\Controller\PlayerController:SettingsView" type="service" id=".service_locator.VUShwbM"/>
         <argument key="App\Controller\PlayerController:Stats" type="service" id=".service_locator.G2vIHgx"/>
         <argument key="App\Controller\PlayerController:TrainingView" type="service" id=".service_locator.U5BnL3."/>
@@ -5473,7 +5486,7 @@
         <argument key="App\Controller\SuperAdminController:DivisionsCountry" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:MatchPlayerDetailList" type="service" id=".service_locator.b5KXv4K"/>
         <argument key="App\Controller\SuperAdminController:MatchView" type="service" id=".service_locator.ZJSUHJc"/>
-        <argument key="App\Controller\SuperAdminController:Teams" type="service" id=".service_locator.V7XE6E8"/>
+        <argument key="App\Controller\SuperAdminController:Teams" type="service" id=".service_locator.znAR2Qz"/>
         <argument key="App\Controller\SuperAdminController:TeamsCountry" type="service" id=".service_locator.SOGscYu"/>
         <argument key="App\Controller\SuperAdminController:createMatch" type="service" id=".service_locator.V7XE6E8"/>
         <argument key="App\Controller\SuperAdminController:signInView" type="service" id=".service_locator.fIS0gvA"/>
@@ -5945,12 +5958,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.XchR_aH"/>
+      <argument type="service" id=".service_locator.NQ9Caml"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.XchR_aH"/>
+      <argument type="service" id=".service_locator.NQ9Caml"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -6374,7 +6387,7 @@
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupCollectionInterface" alias="webpack_encore.entrypoint_lookup_collection" public="false"/>
     <service id="Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface" alias="webpack_encore.entrypoint_lookup[_default]"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.XchR_aH"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.NQ9Caml"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>

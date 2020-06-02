@@ -44,14 +44,14 @@ class Player
      * @ORM\OneToOne(targetEntity="User", inversedBy="player")
      * @ORM\JoinColumn(name="user", referencedColumnName="id")
      */
-    public  $user;
-    
+    private  $user;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\PlayerProperties\Position", inversedBy="players")
      * @ORM\JoinColumn(name="position", referencedColumnName="id")
      */
     public $position;
-    
+
     /**
      * @ORM\ManyToOne(targetEntity="YouthTeam", inversedBy="players")
      * @ORM\JoinColumn(name="youthTeam", referencedColumnName="id")
@@ -279,5 +279,5 @@ class Player
 
 
 
-    
+
 }

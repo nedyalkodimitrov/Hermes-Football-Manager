@@ -14,7 +14,7 @@
                 {% if match.MatchStats != null%}
                     <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card ">
                         <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row ">
-                            <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
+                            <a href="{{ path("pastMatchView", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
                                 <div class="col-7 justify-content-center row">
                                     <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
                                     <h5 class="col-12 text-center">{{ match.homeTeam.Name }}</h5>
@@ -28,7 +28,6 @@
                                 <div class="col-12 justify-content-center mt-2 mb-1">
                                     <h5 class="information">{{ match.date }} {{ match.time }}</h5>
                                 </div>
-
                             </a>
                             {#                        <span><i class="fas fa-times country-fa-times" id="{{ team.Id }}"></i></span>#}
                         </div>
@@ -36,7 +35,7 @@
                     {% else  %}
                         <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card ">
                             <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row ">
-                                <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
+                                <a href="{{ path("matchList", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
                                     <div class="col-7 justify-content-center row">
                                         <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
                                         <h5 class="col-12 text-center">{{ match.homeTeam.Name }}</h5>
@@ -70,7 +69,7 @@
             {% for match in upcomingMatches %}
                 <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
                     <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
-                        <a href="{{ path("createMatchList", {"id" : match.id}) }}" class="m-0 row col-12">
+                        <a href="{{ path("matchList", {"id" : match.id}) }}" class="m-0 row col-12">
                             <div class="col-6">
                                 <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
                                 <h5>{{ match.homeTeam.Name }}</h5>

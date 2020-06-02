@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const seperator = '-';
+    var alreadyStartingPlayers = document.getElementsByClassName("fut-player-card-clicked");
     var players = [];
     var soccerScheme = '4-4-2';
     const goalkeeperCount = 1;
@@ -10,6 +11,17 @@ $(document).ready(function () {
     var defenders = 0;
     var midfielders = 0;
     var attackers = 0;
+
+    for (var i = 0; i < alreadyStartingPlayers.length; i++) {
+        var playerId = alreadyStartingPlayers[i].getAttribute('id').split('-')[0];
+        var playerPosition = alreadyStartingPlayers[i].getAttribute('id').split('-')[1];
+        addPlayer(parseInt(playerId), playerPosition);
+    }
+
+
+
+
+
     $('.fut-player-card').on('click', function () {
         var position = $(this);
         var playerInfo = position.attr('id');
@@ -20,10 +32,13 @@ $(document).ready(function () {
              return player == playerId;
 
         });
-        console.log(goalkeepers);
+
+        console.log(document.getElementsByClassName("fut-player-card-clicked"));
         console.log(defenders);
         console.log(midfielders);
         console.log(attackers);
+
+
 
         if (found === undefined){
             if( addPlayer(playerId, playerPosition)) {
@@ -42,7 +57,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "/coache/match/3",
+            url: window.location.pathname + '/setStartingPlayers',
             data: {'players': players}
         })
             .done(function( msg ) {
@@ -50,17 +65,6 @@ $(document).ready(function () {
             });
 
     });
-
-
-
-
-
-
-
-
-
-
-
 
     function addPlayer(playerId, playerPosition) {
         if (playerPosition === "Goalkeeper") {
@@ -93,29 +97,21 @@ $(document).ready(function () {
     function removePlayers(playerId, playerPosition) {
         var playerPositionInArray = players.indexOf(playerId);
         if (playerPosition === "Goalkeeper") {
-            if (goalkeepers < goalkeeperCount) {
-                players.splice(playerPositionInArray, 1);
-                goalkeepers--;
-                return true;
-            }
+              players.splice(playerPositionInArray, 1);
+              goalkeepers--;
+              return true;
         }else  if (playerPosition === "Defender"){
-            if (defenders < defendersCount ) {
-                players.splice(playerPositionInArray, 1);
-                defenders--;
-                return true;
-            }
+              players.splice(playerPositionInArray, 1);
+              defenders--;
+              return true;
         }else  if (playerPosition === "Midfielder") {
-            if (midfielders < midfieldersCount) {
-                players.splice(playerPositionInArray, 1);
-                midfielders--;
-                return true;
-            }
+              players.splice(playerPositionInArray, 1);
+              midfielders--;
+              return true;
         }else if (playerPosition === "Attacker"){
-            if (attackers < attackersCount ){
-                players.splice(playerPositionInArray, 1);
-                attackers--;
-                return  true;
-            }
+              players.splice(playerPositionInArray, 1);
+              attackers--;
+              return  true;
         }
     }
 

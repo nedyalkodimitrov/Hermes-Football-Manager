@@ -1,3 +1,14 @@
 .player-stats-image {
     width: 25%;
 }
+.information-container{
+    bottom:0;
+
+}
+.information-container > p {
+    font-size: 1.8em;
+    margin:0;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, 0%);
+}

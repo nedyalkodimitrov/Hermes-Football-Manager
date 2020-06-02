@@ -8,7 +8,9 @@
     <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
         <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10 justify-content-around  row pb-3">
             <div class="col-12 mt-2 mb-3">
-                <h2 class="col-12 text-center">Моля иберете играчи за групата за мача </h2>
+                <h2 class="col-12 mb-3 text-center"><b>Моля иберете играчи за групата за мача </b></h2>
+                <h3 class="col-12 text-center">Брой играчи на {{team }}: {{players|length}}</h3>
+                <h3 class="col-12 text-center">Максимален брой играчи в групата: 18</h3>
             </div>
             {% for player in players %}
                 <div class="wrapper col-lg-3 col-md-6 col-sm-6">
@@ -46,5 +48,5 @@
             <button class="sendPlayers btn btn-success  p-4">Потвърдете изборът си!</button>
         </div>
     </div>
-    <script src="{{ asset("js/coach/matchEvent.js") }}"></script>
+    <script src="{{ asset("js/coach/matchGroupListEvent.js") }}"></script>
 {% endblock %}
