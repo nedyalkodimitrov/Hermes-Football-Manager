@@ -1,0 +1,45 @@
+
+@import '../particles/addCircle.css';
+
+.ad-add-player-container {
+  position: absolute;
+  top: 0;
+}
+
+.team-futures-holder{
+  z-index:3000;
+  position: fixed;
+  bottom: 15%;
+  right: 5%;
+  width: 20%;
+  height: 20%;
+  max-height: 200px;
+
+  .team-futures-container{
+
+    position: absolute;
+    top: 0;
+    right: 5%;
+    z-index: 3000000;
+    background-color: #ff7b7b;
+    border-radius: 15px;
+
+  }
+
+  .add-circle-container{
+    position: absolute;
+    bottom: 5%;
+    right: 40%;
+    transform: translate(-40%, -5%);
+
+
+  }
+
+
+  &:hover {
+    .team-futures-container{
+      display: block;
+    }
+  }
+}
+

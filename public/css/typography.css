@@ -22,6 +22,14 @@ h4{font-size: 2.0em}
 h5{font-size: 1.5em}
 h6{font-size: 1.1em}
 
+hr {
+    max-width: 5%;
+    height: .8em;
+    margin: auto;
+    background-color: #075f29;
+    margin-top: 1.5em;
+}
+
 blockquote  {
     padding: 1em;
     font-style: italic;

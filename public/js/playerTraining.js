@@ -104,7 +104,7 @@ $('#send-info').on('click', function () {
     }else {
         iziToast.warning({
             title: 'Грешни данни',
-            message: "Неможе началната дата да е по-голяма от крайната",
+            message: "Не може началната дата да е по-голяма от крайната",
             overlay: true,
             zindex: 999,
             position: 'center',

@@ -3,6 +3,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("css/playerVisitCard.css") }}">
     <link rel="stylesheet" href="{{ asset("css/coach/playerStatPageStyle.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/particles/hiddenDiv.css") }}">
 
 {% endblock %}
 {% block nav %}
@@ -123,6 +124,9 @@
         </div>
 
         <div class="col-10 mt-4 row container stat-container mx-auto m-0 p-4 ">
+            <div class="edit-button-holder">
+                <button class=" edit-settings" id="edit-settings"><i class="fas fa-pen edit-settings"></i></button>
+            </div>
             <h3 class="col-12  mt-3 text-center">Статиситики от треньора</h3>
             <div class="col-12 mt-3 pt-3">
                 <div class="col-12 justify-content-around summarizing-results">
@@ -170,7 +174,7 @@
 
                 <div class="col-12 m-0 p-0 row justify-content-around">
                     <div class="col-2 p-0">
-                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pass }}">
+                  <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pass * 10}}">
                         <span class="chart-text percent"></span>
                   </span>
                         <h5 class="text-center mt-2">Пас</h5>
@@ -396,92 +400,101 @@
             </div>
         </div>
     </div> #}
-    <div id="container col-12 ">
-        <div class="row   justify-content-center  ">
-            <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                <h2 class="d-inline-block">Дълъг пас: <span id="stat-1"></span> </h2>
-                <div class="slidecontainer ">
-                  <input type="range" min="0" max="10" value="{{ playerStats.longPass }}" class="slider" id="myRange-1">
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                <h2 class="d-inline-block">Спокойствие на терена <span id="stat-2"></span> </h2>
-                <div class="slidecontainer ">
-                  <input type="range" min="0" max="10" value="{{ playerStats.Relax }}" class="slider" id="myRange-2">
-                </div>
-            </div>
-        </div>
-    </div>
-        <div id="container col-12">
-            <div class="row   justify-content-center">
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5  text-center">
-                    <h2 class="d-inline-block">Усърдна работа: <span id="stat-3"></span> </h2>
-                    <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.Work }}" class="slider" id="myRange-3">
+   <div class="hidden-container">
+       <div class="hidden-div row">
+          <div class="col-12 row mx-auto row  justify-content-center">
+              <div id="container  col-5 row">
+                  <div class="row justify-content-center  ">
+                      <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                          <h5 class="d-inline-block">Дълъг пас: <span id="stat-1"></span> </h5>
+                          <div class="slidecontainer ">
+                              <input type="range" min="0" max="10" value="{{ playerStats.longPass }}" class="slider" id="myRange-1">
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                          <h5 class="d-inline-block">Спокойствие на терена <span id="stat-2"></span> </h5>
+                          <div class="slidecontainer ">
+                              <input type="range" min="0" max="10" value="{{ playerStats.Relax }}" class="slider" id="myRange-2">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="container row col-5">
+                  <div class="row  justify-content-center">
+                      <div class="col-lg-6 col-sm-4 col-md-3 mt-5  text-center">
+                          <h5 class="d-inline-block">Усърдна работа: <span id="stat-3"></span> </h5>
+                          <div class="slidecontainer ">
+                              <input type="range" min="0" max="10" value="{{ playerStats.Work }}" class="slider" id="myRange-3">
+                          </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                          <h5 class="d-inline-block">Тактика: <span id="stat-4"></span> </h5>
+                          <div class="slidecontainer ">
+                              <input type="range" min="0" max="10" value="{{ playerStats.Tacticks }}" class="slider" id="myRange-4">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="container row  col-2">
+                  <div class="row  justify-content-center">
+                      <div class="col-lg-12 col-sm-4 col-md-3 mt-5 text-center">
+                          <h5 class="d-inline-block">Воля: <span id="stat-5"></span> </h5>
+                          <div class="slidecontainer ">
+                              <input type="range" min="0" max="10" value="{{ playerStats.willPower }}" class="slider" id="myRange-5">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        <div class="col-12 row mx-auto row  justify-content-center">
+            <div id="container row col-5">
+                <div class="row   justify-content-center">
+                    <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                        <h5 class="d-inline-block">Удар: <span id="stat-7"></span> </h5>
+                        <div class="slidecontainer ">
+                            <input type="range" min="0" max="10" value="{{ playerStats.shot }}" class="slider" id="myRange-7">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                        <h5 class="d-inline-block">Техника: <span id="stat-8"></span> </h5>
+                        <div class="slidecontainer ">
+                            <input type="range" min="0" max="10" value="{{ playerStats.Technique }}" class="slider" id="myRange-8">
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                    <h2 class="d-inline-block">Тактика: <span id="stat-4"></span> </h2>
-                    <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.Tacticks }}" class="slider" id="myRange-4">
+            </div>
+            <div id="container row col-5">
+                <div class="row   justify-content-center">
+                    <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                        <h5 class="d-inline-block">Перспектива: <span id="stat-9"></span> </h5>
+                        <div class="slidecontainer ">
+                            <input type="range" min="0" max="10" value="{{ playerStats.perspective }}" class="slider" id="myRange-9">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-4 col-md-3 mt-5 text-center">
+                        <h5 class="d-inline-block">Пас: <span id="stat-10"></span> </h5>
+                        <div class="slidecontainer ">
+                            <input type="range" min="0" max="10" value="{{ playerStats.pass }}" class="slider" id="myRange-10">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="container col-12">
-            <div class="row  justify-content-center">
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                    <h2 class="d-inline-block">Воля: <span id="stat-5"></span> </h2>
-                    <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.willPower }}" class="slider" id="myRange-5">
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                    <h2 class="d-inline-block">Дрибъл: <span id="stat-6"></span> </h2>
+            <div id="container row  col-2">
+                <div class="col-lg-12 col-sm-4 col-md-3 mt-5 text-center">
+                    <h5 class="d-inline-block">Дрибъл: <span id="stat-6"></span> </h5>
                     <div class="slidecontainer ">
                         <input type="range" min="0" max="10" value="{{ playerStats.dribble }}" class="slider" id="myRange-6">
                     </div>
                 </div>
-
             </div>
         </div>
-    <div id="container col-12">
-            <div class="row   justify-content-center">
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                    <h2 class="d-inline-block">Удар: <span id="stat-7"></span> </h2>
-                    <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.shot }}" class="slider" id="myRange-7">
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                    <h2 class="d-inline-block">Техника: <span id="stat-8"></span> </h2>
-                    <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.Technique }}" class="slider" id="myRange-8">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="container col-12">
-            <div class="row   justify-content-center">
-                    <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                        <h2 class="d-inline-block">Перспектива: <span id="stat-9"></span> </h2>
-                        <div class="slidecontainer ">
-                          <input type="range" min="0" max="10" value="{{ playerStats.perspective }}" class="slider" id="myRange-9">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-4 col-md-3 mt-5 text-center">
-                        <h2 class="d-inline-block">Пас: <span id="stat-10"></span> </h2>
-                        <div class="slidecontainer ">
-                      <input type="range" min="0" max="10" value="{{ playerStats.pass }}" class="slider" id="myRange-10">
-                    </div>
-                </div>
-            </div>
+           <div class="col-12 mt-5 text-center justify-content-center row">
+               <button class="btn btn-green col-2"><i class="fas fa-check"></i></button>
+           </div>
 
-    <div class="col-12 mt-5 text-center justify-content-center row">
-        <button class="btn btn-green col-2"><i class="fas fa-check"></i></button>
-    </div>
-
+       </div>
+   </div>
+       <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
     <script>
         var slider = document.getElementById("myRange-1");
         var output = document.getElementById("stat-1");
@@ -578,10 +591,10 @@
                         "weight": $("#weight").val(), "height": $("#height").val(),
 
                     },
-                    url: "{{ path('playerStats', {id: player.Id}) }}",
+                    url: "{{ path('playerStatsMaker', {id: player.Id}) }}",
                 })
                     .done(function (msg) {
-                        window.location.href = "/coache/training/";
+                        window.location.href = window.location;
                         console.log(msg);
                         console.log(slider.value);
 

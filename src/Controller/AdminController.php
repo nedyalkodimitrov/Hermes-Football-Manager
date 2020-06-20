@@ -16,10 +16,17 @@ use App\Form\CoachType;
 use App\Form\PlayerType;
 use App\Form\UserType;
 use App\Repository\CoachRepository;
+use App\Repository\MatchesRepository;
 use App\Repository\PlayerRepository;
+use App\Repository\Requests\UserToUserRequestRepository;
+use App\Repository\ScheduleRepository;
 use App\Repository\TeamRepository;
 use App\Repository\UserRepository;
 use App\Repository\YouthTeamRepository;
+use App\Service\CoachService;
+use App\Service\MatchService;
+use App\Service\PlayerService;
+use App\Service\TeamService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -185,7 +192,7 @@ class AdminController extends AbstractController
 
         return $this->render('admin/coaches.html.twig', array('team' =>$team,
             'youthTeams' => $youthTeams,
-            'profile_img' => ''));
+            'profile_img' => $team->getImage()));
 
     }
 
@@ -208,7 +215,7 @@ class AdminController extends AbstractController
 
         return $this->render('admin/coacheAction.html.twig', array('coache' =>$coache,
 
-            'profile_img' => ''));
+            'profile_img' => $admin->getTeam()->getImage()));
 
     }
 
@@ -315,10 +322,157 @@ class AdminController extends AbstractController
         return new JsonResponse($coaches);
     }
 
+    /**
+     * @Route("/admin/schedule" , name = "allSchedule")
+     */
+    public function Schedule(Request $request, ScheduleRepository $scheduleRepository){
+        $team = $this->getUser()->getAdmin()->getTeam();
+        $menTeamSchedule = $this->getHeadCoachOfTeam($team)->getSchedule();
+    }
+
+    /**
+     * @Route("/admin/requests" , name = "requestView")
+     */
+    public function Requests(Request $request, UserToUserRequestRepository $userRequestRepository ){
+        $admin = $this->getUser()->getAdmin();
+        $team = $admin->getTeam();
+        $coach = $this->getHeadCoachOfTeam($team);
+        $fromTeamRequests = $userRequestRepository->findBy(
+            [
+                'sender' => $coach->getUser(),
+                'type' => 'coach-player'
+            ]
+        );
+        $toTeamRequests = $userRequestRepository->findBy(
+            [
+                'receiver' => $coach->getUser(),
+                'type' => 'player-coach'
+            ]
+        );
+        $fromTeamCoachRequests = $userRequestRepository->findBy(
+            [
+                'sender' => $admin->getUser(),
+                'type' => 'admin-coach'
+            ]
+        );
+        $toTeamCoachRequests = $userRequestRepository->findBy(
+            [
+                'receiver' => $admin->getUser(),
+                'type' => 'coach-admin'
+            ]
+        );
+
+        return $this->render('admin/requests.html.twig',
+            array
+            (
+                'fromTeamRequests' =>$fromTeamRequests,
+                'toTeamRequests' => $toTeamRequests,
+                'fromTeamCoachRequests' => $fromTeamCoachRequests,
+                'toTeamCoachRequests' => $toTeamCoachRequests,
+                'profile_img' => $team->getImage()
+            )
+        );
 
 
+    }
 
-    private function CheckPhoneNumber($phone){
+    /**
+     * @Route("/admin/division" , name = "divisionView")
+     */
+    public function DivisionView(Request $request,TeamService $teamService, MatchesRepository $matchesRepository, UserToUserRequestRepository $userRequestRepository )
+    {
+        $admin = $this->getUser()->getAdmin();
+        $team = $admin->getTeam();
+        $division = $team->getDivision();
+        $teams = $teamService->getTeams($division);
+        $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($team);
+        $pastMatches = $matchesRepository->findPastMatchesByTeam($team);
+        if ($division == null){
+//
+        }else{
+            return $this->render('admin/division.html.twig',
+                array
+                (
+                    'division' => $division,
+                    'teams' => $teams,
+                    'profile_img' => $team->getImage(),
+                    'admin' => $admin,
+                    'upComingMatches' => $upComingMatches,
+                    'pastMatches' => $pastMatches
+                )
+            );
+
+
+        }
+    }
+    /**
+     * @Route("/admin/player/{id}", name = "adminPlayerStatsView")
+     *
+     */
+    public function PlayerAction($id, \Symfony\Component\HttpFoundation\Request $request, PlayerService $playerService, CoachService $coachService)
+    {
+        $admin = $this->getUser()->getAdmin();
+        $player = $this->getDoctrine()->getRepository(Player::class)->find($id);
+        $playerStats = $player->getStats();
+        $newPlayers = new Player();
+
+        $form = $this->createFormBuilder($newPlayers)->add('pace');
+
+        $playerTeam = $playerService->getPlayerTeam($player);
+        $team =$admin->getTeam();
+
+        if ($playerTeam->getId() != $team->getId() &&
+            (
+                ($player->getYouthTeam() == null && $team->getYouthTeam() != null) ||
+                ($player->getYouthTeam() != null && $team->getYouthTeam() == null)
+            )
+        ){
+            return $this->redirectToRoute("trainingView");
+        }
+
+        $playedMatches = $playerService->getPlayedMatches($player);
+        $titularMatchers = $playerService->getTitularPlayedMatches($player);
+        $playerGoals = $playerService->getGoals($player);
+        $playedMinutes = $playerService->getTotalPlayedMinutes($player);
+        return $this->render('coaches/playerStat.html.twig',
+            array(
+                'profile_img' => $team ->getImage(),
+                'player' => $player,
+                'playerStats' => $playerStats,
+                'image' => $player->getImage(),
+                'playedMatches' => $playedMatches,
+                'titularMatches' => $titularMatchers,
+                'goals' => $playerGoals,
+                'playedMinutes' => $playedMinutes
+            )
+        );
+    }
+    /**
+     * @Route("/admin/settings" , name = "adminSettingView")
+     */
+    public function SettingsView(Request $request,TeamService $teamService, MatchesRepository $matchesRepository, UserToUserRequestRepository $userRequestRepository )
+    {
+        $admin = $this->getUser()->getAdmin();
+        $team = $admin->getTeam();
+        $newTeam = new Team();
+        $teamFormBuilder = $this->createFormBuilder($newTeam)
+            ->add('image')
+            ->add('coverImage')
+            ->getForm();
+
+        return $this->render('admin/settings.html.twig',
+            array
+            (
+                'profile_img' => $team->getImage(),
+                'admin' => $admin,
+                'team' => $team,
+                'form' => $teamFormBuilder->createView()
+
+            )
+        );
+    }
+
+        private function CheckPhoneNumber($phone){
         $playerPhoneNumber = $this->getDoctrine()->getRepository(Player::class)->findBy(array('phone' => $phone));
         $coachPhoneNumber = $this->getDoctrine()->getRepository(Coach::class)->findBy(array('phone' => $phone));
         $adminPhoneNumber = $this->getDoctrine()->getRepository(Admin::class)->findBy(array('phone' => $phone));

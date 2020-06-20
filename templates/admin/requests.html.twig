@@ -1,0 +1,104 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body  %}
+
+    <table class="table-bordered col-11 mt-4 mx-auto "  style="margin-bottom: 0; padding:0">
+        <tr class="row col-12 p-0 m-0 bg-success">
+            <th class="col-1"></th>
+            <th class="col-4 color-white">Име</th>
+            <th class="col-4 color-white">Дата на изпращане на заявката</th>
+            <th class="col-3 color-white">Действия</th>
+        </tr>
+        {% set rowNum = 1 %}
+        {% for request in fromTeamRequests %}
+                <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                    <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                    <th class="col-4"> {{ request.receiver.name }} {{ request.receiver.fName }} </th>
+                    <th class="col-4"> {{ request.date }} </th>
+                    <th class="col-3 row justify-content-center">
+                        <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                    </th>
+                </tr>
+            {% set rowNum = rowNum + 1 %}
+        {% else %}
+            <li><em>Вие нямате отбор</em></li>
+        {%  endfor %}
+    </table>
+
+
+    <table class="table-bordered col-11 mt-4 mx-auto "  style="margin-bottom: 0; padding:0">
+        <tr class="row col-12 p-0 m-0 bg-success">
+            <th class="col-1"></th>
+            <th class="col-4 color-white">Име</th>
+            <th class="col-4 color-white">Дата на изпращане на заявката</th>
+            <th class="col-3 color-white">Действия</th>
+        </tr>
+        {% set rowNum = 1 %}
+        {% for request in toTeamRequests %}
+            <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                <th class="col-4"> {{ request.receiver.name }} {{ request.receiver.fName }} </th>
+                <th class="col-4"> {{ request.date }} </th>
+                <th class="col-3 row justify-content-center">
+                    <button class="btn btn-success"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </th>
+            </tr>
+            {% set rowNum = rowNum + 1 %}
+        {% else %}
+            <li><em>Вие нямате отбор</em></li>
+        {%  endfor %}
+    </table>
+
+
+    <table class="table-bordered col-11 mt-4 mx-auto "  style="margin-bottom: 0; padding:0">
+        <tr class="row col-12 p-0 m-0 bg-success">
+            <th class="col-1"></th>
+            <th class="col-4 color-white">Име</th>
+            <th class="col-4 color-white">Дата на изпращане на заявката</th>
+            <th class="col-3 color-white">Действия</th>
+        </tr>
+        {% set rowNum = 1 %}
+        {% for request in fromTeamCoachRequests %}
+            <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                <th class="col-4"> {{ request.receiver.name }} {{ request.receiver.fName }} </th>
+                <th class="col-4"> {{ request.date }} </th>
+                <th class="col-3 row justify-content-center">
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </th>
+            </tr>
+            {% set rowNum = rowNum + 1 %}
+        {% else %}
+            <li><em>Вие нямате отбор</em></li>
+        {%  endfor %}
+    </table>
+
+
+    <table class="table-bordered col-11 mt-4 mx-auto "  style="margin-bottom: 0; padding:0">
+        <tr class="row col-12 p-0 m-0 bg-success">
+            <th class="col-1"></th>
+            <th class="col-4 color-white">Име</th>
+            <th class="col-4 color-white">Дата на изпращане на заявката</th>
+            <th class="col-3 color-white">Действия</th>
+        </tr>
+        {% set rowNum = 1 %}
+        {% for request in toTeamCoachRequests %}
+            <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                <th class="col-4"> {{ request.receiver.name }} {{ request.receiver.fName }} </th>
+                <th class="col-4"> {{ request.date }} </th>
+                <th class="col-3 row justify-content-center">
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </th>
+            </tr>
+            {% set rowNum = rowNum + 1 %}
+        {% else %}
+            <li><em>Вие нямате отбор</em></li>
+        {%  endfor %}
+    </table>
+
+
+
+{% endblock %}

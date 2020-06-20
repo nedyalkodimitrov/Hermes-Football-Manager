@@ -1,0 +1,155 @@
+{% extends 'admin/base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/particles/tableViewStyle.css') }}">
+{% endblock %}
+{% block body  %}
+    <div class="table-container col-lg-12 col-md-12 col-sm-12 col-12  mx-0 p-0 mt-lg-2 mt-md-2 mt-sm-5 mt-5 row ">
+        <div class="table col-11 mx-auto p-0   mh-25" id="teamLeadership-container ">
+                <table class=" col-12 "  style="margin-bottom: 0; padding:0">
+                     <thead>
+                            <tr class="row col-12 p-0 m-0 ">
+                                <th class="col-1"></th>
+                                <th class="col-4 color-white">Име</th>
+                                <th class="col-1 color-white">ИМ</th>
+                                <th class="col-1 color-white">П</th>
+                                <th class="col-1 color-white">Р</th>
+                                <th class="col-1 color-white">З</th>
+                                <th class="col-1 color-white">ВГ</th>
+                                <th class="col-1 color-white">ДГ</th>
+                                <th class="col-1 color-white">Т</th>
+                            </tr>
+                     </thead>
+                    {% set rowNum = 1 %}
+                    {% for team in teams %}
+                        {% if admin.Team.Id == team.Id %}
+                            <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                                <th class="col-4"> {{ team.name }}</th>
+                                <th class="col-1"> {{ team.playedGames }}</th>
+                                <th class="col-1"> {{ team.wins }}</th>
+                                <th class="col-1"> {{ team.drawsGames}}</th>
+                                <th class="col-1"> {{ team.lostGames}}</th>
+                                <th class="col-1"> {{ team.Goals}}</th>
+                                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>
+                                <th class="col-1">{{ team.points }}</th>
+                            </tr>
+                        {% else %}
+                            <tr class="teamTable row col-12 p-0 m-0">
+                                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                                <th class="col-4"> {{ team.name }}</th>
+                                <th class="col-1"> {{ team.playedGames }}</th>
+                                <th class="col-1"> {{ team.wins }}</th>
+                                <th class="col-1"> {{ team.drawsGames}}</th>
+                                <th class="col-1"> {{ team.lostGames}}</th>
+                                <th class="col-1"> {{ team.Goals}}</th>
+                                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>
+                                <th class="col-1">{{ team.points }}</th>
+                            </tr>
+                        {% endif %}
+
+                        {% set rowNum = rowNum + 1 %}
+                    {% else %}
+                        <li><em>Вие нямате отбор</em></li>
+                    {%  endfor %}
+                </table>
+        </div>
+    </div>
+
+    <div class="col-12 container">
+        <div class="col-11 mx-auto">
+            <hr>
+            <div class="col-12 text-center mt-2  ">
+                <h2>
+                    Предстоящи мачове
+                </h2>
+            </div>
+            {% for match in upComingMatches %}
+                <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+                    <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                        <a href="{{ path("createMatchList", {"id" :match.id}) }}" class="m-0 row col-12">
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                <h5>{{ match.homeTeam.Name }}</h5>
+                            </div>
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                <h5>{{ match.awayTeam.Name }}</h5>
+                            </div>
+                            <div class="col-12 justify-content-center mt-2 mb-1">
+                                <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                            </div>
+
+                        </a>
+                        {#                                            <span><i class="fas fa-times country-fa-times" id="{{ team.Id }}"></i></span>#}
+                    </div>
+                </div>
+                {% else%}
+                <h4 class="mx-auto text-center">{{ admin.Team.Name }} няма предстоящи мачове</h4>
+            {% endfor %}
+        </div>
+    </div>
+    <hr class="">
+    <div class="col-12 container">
+        <div class="col-12 row mx-auto ">
+
+            <div class="col-12 text-center">
+                <h2>
+                  Минали мачове
+                </h2>
+            </div>
+            {% for match in pastMatches %}
+                {% if match.MatchStats != null%}
+                    <div class="col-lg-4 mt-4 col-sm-12 row m-0 p-0 match-card ">
+                        <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row ">
+                            <a href="{{ path("pastMatchView", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
+                                <div class="col-6 justify-content-center row">
+                                    <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                    <h5 class="col-12 text-center">{{ match.homeTeam.Name }}</h5>
+                                    <h5 class="align-text-bottom p-0 m-0">{{ match.MatchStats.HomeTeamGoals}}</h5>
+                                </div>
+                                <div class="col-6 justify-content-center row">
+                                    <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                    <h5 class="col-12">{{ match.awayTeam.Name }}</h5>
+                                    <h5 class="col-12 align-text-bottom p-0 m-0">{{ match.MatchStats.AwayTeamGoals}}</h5>
+                                </div>
+                                <div class="col-12 justify-content-center mt-2 mb-1">
+                                    <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                                </div>
+                            </a>
+                            {#                        <span><i class="fas fa-times country-fa-times" id="{{ team.Id }}"></i></span>#}
+                        </div>
+                    </div>
+                {% else  %}
+                    <div class="col-lg-4 mt-4 col-sm-12 row m-0 p-0 match-card ">
+                        <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row ">
+                            <a href="{{ path("matchList", {"id" : match.id}) }}" class="m-0 row col-12 justify-content-center">
+                                <div class="col-6 justify-content-center row">
+                                    <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                    <h5 class="col-12 text-center">{{ match.homeTeam.Name }}</h5>
+                                    <h5 class="align-text-bottom p-0 m-0">Няма данни</h5>
+                                </div>
+                                <div class="col-6 justify-content-center row">
+                                    <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                    <h5 class="col-12">{{ match.awayTeam.Name }}</h5>
+                                    <h5 class="col-12 align-text-bottom p-0 m-0">Няма данни</h5>
+                                </div>
+                                <div class="col-12 justify-content-center mt-2 mb-1">
+                                    <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                                </div>
+
+                            </a>
+                            {#                        <span><i class="fas fa-times country-fa-times" id="{{ team.Id }}"></i></span>#}
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <h4>Все още нямате преминали мачове</h4>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

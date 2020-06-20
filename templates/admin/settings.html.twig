@@ -1,0 +1,77 @@
+{% extends 'admin/base.html.twig' %}
+{% block stylesheets %}
+    <link href="{{ asset("css/settingPageStyle.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/particles/hiddenDiv.css") }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container col-12 row mt-3 mb-4">
+        <div class="col-10 mx-auto p-0 m-0">
+            <div class="cover-photo-container">
+                <img src="{{ asset("images/"~team.CoverImage) }}" alt="" class="cover-photo">
+            </div>
+            <div class="profile-image-container">
+                <img src="{{asset("images/" ~ team.image)}}" alt="" class="profile-image m-2">
+                <div class="name-holder">
+                    <h4 class="text-center"> {{ team.Name }} </h4>
+                    <h6 class="text-center"></h6>
+                </div>
+                <div class="edit-button-holder">
+                    <button class=" edit-settings" id="edit-settings"><i class="fas fa-pen edit-settings"></i></button>
+                </div>
+            </div>
+            <div class="col-12 mx-auto m-0 mt-2 information-holder align-content-center p-4 ">
+                <div class="season-player-stats col-12 m-0 p-0  my-auto align-bottom  text-center row">
+                    <h4 class="col-12 text-center">Статистика за сезона</h4>
+                    <div class="col-lg-4 my-auto col-md-12 col-sm-12 p-0 m-0 row text-center mt-4 align-content-center chart-container">
+                        <div class="information-container p-0 m-0 col-12">
+                            <p>10</p>
+                        </div>
+                        <div class="fat-percent-div col-12">
+                            <h3 class="col-12">
+                                <span class="label green badge fat-percent-badge">Победи</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 my-auto col-sm-12 col-md-12 p-0 m-0 row mt-2 text-center chart-container">
+                        <div class="information-container col-12">
+                            <p class="p-0">5</p>
+                        </div>
+                        <h3 class="col-12">
+                            <span class="label bg-warning badge ">Равенства</span>
+                        </h3>
+                    </div>
+                    <div class="col-lg-4 my-auto col-sm-12 col-md-12 p-0 m-0 row mt-2 text-center chart-container">
+                        <div class="information-container col-12">
+                            <p class="p-0">3</p>
+                        </div>
+                        <h3 class="col-12">
+                            <span class="label bg-danger badge ">Равенства</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row hidden-container">
+        <div class="col-12 justify-content-center row hidden-div">
+            <div class="text-center information-div">
+
+                {{ form_start(form) }}
+
+                        <label for="form_coverImage"><img src="{{ asset("images/"~team.CoverImage) }}" alt="" class="cover-photo"></label>
+                        <label for="form_image"><img src="{{asset("images/" ~ team.image)}}" alt="" class="profile-image m-2"></label>
+
+                </div>
+
+                {{ form_widget(form.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
+                {{ form_widget(form.coverImage, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
+                {{ form_end(form) }}
+            <span><i class="fas fa-times-circle" ></i></span>
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+table {
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+}
+table thead {
+  background-color: #075F29;
+  color: white;
+}
+table thead tr {
+  color: inherit;
+  background-color: inherit;
+}
+table thead tr th {
+  background-color: inherit;
+  color: inherit;
+  padding: 0.4em;
+}
+table tbody {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+table tbody tr {
+  border-bottom: 1px solid #075F29;
+}
+table tbody tr th {
+  margin: auto;
+  padding: 0.4em;
+  border: none;
+}
+table .btn {
+  color: #075F29 !important;
+  background-color: white;
+  background-size: 0% 0% !important;
+  border: 1px solid #075F29;
+}
+table .btn i {
+  color: inherit;
+}
+table .btn:hover {
+  color: white !important;
+  transition: 0.4s;
+  background-color: #075F29 !important;
+}
+
+/*# sourceMappingURL=tableViewStyle.css.map */

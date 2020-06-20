@@ -51,6 +51,11 @@ class Division
      * @ORM\JoinColumn(name="team", referencedColumnName="id")
      */
     private  $requestToTeam;
+    /**
+     * One Product has One Shipment.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Division\DivisionRequest", mappedBy="division")
+     */
+    private  $teamRequest;
 
     /**
      * One Product has One Shipment.
@@ -213,6 +218,23 @@ class Division
     {
         $this->matches = $matches;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTeamRequest()
+    {
+        return $this->teamRequest;
+    }
+
+    /**
+     * @param mixed $teamRequest
+     */
+    public function setTeamRequest($teamRequest): void
+    {
+        $this->teamRequest = $teamRequest;
+    }
+
 
 
 

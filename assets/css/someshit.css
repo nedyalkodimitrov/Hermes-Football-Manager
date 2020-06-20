@@ -137,15 +137,12 @@
     color: #f86954;
     cursor: pointer;
 }
-.add-player {
+
+
+.add-coache, .add-player {
     cursor: pointer;
     background-color: rgba(255, 105, 84, 0.76);
-
-}
-
-.add-coache {
-    cursor: pointer;
-    background-color: rgba(255, 105, 84, 0.76);
+    transition: 0.3s all ease;
 }
 
 .add-player-img {

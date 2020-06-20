@@ -82,7 +82,6 @@
             </div>
         </div>
 
-
         <div class="row hidden-container">
             <div class="col-12 justify-content-center row hidden-div">
                 <div class="text-center information-div">
@@ -91,56 +90,36 @@
                     {% else %}
 
                     {% endif %}
-
-                    {{ form_start(form) }}
-
-                    <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
-
-                    {{ form_widget(form.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
-                    {{ form_row(form.save, {'attr' : {'class':'btn'}} ) }}
-                    {{ form_end(form) }}
-
-                </div>
-            </div>
-        </div>
-        <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
-
-<<<<<<< HEAD
-=======
-{#                                   </div>#}
-{#                                   <div class="col-lg-6 col-sm-4 col-md-6 text-left align-top">#}
-{#                                           <h5>Отбелязани голове: 0</h5>#}
-{#                                   </div>#}
-{#                               </div>#}
-{#                           </div>#}
-{#                       </div>#}
-{#                    </div>#}
-{#                    {{ form_widget(formPlayer.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}#}
-{#                    {{ form_row(formPlayer.save, {'attr' : {'class':'btn'}} ) }}#}
-{#                </div>#}
-
-
-        <div class="row hidden-container">
-            <div class="col-12 justify-content-center row hidden-div">
-                <div class="text-center information-div">
-                    {% if image == '0'%}
-                        <i class="fas fa-user"></i>
-                    {% else %}
-
-                    {% endif %}
-
+{#                    first form#}
                     {{ form_start(playerForm) }}
-
-                    <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
-
-                    {{ form_widget(playerForm.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
-                    {{ form_row(playerForm.save, {'attr' : {'class':'btn'}} ) }}
+                        <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
+                        {{ form_widget(playerForm.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
                     {{ form_end(playerForm) }}
 
+{#                    second form#}
+                    {{ form_start(formStats) }}
+                        <label for="player_stats_height" class="">Височина</label>
+                        {{ form_widget(formStats.height, {'attr' : {'class' : 'input', 'id' : 'player_stats_height', 'value': playerStats.Height}})  }}
+                        <br>
+                        <label for="player_stats_weight" class="">Тегло</label>
+                        {{ form_widget(formStats.weight, {'attr' : {'class' : 'input ', 'id' : 'player_stats_weight', 'value': playerStats.Weight}})  }}
+                    {{ form_end(formStats) }}
+
+                    {{ form_start(playerInfoForm) }}
+
+                        <label for="player_stats_phone" class="">Telfon</label>
+{#                        {{ form_widget(playerInfoForm.phone {'attr' : {'class' : 'input ', 'id' : 'player_stats_phone', 'value' : player.User.Phone}})  }}#}
+                    {{ form_widget(playerInfoForm.phone, {'attr' : {'class' : 'input ', 'id' : 'player_stats_phone', 'value': player.User.Phone}})  }}
+
+                    {{ form_end(playerInfoForm) }}
+                    <div class="col-12 justify-content-center texte-center">
+                        <button class="btn btn-secondary">
+                            Потвърдете
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
 
->>>>>>> db2aa8aa1b29b1380bd9fb51aff6c1c46b8c75ad
     {% endblock %}

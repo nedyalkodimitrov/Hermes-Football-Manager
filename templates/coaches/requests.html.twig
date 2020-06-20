@@ -1,0 +1,123 @@
+
+{% extends 'coaches/base.html.twig' %}
+{% block style  %}
+    {{ parent() }}
+        <link rel="stylesheet" href="{{ asset("css/particles/tableViewStyle.css") }}">
+
+{% endblock %}
+{% block body %}
+  <div>
+
+      <div class="col-12 text-center mt-4 mb-2">
+          <h1>Заявки изпратени до играчи</h1>
+      </div>
+      <table class=" col-12  mx-auto"  style="margin-bottom: 0; padding:0">
+         <thead>
+             <tr class="row col-12 p-0 m-0 ">
+                 <th class="col-1"></th>
+                 <th class="col-3 color-white">Име</th>
+                 <th class="col-3 color-white">Отбор</th>
+                 <th class="col-3 color-white">Дата на изпращане</th>
+                 <th class="col-2 color-white">Деиствия</th>
+
+             </tr>
+         </thead>
+          <tbody>
+              {% set rowNum = 1 %}
+              {% for playerRequest in requestsToPlayers %}
+                  {% set player = playerRequest.Receiver.Player %}
+
+                      <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                          <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                          <th class="col-3"> {{ player.User.Name }} {{ player.User.FName }}</th>
+                          {% if player.Team is not null %}
+                              <th class="col-3"> {{ player.Team.Name}}</th>
+                          {% else %}
+                              {%  if player.YouthTeam is not null  %}
+                                  <th class="col-3"> {{ player.YouthTeam.Name}}</th>
+                                {% else %}
+                                  <th class="col-3">Няма отбор</th>
+                                {% endif %}
+                          {% endif %}
+                          <th class="col-3"> {{ playerRequest.Date }}</th>
+                          <th class="col-2">
+                              <button class="btn " onclick="DeleteRequest({{ playerRequest.Id }})"><i class="fa fa-times"></i></button>
+                          </th>
+                      </tr>
+                  {% set rowNum = rowNum + 1 %}
+              {% else %}
+                  <li><em>Вие нямате отбор</em></li>
+              {%  endfor %}
+          </tbody>
+      </table>
+
+
+      <div class="col-12 text-center mt-4 mb-2">
+          <h1>Заявки изпратени от играчи</h1>
+      </div>
+      {% if requestsFromPlayers|length != 0 %}
+          <table class=" col-12  mx-auto"  style="margin-bottom: 0; padding:0">
+            <thead>
+                <tr class="row col-12 p-0 m-0">
+                    <th class="col-1"></th>
+                    <th class="col-3 color-white">Име</th>
+                    <th class="col-3 color-white">Отбор</th>
+                    <th class="col-3 color-white">Дата на изпращане</th>
+                    <th class="col-2 color-white text-center">Деиствия</th>
+
+                </tr>
+            </thead>
+              {% set rowNum = 1 %}
+              {% for playerRequest in requestsFromPlayers %}
+                  {% set player = playerRequest.Sender.Player %}
+
+                  <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                      <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                      <th class="col-3"> {{ player.User.Name }} {{ player.User.FName }}</th>
+                      {% if player.Team is not null %}
+                          <th class="col-3"> {{ player.Team.Name}}</th>
+                      {% else %}
+                          <th class="col-3"> {{ player.YouthTeam.Name}}</th>
+                      {% endif %}
+                      <th class="col-3"> {{ playerRequest.Date }}</th>
+                      <th class="col-2 row p-0 m-0  justify-content-center">
+                          <button class="btn "><i class="fa fa-check"></i></button>
+                          <button class="btn  text-center"><i class="mx-auto fa fa-times"></i></button>
+                      </th>
+                  </tr>
+                  {% set rowNum = rowNum + 1 %}
+              {%  endfor %}
+              {% else %}
+              <div class="col-12 text-center">
+                  <h4>Няма изпратени заявки към вашия отбор </h4>
+              </div>
+          {% endif %}
+      </table>
+  </div>
+
+    <script>
+        function DeleteRequest(id){
+            console.log(id);
+
+            $.ajax({
+                type: "POST",
+                url: "/coache/removePlayerRequest/" + id,
+            })
+                .done(function( msg ) {
+
+                    // $('button .btn').click(function(e){
+                    //     $(e.target).remove();
+                    // });
+                    //
+
+
+                });
+
+
+
+
+        }
+
+    </script>
+
+{% endblock %}

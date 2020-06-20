@@ -52,12 +52,7 @@
                 {% set foo = 1 %}
                 {% for player in players %}
                     <div class="col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
-                        <div class="col-12 player-container top-player-card-container" id="player-{{  foo }} ">
-{#                            {%   if  player.Status == 0 %}#}
-{#                                <div class="status-green"></div>#}
-{#                                {% else %}#}
-{#                                <div class="status-red"></div>#}
-{#                            {%  endif %}#}
+                        <div class="col-12  top-player-card-container" id="player-{{  foo }} ">
                              <div class="top-player-image-container">
                                 {% if player.Image == null or player.Image == ' ' %}
                                     <img src="{{asset('images/user-image.png')}}" alt="" class="top-player-card-img">
@@ -84,7 +79,7 @@
                 {% set foo = 1 %}
                 {% for player in youthPlayers %}
                     <div class="col-lg-3 col-sm-12 col-md-12 justify-content-around player_portfolio row ">
-                        <div class="col-12 player-container top-player-card-container" id="player-{{  foo }} ">
+                        <div class="col-12  top-player-card-container" id="player-{{  foo }} ">
 {#                            {%   if  player.Status == 0 %}#}
 {#                                <div class="status-green"></div>#}
 {#                                {% else %}#}
@@ -117,7 +112,7 @@
                 {% set foo = 1 %}
                 {% for coache in coaches%}
                     <div class="col-lg-3 col-sm-12 col-md-12 justify-content-around player_portfolio row ">
-                        <div class="col-12 player-container top-player-card-container" id="player-{{  foo }} ">
+                        <div class="col-12  top-player-card-container" id="player-{{  foo }} ">
                             {#                            {%   if  player.Status == 0 %}#}
                             {#                                <div class="status-green"></div>#}
                             {#                                {% else %}#}

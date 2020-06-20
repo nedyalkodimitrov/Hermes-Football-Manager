@@ -13,3 +13,10 @@
 .summarizing-results span{
     font-size: 2.2em;
 }
+
+.season-player-stats{
+ border: 2px solid #a9a5a5;
+  transition: 0.4s;
+    margin-bottom: 4em;
+}
+

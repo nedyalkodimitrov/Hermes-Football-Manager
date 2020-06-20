@@ -12,22 +12,9 @@ class PlayerStatsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('statusFromCoaches')
             ->add('weight')
             ->add('height')
-            ->add('fat')
-            ->add('pace')
-            ->add('tacticks')
-            ->add('technique')
-            ->add('pass')
-            ->add('shot')
-            ->add('dribble')
-            ->add('longPass')
-            ->add('relax')
-            ->add('willpower')
-            ->add('work')
-            ->add('perspective')
-            ->add('player')
+
         ;
     }
 

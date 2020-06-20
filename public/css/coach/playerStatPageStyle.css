@@ -12,3 +12,35 @@
     left: 0%;
     transform: translate(0%, 0%);
 }
+.edit-button-holder {
+    position: absolute;
+    top: 7%;
+    left: 95%;
+    transform: translate(-100%, -30%);
+    z-index: 1000;
+}
+.edit-button-holder > button {
+    position: relative;
+    display: inline-block;
+    border: none;
+    padding: 0.5em;
+    font-size: 1.3em;
+    background-image: linear-gradient(rgba(11, 124, 194, 0.55), rgba(11, 124, 194, 0.78));
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 0% 0%;
+    transition: background-size .3s, color .3s;
+    border-radius: 100%;
+
+}
+.hidden-div div {
+
+}
+
+.edit-button-holder > button:hover {
+    background-size: 100% 100%;
+    color: #fff;
+}
+.edit-button-holder > button:focus {
+    outline: none;
+}

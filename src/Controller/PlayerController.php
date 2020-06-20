@@ -128,23 +128,28 @@ class PlayerController extends AbstractController
         $currentPlayer = $this->getUser()->getPlayer();
         $newPlayer = new Player();
         $newPlayerStats = new PlayerStats();
-
+        $newUser = new User();
         $playerStats = $currentPlayer->getStats();
 
         $positions = $this->getDoctrine()->getRepository(Position::class)->findAll();
-        $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
-        $playerForm = $this->createForm(PlayerType::class, $newPlayer);
-        $formStats->handleRequest($request);
-        $playerForm->handleRequest($request);
 
-        $fileName = $fileService->MoveImage($playerForm);
-      if ($fileName != null){
+        $formStats = $this->createForm(PlayerStatsType::class, $newPlayerStats);
+
+        $playerInfoForm = $this->createFormBuilder($newUser)
+            ->add('phone')
+            ->getForm();
+
         $formPlayer = $this->createFormBuilder($newPlayer)
             ->add('image', FileType::class, array('data_class' => null, ))
-            ->add('save', SubmitType::class, ['label' => 'Create Task'])
+            ->add('position')
             ->getForm();
+
         $formStats->handleRequest($request);
         $formPlayer->handleRequest($request);
+        $playerInfoForm->handleRequest($request);
+
+        $fileName = $fileService->MoveImage($formPlayer);
+      if ($fileName != null){
 
         $newFileName = $fileService->MoveImage($formPlayer);
 
@@ -160,16 +165,13 @@ class PlayerController extends AbstractController
       return $this->render('player/settings/newSettingPage.html.twig',
           array(
 
-              'playerForm' => $playerForm->createView(),
-              'formStats' => $formStats->createView(),
-
               'playerForm' => $formPlayer->createView(),
-              'statsForm' => $formStats->createView(),
-
+              'formStats' => $formStats->createView(),
+              'playerInfoForm' => $playerInfoForm->createView(),
               "image" => $currentPlayer->getImage(),
               'profile_img' =>$currentPlayer->getImage(),
               'player' => $currentPlayer,
-              'form' => $playerForm->createView(),
+              'form' => $formPlayer->createView(),
               'team' => $this->playerPropService->getTeam($currentPlayer),
               'playerStats' => $playerStats,
               'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
@@ -224,7 +226,9 @@ class PlayerController extends AbstractController
 
         $schedule = $this->getDoctrine()->getRepository(Schedule::class)
             ->findBy(["coaches" => $headCoach->getId() ],   ['date' => 'DESC', 'startTime' =>'ASC']);
-
+        if (count($schedule) == 0){
+            $schedule = [];
+        }
         return $this->render('player/training.html.twig' , array('schedule' => $schedule,
             'monday' => strval($Monday),
             'sunday' => strval($Sunday),
@@ -258,7 +262,7 @@ class PlayerController extends AbstractController
     public function Requests()
     {
         $user = $this->getUser();
-        $requests = $this->getUser()->getrequestToUser();
+        $requests = $this->getUser()->getRequestFromUser();
         return $this->render('player/requests.html.twig', array("requests" => $requests,
             "playerName" =>$user->getName(),
             "profile_img" => $user->getPlayer()->getImage()));
@@ -274,12 +278,20 @@ class PlayerController extends AbstractController
         $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($playerTeam->getId());
         $teams = $this->playerPropService->getTeams($playerTeam->getDivision()  );
 
+        $playedMatches = $playerService->getPlayedMatches($player);
+        $titularMatchers = $playerService->getTitularPlayedMatches($player);
+        $playerGoals = $playerService->getGoals($player);
+        $playedMinutes = $playerService->getTotalPlayedMinutes($player);
         return $this->render('player/stats.html.twig', array(
             "playerName" => $this->getUser()->getName(),
             "profile_img" => $player->getImage(),
             "player" =>  $this->getUser()->getPlayer(),
             "upComingMatches" => $upComingMatches,
-            "teams" => $teams
+            "teams" => $teams,
+            'playedMatches' => $playedMatches,
+            'titularMatches' => $titularMatchers,
+            'goals' => $playerGoals,
+            'playedMinutes' => $playedMinutes
 
         ));
     }
@@ -322,30 +334,6 @@ class PlayerController extends AbstractController
         return json_decode($request->request->get($prop));
     }
 
-    /**
-     * @Route("/player/acceptCoachRequest/{id}")
-     */
-    public function acceptCoachRequest($id, CoachToPlayerRequestRepository $coachToPlayerRequestRepository){
-        $em = $this->getDoctrine()->getManager();
-        $player = $this->getUser()->getPlayer();
-        $request = $this->getDoctrine()->getManager()->getRepository(CoachToPlayerRequest::class)->find($id);
-
-        if ($player->getTeam() == null && $player->getYouthTeams() == null){
-//            var_dump($request);
-            if ($request->getCoach()->getTeam() == null){
-                $player->setYouthTeam($request[0]->getCoach()->getYouthTeam());
-            }else{
-                $player->setTeam($request->getCoach()->getTeam());
-            }
-            $em->persist($player);
-            $em->remove($request);
-            $em->flush();
-            echo "You have been accept the coach request and now you are a part of this club ";
-            exit;
-        }
-        echo "First you have to leave your club to have a chance to accept this request";
-        exit;
-    }
 
     /**
      * @Route("/player/removeCurrentClub")
@@ -362,60 +350,6 @@ class PlayerController extends AbstractController
         exit;
     }
 
-    /**
-     * @Route("/player/sendRequestToClub/{id}/{message}")
-     */
-    public function sendRequestToTeam($id, $message)
-    {
-
-        $player = $this->getUser()->getPlayer();
-        if (count($player->getRequestToTeam()) > 0 ){
-            echo "You have one request to a team";
-            exit;
-        }
-
-        $em = $this->getDoctrine()->getManager();
-        $request = new PlayerToTeamRequest();
-        if ($player->getTeam() == null){
-            $team = $em->getRepository(Team::class)->find(intval($id));
-            $request->setPlayer($player);
-            $request->setTeam($team);
-            $request->setDate(date('m-d-Y'));
-            $request->setMessage($message);
-            $em->persist($request);
-            $em->flush();
-        }
-        echo "You leave successfully your team!";
-        exit;
-    }
-    /**
-     * @Route("/player/getPlayerRequests")
-     */
-    public function getTeamRequest(CoachToPlayerRequestRepository $coachToPlayerRequestRepository){
-        $player = $this->getUser()->getPlayer();
-        $returnedInformation =[];
-
-        $encoders = [new JsonEncoder()]; // If no need for XmlEncoder
-        $normalizers = [new ObjectNormalizer()];
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $requestFromTeams = $coachToPlayerRequestRepository->findBy(["player" => $player->getId()]);
-            for ($i = 0; $i < count($requestFromTeams); $i++) {
-                $returnedInformation[$i][0] = $requestFromTeams[$i]->getCoach()->getTeam();
-                $returnedInformation[$i][1] = $requestFromTeams[$i]->getId();
-            }
-
-        $jsonObject = $serializer->serialize($requestFromTeams, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            },
-            [AbstractNormalizer::IGNORED_ATTRIBUTES  => [['users']]]
-        ]);
-
-
-        return new Response($jsonObject, 200, ['Content-Type' => 'application/json']);
-
-    }
 
 
 

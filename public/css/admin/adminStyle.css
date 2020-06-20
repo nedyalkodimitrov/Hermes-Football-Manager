@@ -8,9 +8,8 @@ nav {
     box-sizing: border-box;
 }
 .div-charts{
-    border: 2px solid rgba(201, 119, 13, 0.8);
-    box-shadow: 1px 1px 5px 1px rgba(201, 119, 13, 0.4);
-    border-radius: 15px;
+    border: 2px solid rgba(150, 148, 147, 0.8);
+    box-shadow: 1px 1px 5px 1px rgba(253, 253, 253, 0.4);
     padding: 1rem;
 }
 
@@ -22,7 +21,7 @@ nav {
 
 .country-fa-times{
     color: white;
-    text-shadow: 2px 0 0 #3f3f3f, 0 -2px 0 #3f3f3f, 0 2px 0 #3f3f3f, -2px 0 0 #3f3f3f;
+    text-shadow: 2px 0 0 #FD4200, 0 -2px 0 #FD4200, 0 2px 0 #FD4200, -2px 0 0 #FD4200;
     position: absolute;
     font-size: 25px;
     right: 3%;
@@ -32,8 +31,8 @@ nav {
 
 }
 .country-fa-times:hover {
-    color: black;
-    text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+    color: #FD4200;
+    text-shadow: 2px 0 0 #FD4200, 0 -2px 0 #FD4200, 0 2px 0 #FD4200, -2px 0 0 #FD4200;
 }
 .information-container > p {
     font-size: 2em;

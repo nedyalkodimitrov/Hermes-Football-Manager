@@ -94,6 +94,12 @@ class Team
      */
     private $coaches;
 
+    /**
+     * Many Categories have One Category.
+     * @ORM\OneToMany(targetEntity="App\Entity\Requests\Division\DivisionRequest", mappedBy="team")
+     */
+    private $divisionRequest;
+
 
     /**
      * @ORM\OneToMany(targetEntity="Admin", mappedBy="team")
@@ -554,6 +560,23 @@ class Team
     {
         $this->coverImage = $coverImage;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDivisionRequest()
+    {
+        return $this->divisionRequest;
+    }
+
+    /**
+     * @param mixed $divisionRequest
+     */
+    public function setDivisionRequest($divisionRequest): void
+    {
+        $this->divisionRequest = $divisionRequest;
+    }
+
 
 
 
