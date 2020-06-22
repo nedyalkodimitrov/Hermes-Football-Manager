@@ -74,14 +74,43 @@ table input[type=checkbox]:checked:after {
   left: 2em;
 }
 
+.match-status-holder button {
+  background-color: white;
+  width: 2em;
+  height: 2em;
+  border: 1px solid black;
+  transition: 0s color;
+  font-size: 1.6em;
+}
+.match-status-holder .played {
+  color: green;
+}
+.match-status-holder .played:hover {
+  background-color: green;
+  color: white;
+}
+.match-status-holder .delayed {
+  color: #d78a06;
+}
+.match-status-holder .delayed:hover {
+  background-color: #d78a06;
+  color: white;
+}
+.match-status-holder .canceled {
+  color: red;
+}
+.match-status-holder .canceled:hover {
+  background-color: red;
+  color: white;
+}
+
+.match-info-holder .information {
+  margin-top: 0.4em;
+  background-color: #075F29;
+  border-radius: 15px;
+  font-size: 1.6em;
+  padding: 0.4em;
+  color: white;
+}
+
 /*# sourceMappingURL=matchPageStyle.css.map */
-table input[type=number] {
-  border: none;
-  border-bottom: 2px solid grey;
-  transition: 0.4s;
-  -moz-appearance: textfield;
-}
-table input[type=number]:focus {
-  border: none;
-  border-bottom: 2px solid red;
-}

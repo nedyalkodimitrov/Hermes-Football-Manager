@@ -309,7 +309,7 @@ class SuperAdminController extends AbstractController
     }
 
     /**
-     * @Route("/superAdmin/matches/{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
+     * @Route("/superAdmin/matches /{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
      *
      */
     public function MatchPlayerDetailList(MatchService $matchService, Request $request,MatchesRepository $matchesRepository, $id)
@@ -372,7 +372,60 @@ class SuperAdminController extends AbstractController
     }
 
 
-    public function PhoneCheker($phone)
+    /**
+     * @Route("/superAdmin/canceledMatch" ,name  = "", methods={"POST"} )
+     *
+     */
+    public function DeleteMatch(MatchService $matchService, Request $request,MatchesRepository $matchesRepository, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $matchId = $request->request->get("matchId");
+        $match = $matchesRepository->find(intval($matchId));
+
+        $match->setIsCanceled(true);
+        $em->persist($match);
+        $em->flush();
+
+    }
+
+    /**
+     * @Route("/superAdmin/delayMatch" ,name  = "", methods={"POST"} )
+     *
+     */
+    public function DelayMatch(Request $request,MatchesRepository $matchesRepository)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $matchId = $request->request->get("matchId");
+        $matchTime = $request->request->get("matchTime");
+        $matchDate = $request->request->get("matchDate");
+        $match = $matchesRepository->find(intval($matchId));
+        $match->setDate($matchDate);
+        $match->setTime($matchTime);
+        $em->persist($match);
+        $em->flush();
+
+    }
+
+    /**
+     * @Route("/superAdmin/teamView/{id}" ,name  = "superAdminTeamView")
+     *
+     */
+    public function TeamView($id, Request $request,MatchesRepository $matchesRepository, MatchService $matchService)
+    {
+        $team = $this->getDoctrine()->getRepository(Team::class)->find($id);
+        $upcomingMatches = $matchesRepository->findUpcomingMatchesByTeam($team);
+        $pastMatches = $matchesRepository->findPastMatchesByTeam($team);
+        return $this->render('superAdmin/team.html.twig', array(
+            "team" => $team,
+            "upcomingMatches" => $upcomingMatches,
+            "pastMatches" => $pastMatches
+
+
+        ));
+
+    }
+
+        public function PhoneCheker($phone)
     {
         $player = $this->getDoctrine()->getRepository(Players::class)->findBy(["phone" => $phone]);
         $coache = $this->getDoctrine()->getRepository(Players::class)->findBy(["phone" => $phone]);

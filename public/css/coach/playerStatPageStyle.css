@@ -19,7 +19,7 @@
     transform: translate(-100%, -30%);
     z-index: 1000;
 }
-.edit-button-holder > button {
+.edit-button-holder > .edit-settings {
     position: relative;
     display: inline-block;
     border: none;
@@ -37,10 +37,10 @@
 
 }
 
-.edit-button-holder > button:hover {
+.edit-button-holder > .edit-settings:hover {
     background-size: 100% 100%;
     color: #fff;
 }
-.edit-button-holder > button:focus {
+.edit-button-holder > .edit-settings:focus {
     outline: none;
 }

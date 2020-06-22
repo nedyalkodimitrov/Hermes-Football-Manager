@@ -1,0 +1,202 @@
+{% extends 'superAdmin/base.html.twig' %}
+{% block style %}
+    {{ parent() }}
+    <link href="{{ asset("css/settingPageStyle.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="  {{ asset("css/admin/squerePlayerCardStyle.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/particles/matchCard.css") }}">
+
+{% endblock %}
+{% block body %}
+   <div class="col-11 container mt-2 ">
+       <div class="cover-photo-container">
+           <img src="{{ asset("images/"~team.CoverImage) }}" alt="" class="cover-photo">
+       </div>
+       <div class="profile-image-container">
+           <img src="{{asset("images/" ~ team.image)}}" alt="" class="profile-image m-2">
+           <div class="name-holder">
+               <h4 class="text-center"> {{ team.Name }} </h4>
+           </div>
+           <div class="edit-button-holder">
+               <button class=" btn btn-danger col-12" id=""><i class="fa fa-times"></i></button>
+           </div>
+       </div>
+   </div>
+
+    {% set players = team.players  %}
+    <div id="container ">
+        <div class="row mt-5  justify-content-center">
+            <div class="col-lg-11 col-md-10 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+                <div class="col-12 text-center">
+                    <h2 >Играчи - {{ players|length }}</h2>
+                </div>
+                {% set foo = 1 %}
+                {% for player in players %}
+                    {% if player.position == "Goalkeeper" %}
+                        <div class=" col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                            <div class="col-12 ad-player-container" id="player-{{  foo }} ">
+                                <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
+                                    {%   if  player.Status == 0 %}
+                                        <div class="status-green"></div>
+                                    {% else %}
+                                        <div class="status-red"></div>
+                                    {%  endif %}
+
+                                    {% if player.Image == null or player.Image == ' ' %}
+                                        <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                    {% else %}
+                                        <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                    {% endif %}
+
+                                    <p class="ad-player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    <p class="ad-player-position">{{ player.Position.Name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+                {% for player in players %}
+                    {% if player.position == "Defender" %}
+                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                            <div class="col-12 ad-player-container" id="player-{{  foo }} ">
+                                <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
+                                    {%   if  player.Status == 0 %}
+                                        <div class="status-green"></div>
+                                    {% else %}
+                                        <div class="status-red"></div>
+                                    {%  endif %}
+
+                                    {% if player.Image == null or player.Image == ' ' %}
+                                        <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                    {% else %}
+                                        <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                    {% endif %}
+
+                                    <p class="ad-player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    <p class="ad-player-position">{{ player.Position.Name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+                {% for player in players %}
+                    {% if player.position == "Midfielder" %}
+                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                            <div class="col-12 ad-player-container" id="player-{{  foo }} ">
+                                <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
+                                    {%   if  player.Status == 0 %}
+                                        <div class="status-green"></div>
+                                    {% else %}
+                                        <div class="status-red"></div>
+                                    {%  endif %}
+
+                                    {% if player.Image == null or player.Image == ' ' %}
+                                        <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                    {% else %}
+                                        <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                    {% endif %}
+
+                                    <p class="ad-player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    <p class="ad-player-position">{{ player.Position.Name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+                {% for player in players %}
+                    {% if player.position == "Attacker" %}
+                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                            <div class="col-12 ad-player-container" id="player-{{  foo }} ">
+                                <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
+                                    {%   if  player.Status == 0 %}
+                                        <div class="status-green"></div>
+                                    {% else %}
+                                        <div class="status-red"></div>
+                                    {%  endif %}
+
+                                    {% if player.Image == null or player.Image == ' ' %}
+                                        <img src="{{asset('images/user-image.png')}}" alt="" class="player-img">
+                                    {% else %}
+                                        <img src="{{asset('images/'~ player.Image )}}" alt="" class="player-img">
+                                    {% endif %}
+
+                                    <p class="ad-player-name">{{ player.User.Name }} {{ player.User.FName }} </p>
+                                    <p class="ad-player-position">{{ player.Position.Name }}</p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% set foo = foo + 1 %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
+        <div class="col-lg-11 col-md-11 p-0 col-sm-11 col-10   row pb-3">
+            <div class="col-12 mt-2 mb-3">
+                <h2>Мачове в първенството</h2>
+            </div>
+            <div class="col-12 mt-2 text-center mb-2">
+                <h3>Преминали мачове</h3>
+            </div>
+            {% for match in pastMatches %}
+                <div class="col-lg-4 col-sm-12 col-md-6 row m-0 p-0 mt-2 match-card">
+                    <div class="col-lg-12  col-sm-12 col-md-12  text-center mt-3 mx-auto row">
+                        <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                <h5>{{ match.homeTeam.Name }}</h5>
+                            </div>
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                <h5>{{ match.awayTeam.Name }}</h5>
+                            </div>
+                            <div class="col-12 justify-content-center mt-2 mb-1">
+                                <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12 text-center">
+                    <h4>Няма мачове, които трябва да попълните</h4>
+                </div>
+            {% endfor %}
+            <div class="col-12 mt-5 text-center mb-2">
+                <h3>Предстоящи мачове</h3>
+            </div>
+            {% for match in upcomingMatches %}
+                <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+                    <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                        <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                <h5>{{ match.homeTeam.Name }}</h5>
+                            </div>
+                            <div class="col-6">
+                                <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                <h5>{{ match.awayTeam.Name }}</h5>
+                            </div>
+                            <div class="col-12 justify-content-center mt-2 mb-1">
+                                <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12 text-center">
+                    <h4>Няма предстоящи мачове в първенството</h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

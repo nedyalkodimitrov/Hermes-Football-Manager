@@ -9,7 +9,7 @@
 }
 
 .card-header {
-    background-color: #f86954;
+    background-color: #20924d;
     padding: 50px 25px;
     width: 100%;
 }
@@ -95,10 +95,10 @@ td
 }
 
 .current-day{
-    background-color: #f86954;
+    background-color: #20924d;
 }
 .day:hover {
-    background-color: rgba(248,105,84, 0.9);
+    background-color: #046330;
 }
 
 
@@ -111,3 +111,6 @@ td
     background-color: white;
 }
 
+.btn-holder-calendar-training .btn {
+    background-color: #20924d;
+}

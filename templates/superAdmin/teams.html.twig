@@ -7,20 +7,19 @@
 {% block body %}
 
     <div class="col-12 row justify-content-center mx-auto max-resolution mt-5">
-        <div class="col-lg-11 col-md-7 col-sm-11 col-10   row pb-3">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-10   row pb-3">
             <div class="col-12">
                 <h2>Отбори</h2>
             </div>
             {% for team in teams%}
-                <div class="col-lg-3 col-sm-11 row m-0 ">
+                <div class="col-lg-3 col-sm-6 row m-0 ">
                     <div class="col-lg-12  col-sm-9 col-md-6 country-container text-center mt-3 mx-auto">
-                        <a href="" class="m-0">
+                        <a href="{{ path("superAdminTeamView", {id: team.id}) }}" class="m-0">
                             {% if team.Image == null or team.Image == "" %}
                                 <img src="{{asset("images/football-logo.jpg" )}}" alt="" class="country-img m-0">
                                 {% else  %}
                                     <img src="{{asset("images/" ~ team.Image)}}" alt="" class="country-img m-0">
                             {% endif %}
-
                             <h4 class="country-text mt-2 mb-2 ml-2 color-black text-left">{{ team.Name }}</h4>
                         </a>
 {#                        <span><i class="fas fa-times country-fa-times" id="{{ team.Id }}"></i></span>#}
@@ -36,6 +35,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="table-container justify-content-center max-resolution col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">
         <div class="table col-11  mh-25" id="teamLeadership-container ">
             <div class="col-12 mt-4 mb-4">
@@ -78,10 +78,9 @@
             {% endif %}
         </div>
     </div>
-
-
+    <hr>
     <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
-       <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10   row pb-3">
+       <div class="col-lg-11 col-md-11 p-0 col-sm-11 col-10   row pb-3">
            <div class="col-12 mt-2 mb-3">
                <h2>Мачове в първенството</h2>
            </div>
@@ -89,8 +88,8 @@
              <h3>Мачове на които трябва да попълните данните</h3>
            </div>
           {% for match in pastMatches %}
-            <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
-                <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+            <div class="col-lg-4 col-sm-12 col-md-6 row m-0 p-0 mt-2 match-card">
+                <div class="col-lg-12  col-sm-12 col-md-12  text-center mt-3 mx-auto row">
                     <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
                         <div class="col-6">
                             <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
@@ -114,6 +113,7 @@
           <div class="col-12 mt-5 text-center mb-2">
             <h3>Мачове на които трябва да попълните данните</h3>
           </div>
+
          {% for match in upcomingMatches %}
            <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
                <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
@@ -155,7 +155,7 @@
           <p class="my-auto">Създаване на мач</p>
         </button>
         <button type="button" class="create-team" name="button">
-          <p class="my-auto">Създаване на отбор</p>
+          <p class="my-auto">Добавяне на отбор</p>
         </button>
         <button type="button" name="button" class="close-menu-btn">
           <p class="my-auto">Затваряне</p>
@@ -166,33 +166,34 @@
     <div class="player-status-container row justify-content-center align-items-center">
         <div class="col-lg-9 col-sm-10 player-status-div row align-items-center justify-content-center" id="add-player" >
             <div class="col-lg-8 col-sm-11 row justify-content-around">
-                <h2 class="mb-5 col-12 text-center justify-content-center">Добавяне на  мач отбор</h2>
-                <div class="input-group mb-3 col-lg-5 col-sm-12">
-                    <select name="" id="homeTeam">
+                <h2 class="mb-5 col-12 text-center justify-content-center">Създаване на мач</h2>
+                <div class="input-group mb-3 col-lg-5 col-sm-9">
+                    <select name="" id="homeTeam" class="form-control ">
+                        <option value="0" selected="selected" disabled="disabled" class="bg-gray">Моля изберете домакин </option>
                         {% for team in teams %}
                             <option value="{{ team.id }}">{{ team.Name }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
-                <div class="input-group mb-3 col-lg-5 col-sm-12">
-                    <select class="form-control select bg-gray col-sm-12 " id="awayTeam" >
-                        <option value="0" selected="selected" disabled="disabled" class="bg-gray">Защо няма да може да доидете </option>
+                <div class="input-group mb-3 col-lg-5 col-sm-9">
+                    <select class="form-control   " id="awayTeam" >
+                        <option value="0" selected="selected" disabled="disabled" class="bg-gray">Изберете гостуващ отбор </option>
                         {% for team in teams %}
                             <option value="{{ team.id }}">{{ team.Name }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
-                <div class="input-group mb-3 col-lg-5 col-sm-12">
-                    <input type="date" id ="date" placeholder="Date">
+                <div class="input-group mb-3 col-lg-5 col-sm-9">
+                    <input type="date" id ="date" class="form-control" placeholder="Date">
                 </div>
 
-                <div class="input-group mb-3 col-lg-5 col-sm-12">
-                    <input type="time" id="time" placeholder="Time">
+                <div class="input-group mb-3 col-lg-5 col-sm-9">
+                    <input type="time" id="time" class="form-control" placeholder="Time">
                 </div>
 
-                <div class="col-12 justify-content-center row">
+                <div class="col-12 mt-2 justify-content-center row">
                     <button class="btn bg-mycolor" id="create_match">Потвърди</button>
                 </div>
             </div>

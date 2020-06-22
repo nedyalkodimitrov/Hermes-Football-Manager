@@ -93,7 +93,7 @@ class MatchController extends AbstractController
 
 
     /**
-       * @Route("/coache/match/{id}/setStartingPlayers", name="createMatchList",  methods={"POST"})
+       * @Route("/coache/match/{id}/setStartingPlayers", name="",  methods={"POST"})
      */
     public function setStartingPlayers($id, \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
     {

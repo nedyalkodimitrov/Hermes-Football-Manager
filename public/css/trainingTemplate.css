@@ -3,7 +3,9 @@
     width: 100%;
     background-color: black;
 }
-
+.card-header{
+    background-color: green;
+}
 
 .training-images{
     width: 100%;

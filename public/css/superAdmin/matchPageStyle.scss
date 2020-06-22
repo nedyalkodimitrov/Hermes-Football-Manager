@@ -86,3 +86,47 @@ table {
 }
 
 
+.match-status-holder {
+  button{
+    background-color: white;
+    width: 2em;
+    height: 2em;
+    border: 1px solid black;
+    transition: 0s color;
+    font-size: 1.6em;
+  }
+  .played {
+    color: green;
+    &:hover{
+      background-color: green;
+      color: white;
+    }
+  }
+  .delayed{
+    color: #d78a06;
+    &:hover{
+      background-color: #d78a06;
+      color: white;
+    }
+  }
+  .canceled {
+    color: red;
+
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+
+}
+
+.match-info-holder{
+  .information{
+    margin-top: 0.4em;
+    background-color: #075F29;
+    border-radius: 15px;
+    font-size: 1.6em;
+    padding: 0.4em;
+    color: white;
+  }
+}

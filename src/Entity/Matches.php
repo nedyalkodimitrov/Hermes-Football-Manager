@@ -226,6 +226,70 @@ class Matches
         $this->schemes = $schemes;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIsPlayed()
+    {
+        return $this->isPlayed;
+    }
+
+    /**
+     * @param mixed $isPlayed
+     */
+    public function setIsPlayed($isPlayed): void
+    {
+        $this->isPlayed = $isPlayed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsDelayed()
+    {
+        return $this->isDelayed;
+    }
+
+    /**
+     * @param mixed $isDelayed
+     */
+    public function setIsDelayed($isDelayed): void
+    {
+        $this->isDelayed = $isDelayed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsFriendly()
+    {
+        return $this->isFriendly;
+    }
+
+    /**
+     * @param mixed $isFriendly
+     */
+    public function setIsFriendly($isFriendly): void
+    {
+        $this->isFriendly = $isFriendly;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsCanceled()
+    {
+        return $this->isCanceled;
+    }
+
+    /**
+     * @param mixed $isCanceled
+     */
+    public function setIsCanceled($isCanceled): void
+    {
+        $this->isCanceled = $isCanceled;
+    }
+
 
 
 }
