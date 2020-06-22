@@ -1,3 +1,16 @@
-.profile_pic {
+.profile-pic-changer-image{
     border-radius: 100%;
+}
+
+.profile-pic-changer-image:hover {
+    content: "asd";
+}
+
+.profile-pic-changer-input{
+    display: none;
+}
+
+.profile-pic-changer-btn {
+    color: white;
+    background-color: green;
 }

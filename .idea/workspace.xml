@@ -21,26 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="14a0dedf-830d-4bad-a81b-8ad8cfabe7ca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/coach/playerStatPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/coach/playerStatPageStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/settingPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/settingPageStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/superAdmin/matchPageStyle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/trainingTemplate.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/trainingTemplate.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MatchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Matches.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Matches.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/coach/settingStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/coach/settingStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -387,7 +370,7 @@
       <workItem from="1592553610954" duration="12524000" />
       <workItem from="1592658013269" duration="10892000" />
       <workItem from="1592720701492" duration="3112000" />
-      <workItem from="1592798339148" duration="5533000" />
+      <workItem from="1592798339148" duration="7274000" />
     </task>
     <servers />
   </component>
