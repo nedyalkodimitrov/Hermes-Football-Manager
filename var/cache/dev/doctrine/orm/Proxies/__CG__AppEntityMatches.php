@@ -409,4 +409,92 @@ class Matches extends \App\Entity\Matches implements \Doctrine\ORM\Proxy\Proxy
         parent::setSchemes($schemes);
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsPlayed()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsPlayed', []);
+
+        return parent::getIsPlayed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsPlayed($isPlayed): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsPlayed', [$isPlayed]);
+
+        parent::setIsPlayed($isPlayed);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsDelayed()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsDelayed', []);
+
+        return parent::getIsDelayed();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsDelayed($isDelayed): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsDelayed', [$isDelayed]);
+
+        parent::setIsDelayed($isDelayed);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsFriendly()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsFriendly', []);
+
+        return parent::getIsFriendly();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsFriendly($isFriendly): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsFriendly', [$isFriendly]);
+
+        parent::setIsFriendly($isFriendly);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getIsCanceled()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIsCanceled', []);
+
+        return parent::getIsCanceled();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsCanceled($isCanceled): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsCanceled', [$isCanceled]);
+
+        parent::setIsCanceled($isCanceled);
+    }
+
 }

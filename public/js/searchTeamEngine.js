@@ -35,12 +35,12 @@ $(document).ready(function () {
                 //create a table with a new data
                 table += drawHeadOfTable();
                 for (let i = 0; i < data.length; i++) {
-                  table +=" <tr>\n" +
-                        "      <td scope=row> " + (i + 1).toString() + "</td>\n" +
-                        "      <td><img src="+data[i][2]+">"+data[i][0] +"</td>\n" +
-                        "      <td>"+data[i][1] +"</td>\n" +
-                        "      <td>"+ data[i][3] +"</td>\n" +
-                        "      <td><button class='sendRequest' value onclick='SendRequest(this.value)'>Send</button></td>\n" +
+                  table +=" <tr class='col-12 row'>\n" +
+                        "      <td scope=row class='col-1'> " + (i + 1).toString() + "</td>\n" +
+                        "      <td class='col-3'><img src="+data[i][2]+">"+data[i][0] +"</td>\n" +
+                        "      <td class='col-3'>"+data[i][1] +"</td>\n" +
+                        "      <td class='col-3'>"+ data[i][3] +"</td>\n" +
+                        "      <td class='col-2'><button class='sendRequest' value onclick='SendRequest(this.value)'>Send</button></td>\n" +
                         "    </tr>";
                 }
                 table += drawEndOfTable();
@@ -50,16 +50,17 @@ $(document).ready(function () {
     }
 
     function drawHeadOfTable(){
-        return ('<table class="table table-dark" id="teamSearchTable">\n' +
+        return ('<table class="table row" id="teamSearchTable">\n' +
             '  <thead>\n' +
-            '    <tr>\n' +
-            '      <th scope="col">#</th>\n' +
-            '      <th scope="col">First</th>\n' +
-            '      <th scope="col">Last</th>\n' +
-            '      <th scope="col">Handle</th>\n' +
-            '      <th scope="col">Handle</th>\n' +
+            '    <tr class="col-12 row">\n' +
+            '      <th scope="col" class="col-1"></th>\n' +
+            '      <th scope="col" class="col-3">Отбор</th>\n' +
+            '      <th scope="col" class="col-3">Град</th>\n' +
+            '      <th scope="col" class="col-3">Лига</th>\n' +
+            '      <th scope="col" class="col-2">Деиствия</th>\n' +
             '    </tr>\n' +
-            '  </thead>');
+            '  </thead>' +
+            '<tbody class="col-12 row p-0 m-0 ">');
     }
 
     function drawEndOfTable(){

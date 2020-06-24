@@ -92,24 +92,24 @@
                     {% endif %}
 {#                    first form#}
                     {{ form_start(playerForm) }}
-                        <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
+                        <label for="form_image " class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic img img-responsive full-width"></label>
                         {{ form_widget(playerForm.image, {'attr' : {'class' : 'inputfile', 'id' : 'uploadImage'}})  }}
                     {{ form_end(playerForm) }}
 
 {#                    second form#}
                     {{ form_start(formStats) }}
-                        <label for="player_stats_height" class="">Височина</label>
-                        {{ form_widget(formStats.height, {'attr' : {'class' : 'input', 'id' : 'player_stats_height', 'value': playerStats.Height}})  }}
+                        <label for="player_stats_height form-group" class="">Височина</label>
+                        {{ form_widget(formStats.height, {'attr' : {'class' : 'input form-group', 'id' : 'player_stats_height', 'value': playerStats.Height}})  }}
                         <br>
                         <label for="player_stats_weight" class="">Тегло</label>
-                        {{ form_widget(formStats.weight, {'attr' : {'class' : 'input ', 'id' : 'player_stats_weight', 'value': playerStats.Weight}})  }}
+                        {{ form_widget(formStats.weight, {'attr' : {'class' : 'input form-group', 'id' : 'player_stats_weight', 'value': playerStats.Weight}})  }}
                     {{ form_end(formStats) }}
 
                     {{ form_start(playerInfoForm) }}
 
-                        <label for="player_stats_phone" class="">Telfon</label>
+                        <label for="player_stats_phone form-group" class="">Telfon</label>
 {#                        {{ form_widget(playerInfoForm.phone {'attr' : {'class' : 'input ', 'id' : 'player_stats_phone', 'value' : player.User.Phone}})  }}#}
-                    {{ form_widget(playerInfoForm.phone, {'attr' : {'class' : 'input ', 'id' : 'player_stats_phone', 'value': player.User.Phone}})  }}
+                    {{ form_widget(playerInfoForm.phone, {'attr' : {'class' : 'input form-group ', 'id' : 'player_stats_phone', 'value': player.User.Phone}})  }}
 
                     {{ form_end(playerInfoForm) }}
                     <div class="col-12 justify-content-center texte-center">
@@ -117,6 +117,7 @@
                             Потвърдете
                         </button>
                     </div>
+                    <span><i class="fas fa-times-circle" ></i></span>
                 </div>
             </div>
         </div>

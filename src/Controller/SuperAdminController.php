@@ -192,49 +192,92 @@ class SuperAdminController extends AbstractController
 
 
     /**
-     * @Route("/superAdmin/deleteTeam/{id}" ,name  = "superAdminDeleteTeam")
+     * @Route("/superAdmin/removeTeam/{id}" ,name  = "superAdminDeleteTeam")
      *
      */
-    public function DeleteTeam($id, Request $request, AuthenticationUtils $authUtils)
+    public function RemoveTeam($id, Request $request, AuthenticationUtils $authUtils, MatchesRepository $matchesRepository)
     {
-        $team = $this->getDoctrine()->getRepository(Teams::class)->find(intval($id));
-        $players = $this->getDoctrine()->getRepository(Players::class)->findBy(["team" =>intval($id)]);
-        $coaches= $this->getDoctrine()->getRepository(Coaches::class)->findBy(["team" =>intval($id)]);
-        $admin = $this->getDoctrine()->getRepository(Admins::class)->findBy(["team" =>intval($id)]);
+        $team = $this->getDoctrine()->getRepository(Team::class)->find(intval($id));
         $em = $this->getDoctrine()->getManager();
-        foreach ($coaches as $coache){
-            $em->remove($coache->getUserId());
-            $em->flush();
-            $em->remove($coache);
-            $em->flush();
+        $division = $team->getDivision();
+        $homeMatches = $matchesRepository->findBy(
+            [
+                "homeTeam" => $team,
+                "division" => $division
+            ]
+        );
+        $awayMatches = $matchesRepository->findBy(
+            [
+                "awayTeam" => $team,
+                "division" => $division
+            ]
+        );
 
+        for ($i = 0; $i < count($homeMatches); $i++) {
+            $matchStats = $homeMatches[$i]->getMatchStats();
+            if ($matchStats != null) {
+                $homeTeamGoals = $homeMatches[$i]->getMatchStats()->getHomeTeamGoals();
+                $awayTeamGoals = $homeMatches[$i]->getMatchStats()->getAwayTeamGoals();
+                $awayTeam = $homeMatches[$i]->getAwayTeam();
+                if ($awayTeamGoals > $homeTeamGoals) {
+                    $awayTeam->setPoints($awayTeam->getPoints() - 3);
+                    $awayTeam->setWins($awayTeam->getWins() - 1);
+
+                } else if ($awayTeamGoals < $homeTeamGoals) {
+                    $awayTeam->setPoints($awayTeam->getPoints() + 3);
+                    $awayTeam->setWins($awayTeam->getLostGames() - 1);
+                } else {
+                    $awayTeam->setPoints($awayTeam->getPoints() - 1);
+                    $awayTeam->setWins($awayTeam->getDrawsGames() - 1);
+                }
+
+                $awayTeam->setGoals($awayTeam->getGoals() - $awayTeamGoals);
+                $awayTeam->setGoalsInTheTeamDoor($awayTeam->getGoalsInTheTeamDoor() - $homeTeamGoals);
+
+                $em->persist($awayTeam);
+                $em->flush();
+            }else{
+                $homeMatches[$i]->setIsCanceled(true);
+            }
         }
-        foreach ($players as $player){
-            $em->remove($player->getUserId());
-            $em->remove($player);
-            $em->flush();
+
+        for ($i = 0; $i < count($awayMatches); $i++){
+                $matchStats = $awayMatches[$i]->getMatchStats();
+                if ($matchStats != null){
+
+                    $homeTeamGoals = $awayMatches[$i]->getMatchStats()->getHomeTeamGoals();
+                    $awayTeamGoals = $awayMatches[$i]->getMatchStats()->getAwayTeamGoals();
+                    $homeTeam = $homeMatches[$i]->getHomeTeam();
+                    if ($awayTeamGoals < $homeTeamGoals){
+                        $homeTeam->setPoints($homeTeam->getPoints() - 3);
+                        $homeTeam->setWins($homeTeam->getWins() - 1);
+
+                    }else if ($awayTeamGoals > $homeTeamGoals){
+                        $homeTeam->setPoints($homeTeam->getPoints() + 3);
+                        $homeTeam->setWins($homeTeam->getLostGames() - 1);
+                    }else{
+                        $homeTeam->setPoints($homeTeam->getPoints() - 1);
+                        $homeTeam->setWins($homeTeam->getDrawsGames() - 1);
+                    }
+
+                    $homeTeam->setGoals($homeTeam->getGoals() - $homeTeamGoals);
+                    $homeTeam->setGoalsInTheTeamDoor($homeTeam->getGoalsInTheTeamDoor() - $awayTeamGoals);
+
+                    $em->persist($homeTeam);
+                    $em->flush();
+            }else{
+                    $awayMatches[$i]->setIsCanceled(true);
+                }
         }
 
-
-        foreach ($admin as $ad){
-            $userAcc = $ad->getUserId();
-            $em->remove($ad);
+        $team->setDivision(null);
             $em->flush();
-
-            $em->remove($userAcc);
-            $em->flush();
-        }
-
-
-        $em->remove($team);
-        $em->flush();
-
         echo 1;
         exit;
 
     }
     /**
-     * @Route("/superAdmin/deleteDivision" ,name  = "superAdminDeleteDivision")
+     * @Route("/superAdmin/deleteremDivision" ,name  = "superAdminDeleteDivision")
      *
      */
     public function DeleteDivision(Request $request, AuthenticationUtils $authUtils)

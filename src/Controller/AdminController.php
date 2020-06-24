@@ -275,7 +275,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/getPlayersByName" , name = "deleteCoache")
      */
-    public function GetPlayersByName(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository,TeamRepository $teamRepository, YouthTeamRepository $youthTeamRepository)
+    public function GetPlayersByName(Request $request, UserRepository $userRepository, PlayerService $playerService, PlayerRepository $playerRepository,TeamRepository $teamRepository, YouthTeamRepository $youthTeamRepository)
     {
         $playerInfo =$request->request->get("playerInfo");
 
@@ -286,7 +286,7 @@ class AdminController extends AbstractController
             $playerInformation = [];
             $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
             $player = $user->getPlayer();
-            $playerTeam = $playerRepository->getPlayerTeam($player);
+            $playerTeam = $playerService->getPlayerTeam($player);
             $playerInformation[0] = $user;
             $playerInformation[1] = $player->getPosition()->getName();
             $playerInformation[2] = $user->getCity()->getName(). ", " . $user->getCity()->getCountry()->getName()  ;
@@ -294,7 +294,10 @@ class AdminController extends AbstractController
             $playerInformation[4] =   $player->getId();
             $players[$i] = $playerInformation;
         }
-        return new JsonResponse($players);
+         $response = new JsonResponse();
+        $response->setData($players);
+        return $response;
+
     }
 
     /**

@@ -10,21 +10,21 @@
 {% endblock %}
  {% block nav %}
      <a class="nav-item nav-link ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
-     <a class="nav-item nav-link ml-2 current-item" href="{{ path("manTeam") }}">Мъжки отбор</a>
-     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Юнушестки отбори</a>
-     <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Програма</a>
+     <a class="nav-item nav-link current-item ml-2 " href="{{ path("manTeam") }}">Мъжки отбор</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("requestView") }}">Заявки</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("divisionView") }}">Лига</a>
  {% endblock  %}
 {%  block body %}
     <div id="container ">
         <div class="row mt-5  justify-content-center">
-            <div class="col-lg-11 col-md-10 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+            <div class="col-lg-11 col-md-10 col-sm-11 col-10 div-charts row pb-3">
                 <div class="col-12 text-center">
                     <h2 >Играчи</h2>
                 </div>
                 {% set foo = 1 %}
                 {% for player in players %}
                     {% if player.position == "Goalkeeper" %}
-                        <div class=" col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                        <div class=" col-6 p-0 m-0 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
                             <div class="col-12 ad-player-container" id="player-{{  foo }} ">
                                 <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
                                     {%   if  player.Status == 0 %}
@@ -50,7 +50,7 @@
                 {% endfor %}
                 {% for player in players %}
                     {% if player.position == "Defender" %}
-                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                        <div class="col-6 p-0 m-0 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
                             <div class="col-12 ad-player-container" id="player-{{  foo }} ">
                                 <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
                                     {%   if  player.Status == 0 %}
@@ -76,7 +76,7 @@
                 {% endfor %}
                 {% for player in players %}
                     {% if player.position == "Midfielder" %}
-                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                        <div class="col-6 p-0 m-0 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
                             <div class="col-12 ad-player-container" id="player-{{  foo }} ">
                                 <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
                                     {%   if  player.Status == 0 %}
@@ -102,7 +102,7 @@
                 {% endfor %}
                 {% for player in players %}
                     {% if player.position == "Attacker" %}
-                        <div class="col-6 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
+                        <div class="col-6 p-0 m-0 col-lg-3 col-sm-6 col-md-4 mt-4 justify-content-center row mb-sm-2">
                             <div class="col-12 ad-player-container" id="player-{{  foo }} ">
                                 <a href="{{ path("adminPlayerStatsView", {id: player.id}) }}">
                                     {%   if  player.Status == 0 %}
@@ -133,13 +133,13 @@
 
     <div id="container ">
         <div class="row mt-5  justify-content-center">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-center div-charts row pb-3">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10  div-charts row pb-3">
                 <div class="col-12 text-center">
                     <h2 >Треньори</h2>
                 </div>
                 {% set foo = 1 %}
                 {% for coache in coaches%}
-                    <div class=" col-lg-3 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
+                    <div class=" col-lg-3 p-0 m-0 col-sm-12 col-md-12 justify-content-center player_portfolio row ">
                         <div class="col-12  ad-player-container " id="player-{{  foo }} ">
                             {% if coache.Image == null or coache.Image == ' ' %}
                                 <img src="{{asset('images/user1-white2.png')}}" alt="" class="player_img">

@@ -41,7 +41,6 @@
                     <a class="nav-item nav-link  current-item ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
                     <a class="nav-item nav-link ml-2 " href="{{ path("manTeam") }}">Мъжки отбор</a>
                     <a class="nav-item nav-link ml-2 " href="{{ path("requestView") }}">Заявки</a>
-                    <a class="nav-item nav-link ml-2 " href="{{ path("youthTeams") }}">Програма</a>
                     <a class="nav-item nav-link ml-2 " href="{{ path("divisionView") }}">Лига</a>
 
                 {% endblock  %}
@@ -51,7 +50,7 @@
                 {% if profile_img == ''  or profile_img == null %}
                     <button class="settings-icon"> <span class="mr-3"><i class="fas fa-user"></i></span></button>
                 {% else %}
-                    <a href="#" class="profile_pic_a "><img src="{{asset("images/" ~ profile_img)}}" alt="" class="user_profile_img"></a>
+                    <a href="{{ path("adminSettingView") }}" class="profile_pic_a "><img src="{{asset("images/" ~ profile_img)}}" alt="" class="user_profile_img"></a>
                 {% endif %}
 
             </div>

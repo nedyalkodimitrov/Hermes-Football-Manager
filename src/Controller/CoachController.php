@@ -148,28 +148,31 @@ class CoachController extends AbstractController
      */
     public function TrainingAction(Request $request, UserRepository $userRepository, PlayerRepository $playerRepository, PlayerService $playerService)
     {
+            $coach = $this->getUser()->getCoach();
           $playerInfo = $request->get("playerName");
           $results = $userRepository->findPlayer($playerInfo);
           $players = [];
+
 
         for ($i = 0; $i < count($results); $i++){
               $playerInformation = [];
               $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);
               $player = $user->getPlayer();
               $playerTeam = $playerService->getPlayerTeam($player);
-              $playerInformation[0] = $user;
-              $playerInformation[1] = $player->getPosition()->getName();
-              $playerInformation[2] = $user->getCity()->getName(). ", " . $user->getCity()->getCountry()->getName()  ;
-              $playerInformation[3] = $playerTeam;
-              $playerInformation[4] =   $player->getId();
-              $players[$i] = $playerInformation;
+              if ($playerTeam->getId() != $coach->getTeam()->getId()) {
+                  $playerInformation[0] = $user;
+                  $playerInformation[1] = $player->getPosition()->getName();
+                  $playerInformation[2] = $user->getCity()->getName() . ", " . $user->getCity()->getCountry()->getName();
+                  $playerInformation[3] = $playerTeam;
+                  $playerInformation[4] = $player->getId();
+                  $players[$i] = $playerInformation;
+              }
           }
           $response = new JsonResponse();
-        // ...
+
         $response->setData($players);
 
-       // return $jsonObject;
-// For instance, return a Response with encoded Json
+
        return $response;
        exit;
     }

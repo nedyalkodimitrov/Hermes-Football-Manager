@@ -39,10 +39,12 @@ class CoachRequestController extends AbstractController
 
         foreach($allRequestFromCoach as $requestFromCoach){
             if ($requestFromCoach->getReceiver()->getId() ==  $player->getId()){
-                echo "this player has a request ";
+                echo "2 ";
                 exit;
             }
         }
+
+
 
         if($player != null)
         {
@@ -50,7 +52,7 @@ class CoachRequestController extends AbstractController
             $toPlayerRequest->setSender($coach->getUser());
             $toPlayerRequest->setReceiver($player);
             $toPlayerRequest->setDate(date("d/m/Y"));
-            $toPlayerRequest->setType(self::requestType);
+            $toPlayerRequest->setType("coach-player");
             $em->persist($toPlayerRequest);
             $em->flush();
 //            var_dump($toPlayerRequest);
@@ -103,7 +105,7 @@ class CoachRequestController extends AbstractController
 
 
     /**
-     * @Route("/coache/requests")
+     * @Route("/coache/requests", name="allRequestsView")
 
      */
     public function requestsView(){

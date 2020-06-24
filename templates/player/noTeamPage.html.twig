@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ asset("css/particles/searchEngine.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/typography.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/player/searchTeamBoxStartPageStyle.css") }}">
+        <link rel="stylesheet" href="{{ asset('css/particles/tableViewStyle.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link href="{{ asset("mdb/css/mdb.min.css") }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+        <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
+
+
+    </head>
+<body>
+    <div class="col-12 text-center container ">
+        <h4>До сега сте нямали отбор и за да продължите напреде вие треябва да си намерите отбор</h4>
+        <div class="search-container full-sized-search-box mt-4">
+            <div class="search-box full-sized-search-box">
+                <input type="text" placeholder="Type to search" class="search-text" id="search" >
+                <button  class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div class="requestsFromTeam"></div>
+        <div class="teamSearchResult">
+        </div> <div class="requestsFromTeam"></div>
+        <div class="teamSearchResult">
+        </div>
+        {% if requests|length != 0 %}
+            <div class="col-11 text-center mx-auto mt-3">
+                <h2>Не може да приемате зачвките на други отбори, докато имате отбор</h2>
+            </div>
+            <table class=" col-12 mt-4 mx-auto "  style="margin-bottom: 0; padding:0">
+                <thead>
+                <tr class="row col-12 p-0 m-0 ">
+                    <th class="col-1"></th>
+                    <th class="col-4 color-white">Име</th>
+                    <th class="col-4 color-white">Дата на изпращане на заявката</th>
+                    <th class="col-3 color-white">Действия</th>
+                </tr>
+                </thead>
+                <tbody class="col-12 row p-0 m-0 ">
+                {% set rowNum = 1 %}
+                {% for request in requests %}
+                    <tr class="teamTable row col-12 p-0 m-0 bg-gray">
+                        <th  class="col-1  justify-content-end"> {{ rowNum }}</th>
+                        <th class="col-4 p-0"> {{ request.receiver.name }} {{ request.receiver.fName }} </th>
+                        <th class="col-4 p-0 "> {{ request.date }} </th>
+                        <th class="col-3 p-0 row ">
+                            <button class="btn success" onclick="RemoveRequestSendItFromTeam({{ request.id }})"><i class="fa fa-check"></i></button>
+                            <button class="btn danger" onclick="RemoveRequestSendItFromTeam({{ request.id }})"><i class="fa fa-times"></i></button>
+                        </th>
+                    </tr>
+                    {% set rowNum = rowNum + 1 %}
+                {% else %}
+                    <li><em>Вие нямате отбор</em></li>
+                {%  endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2 class="text-center">Нямате покани от други отбори</h2>
+        {% endif %}
+
+    </div>
+</body>
+</html>

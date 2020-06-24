@@ -7,6 +7,7 @@ use App\Entity\Matches;
 use App\Entity\MatchList;
 use App\Repository\CoachRepository;
 use App\Repository\MatchesRepository;
+use App\Repository\MatchListRepository;
 use App\Repository\PlayerRepository;
 use App\Service\CoachService;
 use App\Service\MatchService;
@@ -93,7 +94,7 @@ class MatchController extends AbstractController
 
 
     /**
-       * @Route("/coache/match/{id}/setStartingPlayers", name="",  methods={"POST"})
+       * @Route("/coache/match/{id}/setStartingPlayers",  methods={"POST"})
      */
     public function setStartingPlayers($id, \Symfony\Component\HttpFoundation\Request $request, PlayerRepository $playerRepository)
     {
@@ -134,6 +135,37 @@ class MatchController extends AbstractController
       );
 
     }
+
+    /**
+     * @Route("/player/pastMatch/{id}", name="playerPastMatchView",  methods={"GET"})
+     */
+    public function playerPastMatchView($id, \Symfony\Component\HttpFoundation\Request $request, MatchListRepository $matchListRepository)
+    {
+        $player = $this->getUser()->getPlayer();
+        $em = $this->getDoctrine()->getManager();
+        $match = $this->getDoctrine()->getRepository(Matches::class)->find($id);
+        $coach = $this->getUser()->getCoach();
+
+        $matchRecord = $matchListRepository->findBy(
+            [
+                "player"=> 1,
+                "match" => 3,
+            ]
+        );
+
+
+        return $this->render('player/pastMatches.html.twig',
+            array(
+                'profile_img' => $player->getImage(),
+                'match' => $match,
+                'matchRecord' => $matchRecord[0]
+            )
+        );
+
+    }
+
+
+
 
 
 

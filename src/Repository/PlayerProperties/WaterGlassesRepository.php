@@ -31,7 +31,9 @@ class WaterGlassesRepository extends \Doctrine\ORM\EntityRepository
     public function getWaterGlassesByUserASC($userId){
         return $this->_em
             ->getRepository(WaterGlasses::class)
-            ->findBy(['playerId' => $userId], [ 'id' => 'ASC'])[0];
+            ->findBy(['playerId' => $userId], [ 'id' => 'DESC'],
+                7
+            );
     }
 
     public function setWaterGlass($player, $date){

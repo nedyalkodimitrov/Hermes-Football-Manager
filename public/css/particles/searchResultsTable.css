@@ -16,7 +16,7 @@
 
 #teamSearchTable tr,
 #playerSearchTable tr{
-    color: white;
+    color: black;
 }
 #teamSearchTable tbody, #teamSearchTable thead,
 #playerSearchTable tbody,  #playerSearchTable thead

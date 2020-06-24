@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/particles/tableViewStyle.css') }}">
 {% endblock %}
+{% block nav %}
+     <a class="nav-item nav-link ml-2" href="{{ path("adminHomeAction") }}">Начална страница </a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("manTeam") }}">Мъжки отбор</a>
+     <a class="nav-item nav-link ml-2 " href="{{ path("requestView") }}">Заявки</a>
+     <a class="nav-item nav-link current-item ml-2 " href="{{ path("divisionView") }}">Лига</a>
+{% endblock  %}
 {% block body  %}
     <div class="table-container col-lg-12 col-md-12 col-sm-12 col-12  mx-0 p-0 mt-lg-2 mt-md-2 mt-sm-5 mt-5 row ">
         <div class="table col-11 mx-auto p-0   mh-25" id="teamLeadership-container ">

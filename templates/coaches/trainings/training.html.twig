@@ -156,6 +156,7 @@
     <div class="player-status-container row justify-content-center ">
         <div class="col-9  player-status-div   justify-content-center" id="add-player" >
             <div class="container col-12 row justify-content-center search-container-holder">
+                <h2 class="text-center col-12 mt-3 mb-2">Добавяне на играч</h2>
                 <div class="search-container mt-3  justify-content-center">
                     <div class="search-box full-sized-search-box">
                         <input type="text" placeholder="Ивайло Колев" class="search-text" id="search">
@@ -187,8 +188,26 @@
                url: "sendPlayerRequest/"+value,
            })
                .done(function (data) {
+                   console.log(data)
+                    if (data == 2){
+                        iziToast.show({
+                            id: null,
+                            class: '',
+                            title: 'Вече сте изпратили заявка към този играч ',
+                            titleColor: 'red',
+                            titleSize: '15',
+                            titleLineHeight: '',
+                            message: 'sadasdasdsads',
+                            messageColor: 'green',
+                            messageSize: '10',
+                            messageLineHeight: '',
+                            backgroundColor: 'red',
+                            theme: 'light', // dark
+                            color: '', // blue, red, green, yellow
 
-                   console.log(value)
+                        });
+                    }
+
                });
                };
 

@@ -40,10 +40,10 @@ $(document).ready(function () {
                     if (playerTeam == null){
                         playerTeam = "Няма";
                     }
-                    table +=" <tr>\n" +
+                     table +=" <tr>\n" +
                         "      <td scope=row> " + (i + 1).toString() + "</td>\n" +
                         "      <td><img src=>"+data[i][0]["name"] + " " + data[i][0]["fName"] +"</td>\n" +
-                        "      <td>"+playerTeam +"</td>\n" +
+                        "      <td>"+playerTeam["name"] +"</td>\n" +
                         "      <td>"+ data[i][0]["player"]["position"]["name"] +"</td>\n" +
                         "      <td>"+ data[i][0]["phone"] +"</td>\n" +
                         "      <td><button class='sendRequest' onclick='Click(this.value, this)' value="+data[i][4] +">Send</button></td>\n" +

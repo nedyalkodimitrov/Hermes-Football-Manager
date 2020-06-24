@@ -20,6 +20,7 @@ use App\Repository\MatchesRepository;
 use App\Repository\PlayerProperties\WaterGlassesRepository;
 use App\Repository\PlayerRepository;
 use App\Repository\Requests\CoachToPlayerRequestRepository;
+use App\Repository\Requests\UserToUserRequestRepository;
 use App\Repository\TeamRepository;
 use App\Service\FileService;
 use App\Service\PlayerService;
@@ -55,7 +56,7 @@ class PlayerController extends AbstractController
     /**
      * @Route("/player", name ="playerView")
      */
-    public function IndexView()
+    public function IndexView(UserToUserRequestRepository $userToUserRequestRepository)
     {
         $user = $this->getUser();
         $player =  $user->getPlayer();
@@ -64,6 +65,8 @@ class PlayerController extends AbstractController
         $lastWaterRecord = $this->playerPropService->LastWaterRecord($user, $user->getId());
         $allWaterRecords = $this->waterGlassRepo->getWaterGlassesByUserASC($user->getId());
         $playerTeam = $this->playerPropService->getTeam($player);
+        $allWaterRecords = array_reverse($allWaterRecords);
+
         if ($playerTeam != null) {
             $teams = $this->playerPropService->getTeams($playerTeam->getDivision());
             $hasTeam = true;
@@ -72,10 +75,22 @@ class PlayerController extends AbstractController
             $hasTeam = false;
         }
 
-        $playerNames = $this->playerPropService->generateName($player->getUser()->getFName());
+        $request = $userToUserRequestRepository->findBy(
+            [
+                "type" => 'coach-player',
+                "receiver" => $player
+            ]
+        );
 
+        $playerNames = $this->playerPropService->generateName($player->getUser()->getFName());
+        if (!$hasTeam ){
+            return $this->render('player/noTeamPage.html.twig', array('coachStatus' => $playerStats->getStatusFromCoaches(),
+
+                'requests' => $request
+            ));
+        }
         return $this->render('player/index.html.twig', array('coachStatus' => $playerStats->getStatusFromCoaches(),
-            'playerFat' => $playerStats->getFat(),
+            'playerStats' => $playerStats,
             'pace' => $playerStats->getPace(),
             'teams' => $teams,
             'hasTeam' => $hasTeam,
@@ -84,6 +99,7 @@ class PlayerController extends AbstractController
             'allWatersGlasese' => $allWaterRecords,
             'profile_img' => $player->getImage(),
             'playerName' => $playerNames,
+            'requests' => $request
         ));
     }
 
@@ -101,11 +117,11 @@ class PlayerController extends AbstractController
             $this->waterGlassRepo->save($water_glasses);
 
         }
-        return 'success';
+        return $this->json(1);;
     }
 
     /**
-     * @Route("/player/addWaterGlasses", name = "addWaterGlassAction")
+     * @Route("/player/addWaterGlasses", name = "addWaterGlassActions")
      */
     public function AddWaterGlassesAction()
     {
@@ -117,7 +133,7 @@ class PlayerController extends AbstractController
             $water_glasses->setWaterGlasses($water_glasses->getWaterGlasses() + 1);
             $this->waterGlassRepo->save($water_glasses);
         }
-        return 'success';
+        return $this->json(1);
     }
 
     /**
@@ -273,6 +289,7 @@ class PlayerController extends AbstractController
      */
     public function Stats(PlayerService $playerService, MatchesRepository $matchesRepository)
     {
+
         $player =  $this->getUser()->getPlayer();
         $playerTeam = $playerService->getPlayerTeam($player);
         $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($playerTeam->getId());
@@ -295,6 +312,7 @@ class PlayerController extends AbstractController
 
         ));
     }
+
 
     /**
      * @Route("/player/getOutOfTeam", name="getOutOfteam")

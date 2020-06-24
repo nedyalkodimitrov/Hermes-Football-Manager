@@ -2,6 +2,8 @@
 
 namespace App\Controller\Requests;
 
+use App\Entity\Coach;
+use App\Entity\Player;
 use App\Entity\Requests\UserToUserRequest;
 use App\Repository\CoachRepository;
 use App\Repository\PlayerRepository;
@@ -100,5 +102,45 @@ class AdminRequestController extends AbstractController
         exit;
     }
 
+    /**
+     * @Route("/admin/acceptPlayerRequest", name="adminAceptPlayerRequest", methods={"POST"})
+     */
+    public function acceptPlayerRequest(Request $request){
+        $playerId = $request->request->get("playerId");
+        $admin = $this->getUser()->getAdmin();
+        $team = $admin->getTeam();
 
-}
+        $player = $this->getDoctrine()->getRepository(Player::class)->find(intval($playerId));
+        $player->setTeam($team);
+        echo "The player is accepted successful";
+        exit();
+    }
+    /**
+     * @Route("/admin/acceptCoachrRequest", name="adminAceptCoachRequest", methods={"POST"})
+     */
+    public function acceptCoachRequest(Request $request){
+        $coachId = $request->request->get("coachId");
+        $admin = $this->getUser()->getAdmin();
+        $team = $admin->getTeam();
+
+        $player = $this->getDoctrine()->getRepository(Coach::class)->find(intval($coachId));
+        $player->setTeam($team);
+        echo "The player is accepted successful";
+        exit();
+    }
+
+    /**
+     * @Route("/admin/removeRequest", name="adminRemoveRequest", methods={"POST"})
+     */
+    public function removeCoachRequest(Request $request, UserToUserRequestRepository $userToUserRequestRepository){
+        $requestId = $request->request->get("requestId");
+        $em = $this->getDoctrine()->getManager();
+        $matchRecord = $userToUserRequestRepository->find($requestId);
+
+        $em->remove($matchRecord);
+        $em->flush();
+        return $this->json(1);
+
+    }
+
+    }

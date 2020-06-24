@@ -70,38 +70,7 @@
             </div>
         </div>
     </div>
-    <div id="container ">
-        <div class="row mt-5  justify-content-center">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3">
-                <div class="col-12 text-center">
-                    <h2 >Топ трима играча от юношеските отбори</h2>
-                </div>
-                {% set foo = 1 %}
-                {% for player in youthPlayers %}
-                    <div class="col-lg-3 col-sm-12 col-md-12 justify-content-around player_portfolio row ">
-                        <div class="col-12  top-player-card-container" id="player-{{  foo }} ">
-{#                            {%   if  player.Status == 0 %}#}
-{#                                <div class="status-green"></div>#}
-{#                                {% else %}#}
-{#                                <div class="status-red"></div>#}
-{#                            {%  endif %}#}
-                             <div class="top-player-image-container">
-                                {% if player.Image == null or player.Image == ' ' %}
-                                    <img src="{{asset('images/user-image.png')}}" alt="" class="top-player-card-img">
-                                {% else %}
-                                    <img src="{{asset('images/'~ player.Image )}}" alt="" class="top-player-card-img">
-                                {% endif %}
-                             </div>
-                            <p class="top-player-card-name">{{ player.User.Name }} {{ player.User.FName }}</p>
-{#                            <span><i class="fas fa-times country-fa-times players" id="{{ player.Id }}"></i></span>#}
-                        </div>
-                    </div>
-                    {% set foo = foo + 1 %}
-                {% endfor %}
 
-            </div>
-        </div>
-    </div>
 
     <div id="container ">
         <div class="row mt-5  justify-content-center">

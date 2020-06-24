@@ -1,6 +1,7 @@
 .searchTeamBox{
-    height: 100vh;
-    position: fixed;
+    min-height: 100vh;
+    position: absolute;
+    overflow: scroll;
     top: 0;
     z-index: 100000;
     background: white;
@@ -10,6 +11,8 @@
 #teamSearchTable{
     border-radius: 7px;
     text-align: left;
+    max-height: 20em;
+    overflow: scroll;
 }
 
 #teamSearchTable tr{
