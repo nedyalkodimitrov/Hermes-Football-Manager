@@ -88,23 +88,43 @@
              <h3>Мачове на които трябва да попълните данните</h3>
            </div>
           {% for match in pastMatches %}
-            <div class="col-lg-4 col-sm-12 col-md-6 row m-0 p-0 mt-2 match-card">
-                <div class="col-lg-12  col-sm-12 col-md-12  text-center mt-3 mx-auto row">
-                    <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
-                        <div class="col-6">
-                            <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
-                            <h5>{{ match.homeTeam.Name }}</h5>
-                        </div>
-                        <div class="col-6">
-                            <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
-                            <h5>{{ match.awayTeam.Name }}</h5>
-                        </div>
-                        <div class="col-12 justify-content-center mt-2 mb-1">
-                            <h5 class="information">{{ match.date }} {{ match.time }}</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
+              {% if match.IsCanceled == true  %}
+                  <div class="col-lg-4 col-sm-12 col-md-6 row m-0 p-0 mt-2 match-card">
+                      <div class="col-lg-12  col-sm-12 col-md-12  text-center mt-3 mx-auto row">
+                          <a href="" class="m-0 row col-12">
+                              <div class="col-6">
+                                  <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                  <h5>{{ match.homeTeam.Name }}</h5>
+                              </div>
+                              <div class="col-6">
+                                  <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                  <h5>{{ match.awayTeam.Name }}</h5>
+                              </div>
+                              <div class="col-12 justify-content-center mt-2 mb-1">
+                                  <h5 class="information btn-danger">Мачът е отложен</h5>
+                              </div>
+                          </a>
+                      </div>
+                  </div>
+                  {% else %}
+                      <div class="col-lg-4 col-sm-12 col-md-6 row m-0 p-0 mt-2 match-card">
+                          <div class="col-lg-12  col-sm-12 col-md-12  text-center mt-3 mx-auto row">
+                              <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                                  <div class="col-6">
+                                      <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                      <h5>{{ match.homeTeam.Name }}</h5>
+                                  </div>
+                                  <div class="col-6">
+                                      <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                      <h5>{{ match.awayTeam.Name }}</h5>
+                                  </div>
+                                  <div class="col-12 justify-content-center mt-2 mb-1">
+                                      <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                                  </div>
+                              </a>
+                          </div>
+                      </div>
+              {% endif %}
             {% else %}
               <div class="col-12 text-center">
                 <h4>Няма мачове, които трябва да попълните</h4>
@@ -115,23 +135,43 @@
           </div>
 
          {% for match in upcomingMatches %}
-           <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
-               <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
-                   <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
-                       <div class="col-6">
-                           <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
-                           <h5>{{ match.homeTeam.Name }}</h5>
-                       </div>
-                       <div class="col-6">
-                           <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
-                           <h5>{{ match.awayTeam.Name }}</h5>
-                       </div>
-                       <div class="col-12 justify-content-center mt-2 mb-1">
-                           <h5 class="information">{{ match.date }} {{ match.time }}</h5>
-                       </div>
-                   </a>
-               </div>
-           </div>
+             {% if match.isCanceled %}
+                 <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+                     <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                         <a  class="m-0 row col-12">
+                             <div class="col-6">
+                                 <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                 <h5>{{ match.homeTeam.Name }}</h5>
+                             </div>
+                             <div class="col-6">
+                                 <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                 <h5>{{ match.awayTeam.Name }}</h5>
+                             </div>
+                             <div class="col-12 justify-content-center mt-2 mb-1">
+                                 <h5 class="information btn-danger">Мачът е отложен</h5>
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+                 {% else %}
+                     <div class="col-lg-4 col-sm-12 row m-0 p-0 match-card">
+                         <div class="col-lg-12  col-sm-9 col-md-6 text-center mt-3 mx-auto row">
+                             <a href="{{ path("matchView", {"id" : match.id}) }}" class="m-0 row col-12">
+                                 <div class="col-6">
+                                     <img src="{{asset("images/" ~ match.homeTeam.Image)  }}" alt="">
+                                     <h5>{{ match.homeTeam.Name }}</h5>
+                                 </div>
+                                 <div class="col-6">
+                                     <img src="{{asset("images/" ~ match.awayTeam.Image)  }}" alt="" class="" >
+                                     <h5>{{ match.awayTeam.Name }}</h5>
+                                 </div>
+                                 <div class="col-12 justify-content-center mt-2 mb-1">
+                                     <h5 class="information">{{ match.date }} {{ match.time }}</h5>
+                                 </div>
+                             </a>
+                         </div>
+                     </div>
+             {% endif %}
            {% else %}
               <div class="col-12 text-center">
                 <h4>Няма предстоящи мачове в първенството</h4>

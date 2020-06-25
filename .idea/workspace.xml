@@ -20,48 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14a0dedf-830d-4bad-a81b-8ad8cfabe7ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/player/pastMatchStyle.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/coach/requests/acceptRequestFromCoach.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/coach/requests/acceptRequestFromPlayer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/coach/requests/removeRequestSendItByTeamToCoach.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/coach/requests/removeRequestSendItByteamToPlayer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/player/noTeamPage.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/player/pastMatches.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/particles/searchResultsTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/searchResultsTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/particles/tableViewStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/tableViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/particles/tableViewStyle.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/tableViewStyle.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/particles/tableViewStyle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/tableViewStyle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/player/searchTeamBoxStartPageStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/player/searchTeamBoxStartPageStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/coach/searchPlayers.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/coach/searchPlayers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/searchTeamEngine.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/searchTeamEngine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CoachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CoachController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MatchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Requests/AdminRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Requests/AdminRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Requests/CoachRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Requests/CoachRequestController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PlayerProperties/WaterGlassesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PlayerProperties/WaterGlassesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/division.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/division.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/home.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/menTeam.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/menTeam.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/requests.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/requests.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/stats.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/teamsDivisions.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/teamsDivisions.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityMatches.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityMatches.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityMatches.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
@@ -411,7 +377,8 @@
       <workItem from="1592720701492" duration="3112000" />
       <workItem from="1592798339148" duration="10484000" />
       <workItem from="1592891765478" duration="14894000" />
-      <workItem from="1592973276332" duration="13762000" />
+      <workItem from="1592973276332" duration="14384000" />
+      <workItem from="1593098471923" duration="5954000" />
     </task>
     <servers />
   </component>

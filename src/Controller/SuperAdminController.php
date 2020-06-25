@@ -37,7 +37,7 @@ class SuperAdminController extends AbstractController
      */
     public function signInView(Request $request, AuthenticationUtils $authUtils, DivisionRepository $divisionRepository)
     {
-        $teams = $this->getDoctrine()->getRepository(Admin::class)->findAll();
+        $teams = $this->getDoctrine()->getRepository(Team::class)->findAll();
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         $divisions = $this->getDoctrine()->getRepository(Division::class)->findAll();
         $youthDivisions = $this->getDoctrine()->getRepository(YouthDivision::class)->findAll();
@@ -352,7 +352,7 @@ class SuperAdminController extends AbstractController
     }
 
     /**
-     * @Route("/superAdmin/matches /{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
+     * @Route("/superAdmin/matches/{id}" ,name  = "matchPlayerDetailList", methods={"POST"} )
      *
      */
     public function MatchPlayerDetailList(MatchService $matchService, Request $request,MatchesRepository $matchesRepository, $id)

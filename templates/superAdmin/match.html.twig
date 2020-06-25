@@ -2,6 +2,7 @@
 {% block style %}
 {#    <link rel="stylesheet" href="  {{ asset("css/admin/topPlayerCard.css") }}">#}
     <link rel="stylesheet" href="  {{ asset("css/superAdmin/matchPageStyle.css") }}">
+    <link rel="stylesheet" href="  {{ asset("css/superAdmin/hiddenOptionMenu.css") }}">
 {% endblock %}
 {% block body %}
 
@@ -115,28 +116,106 @@
             <th class="col-1 my-auto color-white">От</th>
             <th class="col-1 my-auto color-white">До</th>
         </tr>
+        <tr class="startedPlayers">
+            <th class="col-12 text-center p-1"><h4>Титуляри</h4></th>
+        </tr>
         {% for matchList in match.MatchList %}
-                {% if matchList.Player.Team == match.AwayTeam.Name %}
+            {% if matchList.Player.Team == match.AwayTeam.Name %}
+                {% if matchList.IsStarting == 1 %}
                     {% set player = matchList.Player %}
-                    <tr class="teamTable awayTeamPlayer ow col-12 p-1 m-0">
-                        <th  class="col-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}}</th>
-                        <th class="col-1 my-auto"><input type="number" min="0" max="6"></th>
-                        <th class="col-1 my-auto"><input type="number" min="0" max="6"></th>
-                        <th class="col-1 my-auto"><input type="number" min="0" max="15"></th>
-                        <th class="col-1 my-auto"><input type="checkbox"></th>
-                        <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
-                        <th class="col-1 my-auto"><input type="number" min="0" max="90"></th>
+
+                    <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                        <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                        <th class="col-1 my-auto"><input type="number"  min="0" max="6" class="goals form-control" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" min="0" max="6" class="form-control" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" min="0" max="15" class="form-control" value="0"></th>
+                        <th class="col-2 col-lg-1 my-auto"><input type="checkbox" checked disabled></th>
+                        <th class="col-1 my-auto"><input type="number" min="0" max="0"  class="form-control" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" min="1" max="90" class="form-control" value="1"></th>
+                        <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
                         <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                        <input type="hidden" name="" value="{{player.Id}}">
+
 
                     </tr>
-                    {% else %}
                 {% endif %}
-            {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <tr class="reservePlayers">
+            <th class="col-12 text-center p-1"><h4>Резерви</h4></th>
+        </tr>
+        {% for matchList in match.MatchList %}
+            {% if matchList.Player.Team == match.AwayTeam.Name %}
+                {% if matchList.IsStarting == 0 %}
+                    {% set player = matchList.Player %}
+                    <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                        <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                        <th class="col-1 my-auto"><input type="number" class="form-control" min="0" max="6" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" class="form-control" min="0" max="6" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" class="form-control" min="0" max="15" value="0"></th>
+                        <th class="col-2 col-lg-1 my-auto"><input type="checkbox"></th>
+                        <th class="col-1 my-auto"><input type="number" min="0" class="form-control" max="90" value="0"></th>
+                        <th class="col-1 my-auto"><input type="number" min="0" class="form-control" max="90" value="0"></th>
+                        <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
+                        <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                        <input type="hidden" name="" value="{{player.Id}}">
+                    </tr>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     </table>
 
     <div class="col-12 text-center">
         <button class="btn btn-danger sendInformation">Потвърждаване на резултата</button>
     </div>
+
+
+    <div class="option-hidden-menu" id="canceledMatch">
+        <div class="options">
+
+            <button type="button" name="button" class="create-match">
+                <p class="my-auto">Анулиране на мача</p>
+            </button>
+            <button type="button" name="button" class="close-menu-btn">
+                <p class="my-auto">Затваряне</p>
+            </button>
+        </div>
+    </div>
+  <div class="option-hidden-menu" id="canceledMatch">
+        <div class="options">
+
+            <button type="button" name="button" class="create-match">
+                <p class="my-auto">Анулиране на мача</p>
+            </button>
+            <button type="button" name="button" class="close-menu-btn">
+                <p class="my-auto">Затваряне</p>
+            </button>
+        </div>
+    </div>
+  <div class="option-hidden-menu" id="canceledMatch">
+        <div class="options">
+
+            <button type="button" name="button" class="canceleMatch">
+                <p class="my-auto">Анулиране на мача</p>
+            </button>
+            <button type="button" name="button" class="close-menu-btn">
+                <p class="my-auto">Затваряне</p>
+            </button>
+        </div>
+    </div>
+    <div class="option-hidden-menu" id="delayed">
+        <div class="options">
+
+            <button type="button" name="button" class="canceleMatch">
+                <p class="my-auto">Анулиране на мача</p>
+            </button>
+            <button type="button" name="button" class="close-menu-btn">
+                <p class="my-auto">Затваряне</p>
+            </button>
+        </div>
+    </div>
+
+
 <script type="text/javascript" src="{{asset('js/superAdmin/matchStatsEvent.js')}}">
 
 </script>
@@ -176,6 +255,39 @@
             });
         });
 
+        $(".fa-times").on("click", function ()
+        {
+            $('#canceledMatch').css('visibility', 'visible');
+
+            $('.close-menu-btn').on('click', function () {
+                $('#canceledMatch').css('visibility', 'hidden');
+            });
+
+            $(".canceleMatch").on('click', function (){
+                $.ajax({
+                    type: "POST",
+                    url: "superAdmin/canceledMatch",
+                    data: {"matchId" : {{ match.id }}
+                })
+                    .done(function( msg ) {
+                        window.location.replace("superAdmin");
+                    });
+
+
+            });
+
+
+        });
+
+        });
+        $(".fa-clock").on("click", function ()
+        {
+
+        });
+        $(".fa-check").on("click", function ()
+        {
+
+        });
 
 
 
