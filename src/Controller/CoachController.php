@@ -69,7 +69,12 @@ class CoachController extends AbstractController
             $teams = $teamRepository->getTeamByDivisionDesc($teamCoach->getDivision()->getId());
             $players = $teamCoach->getPlayers();
         }
-
+        $teamPosition = 0;
+        for ($i = 0; $i < count($teams); $i++){
+            if ($teams[$i]->getId() == $teamCoach->getId()){
+                $teamPosition = $i + 1;
+            }
+        }
 
         return $this->render('coaches/index.html.twig', array(
             'playersCount' => count($players),
@@ -82,7 +87,8 @@ class CoachController extends AbstractController
             'division' => $teamCoach->getDivision()->getName(),
             'hasTeam' => $hasTeam,
             'myTeam' => $teamCoach,
-            'teams' =>$teams
+            'teams' =>$teams,
+            'teamPosition' =>$teamPosition,
 
         ));
 
@@ -228,7 +234,7 @@ class CoachController extends AbstractController
         $newCoach = new Coach();
         $form = $this->createFormBuilder($newCoach)
             ->add('image', FileType::class, array('data_class' => null, ))
-            ->add('save', SubmitType::class, ['label' => 'Create Task'])
+            ->add('save', SubmitType::class, ['label' => 'Задай новата снимка'])
             ->getForm();
         $form->handleRequest($request);
 

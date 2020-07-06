@@ -20,15 +20,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14a0dedf-830d-4bad-a81b-8ad8cfabe7ca" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/match.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/coachStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/coachStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/typography.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/typography.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/loginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/loginPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/particles/main-information-charts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/main-information-charts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/coach/matchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/coach/matchEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/coach/matchGroupListEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/coach/matchGroupListEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CoachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CoachController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MatchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Requests/Coach/CoachToTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Requests/Coach/CoachToTeamRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/TeamService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TeamService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/match.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/match.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/matchPlayersView.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/matchPlayersView.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/matches.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/matches.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/pastMatches.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/pastMatches.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/playerStat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/playerStat.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/playerBaseTemplate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/playerBaseTemplate.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/requests.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/requests.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/settings/settings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/settings/settings.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/stats.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/training.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/superAdmin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__AppEntityMatches.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,9 +186,10 @@
       <path value="$PROJECT_DIR$/vendor/twig/extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/symfony/test-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug-bundle" />
-      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easy-log-handler" />
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-profiler-bundle" />
@@ -160,7 +198,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/debug-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
       <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
-      <path value="$PROJECT_DIR$/vendor/easycorp/easy-log-handler" />
     </include_path>
   </component>
   <component name="ProjectId" id="1Ukm9aH6SGnh9GaZ6X2jn0KZbMp" />
@@ -186,13 +223,6 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Develpment\Symfony\Hermes2\templates" />
-      <recent name="D:\Develpment\Symfony\Hermes2\public" />
-      <recent name="D:\Develpment\Symfony\Hermes2\assets" />
-      <recent name="D:\Develpment\Symfony\Hermes2\assets\js" />
-      <recent name="D:\Develpment\Symfony\Hermes2\assets\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Develpment\Symfony\Hermes2\templates\coaches\matches" />
       <recent name="D:\Develpment\Symfony\Hermes2\src\Entity\Requests\Player" />
@@ -200,7 +230,15 @@
       <recent name="D:\Develpment\Symfony\Hermes2\src\Entity\Requests\Team" />
       <recent name="D:\Develpment\Symfony\Hermes2\public\images" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Develpment\Symfony\Hermes2\templates" />
+      <recent name="D:\Develpment\Symfony\Hermes2\public" />
+      <recent name="D:\Develpment\Symfony\Hermes2\assets" />
+      <recent name="D:\Develpment\Symfony\Hermes2\assets\js" />
+      <recent name="D:\Develpment\Symfony\Hermes2\assets\css" />
+    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -378,12 +416,17 @@
       <workItem from="1592798339148" duration="10484000" />
       <workItem from="1592891765478" duration="14894000" />
       <workItem from="1592973276332" duration="14384000" />
-      <workItem from="1593098471923" duration="5954000" />
+      <workItem from="1593098471923" duration="6581000" />
+      <workItem from="1593148800314" duration="1648000" />
+      <workItem from="1593162075712" duration="835000" />
+      <workItem from="1593167850062" duration="10411000" />
+      <workItem from="1593242200057" duration="5326000" />
+      <workItem from="1594043596563" duration="3134000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

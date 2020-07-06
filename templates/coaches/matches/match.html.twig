@@ -4,6 +4,13 @@
     <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/particles/fut-player-card.css') }}">
 {% endblock %}
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
+{% endblock %}
 {% block body %}
     <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
         <div class="col-lg-11 col-md-7 p-0 col-sm-11 col-10 justify-content-around  row pb-3">

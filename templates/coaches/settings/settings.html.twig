@@ -7,6 +7,13 @@
     <link href="{{ asset("css/coach/settingStyle.css") }}" rel="stylesheet">
     <link href="{{ asset("css/particles/hiddenDiv.css") }}" rel="stylesheet">
 {% endblock %}
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link " href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
+{% endblock %}
 {% block body %}
 <div class="container col-12 row mt-3 mb-4">
     <div class="col-10 mx-auto p-0 m-0">
@@ -17,7 +24,6 @@
             <img src="{{asset("images/" ~ image)}}" alt="" class="profile-image m-2">
             <div class="name-holder">
                 <h4 class="text-center"> {{ coach.User.Name }} {{ coach.User.FName }}</h4>
-                <h6 class="text-center">{{ coach.TeamPosition.Name }}</h6>
             </div>
             <div class="edit-button-holder">
                 <button class=" edit-settings" id="edit-settings"><i class="fas fa-pen edit-settings"></i></button>
@@ -89,7 +95,7 @@
             <label for="form_image" class="">   <img src="{{asset("images/" ~ image)}}" alt="" class="profile_pic profile-pic-changer-image img img-responsive full-width"></label>
 
             {{ form_widget(form.image, {'attr' : {'class' : 'inputfile profile-pic-changer-input', 'id' : 'uploadImage'}})  }}
-            {{ form_row(form.save, {'attr' : {'class':'btn profile-pic-changer-btn'}} ) }}
+            {{ form_row(form.save, {'attr' : {'class':'btn profile-pic-changer-btn btn-danger'}} ) }}
             {{ form_end(form) }}
             <span><i class="fas fa-times-circle" ></i></span>
         </div>

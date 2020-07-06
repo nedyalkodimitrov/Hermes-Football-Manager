@@ -25,13 +25,14 @@ form{
     left: 50%;
     top: 5%;
     transform: translate(-50%, -5%);
+    display: block;
 }
 
 img {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    height: 15em;
+    max-height: 13em;
 
 }
 

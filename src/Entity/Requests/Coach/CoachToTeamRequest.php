@@ -80,7 +80,7 @@ class CoachToTeamRequest
     /**
      * @return date
      */
-    public function getDate(): date
+    public function getDate()
     {
         return $this->date;
     }
@@ -88,7 +88,7 @@ class CoachToTeamRequest
     /**
      * @param date $date
      */
-    public function setDate(date $date): void
+    public function setDate($date): void
     {
         $this->date = $date;
     }

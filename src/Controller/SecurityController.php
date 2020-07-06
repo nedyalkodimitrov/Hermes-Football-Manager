@@ -10,14 +10,18 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-
+        if ($this->isGranted('ROLE_PLAYER')) {
+            return $this->redirectToRoute('playerView');
+        }elseif ($this->isGranted('ROLE_COACH')){
+            return $this->redirectToRoute('coacheViewAction');
+        }
+        elseif ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('adminHomeAction');
+        }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -31,6 +35,7 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
+        return $this->redirectToRoute("app_login");
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
 }

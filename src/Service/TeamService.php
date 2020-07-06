@@ -23,8 +23,13 @@ class TeamService
 
     public function getTeams($division){
         $teams = $this->teamRepo->getTeamByDivisionDesc($division->getId());
-
-
         return $teams;
     }
+
+    public function getTeamDivisionPosition($division){
+        $teams = $this->teamRepo->getTeamByDivisionDesc($division->getId());
+        return $teams;
+    }
+
+
 }

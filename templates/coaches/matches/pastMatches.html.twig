@@ -4,6 +4,14 @@
     <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/particles/fut-player-card.css') }}">
       <link rel="stylesheet" href="  {{ asset("css/superAdmin/matchPageStyle.css") }}">
+      <link rel="stylesheet" href="  {{ asset("css/particles/tableViewStyle.css") }}">
+{% endblock %}
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
 {% endblock %}
 {% block body %}
     <div class="col-12 col-lg-12 p-0 mt-4 row justify-content-center mx-auto max-resolution">
@@ -38,7 +46,82 @@
 
 
     <div class="col-12 container">
+        <table class=" col-12 mt-5"  style="margin-bottom: 0; padding:0;">
+            <thead>
+            <tr class="row col-12 p-1 m-0 table-color">
+                {% if match.HomeTeam.Id == coach.Team.Id %}
+                    <th class="col-2 col-lg-4 color-white"><img src="{{ asset("images/"~match.HomeTeam.Image) }}" alt="">{{match.HomeTeam.Name}}</th>
+                    {% else %}
+                        <th class="col-2 col-lg-4 color-white"><img src="{{ asset("images/"~match.AwayTeam.Image) }}" alt="">{{match.AwayTeam.Name}}</th>
+                {% endif %}
+                <th class="col-1 my-auto color-white">Г</th>
+                <th class="col-1 my-auto color-white">А</th>
+                <th class="col-1 my-auto color-white">У</th>
+                <th class="col-2 col-lg-1 my-auto color-white">Започнали</th>
+                <th class="col-1 my-auto color-white">От</th>
+                <th class="col-1 my-auto color-white">До</th>
+                <th class="col-1 my-auto color-white">Позиция</th>
+            </tr>
+            </thead>
+            <tr class="startedPlayers">
+                <th class="col-12 text-center p-1"><h4>Титуляри</h4></th>
+            </tr>
+            {% for matchList in match.MatchList %}
+                {% if matchList.Player.Team.Id == coach.Team.Id %}
+                    {% if matchList.IsStarting == 1 %}
+                        {% set player = matchList.Player %}
+                        <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                            <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                            <th class="col-1 my-auto">{{ matchList.goals }}</th>
+                            <th class="col-1 my-auto">{{ matchList.assits }}</th>
+                            <th class="col-1 my-auto">{{ matchList.saves }}</th>
+                            {% if matchList.isPlayed == 1 %}
+                                <th class="col-2 col-lg-1 my-auto">Да</th>
+                                {% else %}
+                                <th class="col-2 col-lg-1 my-auto">Не</th>
 
+                            {% endif %}
+                            <th class="col-1 my-auto">{{ matchList.startTime }}</th>
+                            <th class="col-1 my-auto">{{ matchList.endTime }}</th>
+                            <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
+                            <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                            <input type="hidden" name="" value="{{player.Id}}">
+
+
+                        </tr>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <tr class="reservePlayers">
+                <th class="col-12 text-center p-1"><h4>Резерви</h4></th>
+            </tr>
+            {% for matchList in match.MatchList %}
+                {% if matchList.Player.Team.Id == coach.Team.Id %}
+                    {% if matchList.IsStarting == 1 %}
+                        {% set player = matchList.Player %}
+                        <tr class="teamTable homeTeamPlayer row col-12 p-1 m-0">
+                            <th  class="col-2 col-lg-4 justify-content-end"><img src="{{ asset("images/"~player.Image) }}" alt=""> {{ player.User.Name }} {{  player.User.FName}} </th>
+                            <th class="col-1 my-auto">{{ matchList.goals }}</th>
+                            <th class="col-1 my-auto">{{ matchList.assits }}</th>
+                            <th class="col-1 my-auto">{{ matchList.saves }}</th>
+                            {% if matchList.isPlayed == 1 %}
+                                <th class="col-2 col-lg-1 my-auto">Да</th>
+                            {% else %}
+                                <th class="col-2 col-lg-1 my-auto">Не</th>
+
+                            {% endif %}
+                            <th class="col-1 my-auto">{{ matchList.startTime }}</th>
+                            <th class="col-1 my-auto">{{ matchList.endTime }}</th>
+                            <th class="col-1 my-auto"><p>{{player.Position}}</p></th>
+                            <input type="hidden" name="" value="{{matchList.IsStarting}}">
+                            <input type="hidden" name="" value="{{player.Id}}">
+
+
+                        </tr>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </table>
       
     </div>
 {% endblock %}

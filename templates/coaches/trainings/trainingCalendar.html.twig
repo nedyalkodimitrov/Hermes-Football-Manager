@@ -18,6 +18,13 @@
     <script type="text/javascript" src="{{ asset("js/settingsMenu.js") }}"></script>
 
 {% endblock %}
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link" href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
+{% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">

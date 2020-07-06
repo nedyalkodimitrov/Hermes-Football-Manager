@@ -4,7 +4,7 @@
 }
 
 html {
-    font: 12px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font: 13px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     font-weight: 400;
 }
 body, form, input, select, option, p, a, span  {
@@ -37,12 +37,12 @@ blockquote p:last-child{
 
 @media only screen and (min-width: 600px) {
     html {
-        font: 14px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font: 15px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     html {
-        font: 16px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+        font: 17px/1.5 "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     }
 }

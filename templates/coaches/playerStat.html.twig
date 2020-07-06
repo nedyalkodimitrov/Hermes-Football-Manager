@@ -6,9 +6,13 @@
     <link rel="stylesheet" href="{{ asset("css/particles/hiddenDiv.css") }}">
 
 {% endblock %}
-{% block nav %}
-    <a class="nav-item nav-link  ml-2" href="{{ path('coacheViewAction') }}">Начална страница</a>
-    <a class="nav-item nav-link current-item ml-2" href="{{ path("trainingView") }}">Тренировки</a>
+
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link" href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link" href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
 {% endblock %}
 {% block body %}
 
@@ -496,75 +500,76 @@
    </div>
        <script src="{{ asset('js/coach/settingsHiddenDiv.js') }}"></script>
     <script>
-        var slider = document.getElementById("myRange-1");
-        var output = document.getElementById("stat-1");
-        var slider2 = document.getElementById("myRange-2");
-        var output2 = document.getElementById("stat-2");
-        var slider3 = document.getElementById("myRange-3");
-        var output3 = document.getElementById("stat-3");
-        var slider4 = document.getElementById("myRange-4");
-        var output4 = document.getElementById("stat-4");
-        var slider5 = document.getElementById("myRange-5");
-        var output5 = document.getElementById("stat-5");
-        var slider6 = document.getElementById("myRange-6");
-        var output6 = document.getElementById("stat-6");
-        var slider7 = document.getElementById("myRange-7");
-        var output7 = document.getElementById("stat-7");
-        var slider8 = document.getElementById("myRange-8");
-        var output8 = document.getElementById("stat-8");
-        var slider9 = document.getElementById("myRange-9");
-        var output9 = document.getElementById("stat-9");
-        var slider10 = document.getElementById("myRange-10");
-        var output10 = document.getElementById("stat-10");
-
-        output.innerHTML = slider.value;
-        output2.innerHTML = slider2.value;
-        output3.innerHTML = slider3.value;
-        output4.innerHTML = slider4.value;
-        output5.innerHTML = slider5.value;
-        output6.innerHTML = slider6.value;
-        output7.innerHTML = slider7.value;
-        output8.innerHTML = slider8.value;
-        output9.innerHTML = slider9.value;
-        output10.innerHTML = slider10.value;
-
-        slider.oninput = function() {
-            output.innerHTML = this.value;
-        }
-        slider2.oninput = function() {
-            output2.innerHTML = this.value;
-        }
-        slider3.oninput = function() {
-            output3.innerHTML = this.value;
-        }
-        slider4.oninput = function() {
-            output4.innerHTML = this.value;
-        }
-        slider5.oninput = function() {
-            output5.innerHTML = this.value;
-        }
-
-        slider6.oninput = function() {
-            output6.innerHTML = this.value;
-        }
-        slider7.oninput = function() {
-            output7.innerHTML = this.value;
-        }
-        slider8.oninput = function() {
-            output8.innerHTML = this.value;
-        }
-        slider9.oninput = function() {
-            output9.innerHTML = this.value;
-        }
-        slider10.oninput = function() {
-            output10.innerHTML = this.value;
-        }
-
-        var all = parseInt(slider.value) + parseInt(slider2.value) +parseInt(slider3.value) + parseInt(slider4.value)
-            + parseInt(slider5.value) + parseInt(slider6.value) + parseInt(slider7.value) + parseInt(slider8.value)
-            +parseInt(slider9.value) + parseInt(slider10.value);
 
         $('.btn-green').on("click", function () {
+            var slider = document.getElementById("myRange-1");
+            var output = document.getElementById("stat-1");
+            var slider2 = document.getElementById("myRange-2");
+            var output2 = document.getElementById("stat-2");
+            var slider3 = document.getElementById("myRange-3");
+            var output3 = document.getElementById("stat-3");
+            var slider4 = document.getElementById("myRange-4");
+            var output4 = document.getElementById("stat-4");
+            var slider5 = document.getElementById("myRange-5");
+            var output5 = document.getElementById("stat-5");
+            var slider6 = document.getElementById("myRange-6");
+            var output6 = document.getElementById("stat-6");
+            var slider7 = document.getElementById("myRange-7");
+            var output7 = document.getElementById("stat-7");
+            var slider8 = document.getElementById("myRange-8");
+            var output8 = document.getElementById("stat-8");
+            var slider9 = document.getElementById("myRange-9");
+            var output9 = document.getElementById("stat-9");
+            var slider10 = document.getElementById("myRange-10");
+            var output10 = document.getElementById("stat-10");
+
+            output.innerHTML = slider.value;
+            output2.innerHTML = slider2.value;
+            output3.innerHTML = slider3.value;
+            output4.innerHTML = slider4.value;
+            output5.innerHTML = slider5.value;
+            output6.innerHTML = slider6.value;
+            output7.innerHTML = slider7.value;
+            output8.innerHTML = slider8.value;
+            output9.innerHTML = slider9.value;
+            output10.innerHTML = slider10.value;
+
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+            slider2.oninput = function() {
+                output2.innerHTML = this.value;
+            }
+            slider3.oninput = function() {
+                output3.innerHTML = this.value;
+            }
+            slider4.oninput = function() {
+                output4.innerHTML = this.value;
+            }
+            slider5.oninput = function() {
+                output5.innerHTML = this.value;
+            }
+
+            slider6.oninput = function() {
+                output6.innerHTML = this.value;
+            }
+            slider7.oninput = function() {
+                output7.innerHTML = this.value;
+            }
+            slider8.oninput = function() {
+                output8.innerHTML = this.value;
+            }
+            slider9.oninput = function() {
+                output9.innerHTML = this.value;
+            }
+            slider10.oninput = function() {
+                output10.innerHTML = this.value;
+            }
+
+            var all = parseInt(slider.value) + parseInt(slider2.value) +parseInt(slider3.value) + parseInt(slider4.value)
+                + parseInt(slider5.value) + parseInt(slider6.value) + parseInt(slider7.value) + parseInt(slider8.value)
+                +parseInt(slider9.value) + parseInt(slider10.value);
+
             if ($("#fat").val() > 40 || $("#pace").val() > 47 || $("#weight").val() > 120 || 0 || $("#height").val()){
 
                 iziToast.warning({
@@ -578,6 +583,7 @@
 
             }else
             {
+
                 $.ajax({
 
                     method: "POST",
@@ -586,7 +592,7 @@
                         "workHard": slider3.value, "tacktick": slider4.value,
                         "willPower": slider5.value, "dribble": slider6.value,
                         "shot": slider7.value, "technique": slider8.value, "pass": slider9.value,
-                        "perspective": slider10.value, "all": all * 10,
+                        "perspective": slider10.value, "all": all,
                         "fat": $("#fat").val(), "pace": $("#pace").val(),
                         "weight": $("#weight").val(), "height": $("#height").val(),
 

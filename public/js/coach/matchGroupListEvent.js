@@ -44,7 +44,7 @@ $(document).ready(function () {
             data: {'players': players}
         })
             .done(function( msg ) {
-                console.log(  msg );
+                window.location.replace(window.location.pathname);
             });
 
     });

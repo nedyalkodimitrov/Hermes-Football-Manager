@@ -131,6 +131,7 @@ class MatchController extends AbstractController
           array(
               'profile_img' => $coach->getImage(),
               'match' => $match,
+              'coach' => $coach
           )
       );
 

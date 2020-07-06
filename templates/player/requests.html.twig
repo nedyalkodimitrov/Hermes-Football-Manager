@@ -3,6 +3,12 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("css/player/requestPageStyle.css") }}">
 {% endblock %}
+{% block navLinks %}
+    <a class=" ml-2 navbar-link" href="#">Начална страница </a>
+    <a class="ml-2 na navbar-link " href="{{ path("playerTraining") }}">Тренировки</a>
+    <a class="ml-2 na navbar-link " href="{{ path("playerStats") }}">Статистики</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("playerRequestes") }}">Предложения от клубове </a>
+{% endblock %}
 {% block body %}
 
     <div class="table-container justify-content-center max-resolution col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row ">

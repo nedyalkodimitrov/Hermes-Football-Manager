@@ -4,6 +4,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset("css/coach/indexPageStyle.css") }}">
     <link rel="stylesheet" href="{{ asset("css/player/playerStyle.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/particles/tableViewStyle.css") }}">
 {% endblock %}
 {% block body %}
     <div id="container">
@@ -24,7 +25,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-12 col-md-12 mt-2 text-center chart-container">
                     <div class="information-container">
-                      <p>1</p>
+                      <p>{{ teamPosition }}</p>
                     </div>
                     <h3>
                         <span class="label green badge ">Временно класиране</span>
@@ -79,7 +80,7 @@
     </div>
 
 
-    <div class="table-container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 ">
+    <div class="container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 ">
         <div class="table col-11  main-charts-container  p-4 mx-auto mh-25" id="teamLeadership-container ">
             {% if hasTeam %}
                 <h4 class="col-12 text-center mt-2 mb-4">Текущо класиране</h4>

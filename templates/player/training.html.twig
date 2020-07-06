@@ -7,6 +7,12 @@
 {#     <a class="nav-item nav-link   ml-2" href="#">Начална страница </a>#}
 {#     <a class="nav-item nav-link current-item ml-2" href="{{ path("playerTraining") }}">Тренировки</a>#}
 {# {% endblock %}#}
+{% block navLinks %}
+    <a class=" ml-2 navbar-link" href="#">Начална страница </a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("playerTraining") }}">Тренировки</a>
+    <a class="ml-2 na navbar-link" href="{{ path("playerStats") }}">Статистики</a>
+    <a class="ml-2 na navbar-link" href="{{ path("playerRequestes") }}">Предложения от клубове </a>
+{% endblock %}
 {% block body%}
     <div class="table-containercol-lg-12 col-md-12 col-sm-12 col-12 ml-md-1 ml-sm-1 mx-0 p-0 mt-lg-5 mt-md-0 mt-sm-5 mt-5 row ">
         <div class="table col-11 mx-auto mh-25" id="teamLeadership-container ">
@@ -66,16 +72,15 @@
                 {% if bigCoach != null %}
                     <img src="{{asset("images/" ~ bigCoach.Image)}}" alt="" title="them's hoverin' words" class="coache_image "></label><br>
                     <h3 class="mt-3" >{{ bigCoach.User.Name }} {{ bigCoach.User.FName}} </h3>
-                    <h5 class="mt-2">Днескашно занимание: Почивка</h5>
+                    <h5 class="mt-2">Днескашно занимание: 17:00 Training </h5>
                     {% for schedules in schedule %}
                         {% if schedules.date == "now"|date()|trans %}
-                            <p>schedules.date</p>
+                            <h5>{{ schedules.date }}</h5>
                         {% endif %}
                     {% endfor %}
-                        <button class="btn main-color treatment mb-5" >Пропускане на тренировка </button>
+                    <h5>Телефонен номер: {{ bigCoach.user.phone }}</h5>
                 {% else %}
-                         <h2>Нямате главен треньор и съобщението може да не бъде видяно</h2>
-                        <button class="btn main-color treatment">Пропускане на тренировка </button>
+                    <h2>Нямате главен треньор и съобщението може да не бъде видяно</h2>
                 {% endif %}
             </div>
         </div>

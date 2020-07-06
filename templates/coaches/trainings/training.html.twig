@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="  {{ asset("css/particles/searchResultsTable.css") }}">
 {#    <link rel="stylesheet" href="  {{ asset("css/coach/particles/teamPlayerCard.css") }}">#}
 {% endblock %}
-
+{% block navLinks %}
+    <a class="ml-2 na navbar-link " href="{{ path("trainingView") }}">Начална страница</a>
+    <a class="ml-2 na navbar-link current-item" href="{{ path("trainingView") }}">Отбор</a>
+    <a class="ml-2 na navbar-link" href="{{ path("trainingCalendarActionView") }}">Тренировъчен план</a>
+    <a class="ml-2 na navbar-link" href="{{ path("coachMatches") }}">Мачове</a>
+    <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
+{% endblock %}
 {% block body %}
     <img src="{{ asset("images/" ~ coachTeamImage) }}" class="mx-auto team-image mt-3" alt="">
     <h2 class="text-center mt-1">{{ coachTeamName }}</h2>

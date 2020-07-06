@@ -49,7 +49,7 @@ $(document).ready(function () {
                 $(this).removeClass("fut-player-card-clicked");
             }
         }
-        console.log(players)
+        console.log(players);
     });
 
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
             data: {'players': players}
         })
             .done(function( msg ) {
-                console.log(  msg );
+                window.location.replace(window.location.pathname);
             });
 
     });
