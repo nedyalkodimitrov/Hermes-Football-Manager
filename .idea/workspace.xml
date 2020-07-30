@@ -20,53 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="14a0dedf-830d-4bad-a81b-8ad8cfabe7ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/coach/training/training-inforamtion.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/player/addWatterGlass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/player/removeWaterGlass.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/superAdmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/coach/training/training-information.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/coach/getTrainingByDate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/coach/training/tabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/player/particles/waterChart/waterChart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/CustomSerializer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/coachStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/coachStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/typography.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/typography.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/loginPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/loginPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/particles/main-information-charts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/particles/main-information-charts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/coach/matchEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/coach/matchEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/coach/matchGroupListEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/coach/matchGroupListEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CoachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CoachController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MatchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Requests/Coach/CoachToTeamRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Requests/Coach/CoachToTeamRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/TeamService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/TeamService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/match.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/match.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/matchPlayersView.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/matchPlayersView.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/matches.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/matches.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/matches/pastMatches.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/matches/pastMatches.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/playerStat.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/playerStat.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/settings/settings.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/training.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/waterGlassesActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/waterGlassesActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/ajaxRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ajaxRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CoachController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Coach/CoachController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Player/PlayerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdmin/SuperAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Schedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Schedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ScheduleType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ScheduleType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ScheduleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ScheduleRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/coaches/trainings/trainingCalendar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/player/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/playerBaseTemplate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/playerBaseTemplate.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/requests.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/requests.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/settings/newSettingPage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/settings/settings.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/settings/settings.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/stats.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/stats.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/training.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/team.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/superAdmin/teams.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlGenerator.php.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/UrlMatcher.php.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.php.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.preload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainer.xml.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/srcApp_KernelDevDebugContainerCompiler.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/pastMatches.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/matches/pastMatches.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/requests.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/requests/requests.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/player/training.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player/training/training.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,19 +204,19 @@
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Develpment\Symfony\Hermes2\templates\coaches\matches" />
-      <recent name="D:\Develpment\Symfony\Hermes2\src\Entity\Requests\Player" />
-      <recent name="D:\Develpment\Symfony\Hermes2\src\Entity\Requests\Coach" />
-      <recent name="D:\Develpment\Symfony\Hermes2\src\Entity\Requests\Team" />
-      <recent name="D:\Develpment\Symfony\Hermes2\public\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Develpment\Symfony\Hermes2\templates" />
       <recent name="D:\Develpment\Symfony\Hermes2\public" />
       <recent name="D:\Develpment\Symfony\Hermes2\assets" />
       <recent name="D:\Develpment\Symfony\Hermes2\assets\js" />
       <recent name="D:\Develpment\Symfony\Hermes2\assets\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Develpment\Symfony\Hermes2\src\Controller\SuperAdmin" />
+      <recent name="D:\Develpment\Symfony\Hermes2\src\Controller\Admin" />
+      <recent name="D:\Develpment\Symfony\Hermes2\src\Controller\Coach" />
+      <recent name="D:\Develpment\Symfony\Hermes2\src\Controller\Player" />
+      <recent name="D:\Develpment\Symfony\Hermes2\templates\player\training" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -421,7 +402,17 @@
       <workItem from="1593162075712" duration="835000" />
       <workItem from="1593167850062" duration="10411000" />
       <workItem from="1593242200057" duration="5326000" />
-      <workItem from="1594043596563" duration="3134000" />
+      <workItem from="1594043596563" duration="3753000" />
+      <workItem from="1595406894719" duration="4655000" />
+      <workItem from="1595489345576" duration="581000" />
+      <workItem from="1595583222519" duration="4613000" />
+      <workItem from="1595661024181" duration="1014000" />
+      <workItem from="1595667331405" duration="4068000" />
+      <workItem from="1595683100790" duration="589000" />
+      <workItem from="1595773454058" duration="2289000" />
+      <workItem from="1595838295198" duration="7441000" />
+      <workItem from="1595929505409" duration="1650000" />
+      <workItem from="1596039923083" duration="8860000" />
     </task>
     <servers />
   </component>
@@ -445,18 +436,22 @@
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
     <state x="94" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1592990086799" />
-    <state x="496" y="288" key="#com.intellij.ide.util.MemberChooser" timestamp="1592695126329">
+    <state x="404" y="314" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596044311295">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state x="496" y="288" key="#com.intellij.ide.util.MemberChooser/0.0.1280.1024@0.0.1280.1024" timestamp="1592695126329" />
-    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1588576369288">
+    <state x="404" y="314" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.1024@0.0.1280.1024" timestamp="1596044311295" />
+    <state x="496" y="288" key="#com.intellij.ide.util.MemberChooser" timestamp="1595849285073">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1588576369288" />
-    <state x="370" y="256" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592914288633">
+    <state x="496" y="288" key="#com.intellij.ide.util.MemberChooser/0.0.1280.1024@0.0.1280.1024" timestamp="1595849285073" />
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1596054823693">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state x="370" y="256" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1592914288633" />
+    <state x="26" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1596054823693" />
+    <state x="370" y="256" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595874342398">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state x="370" y="256" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1595874342398" />
     <state x="274" y="290" key="EditFileWatcherDialog" timestamp="1588069653640">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
@@ -465,22 +460,26 @@
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
     <state x="385" y="267" key="FileChooserDialogImpl/0.0.1280.1024@0.0.1280.1024" timestamp="1588069645153" />
-    <state x="769" y="320" key="NewPhpClassDialog" timestamp="1592482929371">
+    <state x="769" y="320" key="NewPhpClassDialog" timestamp="1595874296244">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state x="769" y="320" key="NewPhpClassDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1592482929371" />
+    <state x="769" y="320" key="NewPhpClassDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1595874296244" />
     <state x="474" y="435" key="NewPhpFileDialog" timestamp="1588575819394">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
     <state x="474" y="435" key="NewPhpFileDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1588575819394" />
+    <state x="457" y="214" key="RollbackChangesDialog" timestamp="1596051420376">
+      <screen x="0" y="0" width="1280" height="1024" />
+    </state>
+    <state x="457" y="214" key="RollbackChangesDialog/0.0.1280.1024@0.0.1280.1024" timestamp="1596051420376" />
     <state x="141" y="154" key="SettingsEditor" timestamp="1588069657276">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
     <state x="141" y="154" key="SettingsEditor/0.0.1280.1024@0.0.1280.1024" timestamp="1588069657276" />
-    <state x="296" y="230" key="run.anything.popup" timestamp="1592306139237">
+    <state x="296" y="230" key="run.anything.popup" timestamp="1595881379233">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
-    <state x="296" y="230" key="run.anything.popup/0.0.1280.1024@0.0.1280.1024" timestamp="1592306139237" />
+    <state x="296" y="230" key="run.anything.popup/0.0.1280.1024@0.0.1280.1024" timestamp="1595881379233" />
     <state x="303" y="221" width="672" height="678" key="search.everywhere.popup" timestamp="1588068900727">
       <screen x="0" y="0" width="1280" height="1024" />
     </state>
@@ -489,11 +488,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Controller/AdminController.php</url>
-          <line>4</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/src/Entity/Division.php</url>
           <line>4</line>

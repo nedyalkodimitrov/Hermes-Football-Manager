@@ -194,34 +194,20 @@
     <script src="{{ asset("js/requestFromTeamTable.js") }}"></script>
     <script src="{{ asset("js/player/acceptTeamRequest.js") }}"></script>
     <script src="{{ asset("js/player/rejectTeamRequest.js") }}"></script>
+    <script src="{{ asset("js/player/particles/waterChart/waterChart.js") }}"></script>
 
     <script>
-        var ctxL = document.getElementById("lineChart").getContext('2d');
-        var myLineChart = new Chart(ctxL, {
-            type: 'line',
-            data: {
-                labels: [ {% for water in allWatersGlasese%}
-                    "{{ water.date  }}",
-                    {% endfor %}],
-                datasets: [{
-                    label: "Дневен прием на вода",
-                    data: [ {% for water in allWatersGlasese%}
-                        {{ water.WaterGlasses }},
-                        {% endfor %}],
-                    backgroundColor: [
-                        'rgba(105, 0, 132, .2)',
-                    ],
-                    borderColor: [
-                        'rgba(200, 99, 132, .7)',
-                    ],
-                    borderWidth: 2
-                }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+        var labels =  [
+            {% for water in allWatersGlasese%}
+                "{{ water.date  }}",
+            {% endfor %}
+        ];
+        var data = [
+            {% for water in allWatersGlasese%}
+                {{ water.WaterGlasses }},
+            {% endfor %}
+        ];
+        createChart(labels,data);
 
     </script>
 {% endblock %}

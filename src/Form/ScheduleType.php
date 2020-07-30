@@ -15,8 +15,6 @@ class ScheduleType extends AbstractType
             ->add('date')
             ->add('startTime')
             ->add('endTime')
-            ->add('description')
-            ->add('coaches')
         ;
     }
 

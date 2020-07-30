@@ -39,19 +39,16 @@ class Schedule
     public  $endTime;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string")
-     */
-    public  $description;
-
-
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Coach", inversedBy="schedule")
      * @ORM\JoinColumn(name="coaches", referencedColumnName="id")
      */
-    public $coaches;
+    private $coaches;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Training", inversedBy="schedule")
+     * @ORM\JoinColumn(name="training", referencedColumnName="id")
+     */
+    private $training;
 
     public function getId(): ?int
     {
@@ -61,7 +58,7 @@ class Schedule
     /**
      * @return string
      */
-    public function getDate(): ?string
+    public function getDate()
     {
         return $this->date;
     }
@@ -69,7 +66,7 @@ class Schedule
     /**
      * @param string $date
      */
-    public function setDate(string $date): void
+    public function setDate(string $date)
     {
         $this->date = $date;
     }
@@ -85,7 +82,7 @@ class Schedule
     /**
      * @param mixed $startTime
      */
-    public function setStartTime($startTime): void
+    public function setStartTime($startTime)
     {
         $this->startTime = $startTime;
     }
@@ -101,31 +98,17 @@ class Schedule
     /**
      * @param mixed $endTime
      */
-    public function setEndTime($endTime): void
+    public function setEndTime($endTime)
     {
         $this->endTime = $endTime;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
 
     /**
      * @return mixed
      */
-    public function getCoaches()
+    private function getCoaches()
     {
         return $this->coaches;
     }
@@ -137,6 +120,24 @@ class Schedule
     {
         $this->coaches = $coaches;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTraining()
+    {
+        return $this->training;
+    }
+
+    /**
+     * @param mixed $training
+     */
+    public function setTraining($training): void
+    {
+        $this->training = $training;
+    }
+
+
 
 
 }

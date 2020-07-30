@@ -1,0 +1,19 @@
+.training-information-container{
+
+  .shoesType , .trainingType{
+    display: flex;
+    justify-content: center;
+    button {
+      transition: 0.2s all ease;
+      background-color:rgba(62,102,70, .7);
+      .active{
+        background-color: #3e6646;
+      }
+      &:hover {
+        background-color: #3e6646;
+      }
+    }
+
+
+  }
+}

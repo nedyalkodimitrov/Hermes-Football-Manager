@@ -5,17 +5,17 @@
     <meta charset="utf-8">
     <title>FM-Football Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/calendar.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/coach/training/training-information.css')}}">
     <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
     <script type="text/javascript" src="{{ asset("js/trainingCalendar.php") }}"></script>
     <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("mdb/js/bootstrap.min.js") }}"></script>
     <script type="text/javascript" src="{{ asset("js/settingsMenu.js") }}"></script>
+    <script src="{{ asset("js/coach/training/tabs.js") }}"></script>
 
 {% endblock %}
 {% block navLinks %}
@@ -26,6 +26,8 @@
     <a class="ml-2 na navbar-link" href="{{ path("allRequestsView") }}">Заявки</a>
 {% endblock %}
 {% block body %}
+
+    <div class="col-12 text-center mx-auto mt-3"><h1>Добавяне на тренировка</h1> </div>
     <div class="container">
         <div class="row">
             <div class="calendar col-12 mt-4">
@@ -58,78 +60,141 @@
         </div>
 
         <br><hr>
-        <div class="row">
-            <div class="col-md offset-md-1">
-                <form id="form_create_appointment">
-                    <div class="form-row">
-                        <div class="col form-group">
-                            <label class="required">Дата</label>
-                            <input class="form-control date-input" type="text" id="date" data-trigger="hover" data-toggle="popover" name="_date" title="Дата" data-content="Можете да изберете всяка дата от днес, като кликнете върху номера в календара" required>
-                        </div>
-                        <div class="col form-group">
-                            <label>Описание</label>
-                            <input class="form-control" type="text" id="description">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col form-group">
-                            <label class="required">Начален час</label>
-                            <input class="form-control time-input" type="text" id="start_time" required>
-                        </div>
-                        <div class="col form-group">
-                            <label class="required">Край на събитието</label>
-                            <input class="form-control time-input" type="text" id="end_time" required>
-                        </div>
-                    </div>
-                    <div class="form-row btn-holder-calendar-training">
-                        <div class="col form-group">
-                            <button type="button" class="btn  btn-block" id="clear" onclick="clear_input()">Изчисване на формата</button>
-                        </div>
-                        <div class="col form-group">
-                            <button type="button" class="btn btn-block" id="submit" onclick="make_appointment()" disabled="disabled">Създаване на тренировка</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col offset-md-1">
-                <div class="row">
-                    <div class="col">
-                        <h3>Събития</h3>
-                    </div>
 
-                </div>
-                <table class="table table-bordered table-hover table-striped table-sm" id="delete-injured-table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col" class="text-center align-middle">Дата</th>
-                        <th scope="col" class="text-center align-middle">Описание</th>
-                        <th scope="col" class="text-center align-middle">Начален час</th>
-                        <th scope="col" class="text-center align-middle">Край на събитето</th>
-                        <th scope="col" class="text-center align-middle">Действия</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for schedule in schedules %}
-                        <tr>
-                            <th scope="col" class="text-center align-middle">{{ schedule.Date }}</th>
-                            <th scope="col" class="text-center align-middle">{{ schedule.Description }}</th>
-                            <th scope="col" class="text-center align-middle">{{ schedule.startTime}}</th>
-                            <th scope="col" class="text-center align-middle">{{ schedule.endTime }}</th>
-                            <th scope="col" class="text-center align-middle"><i class="fas fa-times"></i></th>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
 
 
+    <div class="col-12 row container p-0 m-0 container-color pt-5">
+        <div class="col-11 pb-5 mx-auto row">
+            <div class="tab col-12 mx-auto p-0 m-0 row">
+                <button class="tablinks col-6  " onclick="openTab(event, 'createTraining')">Създаване на трениривка</button>
+                <button class="tablinks col-6" onclick="openTab(event, 'viewTraining')">Гледане на тренировка</button>
+            </div>
+
+            <div id="createTraining" class="tabcontent ">
+                <div class="row">
+                    <div class="col-md offset-md-1">
+                        <form id="form_create_appointment">
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label class="required">Дата</label>
+                                    <input class="form-control date-input" type="text" id="date" data-trigger="hover" data-toggle="popover" name="_date" title="Дата" data-content="Можете да изберете всяка дата от днес, като кликнете върху номера в календара" required>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label class="required">Начален час</label>
+                                    <input class="form-control time-input" type="text" id="start_time" required>
+                                </div>
+                                <div class="col form-group">
+                                    <label class="required">Край на събитието</label>
+                                    <input class="form-control time-input" type="text" id="end_time" required>
+                                </div>
+                            </div>
+                            <div class="form-row btn-holder-calendar-training">
+                                <div class="col form-group">
+                                    <button type="button" class="btn  btn-block" id="clear" onclick="clear_input()">Изчисване на формата</button>
+                                </div>
+                                <div class="col form-group">
+                                    <button type="button" class="btn btn-block" id="submit" onclick="make_appointment()" disabled="disabled">Създаване на тренировка</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col offset-md-1">
+                        <div class="row">
+                            <div class="col">
+                                <h3>Събития</h3>
+                            </div>
+
+                        </div>
+                        <table class="table table-bordered table-hover table-striped table-sm" id="delete-injured-table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="text-center align-middle">Дата</th>
+                                <th scope="col" class="text-center align-middle">Описание</th>
+                                <th scope="col" class="text-center align-middle">Начален час</th>
+                                <th scope="col" class="text-center align-middle">Край на събитето</th>
+                                <th scope="col" class="text-center align-middle">Действия</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for schedule in schedules %}
+                                <tr>
+                                    <th scope="col" class="text-center align-middle">{{ schedule.Date }}</th>
+                                    {#                            <th scope="col" class="text-center align-middle">{{ schedule.Description }}</th>#}
+                                    <th scope="col" class="text-center align-middle">{{ schedule.startTime}}</th>
+                                    <th scope="col" class="text-center align-middle">{{ schedule.endTime }}</th>
+                                    <th scope="col" class="text-center align-middle"><i class="fas fa-times"></i></th>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="viewTraining" class="tabcontent col-12">
+                <div class="col-12 row ">
+                    <div class="col-12  training-information-container">
+                        <div class="shoesType ">
+                            <h4>Вид бутонки</h4>
+                            {% for shoesType in shoesTypes %}
+                                <button class="btn "> {{ shoesType.type }}</button>
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <div class="trainingType  ">
+                            <h4 >Вид тренировка</h4>
+                            {% for trainingType in trainingTypes %}
+                                <button class="btn "> {{ trainingType.type }}</button>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-6"></div>
+
+    </div>
+
+{{ form(form) }}
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
     <script src="{{ asset("js/calendar.js")}}"></script>
+    <script src="{{ asset("js/coach/getTrainingByDate.js")}}"></script>
+
+    <script>
+
+        $('.active').on('click', function() {
+            var date = $('.date-input').val();
+            var trainings = getTrainingByDate(date);
+            console.log(trainings);
+            let fun
+            console.log("dasdas");
+            if(trainings.length != 0){
+                for (let i = 0; i < trainings.length; i ++){
+
+
+                }
+
+
+
+
+            }
+
+        });
+
+    </script>
+
+
 {% endblock %}
 

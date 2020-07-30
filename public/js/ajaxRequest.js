@@ -11,7 +11,7 @@ $('.btn-submit').on('click', function() {
         data: {'appbundle_users[email]': email, 'appbundle_users[password]': pass, 'appbundle_users[name]': name, 'appbundle_users[fName]': fName, 'role': role}
     })
         .done(function( msg ) {
-            console.log(  msg );
+            console.log(JSON.parse(msg));
         });
 
 

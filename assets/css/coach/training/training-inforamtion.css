@@ -1,0 +1,12 @@
+.training-information-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
+.training-information-container .shoesType, .training-information-container .trainingType {
+  display: flex;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=training-inforamtion.css.map */

@@ -46,6 +46,17 @@ class ScheduleRepository extends ServiceEntityRepository
         ->getQuery()->getResult();
     }
 
+    public function findTrainingByDate($value)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.date = :val')
+            ->setParameter('val', $value)
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     // /**
     //  * @return Schedule[] Returns an array of Schedule objects
