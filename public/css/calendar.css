@@ -31,15 +31,14 @@
 }
 .weekdays > th
 {
-    border-radius: 5px;
+
 }
 
 tr{
-    border-radius: 15px;
+
 }
 td
 {
-    border-radius: 5px;
     overflow: hidden;
 }
 

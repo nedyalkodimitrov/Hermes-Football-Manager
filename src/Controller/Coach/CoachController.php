@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CoachController extends AbstractController
 {
+    const PrefixRoutePath = "coach";
     const HeadCoach = 'HEAD_COACH';
     const requestType = "coach-player";
     protected $coachService;

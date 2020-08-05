@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="{{ asset('css/calendar.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/coach/training/training-information.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/coach/training/style.css')}}">
     <script type="text/javascript" src="{{  asset("mdb/js/jquery-3.3.1.min.js")}}"></script>
     <script type="text/javascript" src="{{ asset("js/trainingCalendar.php") }}"></script>
     <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
@@ -40,7 +40,7 @@
                             </li>
                         </ul>
                     </div>
-                    <table class="table calendar table-bordered table-responsive-sm "  id="calendar">
+                    <table class="table calendar table-bordered  "  id="calendar">
                         <thead>
                         <tr class="weekdays bg-dark">
                             <th scope="col" class="text-white text-center">Пон</th>
@@ -66,14 +66,14 @@
 
     <div class="col-12 row container p-0 m-0 container-color pt-5">
         <div class="col-11 pb-5 mx-auto row">
-            <div class="tab col-12 mx-auto p-0 m-0 row">
+            <div class="tab col-12 mx-auto p-0 row">
                 <button class="tablinks col-6  " onclick="openTab(event, 'createTraining')">Създаване на трениривка</button>
                 <button class="tablinks col-6" onclick="openTab(event, 'viewTraining')">Гледане на тренировка</button>
             </div>
 
-            <div id="createTraining" class="tabcontent ">
-                <div class="row">
-                    <div class="col-md offset-md-1">
+            <div id="createTraining" class="tabcontent col-12 ">
+                <div class="row mx-auto">
+                    <div class="col-md offset-md-0">
                         <form id="form_create_appointment">
                             <div class="form-row">
                                 <div class="col form-group">
@@ -102,58 +102,33 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col offset-md-1">
-                        <div class="row">
-                            <div class="col">
-                                <h3>Събития</h3>
-                            </div>
 
-                        </div>
-                        <table class="table table-bordered table-hover table-striped table-sm" id="delete-injured-table">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col" class="text-center align-middle">Дата</th>
-                                <th scope="col" class="text-center align-middle">Описание</th>
-                                <th scope="col" class="text-center align-middle">Начален час</th>
-                                <th scope="col" class="text-center align-middle">Край на събитето</th>
-                                <th scope="col" class="text-center align-middle">Действия</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for schedule in schedules %}
-                                <tr>
-                                    <th scope="col" class="text-center align-middle">{{ schedule.Date }}</th>
-                                    {#                            <th scope="col" class="text-center align-middle">{{ schedule.Description }}</th>#}
-                                    <th scope="col" class="text-center align-middle">{{ schedule.startTime}}</th>
-                                    <th scope="col" class="text-center align-middle">{{ schedule.endTime }}</th>
-                                    <th scope="col" class="text-center align-middle"><i class="fas fa-times"></i></th>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
 
+
+
             <div id="viewTraining" class="tabcontent col-12">
                 <div class="col-12 row ">
-                    <div class="col-12  training-information-container">
-                        <div class="shoesType ">
-                            <h4>Вид бутонки</h4>
-                            {% for shoesType in shoesTypes %}
-                                <button class="btn "> {{ shoesType.type }}</button>
-                            {% endfor %}
-                        </div>
-                        <hr>
-                        <div class="trainingType  ">
-                            <h4 >Вид тренировка</h4>
-                            {% for trainingType in trainingTypes %}
-                                <button class="btn "> {{ trainingType.type }}</button>
-                            {% endfor %}
+                    {% for schedue in schedules %}
+                        <div class="col-12  training-information-container">
+                            <div class="shoesType ">
+                                <h4>Вид бутонки</h4>
+                                <button class="btn">schedule.training.shoesType.type</button>
+                            </div>
+                            <hr>
+                            <div class="trainingType  ">
+                                <h4 >Вид тренировка</h4>
+                                {% for trainingType in trainingTypes %}
+                                    <button class="btn "> {{ trainingType.type }}</button>
+                                {% endfor %}
+                            </div>
+
+
+
                         </div>
 
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
 

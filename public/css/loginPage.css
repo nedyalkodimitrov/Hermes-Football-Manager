@@ -26,13 +26,14 @@ form{
     top: 5%;
     transform: translate(-50%, -5%);
     display: block;
+
 }
 
 img {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    max-height: 13em;
+    max-height: 11em;
 
 }
 
@@ -118,4 +119,9 @@ option {
     color: white;
     font-size: 18px;
     display: none;
+}
+label {
+    font-size: 1em;
+    font-style: italic;
+    font-weight: 500;
 }
