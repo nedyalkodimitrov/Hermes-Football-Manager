@@ -83,8 +83,7 @@ class CoachPostController extends CoachController
         $playerInfo = $request->get("playerName");
         $results = $userRepository->findPlayer($playerInfo);
         $players = [];
-
-
+        
         for ($i = 0; $i < count($results); $i++){
             $playerInformation = [];
             $user = $this->getDoctrine()->getRepository(User::class)->find($results[0]["id"]);

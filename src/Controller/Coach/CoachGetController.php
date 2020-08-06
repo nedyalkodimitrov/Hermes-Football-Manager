@@ -149,11 +149,8 @@ class CoachGetController extends CoachController
 
         for ( $i = 0; $i < count($schedules2); $i++ ){
             $dates = explode('/', strval($schedules2[$i]->getDate()));
-            if ($currentMonth[1] == $dates[1]){
+            if ($currentMonth[1] == $dates[1] && $dates[0] == $currentMonth[0]){
                 array_push($schedules, $schedules2[$i]);
-            }else{
-                $em->remove($schedules2[$i]);
-                $em->flush();
             }
         }
 

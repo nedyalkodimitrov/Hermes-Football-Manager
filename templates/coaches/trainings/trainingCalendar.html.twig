@@ -92,6 +92,18 @@
                                     <input class="form-control time-input" type="text" id="end_time" required>
                                 </div>
                             </div>
+                            <div>
+                                Тип бутонки:
+                                {% for shoesType in shoesTypes %}
+                                    <button class="btn"> {{ shoesType.Type }}</button>
+                                {% endfor %}
+                            </div>
+                            <div>
+                                Тип тренирова:
+                                {% for trainingType in trainingTypes %}
+                                    <button class="btn"> {{ trainingType.type }}</button>
+                                {% endfor %}
+                            </div>
                             <div class="form-row btn-holder-calendar-training">
                                 <div class="col form-group">
                                     <button type="button" class="btn  btn-block" id="clear" onclick="clear_input()">Изчисване на формата</button>
@@ -106,28 +118,35 @@
                 </div>
             </div>
 
-
-
             <div id="viewTraining" class="tabcontent col-12">
                 <div class="col-12 row ">
-                    {% for schedue in schedules %}
+                    {% for schedule in schedules %}
+                        <div class="date">{{ schedule.date }}</div>
                         <div class="col-12  training-information-container">
                             <div class="shoesType ">
                                 <h4>Вид бутонки</h4>
-                                <button class="btn">schedule.training.shoesType.type</button>
+                                <h4 class="">{{  schedule.training.shoesType.type}}</h4>
                             </div>
-                            <hr>
                             <div class="trainingType  ">
                                 <h4 >Вид тренировка</h4>
-                                {% for trainingType in trainingTypes %}
-                                    <button class="btn "> {{ trainingType.type }}</button>
-                                {% endfor %}
+                                <h4 class=" "> {{   schedule.training.trainingType.type }}</h4>
+                            </div>
+                            <div class="date-time">
+                                <h3>Час на започване : {{ schedule.startTime }}</h3>
+                                <h3>Час на завършване : {{ schedule.endTime}} </h3>
                             </div>
 
-
-
+                            {% for exercise in schedule.training.exercises %}
+                                <div class="exercise-container">
+                                    <h4>{{ exercise.Name }} - {{ exercise.intensityType.type }}</h4>
+                                    <h5>{{ exercise.description }}</h5>
+                                </div>
+                            {% endfor %}
                         </div>
-
+                        {% else %}
+                        <div class="no-training-information">
+                            <h5>Днеска нямате тренирвка или не е въведена информация за такава</h5>
+                        </div>
                     {% endfor %}
                 </div>
             </div>
