@@ -9,27 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\YouthDivisionRepository")
  * @ORM\Table(options={"collate"="utf8_unicode_ci", "charset"="utf8"})
  */
-class YouthDivision
+class YouthDivision extends  AbstractDivision
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Country", inversedBy="youthDivisions")
-     * @ORM\JoinColumn(name="country", referencedColumnName="id")
-     */
-    private $country;
 
 
     /**
@@ -46,52 +27,8 @@ class YouthDivision
     private $youthTeams;
 
 
-    /**
-     * @Assert\Image(
-     *     allowLandscape = false,
-     *     allowPortrait = false
-     * )
-     *
-     * @ORM\Column(name="image", type="string", nullable=true)
-     */
-    public $image;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
-     * @param mixed $country
-     */
-    public function setCountry($country): void
-    {
-        $this->country = $country;
-    }
 
     /**
      * @return int
@@ -125,21 +62,6 @@ class YouthDivision
         $this->youthTeams = $youthTeams;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image): void
-    {
-        $this->image = $image;
-    }
 
 
 }

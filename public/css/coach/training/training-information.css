@@ -1,3 +1,4 @@
+@import "../../particles/viewTrainingStyle.css";
 .training-information-container .shoesType, .training-information-container .trainingType {
   display: flex;
   justify-content: center;

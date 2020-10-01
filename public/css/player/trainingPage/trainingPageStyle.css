@@ -1,0 +1,59 @@
+#viewTraining {
+  margin: 0;
+}
+#viewTraining .viewTrainingContainer {
+  border: 3px solid #046330;
+  margin: 0;
+  padding: 0.5rem;
+}
+#viewTraining .program-today {
+  background: #035429;
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+}
+#viewTraining .program-today hr {
+  background-color: black;
+  height: 1px;
+}
+#viewTraining .date-container {
+  width: 100%;
+}
+#viewTraining .date-container .date {
+  margin: auto;
+  text-align: center;
+  background-color: #046330;
+  border-radius: 15px;
+  color: white;
+  width: 70%;
+  padding: 0.3em 0em;
+  margin-bottom: 0.4em;
+}
+#viewTraining .type, #viewTraining .time {
+  font-style: italic;
+  font-weight: bold;
+}
+#viewTraining .date-time {
+  text-align: center;
+}
+#viewTraining .exercise-container {
+  text-align: center;
+}
+#viewTraining .shoesType, #viewTraining .trainingType {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+#viewTraining .shoesType h4, #viewTraining .trainingType h4 {
+  display: inline-block;
+}
+
+.coache_image {
+  width: 13em;
+  height: 13em;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=trainingPageStyle.css.map */

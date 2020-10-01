@@ -37,7 +37,7 @@ class PlayerGetController extends PlayerController
         $allWaterRecords = array_reverse($allWaterRecords);
 
         if ($playerTeam != null) {
-            $teams = $this->playerPropService->getTeams($playerTeam->getDivision());
+            $teams = $this->playerPropService->getTeams($playerTeam->getDivision(), $player->getYouthTeams());
             $hasTeam = true;
         }else {
             $teams = null;
@@ -77,7 +77,7 @@ class PlayerGetController extends PlayerController
      * @Route("/player/settings", name = "player_settings")
      *
      */
-    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request, FileService $fileService){
+    public function SettingsView(\Symfony\Component\HttpFoundation\Request $request, FileService $fileService, PlayerService $playerService){
         $currentPlayer = $this->getUser()->getPlayer();
         $newPlayer = new Player();
         $newPlayerStats = new PlayerStats();
@@ -115,6 +115,12 @@ class PlayerGetController extends PlayerController
             }
         }
 
+
+        $playedMatches = $playerService->getPlayedMatches($currentPlayer);
+        $titularMatchers = $playerService->getTitularPlayedMatches($currentPlayer);
+        $playerGoals = $playerService->getGoals($currentPlayer);
+        $playedMinutes = $playerService->getTotalPlayedMinutes($currentPlayer);
+
         return $this->render('player/settings/newSettingPage.html.twig',
             array(
 
@@ -127,7 +133,11 @@ class PlayerGetController extends PlayerController
                 'form' => $formPlayer->createView(),
                 'team' => $this->playerPropService->getTeam($currentPlayer),
                 'playerStats' => $playerStats,
-                'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName()
+                'playerName' => $currentPlayer->getUser()->getName(). ' '.$currentPlayer->getUser()->getFName(),
+                'goals' => $playerGoals,
+                'playedMinutes' => $playedMinutes,
+                'playedMatches' => $playedMatches,
+                'titularMatches' => $titularMatchers,
             ));
     }
 
@@ -177,11 +187,12 @@ class PlayerGetController extends PlayerController
             $headCoach = $this->playerPropService->getHeadCoache($coaches);
         }
 
-        $schedule = $this->getDoctrine()->getRepository(Schedule::class)
-            ->findBy(["coaches" => $headCoach->getId() ],   ['date' => 'DESC', 'startTime' =>'ASC']);
-        if (count($schedule) == 0){
-            $schedule = [];
-        }
+
+        $Current = Date('d/m/Y');
+        $schedules = $this->getDoctrine()->getRepository(Schedule::class)->findBy(['coaches' => 1, 'date' => $Current]);
+     
+
+
         return $this->render('player/training/training.html.twig' , array('schedule' => $schedule,
             'monday' => strval($Monday),
             'sunday' => strval($Sunday),
@@ -189,6 +200,7 @@ class PlayerGetController extends PlayerController
             'coaches' => $coaches,
             'bigCoach' =>$headCoach,
             'status' => $statuses,
+            'schedules' => $schedules,
             'playerName' => $player->getUser()->getName(). ' '.$player->getUser()->getFName(),
         ));
     }
@@ -202,7 +214,7 @@ class PlayerGetController extends PlayerController
     {
         $user = $this->getUser();
         $requests = $this->getUser()->getRequestFromUser();
-        return $this->render('player/requests.html.twig', array("requests" => $requests,
+        return $this->render('player/requests/requests.html.twig', array("requests" => $requests,
             "playerName" =>$user->getName(),
             "profile_img" => $user->getPlayer()->getImage()));
     }
@@ -216,7 +228,7 @@ class PlayerGetController extends PlayerController
         $player =  $this->getUser()->getPlayer();
         $playerTeam = $playerService->getPlayerTeam($player);
         $upComingMatches = $matchesRepository->findUpcomingMatchesByTeam($playerTeam->getId());
-        $teams = $this->playerPropService->getTeams($playerTeam->getDivision()  );
+        $teams = $this->playerPropService->getTeams($playerTeam->getDivision(), $player->getYouthTeams()  );
 
         $playedMatches = $playerService->getPlayedMatches($player);
         $titularMatchers = $playerService->getTitularPlayedMatches($player);
@@ -235,6 +247,24 @@ class PlayerGetController extends PlayerController
 
         ));
     }
+
+    /**
+     * @Route("/player/teams", name="playerTeamMates")
+     */
+    public function Team(PlayerService $playerService)
+    {
+        $player = $this->getUser()->getPlayer();
+
+        $playerTeam = $playerService->getPlayerTeam($player, $player->getYouthTeams());
+
+        $players = $playerTeam->getPlayers();
+
+        $requests = $this->getUser()->getRequestFromUser();
+        return $this->render('player/team/team.html.twig', array("players" => $players,
+            "profile_img" => $player->getImage(),
+            "playerName" => $player->getUser()->getName()));
+    }
+
 
 
 }

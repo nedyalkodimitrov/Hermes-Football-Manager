@@ -13,7 +13,7 @@
 {%  block body %}
     <div id="container ">
         <div class="row mt-5  justify-content-center">
-            <div class="col-lg-11 col-md-7 col-sm-11 col-10 justify-content-around div-charts row pb-3">
+            <div class="col-lg-11 col-md-7 col-sm-11 col-10 div-charts justify-content-center row pb-3">
                 <div class="col-12 text-center">
                     <h2 >Играчи</h2>
                 </div>
@@ -150,6 +150,52 @@
             </div>
         </div>
     </div>
+
+
+    <div class="container justify-content-center col-lg-12 col-md-12 col-sm-12 col-12 mt-lg-4 mt-md-4 mt-sm-5 mt-5 row p-0 m-0  ">
+        <div class="table col-11    main-charts-container  p-4 mx-auto mh-25" id="teamLeadership-container ">
+            {% if hasTeam %}
+                <h4 class="col-12 text-center mt-2 mb-4">Текущо класиране</h4>
+                <table class=" col-12  mx-auto"  style="margin-bottom: 0; padding:0">
+                    <tr class="row col-12 p-0 m-0 bg-success">
+                        <th class="col-1"></th>
+                        <th class="col-4 color-white">Име</th>
+                        <th class="col-1 color-white">ИМ</th>
+                        <th class="col-1 color-white">П</th>
+                        <th class="col-1 color-white">Р</th>
+                        <th class="col-1 color-white">З</th>
+                        <th class="col-1 color-white">ВГ</th>
+                        <th class="col-1 color-white">ДГ</th>
+                        <th class="col-1 color-white">Т</th>
+                    </tr>
+                    {% set rowNum = 1 %}
+                    {% for team in teams %}
+
+                            <tr class="teamTable row col-12 p-0 m-0">
+                                <th  class="col-1 justify-content-end"> {{ rowNum }}</th>
+                                <th class="col-4"> {{ team.name }}</th>
+                                <th class="col-1"> {{ team.playedGames }}</th>
+                                <th class="col-1"> {{ team.wins }}</th>
+                                <th class="col-1"> {{ team.drawsGames}}</th>
+                                <th class="col-1"> {{ team.lostGames}}</th>
+                                <th class="col-1"> {{ team.Goals}}</th>
+                                <th class="col-1"> {{ team.GoalsInTheTeamDoor}}</th>
+                                <th class="col-1">{{ team.points }}</th>
+                            </tr>
+
+
+                        {% set rowNum = rowNum + 1 %}
+                    {% else %}
+                        <li><em>Вие нямате отбор</em></li>
+                    {%  endfor %}
+                </table>
+            {% else %}
+                <h1>Вие нямате отбор</h1>
+            {% endif %}
+        </div>
+    </div>
+
+
     <div class="team-status-container row justify-content-center align-items-center">
         <div class="col-9  team-status-div row align-items-center justify-content-center" id="add-player" >
             <div class="col-8 row justify-content-center">

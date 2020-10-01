@@ -8,8 +8,8 @@ nav {
     box-sizing: border-box;
 }
 .div-charts{
-    border: 2px solid rgba(150, 148, 147, 0.8);
-    box-shadow: 1px 1px 5px 1px rgba(253, 253, 253, 0.4);
+    border: 1px solid rgba(150, 148, 147, 0.8);
+    /*box-shadow: 1px 1px 5px 1px rgba(253, 253, 253, 0.4);*/
     padding: 1rem;
 }
 

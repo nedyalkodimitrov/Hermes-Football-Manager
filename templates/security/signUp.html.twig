@@ -1,0 +1,197 @@
+<html>
+
+<head>
+    <title>Sign up - Hermes</title>
+    <link rel="stylesheet" href=" {{ asset("css/loginPage.css") }}">
+    <link rel="stylesheet" href=" {{ asset("css/typography.css") }}">
+    <link rel="stylesheet" href=" {{ asset("css/security/singUp/Style.css") }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="{{ asset("js/coach/training/tabs.js") }}"></script>
+
+</head>
+<body>
+<div class="image-holder">
+    <img src="{{ asset("images/HERMES-ICON.jpg") }}" alt="">
+</div>
+<form method="post" class="container col-lg-9   col-md-6 col-sm-9 form">
+    {#        {% if error %}#}
+    {#            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+    {#            <p>{{ app.user }}</p>#}
+    {#        {% endif %}#}
+
+    {#        {% if app.user %}#}
+    {#            <div class="mb-3">#}
+    {#                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+    {#            </div>#}
+    {#        {% endif %}#}
+
+    {#        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>#}
+
+
+    <div class="col-12 row container d-lg-flex d-md-none d-sm-none d-none p-0 m-0 container-color pt-5">
+        <div class="col-6 m-0 ">
+
+            <div class="container text-center col-12 m-0 " >
+                <div class="input-group mb-3">
+                    <label for="inputEmail">Name</label>
+                    <input type="email" value="{{ last_username }}" placeholder="John" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                    <span class="focus-border"></span>
+                </div>
+
+                <div class="input-group mb-3 row col-12 justify-content-center">
+                    <label for="inputEmail " class="col-12 text-left p-0 m-0 ">Position</label>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label pt-4" for="exampleRadios1">
+                            Player
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label pt-4" for="exampleRadios2">
+                            Coach
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label for="inputEmail" class="col-12 text-left p-0 m-0 pb-2"> Country</label>
+                    <select name="country" id="country" class="col-12 form-control">
+                        <option >Choose country</option>
+
+                        {% for country in countries %}
+                            <option data-id ="{{ country.Id }}"><img src="{{ asset('images' ~  country.Image ) }}" alt="">{{ country.Name }}</option>
+                        {% endfor %}
+
+
+                    </select>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                    <span class="focus-border"></span>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-6 ">
+            <div class="container text-center " >
+                <div class="input-group mb-3">
+                    <label for="inputEmail">Family name</label>
+                    <input type="email" value="{{ last_username }}" placeholder="Sins" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                    <span class="focus-border"></span>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label for="inputEmail">Age</label>
+                    <input type="date" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                    <span class="focus-border"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="inputEmail" class="col-12 text-left p-0 m-0 pb-2"> City</label>
+                    <select name="cities" id="cities" class="col-12 form-control">
+                        <option value="">Choose country</option>
+
+                    </select>
+
+                </div>
+
+                <div class="input-group mb-3">
+                    <label for="inputEmail">Password</label>
+                    <input type="email" value="{{ last_username }}" placeholder="******" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                    <span class="focus-border"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-12 row container d-lg-none d-md-block d-sm-block  p-0 m-0 container-color pt-5">
+        <div class="col-12 mx-auto row">
+            <div class="tab col-12 mx-auto p-0 row">
+                <button class="tablinks col-6 createTraining  "onclick="openTab(event, 'createTraining')">Създаване на трениривка</button>
+                <button class="tablinks col-6 viewTraining"  onclick="openTab(event, 'viewTraining')">Гледане на тренировка</button>
+            </div>
+
+            <div id="createTraining" class="tabcontent col-12 m-0  ">
+                <div class="row mx-auto">
+                    <div class="col-md offset-md-0">
+
+                        <div class="container text-center " >
+                            <div class="input-group mb-3">
+                                <label for="inputEmail">Name</label>
+                                <input type="email" value="{{ last_username }}" placeholder="John" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="inputEmail">Family name</label>
+                                <input type="email" value="{{ last_username }}" placeholder="Sins" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="input-group mb-3">
+                                <label for="inputEmail">Position</label>
+                                <input type="email" value="{{ last_username }}" placeholder="" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                                <span class="focus-border"></span>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="inputEmail">City</label>
+                                <input type="email" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                                <span class="focus-border"></span>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="viewTraining" class="tabcontent col-12">
+                <div class="col-12 row ">
+                    <div class="container text-center " >
+
+                        <div class="input-group mb-3">
+                            <label for="inputEmail">Age</label>
+                            <input type="date" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                            <span class="focus-border"></span>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="inputEmail">Password</label>
+                            <input type="email" value="{{ last_username }}" placeholder="ivan123@gmail.com" name="email" id="inputEmail" class=" effect-2" required autofocus>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="col-6 mx-auto mt-5">
+        <button class="btn  color-white col-12 btn-submit" type="submit" >
+            Sign Up
+        </button>
+    </div>
+</form>
+<script src="{{ asset("js/security/signUp/getCitiesByCountry.js") }}"></script>
+</body>
+
+</html>
+

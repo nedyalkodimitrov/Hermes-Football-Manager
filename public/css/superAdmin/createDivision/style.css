@@ -1,0 +1,38 @@
+.groups .no-visible {
+  visibility: hidden;
+}
+.groups .group {
+  border: 1px solid gray;
+  padding: 1rem;
+  margin: auto;
+  margin-bottom: 0.5em;
+}
+.groups .group .group-name {
+  margin-bottom: 0.8em;
+}
+.groups .group .team {
+  padding: 0.2rem;
+  width: 100%;
+  font-size: 1.1em;
+}
+.groups .group .team .fa-futbol {
+  margin-right: 0.2em;
+}
+.groups .group .team p {
+  display: inline-block;
+}
+.groups .group .team .fa-plus {
+  position: absolute;
+  right: 1.2rem;
+}
+.groups .add-new-group-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.groups .add-new-group-container div {
+  font-size: 3em;
+}
+
+/*# sourceMappingURL=style.css.map */

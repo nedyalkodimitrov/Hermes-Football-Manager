@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Team;
 use App\Entity\YouthTeam;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -29,6 +30,10 @@ class YouthTeamRepository extends ServiceEntityRepository
                 ORDER BY t.name ASC'
             )->setParameter('name', "%".$name."%")->getResult();
         return $teams;
+    }
+
+    public function getTeamByDivisionDesc($divisionId){
+        return $this->getEntityManager()->getRepository(YouthTeam::class)->findBy(['division' => $divisionId], ['points' => 'DESC']);
     }
 
 

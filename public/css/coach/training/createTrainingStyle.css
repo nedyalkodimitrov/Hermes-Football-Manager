@@ -1,0 +1,97 @@
+#createTraining .shoesType, #createTraining .trainingType {
+  margin: 1rem 0rem 1rem 0rem;
+  display: flex;
+  justify-content: center;
+}
+#createTraining .shoesType button, #createTraining .trainingType button {
+  transition: 0.2s all ease;
+  background-color: rgba(62, 102, 70, 0.7);
+}
+#createTraining .shoesType button .active, #createTraining .trainingType button .active {
+  background-color: #3e6646;
+}
+#createTraining .shoesType button:hover, #createTraining .trainingType button:hover {
+  background-color: #3e6646;
+}
+#createTraining .shoesType .active, #createTraining .trainingType .active {
+  background-color: #3e6646;
+}
+#createTraining .search-container {
+  height: 10% !important;
+  border-radius: 0;
+}
+#createTraining .exercises-container {
+  display: inline-block;
+}
+#createTraining .exercises-container .exercises-description-text {
+  display: inherit;
+}
+#createTraining .exercises-container .exercises-description-text h5 {
+  font-weight: 700;
+  font-style: italic;
+  display: inherit;
+}
+#createTraining .exercises-container .exercises {
+  display: inherit;
+}
+#createTraining .exercises-container .exercises .exercise {
+  display: inherit;
+  border: 1px solid gray;
+  padding: 0.4rem;
+  border-radius: 5px;
+}
+#createTraining .exercises-container .exercises .exercise .fa-times {
+  border-left: 1px solid #3e6646;
+  padding-left: 0.4em;
+  padding-top: 0.1em;
+  transition: 0.3s ease all;
+}
+#createTraining .exercises-container .exercises .exercise .fa-times:hover {
+  color: red;
+  cursor: pointer;
+}
+#createTraining .exercises-container .exercises .exercise .ex-information {
+  display: none;
+}
+#createTraining .exercises-container .exercises .exercise .ex-information-visible {
+  display: inline-block;
+}
+#createTraining .exercises-container .exercise:focus + .ex-information {
+  display: flex;
+}
+
+.exercises-search-results {
+  height: 20em;
+  width: 100%;
+  background: #2F3640;
+  margin: 1rem 0 1rem 0;
+  border-radius: 5px;
+  overflow: scroll;
+}
+.exercises-search-results .exercise {
+  padding: 1rem;
+  color: white;
+  width: 100%;
+  display: flex;
+}
+.exercises-search-results .exercise h5 {
+  flex-grow: 3;
+  flex-shrink: 2;
+  flex-basis: auto;
+}
+.exercises-search-results .exercise button {
+  border: 1px solid white;
+  color: white;
+  background: #2F3640;
+  border: none;
+  font-size: 1.7em;
+}
+.exercises-search-results .exercise button:hover {
+  color: #5a8302;
+  cursor: pointer;
+}
+.exercises-search-results .exercise button .remove-exercise {
+  display: none;
+}
+
+/*# sourceMappingURL=createTrainingStyle.css.map */

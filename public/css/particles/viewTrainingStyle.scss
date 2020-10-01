@@ -1,0 +1,57 @@
+#viewTraining {
+  margin: 0;
+  //first div with col-12
+  .viewTrainingContainer{
+    border: 3px solid  #046330;
+    margin: 0;
+    padding: 0.5rem;
+  }
+
+  .program-today{
+    background: #035429;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    hr{
+      background-color: black;
+      height: 1px;
+
+    }
+
+  }
+  .date-container{
+    width: 100%;
+
+    .date {
+      margin: auto;
+      text-align: center;
+      background-color: #046330;
+      border-radius: 15px;
+      color: white;
+      width: 70%;
+      padding: 0.3em  0em;
+      margin-bottom: 0.4em;
+    }
+  }
+  .type , .time {
+    font-style: italic;
+    font-weight: bold;
+  }
+  .date-time{
+    text-align: center;
+  }
+  .exercise-container{
+    text-align: center;
+  }
+  .shoesType, .trainingType {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    h4{
+      display: inline-block;
+    }
+  }
+
+
+}

@@ -9,8 +9,17 @@ form{
     top: 50%;
     margin-top: 0% ;
     transform: translate(0%, -50%);
+
+}
+form input {
+    color: black;
 }
 
+form  input::placeholder {
+    color: gray;
+    font-style: italic;
+
+}
 .page-container {
     position: absolute;
     top: 50%;

@@ -4,13 +4,17 @@ namespace App\Controller\Coach;
 
 use App\Entity\Player;
 use App\Entity\Training;
+use App\Entity\TrainingPieces\Exercises;
 use App\Entity\User;
 use App\Repository\PlayerRepository;
 use App\Repository\ScheduleRepository;
+use App\Repository\TrainingPieces\ExercisesRepository;
 use App\Repository\TrainingRepository;
 use App\Repository\UserRepository;
 use App\Service\CoachService;
+use App\Service\CustomSerializer;
 use App\Service\PlayerService;
+use App\Service\TrainingService;
 use http\Env\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -106,18 +110,36 @@ class CoachPostController extends CoachController
         return $response;
 
     }
+    /**
+     *
+     * @Route("/coache/searchExercises", name = "coachSearchEcercises")
+     */
+    public function CoachExercisesSearch(CustomSerializer  $customSerializer, Request $request, ExercisesRepository $exercisesRepository, PlayerRepository $playerRepository, PlayerService $playerService)
+    {
+
+        $exercisesName = "warm";
+        $exercises = $exercisesRepository->findByName($exercisesName);
+            
+
+
+        $customSerializer->serialize($exercises);
+        $response = new JsonResponse();
+        $response->setData($customSerializer->serialize($exercises));
+
+
+        return $response;
+    }
 
 
     /**
      *
      * @Route("/coache/trainingByDate", name = "trainingByDate")
      */
-    public function TrainingByDate(Request $request, ScheduleRepository $scheduleRepository, \App\Service\CustomSerializer $serializer)
+    public function TrainingByDate(Request $request,TrainingService $trainingService, ScheduleRepository $scheduleRepository, \App\Service\CustomSerializer $serializer)
     {
         $date = $request->get("date");
-
-        $trainings = $scheduleRepository->findTrainingByDate($date);
-        $training = new Training();
+        $coachId =  $this->getUser()->getCoach()->getId();
+        $trainings    =  $trainingService->getTrainingByDate( $coachId,$date, $scheduleRepository, $serializer);
 
         $serializedContent =  $serializer->serialize($trainings);
         return JsonResponse::fromJsonString($serializedContent);

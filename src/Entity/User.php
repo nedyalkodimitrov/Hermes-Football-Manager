@@ -63,6 +63,8 @@ class User implements UserInterface
      */
     public $city;
 
+    
+
     /**
      * @ORM\ManyToMany(targetEntity="Role")
      * @ORM\JoinTable(name="user_roles",

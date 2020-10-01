@@ -79,6 +79,11 @@ class Coach
      */
     private $requestsFromTeams;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CoachProperties\Qualification", inversedBy="coaches")
+     */
+    private $qualification;
+
 
 
     /**
@@ -94,6 +99,8 @@ class Coach
      * @ORM\Column(name="status", type="integer", nullable=true)
      */
     public $status;
+
+
 
 
 
@@ -261,6 +268,56 @@ class Coach
     {
         $this->requestsToPlayers = $requestsToPlayers;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestsToTeams()
+    {
+        return $this->requestsToTeams;
+    }
+
+    /**
+     * @param mixed $requestsToTeams
+     */
+    public function setRequestsToTeams($requestsToTeams): void
+    {
+        $this->requestsToTeams = $requestsToTeams;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRequestsFromTeams()
+    {
+        return $this->requestsFromTeams;
+    }
+
+    /**
+     * @param mixed $requestsFromTeams
+     */
+    public function setRequestsFromTeams($requestsFromTeams): void
+    {
+        $this->requestsFromTeams = $requestsFromTeams;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQualification()
+    {
+        return $this->qualification;
+    }
+
+    /**
+     * @param mixed $qualification
+     */
+    public function setQualification($qualification): void
+    {
+        $this->qualification = $qualification;
+    }
+
+
 
     public function __toString()
     {

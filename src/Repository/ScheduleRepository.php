@@ -46,11 +46,13 @@ class ScheduleRepository extends ServiceEntityRepository
         ->getQuery()->getResult();
     }
 
-    public function findTrainingByDate($value)
+    public function findTrainingByDate($coachId, $date)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.date = :val')
-            ->setParameter('val', $value)
+            ->andWhere('t.date = :date')
+            ->andWhere('t.coaches = :coachId')
+            ->setParameter('date', $date)
+            ->setParameter('coachId', $coachId)
             ->orderBy('t.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()

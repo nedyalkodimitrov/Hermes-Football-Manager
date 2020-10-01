@@ -1,0 +1,46 @@
+.groups {
+
+  .no-visible {
+    visibility: hidden;
+  }
+  .group{
+    border: 1px solid gray;
+    padding: 1rem;
+    margin: auto;
+    margin-bottom: 0.5em;
+
+
+    .group-name {
+      margin-bottom: 0.8em;
+    }
+    .team{
+      padding: 0.2rem;
+      width: 100%;
+      font-size: 1.1em;
+      .fa-futbol {
+        margin-right: 0.2em;
+      }
+
+      p {
+
+        display: inline-block;
+      }
+      .fa-plus{
+        position: absolute;
+        right: 1.2rem;
+      }
+    }
+  }
+.add-new-group-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+  div{
+    font-size: 3em;
+  }
+}
+
+}
+

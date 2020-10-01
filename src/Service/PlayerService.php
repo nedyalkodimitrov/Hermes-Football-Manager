@@ -58,10 +58,13 @@ class PlayerService implements PlayerServiceInterface
     }
 
     //Get teams by division
-    public function getTeams($division){
-        $teams = $this->teamRepo->getTeamByDivisionDesc($division->getId());
-        if($teams == null){
-            $teams = $this->youthTeam->getYouthTeamByDivisionDesc($division->getId());
+    public function getTeams($division, $youthTeam){
+        if ($youthTeam == null)
+        {
+            $teams = $this->teamRepo->getTeamByDivisionDesc($division->getId());
+        }else {
+
+            $teams = $this->youthTeam->getTeamByDivisionDesc($division->getId());
         }
 
         return $teams;

@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{ asset("css/coach/playerStatPageStyle.css") }}">
         <link href="{{ asset("css/settingPageStyle.css") }}" rel="stylesheet">
         <link href="{{ asset("css/particles/hiddenDiv.css") }}" rel="stylesheet">
+        <link href="{{ asset("css/player/settingsPage/settingsPageStyle.css") }}" rel="stylesheet">
         <script type="text/javascript" src="{{ asset("mdb/js/mdb.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("mdb/js/bootstrap.min.js") }}"></script>
     {% endblock %}
@@ -80,6 +81,155 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+
+        <div class="col-10  mt-2  mx-auto season-player-stats  information-holder p-4 ">
+            <div class="col-12 m-0 p-0  my-auto  text-center row">
+                <h3 class="col-12 text-center mb-4  ">Статистика за сезона</h3>
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>{{(playedMinutes / playedMatches)|number_format(1)}}</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Среден коефицент на игра</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>{{playedMinutes}}</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Общо изиграни минути</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>{{(goals / playedMatches)|number_format(1)}}</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Коефицент на голове</span>
+                        </h3>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>{{playedMatches}}</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Изиграни мача</span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>{{goals}}</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Вкарани голове</span>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
+                    <div class="information-container">
+                        <p>5</p>
+                    </div>
+                    <div class="fat-percent-div">
+                        <h3>
+                            <span class="green badge fat-percent-badge  label">Асистенции</span>
+                        </h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="season-player-stats col-10 information-holder mt-5 mx-auto">
+            <h3 class="col-11  mt-5 text-center">Статиситики от треньора</h3>
+            <div class="col-11 mx-auto mt-3 pt-3 mb-3">
+                <div class="col-12 justify-content-around summarizing-results">
+                      <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.statusFromCoaches  }}">
+                            <span class="chart-text percent"></span>
+                      </span>
+                    <h4 class="text-center mt-2">Обобщен резултат</h4>
+                </div>
+            </div>
+
+            <div class="col-12 m-0 p-0 row justify-content-around">
+                <div class="col-6 col-lg-2 col-md-4">
+                            <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pace *10}}">
+                                <span class="chart-text percent"></span>
+                            </span>
+                    <h5 class="text-center mt-2">Скорост</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.technique * 10 }}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Техника</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.shot * 10}}">
+                                    <span class="chart-text percent"></span>
+                             </span>
+                    <h5 class="text-center mt-2">Удар</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.dribble * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Дрибъл</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.tacticks * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Тактика</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pass }}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Пас</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                             <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.longPass * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Дълъг пас</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.relax * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Спокойствие на терена</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.willpower * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Воля</h5>
+                </div>
+                <div class="col-6 col-lg-2 col-md-4">
+                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.perspective * 10}}">
+                                    <span class="chart-text percent"></span>
+                              </span>
+                    <h5 class="text-center mt-2">Перспектива</h5>
+                </div>
+            </div>
+
         </div>
 
         <div class="row hidden-container">

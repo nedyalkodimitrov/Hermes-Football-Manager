@@ -3,7 +3,11 @@
 namespace App\Controller\Player;
 
 
+use App\Repository\ScheduleRepository;
 use App\Repository\TeamRepository;
+use App\Service\CoachService;
+use App\Service\TrainingService;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -122,6 +126,29 @@ class PlayerPostController extends PlayerController
         exit;
     }
 
+
+
+    /**
+     *
+     * @Route("/player/trainingByDate", name = "playerGetTrainingByDate")
+     */
+    public function TrainingByDate(CoachService $coachService,Request $request,TrainingService $trainingService, ScheduleRepository $scheduleRepository, \App\Service\CustomSerializer $serializer)
+    {
+        $date = $request->get("date");
+        $team =  $this->getUser()->getPlayer()->getTeam();
+
+        $coach = $coachService->getHeadCoachOfTeam($team);
+        if ($coach == null){
+            $coach = $coachService->getHeadCoachOfYouthTeam($team);
+        }
+
+        $trainings    =  $trainingService->getTrainingByDate( $coach->getId(), $date, $scheduleRepository, $serializer);
+
+        $serializedContent =  $serializer->serialize($trainings);
+        return JsonResponse::fromJsonString($serializedContent);
+
+
+    }
 
 
 

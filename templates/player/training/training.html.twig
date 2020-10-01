@@ -2,11 +2,11 @@
 {% block style %}
     {{ parent() }}
     <link rel="stylesheet" href="  {{ asset("css/particles/hiddenFormStyle.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/calendar.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/player/trainingPage/trainingPageStyle.css')}}">
+
 {% endblock %}
-{# {% block nav %}#}
-{#     <a class="nav-item nav-link   ml-2" href="#">Начална страница </a>#}
-{#     <a class="nav-item nav-link current-item ml-2" href="{{ path("playerTraining") }}">Тренировки</a>#}
-{# {% endblock %}#}
+
 {% block navLinks %}
     <a class=" ml-2 navbar-link" href="#">Начална страница </a>
     <a class="ml-2 na navbar-link current-item" href="{{ path("playerTraining") }}">Тренировки</a>
@@ -14,58 +14,137 @@
     <a class="ml-2 na navbar-link" href="{{ path("playerRequestes") }}">Предложения от клубове </a>
 {% endblock %}
 {% block body%}
-    <div class="table-containercol-lg-12 col-md-12 col-sm-12 col-12 ml-md-1 ml-sm-1 mx-0 p-0 mt-lg-5 mt-md-0 mt-sm-5 mt-5 row ">
-        <div class="table col-11 mx-auto mh-25" id="teamLeadership-container ">
-            <table class="table-bordered col-12  "  style="margin-bottom: 0; padding:0">
-                <tr class="row col-12 p-0 m-0 bg-success">
-                    <th class="col-1 text-center color-white">Понеделник</th>
-                    <th class="col-2 text-center color-white">Вторник</th>
-                    <th class="col-2 text-center color-white">Сряда</th>
-                    <th class="col-2 text-center color-white">Четвъртък</th>
-                    <th class="col-2 text-center color-white">Петък</th>
-                    <th class="col-2 text-center color-white">Събота</th>
-                    <th class="col-1 text-center color-white">Неделя</th>
-                </tr>
-                <tr class="teamTable row col-12 p-0 m-0 ">
-                    {%set flag = true %}
-                    {% set dateCounter = 0 %}
-                        {% for x in range(monday|date('U'), sunday|date('U'), 86400 ) %}
-                            {% if dateCounter == 0 or dateCounter == 6 %}
-                                <th  class="col-1 my-auto p-2 text-center justify-content-end">
-                                    {% for j in range(0, schedule|length - 1, 1) %}
-                                        {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}
-                                            {% set flag = false %}
-                                            {{ schedule[j].StartTime }}  <br>   {{ schedule[j].Description }}
-                                            <br>
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% if flag%}
-                                        <h6>Почивка</h6>
-                                    {% endif %}
-                                    {% set flag = true %}
-                                </th>
-                            {% else %}
-                                <th  class="col-2 my-auto text-center justify-content-end">
-                                    {% for j in range(0, schedule|length - 1, 1) %}
+{#    <div class="table-containercol-lg-12 col-md-12 col-sm-12 col-12 ml-md-1 ml-sm-1 mx-0 p-0 mt-lg-5 mt-md-0 mt-sm-5 mt-5 row ">#}
+{#        <div class="table col-11 mx-auto mh-25" id="teamLeadership-container ">#}
+{#            <table class="table-bordered col-12  "  style="margin-bottom: 0; padding:0">#}
+{#                <tr class="row col-12 p-0 m-0 bg-success">#}
+{#                    <th class="col-1 text-center color-white">Понеделник</th>#}
+{#                    <th class="col-2 text-center color-white">Вторник</th>#}
+{#                    <th class="col-2 text-center color-white">Сряда</th>#}
+{#                    <th class="col-2 text-center color-white">Четвъртък</th>#}
+{#                    <th class="col-2 text-center color-white">Петък</th>#}
+{#                    <th class="col-2 text-center color-white">Събота</th>#}
+{#                    <th class="col-1 text-center color-white">Неделя</th>#}
+{#                </tr>#}
+{#                <tr class="teamTable row col-12 p-0 m-0 ">#}
+{#                    {%set flag = true %}#}
+{#                    {% set dateCounter = 0 %}#}
+{#                        {% for x in range(monday|date('U'), sunday|date('U'), 86400 ) %}#}
+{#                            {% if dateCounter == 0 or dateCounter == 6 %}#}
+{#                                <th  class="col-1 my-auto p-2 text-center justify-content-end">#}
+{#                                    {% for j in range(0, schedule|length - 1, 1) %}#}
+{#                                        {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}#}
+{#                                            {% set flag = false %}#}
+{#                                            {{ schedule[j].StartTime }}  <br>   {{ schedule[j].Description }}#}
+{#                                            <br>#}
+{#                                        {% endif %}#}
+{#                                    {% endfor %}#}
+{#                                    {% if flag%}#}
+{#                                        <h6>Почивка</h6>#}
+{#                                    {% endif %}#}
+{#                                    {% set flag = true %}#}
+{#                                </th>#}
+{#                            {% else %}#}
+{#                                <th  class="col-2 my-auto text-center justify-content-end">#}
+{#                                    {% for j in range(0, schedule|length - 1, 1) %}#}
 
-                                        {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}
-                                            {% set flag = false %}
-                                            {{ schedule[j].StartTime }}   <br>  {{ schedule[j].Description }}
-                                            <br>
-                                        {% endif %}
-                                    {% endfor %}
-                                    {% if flag%}
-                                        <h6>Почивка</h6>
-                                    {% endif %}
-                                    {% set flag = true %}
-                                </th>
-                            {% endif %}
-                            {% set  dateCounter = dateCounter + 1%}
+{#                                        {% if schedule[j].date ==  x|date('d/m/Y')|trans   %}#}
+{#                                            {% set flag = false %}#}
+{#                                            {{ schedule[j].StartTime }}   <br>  {{ schedule[j].Description }}#}
+{#                                            <br>#}
+{#                                        {% endif %}#}
+{#                                    {% endfor %}#}
+{#                                    {% if flag%}#}
+{#                                        <h6>Почивка</h6>#}
+{#                                    {% endif %}#}
+{#                                    {% set flag = true %}#}
+{#                                </th>#}
+{#                            {% endif %}#}
+{#                            {% set  dateCounter = dateCounter + 1%}#}
+{#                    {% endfor %}#}
+{#                </tr>#}
+{#            </table>#}
+{#        </div>#}
+{#    </div>#}
+
+    <div class="container">
+        <div class="row">
+            <div class="calendar col-12 mt-4">
+                <div>
+                    <div class="card-header">
+                        <ul>
+                            <li id="month" class="text-white text-uppercase text-center">
+                            </li>
+                            <li id="year" class="text-white text-uppercase text-center">
+                            </li>
+                        </ul>
+                    </div>
+                    <table class="table calendar table-bordered  "  id="calendar">
+                        <thead>
+                        <tr class="weekdays bg-dark">
+                            <th scope="col" class="text-white text-center">Пон</th>
+                            <th scope="col" class="text-white text-center">Вто</th>
+                            <th scope="col" class="text-white text-center">Сря</th>
+                            <th scope="col" class="text-white text-center">Чет</th>
+                            <th scope="col" class="text-white text-center">Пет</th>
+                            <th scope="col" class="text-white text-center">Съб</th>
+                            <th scope="col" class="text-white text-center">Нед</th>
+                        </tr>
+                        </thead>
+                        <tbody class="days bg-light" id="days"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+    </div>
+
+
+    <div id="viewTraining" class="col-11 mx-auto">
+        <div class="program-today">
+            <h4>Програма за днеска</h4>
+
+        </div>
+        <div class="col-12 row viewTrainingContainer">
+            {% for schedule in schedules %}
+
+                <div class="col-12  training-information-container">
+                    <div class="shoesType ">
+                        <h4>Вид бутонки: </h4>
+                        <h4 class="type">{{  schedule.training.shoesType.type}}</h4>
+                    </div>
+                    <div class="trainingType  ">
+                        <h4 >Вид тренировка: </h4>
+                        <h4 class=" type"> {{   schedule.training.trainingType.type }}</h4>
+                    </div>
+                    <hr>
+                    <div class="date-time">
+                        <h3>Час на започване : <span class="time">{{ schedule.startTime }}</span></h3>
+                        <h3>Час на завършване : <span class="time">{{ schedule.endTime}}</span></h3>
+                    </div>
+
+                    {% for exercise in schedule.training.exercises %}
+                        <div class="exercise-container">
+                            <hr>
+                            <h4>{{ exercise.Name }} - {{ exercise.intensityType.type }}</h4>
+                            <h5>{{ exercise.description }}</h5>
+                        </div>
                     {% endfor %}
-                </tr>
-            </table>
+                </div>
+            {% else %}
+                <div class="no-training-information">
+                    <h5>Днеска нямате тренирвка или не е въведена информация за такава</h5>
+                </div>
+            {% endfor %}
         </div>
     </div>
+
+
+
 
         <div class="container row col-lg-12 col-sm-12 justify-content-sm-center mt-sm-3  text-center m-0 ">
             <div class="col-12 justify-content-center text-center">
@@ -145,4 +224,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
     <script src="{{ asset('js/playerTraining.js') }}"></script>
+    <script src="{{ asset("js/calendar.js")}}"></script>
+    <script src="{{ asset("js/particles/getTrainingByDate.js")}}"></script>
+    <script>
+        $('.active').on('click', function() {
+            var date = $(this).text() + "/" + monthCalc(($('#month').data('val') + 1) )+ "/" + $('#year').text();
+            var trainings = getTrainingByDate(date);
+            console.log(date);
+
+            console.log("dasdas");
+            console.log(trainings);
+
+        });
+
+
+        function monthCalc(month){
+            if (month < 10){
+                month = '0' + month;
+            }
+            return month
+        }
+
+    </script>
+
+
 {% endblock %}

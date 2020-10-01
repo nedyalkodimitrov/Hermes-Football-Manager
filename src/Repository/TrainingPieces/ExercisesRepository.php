@@ -36,15 +36,20 @@ class ExercisesRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Exercises
+
+    public function findByName($value)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+        SELECT * FROM Exercises e 
+        WHERE e.name LIKE :name
+        ORDER BY e.name ASC
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['name' => '%'.$value.'%']);
+        return $stmt->fetchAll();
     }
-    */
+
 }

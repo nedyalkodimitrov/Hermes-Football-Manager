@@ -2,7 +2,7 @@
 {% block style %}
    {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/particles/matchCard.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/player/statsPageStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/player/statsPage/statsPageStyle.css') }}">
 {% endblock %}
 {% block navLinks %}
     <a class=" ml-2 navbar-link" href="#">Начална страница </a>
@@ -12,78 +12,6 @@
 {% endblock %}
 {% block body%}
     <div class="container col-12 container justify-content-around mt-5 mb-5 row m-0 p-0">
-        <div class="col-11  mt-2  season-player-stats  information-holder p-4 ">
-            <div class="col-12 m-0 p-0  my-auto  text-center row">
-                <h3 class="col-12 text-center mb-4  ">Статистика за сезона</h3>
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>{{(playedMinutes / playedMatches)|number_format(1)}}</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Среден коефицент на игра</span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>{{playedMinutes}}</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Общо изиграни минути</span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>{{(goals / playedMatches)|number_format(1)}}</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Коефицент на голове</span>
-                        </h3>
-                    </div>
-                </div>
-
-
-
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>{{playedMatches}}</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Изиграни мача</span>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>{{goals}}</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Вкарани голове</span>
-                        </h3>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-4 col-md-12 col-sm-12 text-center align-content-center  chart-container">
-                    <div class="information-container">
-                        <p>5</p>
-                    </div>
-                    <div class="fat-percent-div">
-                        <h3>
-                            <span class="green badge fat-percent-badge  label">Асистенции</span>
-                        </h3>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <hr class="col-8 mx-auto">
         <div class="col-12 container row justify-content-around mt-3">
             <h3 class="text-center col-12 mb-4">Предстоящи мачове на {{ player.Team.Name }}</h3>
             {% for match in upComingMatches %}
@@ -106,10 +34,10 @@
                     </div>
                 </div>
             {% else  %}
-                <h4><i>Нямате предсточщи мачове</i></h4>
+                <h5><i>Нямате предсточщи мачове</i></h5>
             {% endfor %}
         </div>
-        <hr class="col-8 mt-4 mb-3">
+        <hr class="col-1 mt-4 mb-3">
         <div class="col-12 container row justify-content-around">
             <h3 class="text-center col-12 mb-4">Мачове, които сте в групата</h3>
             {% set hasMatches = false %}
@@ -138,11 +66,11 @@
             {% else  %}
             {% endfor %}
             {% if hasMatches == false%}
-                <h4 class="text-center"><i>Нямате мачове, които се в групата</i></h4>
+                <h5 class="text-center"><i>Нямате мачове, които се в групата</i></h5>
 
             {% endif %}
         </div>
-        <hr class="col-8 mb-3">
+        <hr class="col-1 mb-3">
         <div class="col-12 container row justify-content-around">
             <h3 class="text-center col-12 mb-4">Изиграни от вас мачове</h3>
            <div class="col-12 justify-content-center row ">
@@ -206,88 +134,14 @@
         </div>
 
 
-        <hr class="col-8 mb-3">
 
-        <div class="season-player-stats col-11">
-            <h3 class="col-11  mt-5 text-center">Статиситики от треньора</h3>
-                <div class="col-11 mx-auto mt-3 pt-3 mb-3">
-                    <div class="col-12 justify-content-around summarizing-results">
-                      <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.statusFromCoaches  }}">
-                            <span class="chart-text percent"></span>
-                      </span>
-                        <h4 class="text-center mt-2">Обобщен резултат</h4>
-                    </div>
-                </div>
 
-                    <div class="col-12 m-0 p-0 row justify-content-around">
-                        <div class="col-6 col-lg-2 col-md-4">
-                            <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pace *10}}">
-                                <span class="chart-text percent"></span>
-                            </span>
-                            <h5 class="text-center mt-2">Скорост</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.technique * 10 }}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                              <h5 class="text-center mt-2">Техника</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.shot * 10}}">
-                                    <span class="chart-text percent"></span>
-                             </span>
-                             <h5 class="text-center mt-2">Удар</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.dribble * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                             <h5 class="text-center mt-2">Дрибъл</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.tacticks * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                             <h5 class="text-center mt-2">Тактика</h5>
-                        </div>
-                      <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.pass }}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                             <h5 class="text-center mt-2">Пас</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                             <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.longPass * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                                <h5 class="text-center mt-2">Дълъг пас</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.relax * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                              <h5 class="text-center mt-2">Спокойствие на терена</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.willpower * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                              <h5 class="text-center mt-2">Воля</h5>
-                        </div>
-                        <div class="col-6 col-lg-2 col-md-4">
-                              <span class="min-chart" id="chart-sales" data-percent="{{ player.stats.perspective * 10}}">
-                                    <span class="chart-text percent"></span>
-                              </span>
-                              <h5 class="text-center mt-2">Перспектива</h5>
-                        </div>
-                    </div>
 
-        </div>
     </div>
 
 
 
-    <hr class="col-8 mx-auto">
+    <hr class=" mx-auto">
     <h3 class="col-12 mt-3 text-center">Класиране до момента</h3>
     <div class="col-12 justify-content-around mb-2">
         <img src="{{ asset("images/"~player.Team.Division.Image) }}" alt="" class="justify-content-center col-4 text-center division-image">
@@ -297,8 +151,8 @@
     <div class="table-container justify-content-center mx-auto mt-3 col-lg-10 col-md-12 col-sm-12 col-12 p-0 row ">
         <div class="table col-12 mx-auto   justify-content-center mh-25" id="teamLeadership-container ">
             {% if player.Team != null %}
-                <table class="table-bordered col-12 "  style="margin-bottom: 0; padding:0">
-                    <tr class="row col-12 p-0 m-0 bg-success">
+                <table class=" col-12 "  style="margin-bottom: 0; padding:0">
+                    <tr class="row col-12 p-0 m-0 bg-success color-white">
                         <th class="col-1"></th>
                         <th class="col-4 color-white">Име</th>
                         <th class="col-1 color-white">ИМ</th>

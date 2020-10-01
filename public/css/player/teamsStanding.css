@@ -27,6 +27,9 @@ thead {
     margin: 0;
     min-width: 100%;
 }
+tbody >tr:first-child>  th {
+    color: white; !important;
+}
 
 
 .table-container, .table-container div {
@@ -51,7 +54,7 @@ thead {
 }
 
 .teamTable>th {
-    font-size: 1.2em;
+    font-size: 1em;
 }
 
 .table-bordered td, .table-bordered th{

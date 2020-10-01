@@ -1,0 +1,25 @@
+#viewTraining .date-container {
+  width: 100%;
+}
+#viewTraining .date-container .date {
+  margin: auto;
+  text-align: center;
+  background-color: #046330;
+  border-radius: 15px;
+  color: white;
+  width: 70%;
+  padding: 0.3em 0em;
+  margin-bottom: 0.4em;
+}
+#viewTraining .type, #viewTraining .time {
+  font-style: italic;
+  font-weight: bold;
+}
+#viewTraining .date-time {
+  text-align: center;
+}
+#viewTraining .exercise-container {
+  text-align: center;
+}
+
+/*# sourceMappingURL=viewTrainingStyle.css.map */

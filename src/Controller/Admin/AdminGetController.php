@@ -88,17 +88,24 @@ class AdminGetController extends AdminController
         $admin = $this->getUser()->getAdmin();
 
         $youthTeam = $this->getDoctrine()->getRepository(YouthTeam::class)->find($id);
+
         if ($youthTeam->getMotherTeam()->getAdmin()[0]->getId() != $admin->getId()){
             return $this->redirectToRoute(adminHomeAction);
         }
 
         $players = $youthTeam->getPlayers();
         $coaches = $youthTeam->getCoaches();
-
+        $teams = $youthTeam->getDivision()->getYouthTeams();
         return $this->render('admin/youthTeam.html.twig', array('players' =>$players,
             'coaches' => $coaches,
             'teamId' => $id,
-            'profile_img' =>  $admin->getTeam()->getImage()));
+            'profile_img' =>  $admin->getTeam()->getImage(),
+             'teams' => $teams,
+                "hasTeam" => true
+
+            )
+
+        );
 
     }
 

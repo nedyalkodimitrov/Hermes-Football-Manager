@@ -139,7 +139,7 @@ function showCalendar(month, year) {
 }
 
 $("#days td.active").on("click", function () {
-    $('#date').val($(this).text() + "/" + ($('#month').data('val') + 1) + "/" + $('#year').text());
+        $('#date').val($(this).text() + "/" + ($('#month').data('val') + 1) + "/" + $('#year').text());
     if (is_empty() == true) {
         $("#submit").prop('disabled', true);
     } else {
@@ -248,6 +248,7 @@ function clear_input() {
     $("#submit").prop('disabled', true);
 }
 
+
 function is_empty() {
     if (
         ($("#date").val() == null || $("#date").val() == '') ||
@@ -268,7 +269,7 @@ function compare() {
         clear_input();
         iziToast.warning({
             title: 'Caution',
-            message: "Start Time is greater than end time",
+            message: "Start time can not be greater than end time",
             overlay: true,
             zindex: 999,
             position: 'center',
@@ -280,7 +281,7 @@ function compare() {
         clear_input();
         iziToast.warning({
             title: 'Caution',
-            message: "Start Time equals end time",
+            message: "Start time and end time can not be equals",
             overlay: true,
             zindex: 999,
             position: 'center',
@@ -406,6 +407,7 @@ function SaveDataToLocalStorage(data)
         if (temp1 < temp2) return -1;
     });
     localStorage.setItem('tbAppointment', JSON.stringify(a));
+    console.log(data);
 }
 
 function clear_storage(){
@@ -486,10 +488,10 @@ function put_badges(cell) {
             cell.classList.add("badge1");
             cell.setAttribute('data-badge', counter);
         }
-        if (counter <= 0) {
+        /*if (counter <= 0) {
             cell.classList.remove("badge1");
             cell.removeAttribute('data-badge');
-        }
+        }*/
     }
 }
 
